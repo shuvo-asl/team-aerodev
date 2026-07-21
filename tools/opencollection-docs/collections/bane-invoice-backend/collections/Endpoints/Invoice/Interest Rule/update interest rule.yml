@@ -1,0 +1,79 @@
+info:
+  name: update interest rule
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{url}}/api/interest-rule/1/"
+  body:
+    type: json
+    data: |-
+      {
+          "is_cumulative": false,
+          "interest_base": "invoice_base_amount"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/interest-rule/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "is_cumulative": false,
+              "interest_base": "invoice_base_amount"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 04 Mar 2025 08:49:35 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "265"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Interest Rule successfully updated",
+              "data": {
+                  "result": {
+                      "id": 1,
+                      "name": "interest1",
+                      "is_default": false,
+                      "is_cumulative": false,
+                      "day": 23,
+                      "max_repetition": 2,
+                      "interest_type": "fixed",
+                      "interest_rate": 23,
+                      "interest_base": "invoice_base_amount"
+                  }
+              }
+          }

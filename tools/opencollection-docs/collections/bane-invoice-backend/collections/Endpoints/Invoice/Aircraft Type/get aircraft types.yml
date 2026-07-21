@@ -1,0 +1,28 @@
+info:
+  name: get aircraft types
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/bas/aircraft-type?page=1&limit=10"
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "10"
+      type: query
+    - name: search_term
+      value: ""
+      type: query
+      disabled: true
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

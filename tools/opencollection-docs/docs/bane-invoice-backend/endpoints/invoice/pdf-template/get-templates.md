@@ -1,0 +1,281 @@
+# get templates
+
+**GET** `{{url}}/api/pdf-template/`
+
+## Auth
+
+Type: `bearer`
+
+## Examples
+
+### get templates
+
+**Request:** `GET` `{{url}}/api/pdf-template/`
+
+**Response:** `200 OK`
+
+```json
+{
+    "status": "success",
+    "message": "PDF Template Successfully Fetched",
+    "data": {
+        "result": [
+            {
+                "id": 26,
+                "title": "Finance General Invoice",
+                "design_id": 2,
+                "logo_id": 5,
+                "has_bank_details": true,
+                "bank_details_id": 47,
+                "has_chasing_details": false,
+                "logo_title": "asl_logo",
+                "logo_file": null,
+                "bank_details_title": "FinaceBankDetails",
+                "bank_details": "Beneficiary Name: Aerogon PTE Ltd\r\nBeneficiary Account Number: 288-903319-0\r\nSWIFT Code: DBSSSGSG\r\nBank NameDBS Bank Limited\r\nAddress:12 Marina Boulevard\r\nMarina Bay Financial Ccenter Tower 3\r\nSingapore 018982\r\nTel: +65 6878 8881, 6878 8882.",
+                "design_template_name": "Finance",
+                "design_template_file_name": "finance_invoice.html"
+            },
+            {
+                "id": 25,
+                "title": "fgfg",
+                "design_id": 1,
+                "logo_id": 30,
+                "has_bank_details": true,
+                "bank_details_id": 18,
+                "has_chasing_details": false,
+                "logo_title": "ewrtw",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/AFRMS_logo_final_IWNEXUo.png",
+                "bank_details_title": "test_settings8",
+                "bank_details": "fhgewifu",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 24,
+                "title": "muktaer",
+                "design_id": 1,
+                "logo_id": 29,
+                "has_bank_details": false,
+                "bank_details_id": null,
+                "has_chasing_details": false,
+                "logo_title": "abc",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_gKIGNHz.png",
+                "bank_details_title": null,
+                "bank_details": null,
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 23,
+                "title": "muktad",
+                "design_id": 1,
+                "logo_id": 29,
+                "has_bank_details": false,
+                "bank_details_id": null,
+                "has_chasing_details": false,
+                "logo_title": "abc",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_gKIGNHz.png",
+                "bank_details_title": null,
+                "bank_details": null,
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 19,
+                "title": "yo!",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": true,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 18,
+                "title": "yo",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": true,
+                "bank_details_id": 38,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": "qwert",
+                "bank_details": "qwert",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 17,
+                "title": "example title3123567",
+                "design_id": 1,
+                "logo_id": 25,
+                "has_bank_details": false,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test",
+                "logo_file": null,
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 16,
+                "title": "example title312356",
+                "design_id": 1,
+                "logo_id": 25,
+                "has_bank_details": false,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test",
+                "logo_file": null,
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 15,
+                "title": "example title31235",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": false,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 13,
+                "title": "example title3123",
+                "design_id": 1,
+                "logo_id": 32,
+                "has_bank_details": true,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "sgdfs",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_rTlMj01.png",
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 12,
+                "title": "example title312",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": false,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 11,
+                "title": "example title31",
+                "design_id": 1,
+                "logo_id": 26,
+                "has_bank_details": false,
+                "bank_details_id": null,
+                "has_chasing_details": true,
+                "logo_title": "no file",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/05/image.png",
+                "bank_details_title": null,
+                "bank_details": null,
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 10,
+                "title": "example title30",
+                "design_id": 1,
+                "logo_id": 29,
+                "has_bank_details": false,
+                "bank_details_id": null,
+                "has_chasing_details": true,
+                "logo_title": "abc",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_gKIGNHz.png",
+                "bank_details_title": null,
+                "bank_details": null,
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 9,
+                "title": "example title11",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": false,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 7,
+                "title": "example title3",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": false,
+                "bank_details_id": null,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": null,
+                "bank_details": null,
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 4,
+                "title": "pdf-1",
+                "design_id": 1,
+                "logo_id": 24,
+                "has_bank_details": false,
+                "bank_details_id": null,
+                "has_chasing_details": true,
+                "logo_title": "test logo",
+                "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                "bank_details_title": null,
+                "bank_details": null,
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            },
+            {
+                "id": 3,
+                "title": "example title",
+                "design_id": 1,
+                "logo_id": 25,
+                "has_bank_details": true,
+                "bank_details_id": 25,
+                "has_chasing_details": true,
+                "logo_title": "test",
+                "logo_file": null,
+                "bank_details_title": "test",
+                "bank_details": "example bank",
+                "design_template_name": "general inovoice template 1",
+                "design_template_file_name": "general.html"
+            }
+        ]
+    }
+}
+```

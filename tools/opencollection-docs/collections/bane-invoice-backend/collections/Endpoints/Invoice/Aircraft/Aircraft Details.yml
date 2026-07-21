@@ -1,0 +1,17 @@
+info:
+  name: Aircraft Details
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{url}}/api/bas/aircraft/4816"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

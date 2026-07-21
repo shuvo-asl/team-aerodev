@@ -1,0 +1,185 @@
+info:
+  name: get or create aircraft
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/aircraft/get-or-create"
+  body:
+    type: json
+    data: |-
+      {
+              "icao24": "TEST07",
+              "purpose_type": "Military",
+              "registration_number": "TESTREG08",
+              "operator": {
+                  "short_code": "ETH"
+              },
+              "aircraft_type":{
+                  "name": "SU-35 terminator",
+                  "mtow": 102,
+                  "mtow_unit": "ton"
+              }
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get or create aircraft if aircraft already exists
+    request:
+      url: "{{url}}/aircraft/get-or-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+                  "icao24": "TEST01",
+                  "purpose_type": "Military",
+                  "registration_number": "TESTREG01",
+                  "operator": {
+                      "short_code": "ETH"
+                  },
+                  "aircraft_type":{
+                      "name": "F-15 Eagle",
+                      "mtow": 100,
+                      "mtow_unit": "ton"
+                  }
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Tue, 03 Mar 2026 07:19:51 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "1094"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "aircraft_type": {
+                      "is_registration_fulfilled": false,
+                      "mtow": 100,
+                      "mtow_unit": "ton",
+                      "name": "F-15 Eagle",
+                      "wing_type": null
+                  },
+                  "icao24": "TEST01",
+                  "operator": {
+                      "address_line_1": "ADDRESS: \n     Ethiopian Airlines, \n     Airport Enterprise Building, Ground Floor, \n     Addis Ababa, Ethiopia \nTELEPHONE :  +251 11 517 4422\nFAX : +251-11- 661 1474 \nEMAIL : CustomerRelations@ethiopianairlines.com",
+                      "address_line_2": null,
+                      "alternate_aircraft_registrations": null,
+                      "business_phone": "+211927773498",
+                      "business_phone_extension": null,
+                      "comment": "",
+                      "email": "sabbir@asl.aero",
+                      "fax_number": null,
+                      "iata": null,
+                      "icao": null,
+                      "is_blacklisted": false,
+                      "name": "Ethiopian Airlines",
+                      "ospl_no": null,
+                      "postal_code": null,
+                      "short_code": "ETH",
+                      "type": "Operator",
+                      "website": null
+                  },
+                  "purpose_type": "Military",
+                  "registration_number": "TESTREG01"
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }
+  - name: get or create aircraft new aircraft
+    request:
+      url: "{{url}}/aircraft/get-or-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+                  "icao24": "TEST02",
+                  "purpose_type": "Military",
+                  "registration_number": "TESTREG02",
+                  "operator": {
+                      "short_code": "ETH"
+                  },
+                  "aircraft_type":{
+                      "name": "F-16 Eagle",
+                      "mtow": 110,
+                      "mtow_unit": "ton"
+                  }
+          }
+    response:
+      status: 201
+      statusText: CREATED
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Tue, 03 Mar 2026 07:21:00 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "1094"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "aircraft_type": {
+                      "is_registration_fulfilled": false,
+                      "mtow": 110,
+                      "mtow_unit": "ton",
+                      "name": "F-16 Eagle",
+                      "wing_type": null
+                  },
+                  "icao24": "TEST02",
+                  "operator": {
+                      "address_line_1": "ADDRESS: \n     Ethiopian Airlines, \n     Airport Enterprise Building, Ground Floor, \n     Addis Ababa, Ethiopia \nTELEPHONE :  +251 11 517 4422\nFAX : +251-11- 661 1474 \nEMAIL : CustomerRelations@ethiopianairlines.com",
+                      "address_line_2": null,
+                      "alternate_aircraft_registrations": null,
+                      "business_phone": "+211927773498",
+                      "business_phone_extension": null,
+                      "comment": "",
+                      "email": "sabbir@asl.aero",
+                      "fax_number": null,
+                      "iata": null,
+                      "icao": null,
+                      "is_blacklisted": false,
+                      "name": "Ethiopian Airlines",
+                      "ospl_no": null,
+                      "postal_code": null,
+                      "short_code": "ETH",
+                      "type": "Operator",
+                      "website": null
+                  },
+                  "purpose_type": "Military",
+                  "registration_number": "TESTREG02"
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }

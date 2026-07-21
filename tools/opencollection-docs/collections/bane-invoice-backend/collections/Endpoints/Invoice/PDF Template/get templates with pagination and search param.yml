@@ -1,0 +1,96 @@
+info:
+  name: get templates with pagination and search param
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/pdf-template/?page=1&limit=2&search=general"
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "2"
+      type: query
+    - name: search
+      value: general
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get templates with pagination and search param
+    request:
+      url: "{{url}}/api/pdf-template/?page=1&limit=2&search=general"
+      method: GET
+      params:
+        - name: page
+          value: "1"
+          type: query
+        - name: limit
+          value: "2"
+          type: query
+        - name: search
+          value: general
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 05:15:40 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "745"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "PDF Template Successfully Fetched",
+              "data": {
+                  "next": null,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 1,
+                  "total_page": 1,
+                  "result": [
+                      {
+                          "id": 26,
+                          "title": "Finance General Invoice",
+                          "design_id": 2,
+                          "logo_id": 5,
+                          "has_bank_details": true,
+                          "bank_details_id": 47,
+                          "has_chasing_details": false,
+                          "logo_title": "asl_logo",
+                          "logo_file": null,
+                          "bank_details_title": "FinaceBankDetails",
+                          "bank_details": "Beneficiary Name: Aerogon PTE Ltd\r\nBeneficiary Account Number: 288-903319-0\r\nSWIFT Code: DBSSSGSG\r\nBank NameDBS Bank Limited\r\nAddress:12 Marina Boulevard\r\nMarina Bay Financial Ccenter Tower 3\r\nSingapore 018982\r\nTel: +65 6878 8881, 6878 8882.",
+                          "design_template_name": "Finance",
+                          "design_template_file_name": "finance_invoice.html"
+                      }
+                  ]
+              }
+          }

@@ -1,0 +1,137 @@
+info:
+  name: initiate payment process
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/initiate-payment-process/"
+  body:
+    type: json
+    data: |-
+      {
+          "gateway_name": "ebl",
+          "invoice_id": 9,
+          "company_id": 1,
+          "token": "8a4a044d-1d88-425f-87a4-80f4ce144eb1"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: initiate payment process
+    request:
+      url: "{{url}}/api/initiate-payment-process/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "gateway_name": "ebl",
+              "invoice_id": 9,
+              "company_id": 1,
+              "token": "8a4a044d-1d88-425f-87a4-80f4ce144eb1"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 18 Feb 2025 07:11:28 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "138"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Payment Process Successfully Initiated",
+              "data": {
+                  "result": {
+                      "session_id": "SESSION0002519817849G39042963F1"
+                  }
+              }
+          }
+  - name: Stripe initiate payment process
+    request:
+      url: "{{url}}/api/initiate-payment-process/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "gateway_name": "stripe",
+              "invoice_id": 84,
+              "company_id": 1,
+              "token": "26b90704-db60-4591-bda6-a4342604e5d4"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.3
+        - name: Date
+          value: Tue, 22 Apr 2025 09:55:44 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "484"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Payment Process Successfully Initiated",
+              "data": {
+                  "result": {
+                      "client_secret": "pi_3RGdYL4Jc2o38mIb0iWnlWF9_secret_SGOfirOVcLupM3i0MOJlDuEb3",
+                      "invoice_id": 84,
+                      "public_key": "pk_test_51RFyzg4Jc2o38mIbKBKbhQOsZPfsntxeP8x3e9JQYRq7SQmCkcB2T6klf5Wz6roIwOZN6UzK7gYLnbKIiE7HxfK800Md3rt0GJ",
+                      "payment_amount": 20,
+                      "amount": 25,
+                      "currency": "bdt",
+                      "processing_fee": 5,
+                      "tax_amount": 0,
+                      "invoice_no": "INV-000083",
+                      "items": [
+                          {
+                              "name": "aaaa",
+                              "quantity": 1,
+                              "unitPrice": 20
+                          }
+                      ]
+                  }
+              }
+          }

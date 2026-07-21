@@ -1,0 +1,142 @@
+info:
+  name: CREATE new distance mappings entry
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/api/fir-distance-mappings/"
+  body:
+    type: json
+    data: |-
+      {
+              "to_point": "b",
+              "from_point": "a",
+              "distance_nm": 534.56,
+              "is_active": true,
+              "notes": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create new fir distance mapping
+    request:
+      url: "{{url}}/api/fir-distance-mappings/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+                  "to_point": "ALMAM",
+                  "from_point": "HJJJ",
+                  "distance_nm": 534.56,
+                  "is_active": true,
+                  "notes": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 05:01:36 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "190"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "FIR Distance Mapping successfully created",
+            "data": {
+              "result": {
+                "id": 24,
+                "from_point": "HJJJ",
+                "to_point": "ALMAM",
+                "distance_nm": 534.56,
+                "is_active": true,
+                "notes": ""
+              }
+            }
+          }
+  - name: only unique pairs are eligible for mapping creation
+    request:
+      url: "{{url}}/api/fir-distance-mappings/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+                  "to_point": "b",
+                  "from_point": "a",
+                  "distance_nm": 534.56,
+                  "is_active": true,
+                  "notes": ""
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 09:08:17 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "217"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "FIR Distance Mapping Failed To Create",
+            "error": null,
+            "errors": {
+              "from_point": "A mapping already exists for these given points",
+              "to_point": "A mapping already exists for these given points"
+            }
+          }

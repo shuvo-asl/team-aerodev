@@ -1,0 +1,168 @@
+info:
+  name: Invoice Charge Calculation
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{url}}/api/invoice-charge/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_id": 129,
+          "charges": {
+              "embarkation_fees":{
+                  "parameter_value": 50
+              },
+              "landing":{
+                  "parameter_value": 45,
+                  "sub_charges":{
+                      "off_time_landing_takeoff": true,
+                      "training_purpose_discount": true,
+                      "test_flight_discount": true,
+                      "parking_charge": true,
+                      "hanger_charge": false,
+                      "security_others_international": true,
+                      "security_others_local": true
+                  }
+              },
+              "navigation_charge":{
+              },
+              "boarding_bridge_charge":{
+                  "parameter_value": 10,
+                  "sub_charges":{
+                      "boarding_bridge_above_2hour_charge": true,
+                      "discount_charge_frequent_boarding_bridge": true
+                  }
+              }
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Invoice Charge Calculation
+    request:
+      url: "{{url}}/api/invoice-charge/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1287"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "final_charge": 8553.775,
+                  "charges": {
+                      "landing": {
+                          "total_charge": 601.775,
+                          "sub_charges": [
+                              {
+                                  "charge": 31.5,
+                                  "charge_unit": 6,
+                                  "charge_value_per_unit": 5.25,
+                                  "head_code": "landing"
+                              },
+                              {
+                                  "charge": 3.15,
+                                  "charge_unit": 1,
+                                  "charge_value_per_unit": 3.15,
+                                  "head_code": "off_time_landing_takeoff"
+                              },
+                              {
+                                  "charge": 15.75,
+                                  "charge_unit": 1,
+                                  "charge_value_per_unit": 15.75,
+                                  "head_code": "training_purpose_discount"
+                              },
+                              {
+                                  "charge": 23.625,
+                                  "charge_unit": 1,
+                                  "charge_value_per_unit": 23.625,
+                                  "head_code": "test_flight_discount"
+                              },
+                              {
+                                  "charge": 15.75,
+                                  "charge_unit": 2,
+                                  "charge_value_per_unit": 7.875,
+                                  "head_code": "parking_charge"
+                              },
+                              {
+                                  "charge": 15.75,
+                                  "charge_unit": 2,
+                                  "charge_value_per_unit": 7.875,
+                                  "head_code": "hanger_charge"
+                              },
+                              {
+                                  "charge": 200,
+                                  "charge_unit": 1,
+                                  "charge_value_per_unit": 200,
+                                  "head_code": "security_others_international"
+                              },
+                              {
+                                  "charge": 375,
+                                  "charge_unit": 1,
+                                  "charge_value_per_unit": 375,
+                                  "head_code": "security_others_local"
+                              }
+                          ]
+                      },
+                      "boarding_bridge_charge": {
+                          "total_charge": 7952,
+                          "sub_charges": [
+                              {
+                                  "charge": 200,
+                                  "charge_unit": 70,
+                                  "charge_value_per_unit": 100,
+                                  "head_code": "boarding_bridge_charge"
+                              },
+                              {
+                                  "charge": 8160,
+                                  "charge_unit": 136,
+                                  "charge_value_per_unit": 60,
+                                  "head_code": "boarding_bridge_above_2hour_charge"
+                              },
+                              {
+                                  "charge": 408,
+                                  "charge_unit": null,
+                                  "charge_value_per_unit": null,
+                                  "head_code": "discount_charge_frequent_boarding_bridge"
+                              }
+                          ]
+                      }
+                  }
+              }
+          }

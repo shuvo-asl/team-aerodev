@@ -1,0 +1,19 @@
+info:
+  name: update aircraft
+  type: grpc
+  seq: 5
+
+grpc:
+  url: "{{gRPC_url}}"
+  method: /bas.BAS/UpdateAircraft
+  methodType: unary
+  protoFilePath: ../../../rpc/bas.proto
+  metadata:
+    - name: "{{auth_param_name}}"
+      value: "{{token}}"
+  message: |-
+    {
+        "id": 4476,
+        "aircraft_type_id": 3
+    }
+  auth: inherit

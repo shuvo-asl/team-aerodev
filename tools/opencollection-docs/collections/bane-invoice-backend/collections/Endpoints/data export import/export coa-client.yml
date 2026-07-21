@@ -1,0 +1,198 @@
+info:
+  name: export coa/client
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/export-import/?file_type=csv&model=coa"
+  headers:
+    - name: file_type
+      value: csv
+      disabled: true
+    - name: model
+      value: coa
+      disabled: true
+  params:
+    - name: file_type
+      value: csv
+      type: query
+    - name: model
+      value: coa
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/export-import/?file_type=csv&model=coa"
+      method: GET
+      headers:
+        - name: file_type
+          value: csv
+          disabled: true
+        - name: model
+          value: coa
+          disabled: true
+      params:
+        - name: file_type
+          value: csv
+          type: query
+        - name: model
+          value: coa
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 11 Feb 2025 04:43:30 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: text/csv
+        - name: Content-Disposition
+          value: attachment; filename="data.csv"
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "6777"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: text
+        data: "account_name,code,account_type,details,transaction_type,source\r
+
+          22,22,FIXED,,non_expense,xero\r
+
+          11,11,NONCURRENT,,non_expense,xero\r
+
+          a testing,0001,FIXED,,non_expense,xero\r
+
+          city afg,,BANK,,non_expense,xero\r
+
+          CITY BDT,1234,BANK,,non_expense,xero\r
+
+          CITY USD,,BANK,,non_expense,xero\r
+
+          Owner A Share Capital,970,EQUITY,The value of shares purchased by the shareholders,non_expense,xero\r
+
+          Retained Earnings,960,EQUITY,Do not Use,non_expense,xero\r
+
+          Loan,900,TERMLIAB,Money that has been borrowed from a creditor,non_expense,xero\r
+
+          Owner A Funds Introduced,881,CURRLIAB,Funds contributed by the owner,non_expense,xero\r
+
+          Owner A Drawings,880,CURRLIAB,Withdrawals by the owners,non_expense,xero\r
+
+          Tracking Transfers,877,CURRLIAB,Transfers between tracking categories,non_expense,xero\r
+
+          Rounding,860,CURRLIAB,An adjustment entry to allow for rounding,non_expense,xero\r
+
+          Suspense,850,CURRLIAB,\"An entry that allows an unknown transaction to be entered, so the accounts can still be worked on in balance and the entry can be dealt with later.\",non_expense,xero\r
+
+          Historical Adjustment,840,CURRLIAB,For accountant adjustments,non_expense,xero\r
+
+          Income Tax Payable,830,CURRLIAB,\"The amount of income tax that is due to be paid, also resident withholding tax paid on interest received.\",non_expense,xero\r
+
+          Superannuation Payable,826,CURRLIAB,The amount of superannuation that is due to be paid,non_expense,xero\r
+
+          Employee Tax Payable,825,CURRLIAB,The amount of tax that has been deducted from wages or salaries paid to employes and is due to be paid,non_expense,xero\r
+
+          Sales Tax,820,CURRLIAB,\"The balance in this account represents Sales Tax owing to or from your tax authority. At the end of the tax period, it is this account that should be used to code against either the 'refunds from' or 'payments to' your tax authority that will appear on the bank statement. Xero has been designed to use only one sales tax account to track sales taxes on income and expenses, so there is no need to add any new sales tax accounts to Xero.\",non_expense,xero\r
+
+          Wages Payable,803,CURRLIAB,Xero automatically updates this account for payroll entries created using Payroll and will store the payroll amount to be paid to the employee for the pay run. This account enables you to maintain separate accounts for employee Wages Payable amounts and Accounts Payable amounts,non_expense,xero\r
+
+          Unpaid Expense Claims,801,CURRLIAB,Expense claims typically made by employees/shareholder employees still outstanding.,non_expense,xero\r
+
+          Accounts Payable,800,CURRLIAB,Outstanding invoices the company has received from suppliers but has not yet paid at balance date,non_expense,xero\r
+
+          Less Accumulated Depreciation on Computer Equipment,721,FIXED,The total amount of computer equipment cost that has been consumed by the business (based on the useful life),non_expense,xero\r
+
+          Computer Equipment,720,FIXED,Computer equipment that is owned and controlled by the business,non_expense,xero\r
+
+          Less Accumulated Depreciation on Office Equipment,711,FIXED,The total amount of office equipment cost that has been consumed by the entity (based on the useful life),non_expense,xero\r
+
+          Office Equipment,710,FIXED,Office equipment that is owned and controlled by the business,non_expense,xero\r
+
+          Inventory,630,INVENTORY,Value of tracked items for resale.,non_expense,xero\r
+
+          Prepayments,620,CURRENT,An expenditure that has been paid for in advance.,non_expense,xero\r
+
+          Accounts Receivable,610,CURRENT,Outstanding invoices the company has issued out to the client but has not yet received in cash at balance date.,non_expense,xero\r
+
+          Income Tax Expense,505,EXPENSE,A percentage of total earnings paid to the government.,expense,xero\r
+
+          Realised Currency Gains,499,EXPENSE,Gains or losses made due to currency exchange rate changes,expense,xero\r
+
+          Unrealised Currency Gains,498,EXPENSE,Unrealised currency gains on outstanding items,expense,xero\r
+
+          Bank Revaluations,497,EXPENSE,Bank account revaluations due for foreign exchange rate changes,expense,xero\r
+
+          Travel - International,494,EXPENSE,Expenses incurred from international travel which has a business purpose,expense,xero\r
+
+          Travel - National,493,EXPENSE,Expenses incurred from domestic travel which has a business purpose,expense,xero\r
+
+          Telephone & Internet,489,EXPENSE,\"Expenditure incurred from any business-related phone calls, phone lines, or internet connections\",expense,xero\r
+
+          Subscriptions,485,EXPENSE,\"E.g. Magazines, professional bodies\",expense,xero\r
+
+          Superannuation,478,EXPENSE,Superannuation contributions,expense,xero\r
+
+          Wages and Salaries,477,EXPENSE,Payment to employees in exchange for their resources,expense,xero\r
+
+          Repairs and Maintenance,473,EXPENSE,Expenses incurred on a damaged or run down asset that will bring the asset back to its original condition.,expense,xero\r
+
+          Rent,469,EXPENSE,The payment to lease a building or area.,expense,xero\r
+
+          Printing & Stationery,461,EXPENSE,Expenses incurred by the entity as a result of printing and stationery,expense,xero\r
+
+          Office Expenses,453,EXPENSE,General expenses related to the running of the business office.,expense,xero\r
+
+          Motor Vehicle Expenses,449,EXPENSE,Expenses incurred on the running of company motor vehicles,expense,xero\r
+
+          \"Light, Power, Heating\",445,EXPENSE,\"Expenses incurred for lighting, powering or heating the premises\",expense,xero\r
+
+          Legal expenses,441,EXPENSE,Expenses incurred on any legal matters,expense,xero\r
+
+          Interest Expense,437,EXPENSE,\"Any interest expenses paid to your tax authority, business bank accounts or credit card accounts.\",expense,xero\r
+
+          Insurance,433,EXPENSE,Expenses incurred for insuring the business' assets,expense,xero\r
+
+          General Expenses,429,EXPENSE,General expenses related to the running of the business.,expense,xero\r
+
+          Freight & Courier,425,EXPENSE,Expenses incurred on courier & freight costs,expense,xero\r
+
+          Entertainment,420,EXPENSE,Expenses paid by company for the business but are not deductable for income tax purposes.,expense,xero\r
+
+          Depreciation,416,EXPENSE,The amount of the asset's cost (based on the useful life) that was consumed during the period,expense,xero\r
+
+          Consulting & Accounting,412,EXPENSE,Expenses related to paying consultants,expense,xero\r
+
+          Cleaning,408,EXPENSE,Expenses incurred for cleaning  business property.,expense,xero\r
+
+          Bank Fees,404,EXPENSE,Fees charged by your bank for transactions regarding your bank account(s).,expense,xero\r
+
+          Advertising,400,EXPENSE,Expenses incurred for advertising while trying to increase sales,expense,xero\r
+
+          Cost of Goods Sold,310,DIRECTCOSTS,Cost of goods sold by the business,expense,xero\r
+
+          Interest Income,270,REVENUE,Interest income,non_expense,xero\r
+
+          Other Revenue,260,REVENUE,Any other income that does not relate to normal business activities and is not recurring,non_expense,xero\r
+
+          Sales,200,REVENUE,Income from any normal business activity,non_expense,xero\r\n"

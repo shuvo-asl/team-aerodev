@@ -1,0 +1,81 @@
+info:
+  name: mark notification as read/unread
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api/in-app-notifications/7/"
+  params:
+    - name: is_read
+      value: "false"
+      type: query
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "is_read": false
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: mark notification as read/unread
+    request:
+      url: "{{url}}/api/in-app-notifications/7/"
+      method: PATCH
+      params:
+        - name: is_read
+          value: "false"
+          type: query
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "is_read": false
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 13 May 2025 07:55:28 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "109"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: PATCH, GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "In App Notification successfully updated",
+              "data": {
+                  "result": {
+                      "is_read": false
+                  }
+              }
+          }

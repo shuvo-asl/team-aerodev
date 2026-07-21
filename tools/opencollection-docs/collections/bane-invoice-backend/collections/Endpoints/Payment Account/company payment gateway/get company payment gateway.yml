@@ -1,0 +1,65 @@
+info:
+  name: get company payment gateway
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/company-payment-gateway/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get company payment gateway
+    request:
+      url: "{{url}}/api/company-payment-gateway/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 25 Feb 2025 10:44:40 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "210"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Payment Gateway Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "is_active": true,
+                          "name": "EBL",
+                          "id": 1,
+                          "payment_gateway_model": 1,
+                          "test_mode": true,
+                          "gateway_type": "ebl",
+                          "bank": "CITY USD"
+                      }
+                  ]
+              }
+          }

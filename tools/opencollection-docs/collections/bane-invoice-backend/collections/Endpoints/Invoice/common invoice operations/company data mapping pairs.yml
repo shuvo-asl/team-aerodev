@@ -1,0 +1,65 @@
+info:
+  name: company data mapping pairs
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{url}}/api/company-data-mapping-pairs/tax-rate"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: company data mapping pairs
+    request:
+      url: "{{url}}/api/company-data-mapping-pairs/tax-rate"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 07 Sep 2025 07:37:54 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "232"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Company mapping pair Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "from_company": 1,
+                          "from_company_name": "ASL",
+                          "to_company": 2,
+                          "to_company_name": "Aerogon",
+                          "last_updated": "2025-09-02T15:48:16.839001+06:00"
+                      }
+                  ]
+              }
+          }

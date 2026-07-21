@@ -1,0 +1,82 @@
+info:
+  name: Update Permission
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{url}}/api/permission/219/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: "{\r
+
+      \    \"name\": \"Can View App Settings\",\r
+
+      \    \"codename\": \"view_app_settings\"    \r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update Permission
+    request:
+      url: "{{url}}/api/permission/219/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: "{\r
+
+          \    \"name\": \"Can View App Settings\",\r
+
+          \    \"codename\": \"view_app_settings\"    \r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:23:23 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "175"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'Permission' Successfully Updated",
+              "data": {
+                  "result": {
+                      "id": 219,
+                      "name": "Can View App Settings",
+                      "codename": "view_app_settings",
+                      "content_type": 15
+                  }
+              }
+          }

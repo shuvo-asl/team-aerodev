@@ -1,0 +1,161 @@
+info:
+  name: Test Confirm Stripe Payment
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://api.stripe.com/v1/payment_intents/pi_3RGvVD4Jc2o38mIb0bJrnHCL/confirm
+  headers:
+    - name: Authorization
+      value: Bearer sk_test_51RFyzg4Jc2o38mIb1Bft2OMJtRGLbH4Eu3SE0JPQPvgjt8VRmMrZTBI9hBVZON8IQ896yzKR4x1UssPg3uHIsr5t00SEBPM5s5
+    - name: Content-Type
+      value: application/x-www-form-urlencoded
+  body:
+    type: form-urlencoded
+    data:
+      - name: payment_method
+        value: pm_card_visa
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Test Confirm Stripe Payment
+    request:
+      url: https://api.stripe.com/v1/payment_intents/pi_3RGvcE4Jc2o38mIb1eWaOcqP/confirm
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer sk_test_51RFyzg4Jc2o38mIb1Bft2OMJtRGLbH4Eu3SE0JPQPvgjt8VRmMrZTBI9hBVZON8IQ896yzKR4x1UssPg3uHIsr5t00SEBPM5s5
+        - name: Content-Type
+          value: application/x-www-form-urlencoded
+      body:
+        type: form-urlencoded
+        data:
+          - name: payment_method
+            value: pm_card_visa
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx
+        - name: Date
+          value: Wed, 23 Apr 2025 05:29:13 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "1706"
+        - name: Connection
+          value: keep-alive
+        - name: Access-Control-Allow-Credentials
+          value: "true"
+        - name: Access-Control-Allow-Methods
+          value: GET, HEAD, PUT, PATCH, POST, DELETE
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Access-Control-Expose-Headers
+          value: Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+        - name: Access-Control-Max-Age
+          value: "300"
+        - name: Cache-Control
+          value: no-cache, no-store
+        - name: Content-Security-Policy
+          value: base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=VsWZb963Iq0pbiVx5XD2ImSOr5PfYsfsvhclg10mg140cq80GCZnw__FxjzuKoVuvkXk-n202APXfteb
+        - name: Idempotency-Key
+          value: e6dab44b-2f46-4ecd-841d-ec9d26152b97
+        - name: Original-Request
+          value: req_buNwkYN9GiJIqc
+        - name: Request-Id
+          value: req_buNwkYN9GiJIqc
+        - name: Stripe-Should-Retry
+          value: "false"
+        - name: Stripe-Version
+          value: 2025-03-31.basil
+        - name: Vary
+          value: Origin
+        - name: X-Stripe-Priority-Routing-Enabled
+          value: "true"
+        - name: X-Stripe-Routing-Context-Priority-Tier
+          value: api-testmode
+        - name: X-Wc
+          value: ABGHI
+        - name: Strict-Transport-Security
+          value: max-age=63072000; includeSubDomains; preload
+      body:
+        type: json
+        data: |-
+          {
+              "id": "pi_3RGvcE4Jc2o38mIb1eWaOcqP",
+              "object": "payment_intent",
+              "amount": 1185350,
+              "amount_capturable": 0,
+              "amount_details": {
+                  "tip": {}
+              },
+              "amount_received": 1185350,
+              "application": null,
+              "application_fee_amount": null,
+              "automatic_payment_methods": {
+                  "allow_redirects": "never",
+                  "enabled": true
+              },
+              "canceled_at": null,
+              "cancellation_reason": null,
+              "capture_method": "automatic_async",
+              "client_secret": "pi_3RGvcE4Jc2o38mIb1eWaOcqP_secret_TtG4ipYDdD5d3bWbVFHvOPY9f",
+              "confirmation_method": "automatic",
+              "created": 1745385178,
+              "currency": "bdt",
+              "customer": null,
+              "description": null,
+              "last_payment_error": null,
+              "latest_charge": "ch_3RGvcE4Jc2o38mIb1LPx6Rul",
+              "livemode": false,
+              "metadata": {
+                  "amount": "11853.5",
+                  "currency": "bdt",
+                  "invoice_no": "INV-000059",
+                  "payment_amount": "11850.5",
+                  "processing_fee": "3.0",
+                  "tax_amount": "895.5"
+              },
+              "next_action": null,
+              "on_behalf_of": null,
+              "payment_method": "pm_1RGvrw4Jc2o38mIbPp65dlf2",
+              "payment_method_configuration_details": {
+                  "id": "pmc_1RFz0E4Jc2o38mIbcVvaEzx2",
+                  "parent": null
+              },
+              "payment_method_options": {
+                  "card": {
+                      "installments": null,
+                      "mandate_options": null,
+                      "network": null,
+                      "request_three_d_secure": "automatic"
+                  },
+                  "link": {
+                      "persistent_token": null
+                  }
+              },
+              "payment_method_types": [
+                  "card",
+                  "link"
+              ],
+              "processing": null,
+              "receipt_email": null,
+              "review": null,
+              "setup_future_usage": null,
+              "shipping": null,
+              "source": null,
+              "statement_descriptor": null,
+              "statement_descriptor_suffix": null,
+              "status": "succeeded",
+              "transfer_data": null,
+              "transfer_group": null
+          }

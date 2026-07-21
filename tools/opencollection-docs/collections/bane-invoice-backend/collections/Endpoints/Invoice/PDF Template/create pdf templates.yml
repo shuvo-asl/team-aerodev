@@ -1,0 +1,97 @@
+info:
+  name: create pdf templates
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/pdf-template/"
+  body:
+    type: json
+    data: |-
+      {
+          "design_id": 3,
+          "has_bank_details": false,
+          // "bank_details_id": 3,
+          "has_chasing_details": true,
+          "title": "Default PDF template for SSAAA Update",
+          "terms_and_conditions": "abcd",
+          "fields_of_interest": {
+              "table_fields": ["serial", "name", "unit", "unit_price", "sub_total", "discount_rate", "tax_rate", "tax_amount", "total"],
+              "summary_fields": ["amount", "tax_amount", "payable_amount"]
+          },
+          "is_default":true
+
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create templates
+    request:
+      url: "{{url}}/api/pdf-template/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "design_id": 1,
+              "logo_id": 24,
+              "has_bank_details": true,
+              "bank_details_id": 25,
+              "has_chasing_details": true,
+              "title": "example title267"
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 05:23:44 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "521"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "PDF Template successfully created",
+              "data": {
+                  "result": {
+                      "id": 29,
+                      "title": "example title267",
+                      "design_id": 1,
+                      "logo_id": 24,
+                      "has_bank_details": true,
+                      "bank_details_id": 25,
+                      "has_chasing_details": true,
+                      "logo_title": "test logo",
+                      "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                      "bank_details_title": "test",
+                      "bank_details": "example bank",
+                      "design_template_name": "general inovoice template 1",
+                      "design_template_file_name": "general.html"
+                  }
+              }
+          }

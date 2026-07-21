@@ -1,0 +1,55 @@
+info:
+  name: Delete A Invoice Payment
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url}}/api/invoice-payment/2/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Delete A Chart of Account
+    request:
+      url: "{{url}}/api/account/2/"
+      method: DELETE
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 16:44:15 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "91"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chart Of Account Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }

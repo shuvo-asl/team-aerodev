@@ -1,0 +1,75 @@
+info:
+  name: enable disable chasing task
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api/chasing-tasks/37/44/"
+  body:
+    type: json
+    data: |-
+      {
+          "enabled": true
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: enable disable chasing task
+    request:
+      url: "{{url}}/api/chasing-tasks/37/44/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "enabled": true
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 28 Jan 2025 05:11:18 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "193"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chasing Tasks successfully updated",
+              "data": {
+                  "result": {
+                      "enabled": true,
+                      "id": 44,
+                      "chased": false,
+                      "chasing_date": null,
+                      "day": 9,
+                      "is_cumulative": false,
+                      "start_time": null
+                  }
+              }
+          }

@@ -1,0 +1,66 @@
+info:
+  name: company payment gateway assignment
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/company-payment-gateway/"
+  body:
+    type: json
+    data: |-
+      {
+          "payment_gateway_model": 1
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: company payment gateway assignment
+    request:
+      url: "{{url}}/api/company-payment-gateway/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "payment_gateway_model": 1
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Date
+          value: Tue, 25 Feb 2025 10:50:03 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "146"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Payment Gateway Failed To Create",
+              "error": "This Payment Gateway is already assigned to this company!",
+              "errors": null
+          }

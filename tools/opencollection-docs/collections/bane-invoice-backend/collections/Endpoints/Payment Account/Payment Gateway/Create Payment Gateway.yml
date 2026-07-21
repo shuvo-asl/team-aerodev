@@ -1,0 +1,125 @@
+info:
+  name: Create Payment Gateway
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/payment-gateway/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |2-
+          {
+              "name": "EBL6",
+              "display_name": "EBL",
+              "description": "A widely used online payment system.",
+              "gateway_type": 1,
+              "api_key": "live_api_key_12345",
+              "access_key": "live_access_key_12345",
+              "secret_key": "live_secret_key_12345",
+              "test_api_key": "test_api_key_12345",
+              "test_access_key": "test_access_key_12345",
+              "test_secret_key": "test_secret_key_12345",
+              "test_mode": true,
+              "supported_currencies": [27, 28],
+              "bank": 343,
+              "others": {"return_url": "url", "time_out_url": "dummy url"}
+          }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Payment Gateway
+    request:
+      url: "{{url}}/api/payment-gateway/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |2-
+              {
+                  "name": "EBL4",
+                  "display_name": "EBL",
+                  "description": "A widely used online payment system.",
+                  "gateway_type": 1,
+                  "api_key": "live_api_key_12345",
+                  "access_key": "live_access_key_12345",
+                  "secret_key": "live_secret_key_12345",
+                  "test_api_key": "test_api_key_12345",
+                  "test_access_key": "test_access_key_12345",
+                  "test_secret_key": "test_secret_key_12345",
+                  "test_mode": true,
+                  "supported_currencies": [1, 2],
+                  "bank": 55,
+                  "others": {"return_url": "url", "time_out_url": "dummy url"}
+              }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Wed, 19 Feb 2025 04:42:14 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "676"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Payment Gateway successfully created",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "deleted_at": null,
+                      "created_at": "2025-02-19T10:42:14.505890+06:00",
+                      "updated_at": null,
+                      "name": "EBL4",
+                      "display_name": "EBL",
+                      "description": "A widely used online payment system.",
+                      "api_key": "live_api_key_12345",
+                      "access_key": "live_access_key_12345",
+                      "secret_key": "live_secret_key_12345",
+                      "test_api_key": "test_api_key_12345",
+                      "test_access_key": "test_access_key_12345",
+                      "test_secret_key": "test_secret_key_12345",
+                      "test_mode": true,
+                      "others": {
+                          "return_url": "url",
+                          "time_out_url": "dummy url"
+                      },
+                      "requires_3d_secure": false,
+                      "bank": 55,
+                      "currency": null,
+                      "gateway_type": 1,
+                      "owner": 1,
+                      "supported_currencies": [
+                          1,
+                          2
+                      ]
+                  }
+              }
+          }

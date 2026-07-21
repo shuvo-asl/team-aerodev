@@ -1,0 +1,74 @@
+info:
+  name: create api token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/api-token/"
+  body:
+    type: json
+    data: |-
+      {
+          "ip": "localhost",
+          "validity_in_days": 30
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/api-token/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "ip": "192.168.90.234",
+              "validity_in_days": 23
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Thu, 30 Jan 2025 05:27:02 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "197"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "API Token successfully created",
+              "data": {
+                  "result": {
+                      "ip": "192.168.90.234",
+                      "token": "7bPu586pU01xQrsL",
+                      "is_active": true,
+                      "expires_at": "2025-02-22T11:27:02.303619+06:00"
+                  }
+              }
+          }

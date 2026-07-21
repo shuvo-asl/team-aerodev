@@ -1,0 +1,64 @@
+info:
+  name: adsb connection check failed
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{url}}/api/adsb-connection/"
+  body:
+    type: json
+    data: |-
+      {
+          "status": "failed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/adsb-connection/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed"
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Date
+          value: Sun, 09 Mar 2025 06:35:04 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "80"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed connection",
+              "error": "failed",
+              "errors": null
+          }

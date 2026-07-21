@@ -1,0 +1,173 @@
+info:
+  name: create accounting software
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/api/accounting-software/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "test_soft2",
+          "accounting_software_type": 1,
+          "credentials": 
+          {
+              "version":"2",
+              "client_id":"65C6B0BBEE03432EB52AAA51C6F78342",
+              "client_secret":"Y-t5WLOY-YH5qDqwq4osPGi_qwmeGxoXTdNYuUq_Vs6X8_mZ",
+              "endpoint_url":"https://api.xero.com/",
+              "authorize_url":"https://login.xero.com/identity/connect/authorize",
+              "access_token_url":"https://identity.xero.com/connect/token",
+              "refresh_token_url":"https://identity.xero.com/connect/token",
+              "scope":"offline_access openid profile email accounting.transactions accounting.transactions.read accounting.reports.read accounting.journals.read accounting.settings accounting.settings.read accounting.contacts accounting.contacts.read accounting.attachments accounting.attachments.read assets projects files payroll.employees payroll.payruns payroll.payslip payroll.timesheets payroll.settings",
+              "redirect_uri": "http://localhost:5011/api/xero/callback",
+              "redirect_frontend_success_url": "http://localhost:3000/success",
+              "redirect_frontend_failed_url": "http://localhost:3000/failed"
+              }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get accounting software Copy
+    request:
+      url: "{{url}}/api/accounting-software/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "flow",
+              "credentials": {"api_secret": "very secret key"}
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 03 Sep 2024 05:10:38 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "161"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Accounting Software successfully created",
+              "data": {
+                  "result": {
+                      "id": 7,
+                      "name": "flow",
+                      "credentials": {
+                          "api_secret": "very secret key"
+                      }
+                  }
+              }
+          }
+  - name: create accounting software
+    request:
+      url: "{{url}}/api/accounting-software/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "test_soft2",
+              "accounting_software_type": 1,
+              "credentials": 
+              {
+                  "version":"2",
+                  "client_id":"65C6B0BBEE03432EB52AAA51C6F78342",
+                  "client_secret":"Y-t5WLOY-YH5qDqwq4osPGi_qwmeGxoXTdNYuUq_Vs6X8_mZ",
+                  "endpoint_url":"https://api.xero.com/",
+                  "authorize_url":"https://login.xero.com/identity/connect/authorize",
+                  "access_token_url":"https://identity.xero.com/connect/token",
+                  "refresh_token_url":"https://identity.xero.com/connect/token",
+                  "scope":"offline_access openid profile email accounting.transactions accounting.transactions.read accounting.reports.read accounting.journals.read accounting.settings accounting.settings.read accounting.contacts accounting.contacts.read accounting.attachments accounting.attachments.read assets projects files payroll.employees payroll.payruns payroll.payslip payroll.timesheets payroll.settings",
+                  "redirect_uri": "http://localhost:5011/api/xero/callback",
+                  "redirect_frontend_success_url": "http://localhost:3000/success",
+                  "redirect_frontend_failed_url": "http://localhost:3000/failed"
+                  }
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Sun, 02 Feb 2025 08:02:32 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1148"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Accounting Software successfully created",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "name": "test_soft2",
+                      "credentials": {
+                          "version": "2",
+                          "client_id": "65C6B0BBEE03432EB52AAA51C6F78342",
+                          "client_secret": "Y-t5WLOY-YH5qDqwq4osPGi_qwmeGxoXTdNYuUq_Vs6X8_mZ",
+                          "endpoint_url": "https://api.xero.com/",
+                          "authorize_url": "https://login.xero.com/identity/connect/authorize",
+                          "access_token_url": "https://identity.xero.com/connect/token",
+                          "refresh_token_url": "https://identity.xero.com/connect/token",
+                          "scope": "offline_access openid profile email accounting.transactions accounting.transactions.read accounting.reports.read accounting.journals.read accounting.settings accounting.settings.read accounting.contacts accounting.contacts.read accounting.attachments accounting.attachments.read assets projects files payroll.employees payroll.payruns payroll.payslip payroll.timesheets payroll.settings",
+                          "redirect_uri": "http://localhost:5011/api/xero/callback",
+                          "redirect_frontend_success_url": "http://localhost:3000/success",
+                          "redirect_frontend_failed_url": "http://localhost:3000/failed"
+                      },
+                      "is_active": true,
+                      "connected": false,
+                      "accounting_software_type": 1,
+                      "owner": 3
+                  }
+              }
+          }

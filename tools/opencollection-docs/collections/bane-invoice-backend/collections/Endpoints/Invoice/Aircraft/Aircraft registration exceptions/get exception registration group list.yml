@@ -1,0 +1,116 @@
+info:
+  name: get exception registration group list
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/aircraft-registration-exception?registration_number=4"
+  params:
+    - name: page
+      value: "2"
+      type: query
+      disabled: true
+    - name: limit
+      value: "1"
+      type: query
+      disabled: true
+    - name: registration_number
+      value: "4"
+      type: query
+  body:
+    type: text
+    data: |-
+      {
+          "email": "devs@aerogon.aero",
+          "password": "devs@2026",
+          "user_type": "asl"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get exception registration group list
+    request:
+      url: "{{url}}/api/aircraft-registration-exception"
+      method: GET
+      body:
+        type: text
+        data: |-
+          {
+              "email": "devs@aerogon.aero",
+              "password": "devs@2026",
+              "user_type": "asl"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 08 Mar 2026 06:27:44 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "380"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Registration Exception Group Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "note": "These aircrafts are VIP",
+                          "created_at": "2026-03-08T06:23:13.102879Z",
+                          "updated_at": null,
+                          "registrations": [
+                              "TEST02",
+                              "TEST01"
+                          ]
+                      },
+                      {
+                          "id": 2,
+                          "note": "These aircrafts are VIP",
+                          "created_at": "2026-03-08T06:27:38.501367Z",
+                          "updated_at": null,
+                          "registrations": [
+                              "TEST04",
+                              "TEST03"
+                          ]
+                      }
+                  ]
+              }
+          }

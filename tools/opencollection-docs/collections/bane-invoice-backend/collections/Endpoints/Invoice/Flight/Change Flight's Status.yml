@@ -1,0 +1,400 @@
+info:
+  name: Change Flight's Status
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{url}}/api/flight/change-status/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "flight_ids": [1],
+          "new_status": "billed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Flight (Access denied)
+    request:
+      url: "{{url}}/api/flight/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |
+          {
+            "call_sign": "ABC123",
+            "flight_no": "FL12345",
+            "flight_type": "landing",
+            "aircraft_registration_no": "N12345",
+            "flight_origin_type": "local",
+            "src": "JFK",
+            "dest": "LAX",
+            "mtow": "50000.00",
+            "mtow_unit": "kg",
+            "flight_source_data": {
+              "source": "ADSB",
+              "details": {
+                "icao24": "abcd12"
+              }
+            },
+            "flight_reference_number": "REF123456",
+            "flight_source": "adsb",
+            "status": "incomplete",
+            "fir_in": "2024-09-16T08:00:00Z",
+            "fir_out": "2024-09-16T09:00:00Z",
+            "fir_in_route": "Route A",
+            "fir_out_route": "Route B",
+            "flight_purpose": "cargo_flight",
+            "date_of_operation": "2024-09-16",
+            "operator": 1
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: Date
+          value: Mon, 02 Dec 2024 10:05:35 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "118"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Access Denied",
+              "error": "You do not have permission to perform this action.",
+              "errors": []
+          }
+  - name: Create Flight(Flight no duplicate)
+    request:
+      url: "{{url}}/api/flight/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |
+          {
+            "call_sign": "ABC123",
+            "flight_no": "FL12345",
+            "flight_type": "landing",
+            "aircraft_registration_no": "N12345",
+            "flight_origin_type": "local",
+            "src": "JFK",
+            "dest": "LAX",
+            "mtow": "50000.00",
+            "mtow_unit": "kg",
+            "flight_source_data": {
+              "source": "ADSB",
+              "details": {
+                "icao24": "abcd12"
+              }
+            },
+            "flight_reference_number": "REF123456",
+            "flight_source": "adsb",
+            "status": "incomplete",
+            "fir_in": "2024-09-16T08:00:00Z",
+            "fir_out": "2024-09-16T09:00:00Z",
+            "fir_in_route": "Route A",
+            "fir_out_route": "Route B",
+            "flight_purpose": "cargo_flight",
+            "date_of_operation": "2024-09-16",
+            "operator": 1
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Date
+          value: Mon, 02 Dec 2024 10:06:20 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "136"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Flight Failed To Create",
+              "error": null,
+              "errors": {
+                  "flight_no": "flight with this flight no already exists."
+              }
+          }
+  - name: Create Flight Success
+    request:
+      url: "{{url}}/api/flight/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |
+          {
+            "call_sign": "ABC123",
+            "flight_no": "FL123456",
+            "flight_type": "landing",
+            "aircraft_registration_no": "N12345",
+            "flight_origin_type": "local",
+            "src": "JFK",
+            "dest": "LAX",
+            "mtow": "50000.00",
+            "mtow_unit": "kg",
+            "flight_source_data": {
+              "source": "ADSB",
+              "details": {
+                "icao24": "abcd12"
+              }
+            },
+            "flight_reference_number": "REF123456",
+            "flight_source": "adsb",
+            "status": "incomplete",
+            "fir_in": "2024-09-16T08:00:00Z",
+            "fir_out": "2024-09-16T09:00:00Z",
+            "fir_in_route": "Route A",
+            "fir_out_route": "Route B",
+            "flight_purpose": "cargo_flight",
+            "date_of_operation": "2024-09-16",
+            "operator": 1
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Mon, 02 Dec 2024 10:07:03 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "735"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Flight successfully created",
+              "data": {
+                  "result": {
+                      "id": 2,
+                      "deleted_at": null,
+                      "created_at": "2024-12-02T16:07:03.536083+06:00",
+                      "updated_at": null,
+                      "call_sign": "ABC123",
+                      "flight_no": "FL123456",
+                      "flight_type": "landing",
+                      "aircraft_registration_no": "N12345",
+                      "flight_origin_type": "local",
+                      "src": "JFK",
+                      "dest": "LAX",
+                      "mtow": 50000,
+                      "mtow_unit": "kg",
+                      "flight_source_data": {
+                          "source": "ADSB",
+                          "details": {
+                              "icao24": "abcd12"
+                          }
+                      },
+                      "flight_reference_number": "REF123456",
+                      "flight_source": "adsb",
+                      "status": "ready_to_bill",
+                      "fir_in": "2024-09-16T14:00:00+06:00",
+                      "fir_out": "2024-09-16T15:00:00+06:00",
+                      "fir_in_route": "Route A",
+                      "fir_out_route": "Route B",
+                      "flight_purpose": "cargo_flight",
+                      "date_of_operation": "2024-09-16",
+                      "company": null,
+                      "operator": 1
+                  }
+              }
+          }
+  - name: Create Flight
+    request:
+      url: "{{url}}/api/flight/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |
+          {
+            "call_sign": "ABC123",
+            "flight_no": "FL1012",
+            "flight_type": "landing",
+            "aircraft_registration_no": "N12345",
+            "flight_origin_type": "local",
+            "src": "JFK",
+            "dest": "LAX",
+            "mtow": "4999.00",
+            "mtow_unit": "kg",
+            "flight_source_data": {
+              "source": "other",
+              "details": {
+                "icao24": "abcd12"
+              }
+            },
+            "flight_reference_number": "REF123456",
+            "flight_source": "other",
+            "status": "incomplete",
+            "fir_in": "2024-12-02T08:00:00Z",
+            "fir_out": "2024-12-02T09:00:00Z",
+            "fir_in_route": "Route A",
+            "fir_out_route": "Route B",
+            "flight_purpose": "cargo_flight",
+            "date_of_operation": "2024-12-02",
+            "operator": 109,
+            "flight_charges":{
+                  "embarkation_fees":{
+                      "parameter_value": 50,
+                      "sub_charges":[
+                          {"head_code":"embarkation_fees", "head_code_status": true, "coa": 1}
+                      ]
+                  },
+                  "landing":{
+                      "parameter_value": 52,
+                      "sub_charges":[
+                          {"head_code":"landing", "head_code_status": true, "coa": 1, "description": "abcd"},
+                          {"head_code":"off_time_landing_takeoff", "head_code_status": true, "coa": 1, "description": "abcd"},
+                          {"head_code":"training_purpose_discount", "head_code_status": false, "coa": 1},
+                          {"head_code":"test_flight_discount", "head_code_status": false, "coa": 1},
+                          {"head_code":"security_others_international", "head_code_status": false , "coa": 1},
+                          {"head_code":"security_others_local", "head_code_status": false , "coa": 1},
+                          {"head_code":"parking_charge", "head_code_status": true , "coa": 1},
+                          {"head_code":"hanger_charge", "head_code_status": false , "coa": 1}
+                      ]
+                  },
+                  "navigation_charge":{
+                      "sub_charges":[
+                          {"head_code":"navigation_charge", "head_code_status": true, "coa": 1}
+                      ]
+                  },
+                  "boarding_bridge_charge":{
+                      "parameter_value": 70,
+                      "sub_charges":[
+                          {"head_code":"boarding_bridge_charge", "head_code_status": true , "coa": 1},
+                          {"head_code":"boarding_bridge_above_2hour_charge", "head_code_status": true , "coa": 1},
+                          {"head_code":"discount_charge_frequent_boarding_bridge", "head_code_status": true , "coa": 1}
+                      ]
+                  }
+              },
+            "custom_charges":[
+              {"head_code": "Fine", "unit": 1, "unit_price": 25.0, "amount": 25.0}
+            ]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Wed, 04 Dec 2024 09:59:25 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "686"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Flight successfully created",
+              "data": {
+                  "result": {
+                      "id": 28,
+                      "call_sign": "ABC123",
+                      "flight_no": "FL1012",
+                      "flight_type": "landing",
+                      "aircraft_registration_no": "N12345",
+                      "flight_origin_type": "local",
+                      "mtow": 4999,
+                      "mtow_unit": "kg",
+                      "src": "JFK",
+                      "dest": "LAX",
+                      "flight_source_data": {
+                          "source": "other",
+                          "details": {
+                              "icao24": "abcd12"
+                          }
+                      },
+                      "flight_reference_number": "REF123456",
+                      "flight_source": "other",
+                      "status": "ready_to_bill",
+                      "fir_in": "2024-12-02T14:00:00+06:00",
+                      "fir_out": "2024-12-02T15:00:00+06:00",
+                      "fir_in_route": "Route A",
+                      "fir_out_route": "Route B",
+                      "flight_purpose": "cargo_flight",
+                      "date_of_operation": "2024-12-02",
+                      "operator": 109,
+                      "operator_name": "ATUL",
+                      "charges_amount": 2515.25
+                  }
+              }
+          }

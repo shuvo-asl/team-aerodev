@@ -1,0 +1,25 @@
+info:
+  name: delete  Invoice Chasing Schedule
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url}}/api/invoice-chasing-schedule/2/?invoice_id=178"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: invoice_id
+      value: "178"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

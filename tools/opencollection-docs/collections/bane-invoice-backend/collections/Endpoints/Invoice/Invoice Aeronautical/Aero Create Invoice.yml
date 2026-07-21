@@ -1,0 +1,632 @@
+info:
+  name: Aero Create Invoice
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/invoice/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+    data:
+      - name: client
+        type: text
+        value: "3"
+      - name: currency
+        type: text
+        value: "1"
+      - name: status
+        type: text
+        value: approve
+      - name: invoice_type
+        type: text
+        value: aeronautical
+      - name: amount
+        type: text
+        value: "2538"
+      - name: tax_amount
+        type: text
+        value: "0"
+      - name: payable_amount
+        type: text
+        value: "2538"
+      - name: tax_type
+        type: text
+        value: inclusive
+      - name: items
+        type: text
+        value: |-
+          
+          [{"description":"International ANC — Overfly, NAVISAT (Overfly)","unit":1,"unit_price":2538,"discount_rate":null,"discount_amount":"0.00","sub_total":2538,"tax_rate":1,"tax_amount":"0.00","total":2538,"flight":19186}]
+      - name: pdf_template
+        type: text
+        value: "2"
+      - name: detach_flights
+        type: text
+        value: "[17, 19]"
+        disabled: true
+      - name: updated_flights
+        type: text
+        value: |-
+          [
+          {
+              "id": 17,
+              "operator": 107,
+              "flight_origin_type": "local",
+              "flight_type": "landing",
+              "src": "JFK",
+              "dest": "LAX",
+              "mtow": 5000,
+              "mtow_unit": "kg",
+              "charges_amount": 2813.38,
+              "flight_source_data": {
+                  "source": "other",
+                  "details": {
+                      "icao24": "abcd12"
+                  }
+              },
+              "flight_charges": {
+                  "landing": {
+                      "parameter_value": 52,
+                      "sub_charges": [
+                          {
+                              "id": 37,
+                              "flight": 17,
+                              "charge_head": 2,
+                              "head_code": "landing",
+                              "unit": 5000,
+                              "unit_price": 53,
+                              "amount": 265,
+                              "description": "abcd",
+                              "coa": 1,
+                              "head": {
+                                  "id": 2,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Landing",
+                                  "head_code": "landing",
+                                  "head_value_type": "per_unit",
+                                  "has_rules": true,
+                                  "unit_labels": "KG",
+                                  "value": "1000",
+                                  "currency_type": "both",
+                                  "perform": "NULL",
+                                  "max_value": "NULL",
+                                  "static_percentage": "NULL",
+                                  "min_static_cost": "NULL",
+                                  "parent": null
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          },
+                          {
+                              "id": 38,
+                              "flight": 17,
+                              "charge_head": 3,
+                              "head_code": "off_time_landing_takeoff",
+                              "unit": null,
+                              "unit_price": 26.5,
+                              "amount": 26.5,
+                              "description": "abcd",
+                              "coa": 1,
+                              "head": {
+                                  "id": 3,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Landing or take off after sunset and before sunrise.",
+                                  "head_code": "off_time_landing_takeoff",
+                                  "head_value_type": "in_percentage",
+                                  "has_rules": false,
+                                  "unit_labels": "NULL",
+                                  "value": "NULL",
+                                  "currency_type": "NULL",
+                                  "perform": "surcharge",
+                                  "max_value": "NULL",
+                                  "static_percentage": "10.00",
+                                  "min_static_cost": "NULL",
+                                  "parent": 2
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          },
+                          {
+                              "id": 39,
+                              "flight": 17,
+                              "charge_head": 8,
+                              "head_code": "parking_charge",
+                              "unit": 52,
+                              "unit_price": 66.25,
+                              "amount": 198.75,
+                              "description": null,
+                              "coa": 1,
+                              "head": {
+                                  "id": 8,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Parking Charge",
+                                  "head_code": "parking_charge",
+                                  "head_value_type": "in_percentage",
+                                  "has_rules": false,
+                                  "unit_labels": "Hour",
+                                  "value": "24",
+                                  "currency_type": "NULL",
+                                  "perform": "NULL",
+                                  "max_value": "NULL",
+                                  "static_percentage": "25.00",
+                                  "min_static_cost": "NULL",
+                                  "parent": 2
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          },
+                          {
+                              "amount": 298.125,
+                              "checked_value": true,
+                              "head_code": "hanger_charge",
+                              "unit_price": 99.375,
+                              "unit": 52,
+                              "head": {
+                                  "unit_labels": ""
+                              },
+                              "coa": 1,
+                              "head_code_status": true
+                          }
+                      ]
+                  },
+                  "boarding_bridge_charge": {
+                      "parameter_value": 70,
+                      "sub_charges": [
+                          {
+                              "id": 41,
+                              "flight": 17,
+                              "charge_head": 11,
+                              "head_code": "boarding_bridge_charge",
+                              "unit": 2,
+                              "unit_price": 0,
+                              "amount": 0,
+                              "description": null,
+                              "coa": 1,
+                              "head": {
+                                  "id": 11,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Boarding Bridge Charge",
+                                  "head_code": "boarding_bridge_charge",
+                                  "head_value_type": "per_unit",
+                                  "has_rules": true,
+                                  "unit_labels": "Hour",
+                                  "value": "1",
+                                  "currency_type": "international",
+                                  "perform": "NULL",
+                                  "max_value": "2",
+                                  "static_percentage": "NULL",
+                                  "min_static_cost": "NULL",
+                                  "parent": null
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          },
+                          {
+                              "id": 42,
+                              "flight": 17,
+                              "charge_head": 12,
+                              "head_code": "boarding_bridge_above_2hour_charge",
+                              "unit": 68,
+                              "unit_price": 0,
+                              "amount": 0,
+                              "description": null,
+                              "coa": 1,
+                              "head": {
+                                  "id": 12,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Boarding Bridge Above 2 Hour Charge",
+                                  "head_code": "boarding_bridge_above_2hour_charge",
+                                  "head_value_type": "per_unit",
+                                  "has_rules": true,
+                                  "unit_labels": "Hour",
+                                  "value": "0.5",
+                                  "currency_type": "international",
+                                  "perform": "NULL",
+                                  "max_value": "NULL",
+                                  "static_percentage": "NULL",
+                                  "min_static_cost": "NULL",
+                                  "parent": 11
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          },
+                          {
+                              "id": 43,
+                              "flight": 17,
+                              "charge_head": 13,
+                              "head_code": "discount_charge_frequent_boarding_bridge",
+                              "unit": null,
+                              "unit_price": null,
+                              "amount": 0,
+                              "description": null,
+                              "coa": 1,
+                              "head": {
+                                  "id": 13,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Discount Charge for the frequent users of Boarding Bridges",
+                                  "head_code": "discount_charge_frequent_boarding_bridge",
+                                  "head_value_type": "in_percentage",
+                                  "has_rules": true,
+                                  "unit_labels": "Hour",
+                                  "value": "NULL",
+                                  "currency_type": "NULL",
+                                  "perform": "discount",
+                                  "max_value": "NULL",
+                                  "static_percentage": "NULL",
+                                  "min_static_cost": "NULL",
+                                  "parent": 11
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          }
+                      ]
+                  },
+                  "navigation_charge": {
+                      "parameter_value": 0,
+                      "sub_charges": [
+                          {
+                              "id": 40,
+                              "flight": 17,
+                              "charge_head": 10,
+                              "head_code": "navigation_charge",
+                              "unit": 5000,
+                              "unit_price": 150,
+                              "amount": 750,
+                              "description": null,
+                              "coa": 1,
+                              "head": {
+                                  "id": 10,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Navigation Charge",
+                                  "head_code": "navigation_charge",
+                                  "head_value_type": "fixed",
+                                  "has_rules": true,
+                                  "unit_labels": "KG",
+                                  "value": "1000",
+                                  "currency_type": "both",
+                                  "perform": "NULL",
+                                  "max_value": "NULL",
+                                  "static_percentage": "NULL",
+                                  "min_static_cost": "NULL",
+                                  "parent": null
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          }
+                      ]
+                  },
+                  "embarkation_fees": {
+                      "parameter_value": 50,
+                      "sub_charges": [
+                          {
+                              "id": 36,
+                              "flight": 17,
+                              "charge_head": 1,
+                              "head_code": "embarkation_fees",
+                              "unit": 50,
+                              "unit_price": 25,
+                              "amount": 1250,
+                              "description": null,
+                              "coa": 1,
+                              "head": {
+                                  "id": 1,
+                                  "deleted_at": null,
+                                  "created_at": "2024-10-09T17:30:45.960369+06:00",
+                                  "updated_at": null,
+                                  "name": "Embarkation Fees",
+                                  "head_code": "embarkation_fees",
+                                  "head_value_type": "per_unit",
+                                  "has_rules": false,
+                                  "unit_labels": "Passenger",
+                                  "value": "1",
+                                  "currency_type": "local",
+                                  "perform": "NULL",
+                                  "max_value": null,
+                                  "static_percentage": "NULL",
+                                  "min_static_cost": "NULL",
+                                  "parent": null
+                              },
+                              "checked_value": true,
+                              "head_code_status": true
+                          }
+                      ]
+                  }
+              },
+              "custom_charges": [
+                  {
+                      "id": 44,
+                      "flight": 17,
+                      "charge_head": null,
+                      "head_code": "Fine",
+                      "unit": 1,
+                      "unit_price": 25,
+                      "amount": 25,
+                      "description": null,
+                      "coa": 1
+                  }
+              ]
+          }
+
+
+
+          ]
+        disabled: true
+      - name: due_date
+        type: text
+        value: 2026-8-28
+      - name: issue_date
+        type: text
+        value: 2026-5-12
+      - name: invoice_no
+        type: text
+        value: M10055
+      - name: billing_period_start
+        type: text
+        value: ""
+      - name: billing_period_end
+        type: text
+        value: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Aero Create Invoice
+    request:
+      url: "{{url}}/api/invoice/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: multipart-form
+        data:
+          - name: client
+            type: text
+            value: "1"
+          - name: currency
+            type: text
+            value: "1"
+          - name: status
+            type: text
+            value: approve
+          - name: invoice_type
+            type: text
+            value: aeronautical
+          - name: amount
+            type: text
+            value: "20"
+          - name: tax_amount
+            type: text
+            value: "0"
+          - name: payable_amount
+            type: text
+            value: "20"
+          - name: tax_type
+            type: text
+            value: inclusive
+          - name: items
+            type: text
+            value: |-
+              [
+                      {
+                          "name": "Alu",
+                          "coa": 27,
+                          "description": "dsafsdf",
+                          "unit": "2",
+                          "unit_price": "10",
+                          "tax_amount": 0,
+                          "tax_rate": 0,
+                          "sub_total": "20",
+                          "discount_amount": "0",
+                          "total": "20",
+                          "coa_name": "COA - 227",
+                          "flight": 1
+                      }
+                      
+              ]
+          - name: pdf_template
+            type: text
+            value: "1"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Thu, 05 Dec 2024 04:52:25 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "2207"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice successfully created",
+              "data": {
+                  "result": {
+                      "id": 21,
+                      "invoice_items": [
+                          {
+                              "id": 20,
+                              "deleted_at": null,
+                              "created_at": "2024-12-05T10:52:25.484246+06:00",
+                              "updated_at": null,
+                              "name": "Alu",
+                              "description": "dsafsdf",
+                              "unit_price": 10,
+                              "unit": 2,
+                              "sub_total": 20,
+                              "discount_rate": null,
+                              "discount_amount": 0,
+                              "tax_rate": 0,
+                              "tax_amount": 0,
+                              "total": 20,
+                              "coa_name": "COA - 227",
+                              "invoice": 21,
+                              "flight": 1,
+                              "coa": 27
+                          }
+                      ],
+                      "client": {
+                          "id": 1,
+                          "name": "Operator",
+                          "short_code": "01",
+                          "email": "operator@asl.aero",
+                          "phone": "+8801684806728",
+                          "billing_address": "airport",
+                          "days_to_due_date": 14,
+                          "client_type": "agent",
+                          "preferred_currency": null,
+                          "status": "active",
+                          "chasing_rule": null
+                      },
+                      "files": [],
+                      "log": [
+                          {
+                              "id": 3620,
+                              "type": "create",
+                              "model": "Invoice",
+                              "object": 21,
+                              "user_name": "admin",
+                              "email": "admin@gmail.com",
+                              "impersonated_by": null,
+                              "ip": "172.20.0.1",
+                              "changes": {
+                                  "due": {
+                                      "to": "20",
+                                      "from": null
+                                  },
+                                  "paid": {
+                                      "to": 0,
+                                      "from": null
+                                  },
+                                  "amount": {
+                                      "to": "20.00",
+                                      "from": null
+                                  },
+                                  "client": {
+                                      "to": 1,
+                                      "from": null
+                                  },
+                                  "status": {
+                                      "to": "approve",
+                                      "from": null
+                                  },
+                                  "currency": {
+                                      "to": 1,
+                                      "from": null
+                                  },
+                                  "tax_type": {
+                                      "to": "inclusive",
+                                      "from": null
+                                  },
+                                  "invoice_no": {
+                                      "to": "INV-000021",
+                                      "from": null
+                                  },
+                                  "tax_amount": {
+                                      "to": "0.00",
+                                      "from": null
+                                  },
+                                  "invoice_type": {
+                                      "to": "aeronautical",
+                                      "from": null
+                                  },
+                                  "pdf_template": {
+                                      "to": 1,
+                                      "from": null
+                                  },
+                                  "payable_amount": {
+                                      "to": 20,
+                                      "from": null
+                                  },
+                                  "payment_status": {
+                                      "to": "due",
+                                      "from": null
+                                  },
+                                  "is_auto_generated": {
+                                      "to": false,
+                                      "from": null
+                                  },
+                                  "last_chased_payable_amount": {
+                                      "to": 0,
+                                      "from": null
+                                  }
+                              },
+                              "agent_info": "PostmanRuntime/7.43.0",
+                              "status": "success",
+                              "created_at": "2024-12-05T10:52:25.487443+06:00"
+                          }
+                      ],
+                      "sent_accounting_software": [],
+                      "currency": {
+                          "id": 1,
+                          "prefix": "$",
+                          "short_key": "USD",
+                          "current_rate": 1,
+                          "default": true,
+                          "name": "Dollar",
+                          "flag": "http://localhost:5011/api/media/download.png",
+                          "is_active": true
+                      },
+                      "pdf_template_title": "Finance Pdf",
+                      "deleted_at": null,
+                      "created_at": "2024-12-05T10:52:25.473465+06:00",
+                      "updated_at": null,
+                      "invoice_no": "INV-000021",
+                      "invoice_type": "aeronautical",
+                      "is_auto_generated": false,
+                      "due_date": null,
+                      "issue_date": null,
+                      "sent_date": null,
+                      "amount": 20,
+                      "tax_type": "inclusive",
+                      "tax_amount": 0,
+                      "payable_amount": 20,
+                      "last_chased_payable_amount": 0,
+                      "paid": 0,
+                      "due": 20,
+                      "status": "approve",
+                      "payment_status": "due",
+                      "references": null,
+                      "company": null,
+                      "pdf_template": 1
+                  }
+              }
+          }

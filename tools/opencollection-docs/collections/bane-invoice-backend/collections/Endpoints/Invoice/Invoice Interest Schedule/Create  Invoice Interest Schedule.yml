@@ -1,0 +1,99 @@
+info:
+  name: Create  Invoice Interest Schedule
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/invoice-interest-schedule/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice": 178,
+          "name": "abcd",
+          "is_cumulative": true,
+          "max_repetition": 6,
+          "interest_type": "fixed",
+          "interest_rate": 3,
+          "interest_base": "invoice_amount_after_interest",
+          "interest_day": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create  Invoice Chasing Schedule
+    request:
+      url: "{{url}}/api/invoice-chasing-schedule/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "invoice": 11,
+              "chase_on": "after due date",
+              "is_cumulative": true,
+              "chasing_days": [3],
+              "email_template": 1,
+              "name": "sample name3",
+              "max_repetition": 4
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Mon, 10 Feb 2025 09:55:41 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "328"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice Chasing Schedule successfully created",
+              "data": {
+                  "result": {
+                      "id": 5,
+                      "invoice": 11,
+                      "name": "sample name3",
+                      "chase_on": "after due date",
+                      "is_cumulative": true,
+                      "max_repetition": 4,
+                      "email_template": 1,
+                      "email_template_name": "default",
+                      "updated_at": null,
+                      "chasing_rule": 7,
+                      "custom": false,
+                      "chasing_days": [
+                          3
+                      ]
+                  }
+              }
+          }

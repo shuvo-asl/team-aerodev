@@ -1,0 +1,138 @@
+info:
+  name: Get Chasing Rule Items by rule id
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/chasing_rule_items?limit=10&chasing_rule_id=2"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: limit
+      value: "10"
+      type: query
+    - name: page
+      value: "1"
+      type: query
+      disabled: true
+    - name: chasing_rule_id
+      value: "2"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get All Chasing Rule Items
+    request:
+      url: "{{url}}/api/chasing_rule_items/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "132"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": [
+                  {
+                      "id": 1,
+                      "day": 2,
+                      "interest_rate": 10,
+                      "schedule_type": "before_due",
+                      "chasing_rule_id": 1,
+                      "choose_template": 1
+                  }
+              ]
+          }
+  - name: Get All Chasing Rule Items with pagination
+    request:
+      url: "{{url}}/api/chasing_rule_items?limit=2"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: limit
+          value: "2"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "313"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "next": 2,
+              "previous": null,
+              "current_page": 1,
+              "total_object": 3,
+              "total_page": 2,
+              "data": [
+                  {
+                      "id": 1,
+                      "day": 2,
+                      "interest_rate": 10,
+                      "schedule_type": "before_due",
+                      "chasing_rule_id": 1,
+                      "choose_template": 1
+                  },
+                  {
+                      "id": 2,
+                      "day": 2,
+                      "interest_rate": 10,
+                      "schedule_type": "before_due",
+                      "chasing_rule_id": 1,
+                      "choose_template": 1
+                  }
+              ]
+          }

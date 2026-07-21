@@ -1,0 +1,68 @@
+info:
+  name: company accounting software create
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{url}}/api/company-accounting-software/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "xero2",
+          "accounting_software": 1
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: company accounting software create
+    request:
+      url: "{{url}}/api/company-accounting-software/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "name": "xero2",
+              "accounting_software": 1
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Date
+          value: Tue, 18 Feb 2025 05:08:43 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "154"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Accounting Software Failed To Create",
+              "error": "This Accounting Software is already assigned to this company!",
+              "errors": null
+          }

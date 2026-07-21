@@ -1,0 +1,75 @@
+info:
+  name: clear cache
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/clear-cache-by-key/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "keyword": "xero"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: clear cache
+    request:
+      url: "{{url}}/api/clear-cache-by-key/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "keyword": "xero"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 06 Nov 2024 05:34:34 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "167"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Cleared 3 cache keys containing the keyword \"xero\".",
+              "data": {
+                  "result": [
+                      "xero_tax_rates",
+                      "xero_contact_ismail@asl.aero",
+                      "xero_items"
+                  ]
+              }
+          }

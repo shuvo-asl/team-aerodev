@@ -1,0 +1,46 @@
+info:
+  name: Update API Token
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api-token"
+  body:
+    type: json
+    data: |-
+      {
+          "active": false,
+          "token_id": 2,
+          "hdef": "wjkf"
+      }
+  auth:
+    type: bearer
+    token: "{{access_token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update API Token eg
+    request:
+      url: "{{url}}/api-token"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{access_token}}
+      body:
+        type: json
+        data: |-
+          {
+              "active": false,
+              "token_id": 2,
+              "hdef": "wjkf"
+          }
+    response:
+      body:
+        type: text
+        data: ""

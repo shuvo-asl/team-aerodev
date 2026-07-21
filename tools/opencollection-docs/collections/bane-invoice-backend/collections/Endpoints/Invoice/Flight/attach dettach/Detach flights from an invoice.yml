@@ -1,0 +1,229 @@
+info:
+  name: Detach flights from an invoice
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/detach-multiple-flights/"
+  body:
+    type: json
+    data: |-
+      {
+        "report_id": 69,
+        "flights": [12243]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: at least one flight is required
+    request:
+      url: "{{url}}/api/detach-multiple-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "report_id": 69,
+            "flights": []
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:20:10 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "139"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to detach flights from report",
+            "error": null,
+            "errors": {
+              "flights": "Please select at least one flight."
+            }
+          }
+  - name: provided flights must belong to the given report/invoice
+    request:
+      url: "{{url}}/api/detach-multiple-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "report_id": 69,
+            "flights": [34038]
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:21:14 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "254"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to detach flights from report",
+            "error": "Some of the provided flights are not attached to this report.",
+            "errors": {
+              "flights": "Some of the provided flights are not attached to this report.",
+              "invalid_flight_ids": [
+                34038
+              ]
+            }
+          }
+  - name: detaching flight from voided invoice does not work
+    request:
+      url: "{{url}}/api/detach-multiple-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "report_id": 323,
+            "flights": [34038]
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:23:24 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "136"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to detach flights from report",
+            "error": "Cannot detach flights from a voided report.",
+            "errors": null
+          }
+  - name: successful detach operation
+    request:
+      url: "{{url}}/api/detach-multiple-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "report_id": 69,
+            "flights": [12243]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:24:50 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "117"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flights detached successfully.",
+            "data": {
+              "result": {
+                "detached_count": 1,
+                "report_id": 69
+              }
+            }
+          }

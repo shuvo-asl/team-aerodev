@@ -1,0 +1,73 @@
+info:
+  name: delete accounting software
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{url}}/api/accounting-software/8/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "flow",
+          "credentials": {"api_secret": "very secret key"}
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create accounting software Copy
+    request:
+      url: "{{url}}/api/accounting-software/8/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "flow",
+              "credentials": {"api_secret": "very secret key"}
+          }
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Date
+          value: Tue, 03 Sep 2024 05:25:47 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "94"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Accounting Software Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }

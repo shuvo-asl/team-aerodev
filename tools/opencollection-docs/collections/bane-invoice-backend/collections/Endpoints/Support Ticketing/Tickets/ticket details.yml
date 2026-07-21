@@ -1,0 +1,87 @@
+info:
+  name: ticket details
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{url}}/api/tickets/TCK-00037/"
+  headers:
+    - name: active_tab
+      value: mine
+      disabled: true
+  params:
+    - name: ""
+      value: ""
+      type: query
+      disabled: true
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: ticket details
+    request:
+      url: "{{url}}/api/tickets/TCK-00037/"
+      method: GET
+      headers:
+        - name: active_tab
+          value: mine
+          disabled: true
+      params:
+        - name: ""
+          value: ""
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 18 May 2025 09:49:08 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "341"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Ticket Fetched Successfully",
+              "data": {
+                  "result": {
+                      "reference_id": "TCK-00037",
+                      "issue_type": 1,
+                      "subject": "example subject",
+                      "status": "pending",
+                      "priority": "medium",
+                      "client": 19,
+                      "assigned_to": null,
+                      "created_at": "2025-05-18T15:47:28.246613+06:00",
+                      "issue_type_name": "Payment",
+                      "client_name": "AIR OP",
+                      "assigned_to_name": ""
+                  }
+              }
+          }

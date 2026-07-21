@@ -1,0 +1,81 @@
+info:
+  name: enable disable periodic tasks
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api/periodic-tasks/18/39/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "enabled": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: enable disable periodic tasks
+    request:
+      url: "{{url}}/api/periodic-tasks/18/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "enabled": true
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 09 Oct 2024 07:05:20 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "268"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Periodic Task successfully updated",
+              "data": {
+                  "result": {
+                      "enabled": true,
+                      "id": 18,
+                      "start_time": "2024-03-25T00:01:00+06:00",
+                      "day": 1,
+                      "interest_type": "fixed",
+                      "interest_rate": 23,
+                      "is_cumulative": true,
+                      "chased": false,
+                      "chasing_date": "2024-03-25"
+                  }
+              }
+          }

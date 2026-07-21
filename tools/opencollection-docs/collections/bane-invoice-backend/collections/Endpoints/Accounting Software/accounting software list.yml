@@ -1,0 +1,80 @@
+info:
+  name: accounting software list
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/accounting-software/?limit=10"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: limit
+      value: "10"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: accounting software list
+    request:
+      url: "{{url}}/api/accounting-software/?limit=10"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: limit
+          value: "10"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 03 Sep 2024 05:10:57 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "240"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Accounting Software Successfully Fetched",
+              "data": {
+                  "next": null,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 1,
+                  "total_page": 1,
+                  "result": [
+                      {
+                          "id": 7,
+                          "name": "flow",
+                          "credentials": {
+                              "api_secret": "very secret key"
+                          }
+                      }
+                  ]
+              }
+          }

@@ -1,0 +1,71 @@
+info:
+  name: send public payment link
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/api/send-public-payment-link/"
+  body:
+    type: json
+    data: |-
+      {
+          "valid_till": "2025-4-12",
+          "invoice": 151,
+          "amount": 720
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: send public payment link
+    request:
+      url: "{{url}}/api/send-public-payment-link/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "valid_till": "2025-4-12",
+              "invoice": 9,
+              "amount": 2
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 11 Feb 2025 09:41:25 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "91"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Public Payment Link Sent Successfully",
+              "data": {
+                  "result": {}
+              }
+          }

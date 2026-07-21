@@ -1,0 +1,252 @@
+info:
+  name: get system settings
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{url}}/api/system-settings"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: key
+      value: invoice_vat_rate
+      type: query
+      disabled: true
+    - name: is_active
+      value: "True"
+      type: query
+      disabled: true
+  body:
+    type: multipart-form
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get system settings based on key param
+    request:
+      url: "{{url}}/api/system-settings?key=logo"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: key
+          value: logo
+          type: query
+        - name: is_active
+          value: "False"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "326"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'System Settings' Successfully Fetched",
+              "data": {
+                  "result": {
+                      "id": 5,
+                      "key": "logo",
+                      "value_text": null,
+                      "value_file": "/media/images/system_settings/2024/01/24/image-000.png",
+                      "type": "file",
+                      "created_at": "2024-01-24T12:34:57.846123+06:00",
+                      "updated_at": "2024-01-24T12:34:57.846229+06:00",
+                      "is_active": true
+                  }
+              }
+          }
+  - name: get system settings based on is_active param
+    request:
+      url: "{{url}}/api/system-settings?is_active=True"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: key
+          value: logo
+          type: query
+          disabled: true
+        - name: is_active
+          value: "True"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1149"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'System Settings' Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 5,
+                          "key": "logo",
+                          "value_text": null,
+                          "value_file": "/media/images/system_settings/2024/01/24/image-000.png",
+                          "type": "file",
+                          "created_at": "2024-01-24T12:34:57.846123+06:00",
+                          "updated_at": "2024-01-24T12:34:57.846229+06:00",
+                          "is_active": true
+                      },
+                      {
+                          "id": 4,
+                          "key": "invoice_chasing_and_reminder_minute",
+                          "value_text": "1",
+                          "value_file": null,
+                          "type": "text",
+                          "created_at": "2024-01-17T17:54:48.100965+06:00",
+                          "updated_at": "2024-01-17T17:54:48.101020+06:00",
+                          "is_active": true
+                      },
+                      {
+                          "id": 3,
+                          "key": "invoice_chasing_and_reminder_hour",
+                          "value_text": "8",
+                          "value_file": null,
+                          "type": "text",
+                          "created_at": "2024-01-17T06:00:26.164451+06:00",
+                          "updated_at": "2024-01-17T06:00:26.164508+06:00",
+                          "is_active": true
+                      },
+                      {
+                          "id": 2,
+                          "key": "days_to_due_date",
+                          "value_text": "7",
+                          "value_file": null,
+                          "type": "text",
+                          "created_at": "2024-01-08T08:58:19.047605+06:00",
+                          "updated_at": "2024-01-09T06:00:05.457920+06:00",
+                          "is_active": true
+                      },
+                      {
+                          "id": 1,
+                          "key": "invoice_vat_rate",
+                          "value_text": "15",
+                          "value_file": null,
+                          "type": "text",
+                          "created_at": "2024-01-08T08:57:38.169194+06:00",
+                          "updated_at": "2024-01-09T06:01:49.532306+06:00",
+                          "is_active": true
+                      }
+                  ]
+              }
+          }
+  - name: get system settings
+    request:
+      url: "{{url}}/api/system-settings"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: key
+          value: invoice_vat_rate
+          type: query
+          disabled: true
+        - name: is_active
+          value: "True"
+          type: query
+          disabled: true
+      body:
+        type: multipart-form
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 04:59:37 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "505"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'System Settings' Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 4,
+                          "deleted_at": null,
+                          "key": "days_to_due_date",
+                          "value_text": "15",
+                          "value_file": null,
+                          "type": "text",
+                          "created_at": "2024-03-06T10:37:48.285032+06:00",
+                          "updated_at": "2024-03-06T10:37:48.285098+06:00"
+                      },
+                      {
+                          "id": 3,
+                          "deleted_at": null,
+                          "key": "invoice_chasing_and_reminder_hour_2",
+                          "value_text": "2",
+                          "value_file": null,
+                          "type": "text",
+                          "created_at": "2024-03-06T10:37:48.282396+06:00",
+                          "updated_at": "2024-08-27T16:05:10.781451+06:00"
+                      }
+                  ]
+              }
+          }

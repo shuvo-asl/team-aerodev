@@ -1,0 +1,126 @@
+info:
+  name: update invoice chasing schedule by chasing rule
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{url}}/api/update-invoice-chasing-schedule-by-rule/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice": 51,
+          "new_chasing_rules": [22, 21]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Chasing Rule
+    request:
+      url: "{{url}}/api/chasing_rule/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "rule 1",
+              "reminder_time": "12:00:00",
+              "interest_calculate_time": "06:00:00",
+              "default": true
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "186"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "id": 1,
+                  "name": "rule 1",
+                  "reminder_time": "12:00:00",
+                  "interest_calculate_time": "06:00:00",
+                  "calculate_interest_daily": false,
+                  "daily_interest_rate": 0,
+                  "default": true
+              }
+          }
+  - name: update invoice chasing schedule by chasing rule
+    request:
+      url: "{{url}}/api/update-invoice-chasing-schedule-by-rule/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "invoice": 51,
+              "new_chasing_rules": [22, 21]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 29 Jan 2025 05:34:22 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "101"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'Invoice Chasing Schedule' Successfully Created",
+              "data": {
+                  "result": {}
+              }
+          }

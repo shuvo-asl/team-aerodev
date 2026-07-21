@@ -1,0 +1,88 @@
+info:
+  name: Create Group
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/groups/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: "{\r
+
+      \    \"name\": \"Super Test Admin\",\r
+
+      \    \"permissions\": [\r
+
+      \        \"add_group\"\r
+
+      \    ]\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Group
+    request:
+      url: "{{url}}/api/groups/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: "{\r
+
+          \    \"name\": \"Super Test Admin\",\r
+
+          \    \"permissions\": [\r
+
+          \        \"add_group\"\r
+
+          \    ]\r
+
+          }"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:21:40 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "117"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User Role successfully created",
+              "data": {
+                  "result": {
+                      "id": 34,
+                      "name": "Super Test Admin"
+                  }
+              }
+          }

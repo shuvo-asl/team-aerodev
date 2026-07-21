@@ -1,0 +1,64 @@
+info:
+  name: invoice info for payment page
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{url}}/api/invoice-info-for-payment-page/6ec8affa-19f9-4c8d-be82-a338ebb63199/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/invoice-info-for-payment-page/248/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.4
+        - name: Date
+          value: Tue, 08 Apr 2025 04:51:37 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "371"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice Details Fetched Successfully",
+              "data": {
+                  "result": {
+                      "invoice_no": "INV-000242",
+                      "due_date": "2025-04-23",
+                      "due": 20,
+                      "currency": "AFN",
+                      "issue_date": "2025-04-08",
+                      "company_name": "blue origin",
+                      "company_logo": "http://localhost:5011/api/media/images/system_settings/logo/2025/04/08/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                      "client": "Kamrul Hasan"
+                  }
+              }
+          }

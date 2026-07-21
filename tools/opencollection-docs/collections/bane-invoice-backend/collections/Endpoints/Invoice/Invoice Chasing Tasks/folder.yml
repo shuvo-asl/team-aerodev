@@ -1,0 +1,7 @@
+info:
+  name: Invoice Chasing Tasks
+  type: folder
+  seq: 18
+
+request:
+  auth: inherit

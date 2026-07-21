@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "bane-aircraft-service"
+  type: workspace
+
+collections:
+  - name: "Endpoints"
+    path: "collections/Endpoints"
+
+specs:
+
+docs: ''

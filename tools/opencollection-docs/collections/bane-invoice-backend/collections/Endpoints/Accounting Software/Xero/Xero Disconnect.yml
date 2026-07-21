@@ -1,0 +1,24 @@
+info:
+  name: Xero Disconnect
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/api/xero/disconnect/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "accounting_software": "1"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

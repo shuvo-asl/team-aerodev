@@ -1,0 +1,190 @@
+info:
+  name: operator dump
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/organizations"
+  params:
+    - name: all
+      value: "true"
+      type: query
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "name": "ASL System Operator",
+          "email": "asl901@gmail.com",
+          "phone": "+08801558250667",
+          "billing_address": "Dhaka, Bangladesh",
+          "short_code": "ASL5"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: email must be unique
+    request:
+      url: "{{url}}/organizations"
+      method: POST
+      params:
+        - name: all
+          value: "true"
+          type: query
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "name": "ASL System Operator",
+              "email": "asl3@gmail.com",
+              "phone": "+08801558250667",
+              "billing_address": "Dhaka, Bangladesh",
+              "short_code": "ASL2"
+          }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Mon, 24 Nov 2025 08:23:01 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "108"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": null,
+              "errors": {
+                  "email": "Email must be unique"
+              },
+              "message": "Validation Error"
+          }
+  - name: short must be unique
+    request:
+      url: "{{url}}/organizations"
+      method: POST
+      params:
+        - name: all
+          value: "true"
+          type: query
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "name": "ASL System Operator",
+              "email": "asl901@gmail.com",
+              "phone": "+08801558250667",
+              "billing_address": "Dhaka, Bangladesh",
+              "short_code": "ASL"
+          }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Mon, 24 Nov 2025 08:26:45 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "138"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": null,
+              "errors": {
+                  "short_code": "Operator with given short code already exists"
+              },
+              "message": "Validation Error"
+          }
+  - name: sucess
+    request:
+      url: "{{url}}/organizations"
+      method: POST
+      params:
+        - name: all
+          value: "true"
+          type: query
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "name": "ASL System Operator",
+              "email": "asl901@gmail.com",
+              "phone": "+08801558250667",
+              "billing_address": "Dhaka, Bangladesh",
+              "short_code": "ASL5"
+          }
+    response:
+      status: 201
+      statusText: CREATED
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Mon, 24 Nov 2025 08:27:22 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "656"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "address_line_2": null,
+                  "alternate_aircraft_registrations": null,
+                  "base_currency_id": null,
+                  "billing_address": "Dhaka, Bangladesh",
+                  "business_phone_extension": null,
+                  "city_id": null,
+                  "comment": "",
+                  "email": "asl901@gmail.com",
+                  "fax_number": null,
+                  "iata": null,
+                  "icao": null,
+                  "is_blacklisted": false,
+                  "is_deleted": false,
+                  "logo": null,
+                  "name": "ASL System Operator",
+                  "ospl_no": null,
+                  "phone": "+08801558250667",
+                  "postal_code": null,
+                  "short_code": "ASL5",
+                  "type": "Operator",
+                  "website": null
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }

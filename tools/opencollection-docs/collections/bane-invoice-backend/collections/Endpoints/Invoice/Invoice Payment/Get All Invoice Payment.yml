@@ -1,0 +1,134 @@
+info:
+  name: Get All Invoice Payment
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/invoice-payment/?invoice_id=32"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+    - name: ""
+      value: ""
+      disabled: true
+  params:
+    - name: payment_date
+      value: 2024-10-04
+      type: query
+      disabled: true
+    - name: limit
+      value: "2"
+      type: query
+      disabled: true
+    - name: created_at
+      value: 2024-11-04
+      type: query
+      disabled: true
+    - name: paid_to
+      value: "227"
+      type: query
+      disabled: true
+    - name: invoice_id
+      value: "32"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get All Invoice Payment
+    request:
+      url: "{{url}}/api/invoice-payment/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+        - name: ""
+          value: ""
+          disabled: true
+      params:
+        - name: code
+          value: abc
+          type: query
+          disabled: true
+        - name: is_active
+          value: "true"
+          type: query
+          disabled: true
+        - name: limit
+          value: "10"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Mon, 04 Nov 2024 06:22:57 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "709"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice_Payment Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "invoice_id": 30,
+                          "invoice_no": "INV-000015",
+                          "payment_date": "2024-11-04",
+                          "payment_amount": 10,
+                          "organization_currency": "$",
+                          "exchange_rate": 122,
+                          "paid_to": "Owner A Share Capital",
+                          "reference": null
+                      },
+                      {
+                          "id": 2,
+                          "invoice_id": 30,
+                          "invoice_no": "INV-000015",
+                          "payment_date": "2024-11-04",
+                          "payment_amount": 10,
+                          "organization_currency": "$",
+                          "exchange_rate": 123,
+                          "paid_to": "Owner A Share Capital",
+                          "reference": "City Bank"
+                      },
+                      {
+                          "id": 3,
+                          "invoice_id": 30,
+                          "invoice_no": "INV-000015",
+                          "payment_date": "2024-11-04",
+                          "payment_amount": 10,
+                          "organization_currency": "$",
+                          "exchange_rate": 123,
+                          "paid_to": "Owner A Share Capital",
+                          "reference": "City Bank"
+                      }
+                  ]
+              }
+          }

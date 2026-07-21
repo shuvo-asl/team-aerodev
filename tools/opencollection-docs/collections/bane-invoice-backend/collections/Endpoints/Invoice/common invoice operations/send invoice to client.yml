@@ -1,0 +1,55 @@
+info:
+  name: send invoice to client
+  type: http
+  seq: 1
+
+http:
+  method: PATCH
+  url: "{{url}}/api/send-invoice-to-client/459/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: send invoice to client
+    request:
+      url: "{{url}}/api/send-invoice-to-client/1/"
+      method: PATCH
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 12 Jan 2025 05:48:30 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: PATCH, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "89"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice sent to client successfully",
+              "data": {
+                  "result": {}
+              }
+          }

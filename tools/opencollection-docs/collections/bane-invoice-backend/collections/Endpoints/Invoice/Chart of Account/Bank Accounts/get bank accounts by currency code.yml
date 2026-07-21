@@ -1,0 +1,93 @@
+info:
+  name: get bank accounts by currency code
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/api/account/?account_type=BANK&object_name=bank&currency_code=INR"
+  params:
+    - name: account_type
+      value: BANK
+      type: query
+    - name: object_name
+      value: bank
+      type: query
+    - name: currency_code
+      value: INR
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get bank accounts by currency code
+    request:
+      url: "{{url}}/api/account/?account_type=BANK&object_name=bank&currency_code=INR"
+      method: GET
+      params:
+        - name: account_type
+          value: BANK
+          type: query
+        - name: object_name
+          value: bank
+          type: query
+        - name: currency_code
+          value: INR
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Thu, 14 Nov 2024 08:55:14 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "449"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Bank Account Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 117,
+                          "account_name": "dvdxvx",
+                          "code": "01",
+                          "deleted_at": null,
+                          "created_at": "2024-11-11T11:21:58.710793+06:00",
+                          "updated_at": "2024-11-11T11:22:13.057732+06:00",
+                          "account_type": "BANK",
+                          "details": null,
+                          "transaction_type": "expense",
+                          "source": null,
+                          "account_number": "22334456789",
+                          "currency_code": "INR",
+                          "bank_account_type": "other",
+                          "bank_name": "city bank",
+                          "is_active": true
+                      }
+                  ]
+              }
+          }

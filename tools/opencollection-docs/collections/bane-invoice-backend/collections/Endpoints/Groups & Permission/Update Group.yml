@@ -1,0 +1,88 @@
+info:
+  name: Update Group
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{url}}/api/groups/34/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: "{\r
+
+      \    \"name\":\"Caab2\",\r
+
+      \    \"permissions\": [\r
+
+      \       \r
+
+      \    ]\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update Group
+    request:
+      url: "{{url}}/api/groups/34/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: "{\r
+
+          \    \"name\":\"Caab2\",\r
+
+          \    \"permissions\": [\r
+
+          \       \r
+
+          \    ]\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:23:54 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "106"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User Role successfully updated",
+              "data": {
+                  "result": {
+                      "id": 34,
+                      "name": "Caab2"
+                  }
+              }
+          }

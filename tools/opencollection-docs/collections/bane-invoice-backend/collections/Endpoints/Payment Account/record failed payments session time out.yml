@@ -1,0 +1,79 @@
+info:
+  name: record failed payments session time out
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{url}}/api/record-failed-payment/"
+  params:
+    - name: ""
+      value: ""
+      type: query
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "status": "expired",
+          "order_id": "INV-000020-ORD-1739760214-b9419e",
+          "invoice_id": 24
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/record-failed-payment/"
+      method: POST
+      params:
+        - name: ""
+          value: ""
+          type: query
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "status": "expired",
+              "order_id": "INV-000020-ORD-1739760214-b9419e",
+              "invoice_id": 24
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 19 Feb 2025 08:11:27 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "97"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Failed payment details updated successfully",
+              "data": {
+                  "result": {}
+              }
+          }

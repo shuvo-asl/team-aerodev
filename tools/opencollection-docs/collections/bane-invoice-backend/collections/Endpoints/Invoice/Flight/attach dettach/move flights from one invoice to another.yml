@@ -1,0 +1,279 @@
+info:
+  name: move flights from one invoice to another
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/move-flights/"
+  body:
+    type: json
+    data: |-
+      {
+        "source_report_id": 445,
+        "destination_report_id": 241,
+        "flights": [35525]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: at least one flight is required
+    request:
+      url: "{{url}}/api/move-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "source_report_id": 70,
+            "destination_report_id": 79,
+            "flights": []
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:38:43 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "141"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to move flights between reports",
+            "error": null,
+            "errors": {
+              "flights": "Please select at least one flight."
+            }
+          }
+  - name: source and destination report can not be same
+    request:
+      url: "{{url}}/api/move-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "source_report_id": 79,
+            "destination_report_id": 79,
+            "flights": [1]
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:39:18 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "144"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to move flights between reports",
+            "error": "Source and destination reports must be different.",
+            "errors": null
+          }
+  - name: moving flights wont work with void invoices
+    request:
+      url: "{{url}}/api/move-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "source_report_id": 323,
+            "destination_report_id": 79,
+            "flights": [1]
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:41:09 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "136"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to move flights between reports",
+            "error": "Cannot move flights from a voided report.",
+            "errors": null
+          }
+  - name: client of src and dest invoice must be same
+    request:
+      url: "{{url}}/api/move-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "source_report_id": 445,
+            "destination_report_id": 442,
+            "flights": [35525]
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:54:45 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "157"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Failed to move flights between reports",
+            "error": "Source and destination reports must belong to the same client.",
+            "errors": null
+          }
+  - name: successful flight moving among reports
+    request:
+      url: "{{url}}/api/move-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "source_report_id": 445,
+            "destination_report_id": 241,
+            "flights": [35525]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 16 Jul 2026 06:56:28 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "147"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flights moved successfully.",
+            "data": {
+              "result": {
+                "moved_count": 1,
+                "source_report_id": 445,
+                "destination_report_id": 241
+              }
+            }
+          }

@@ -1,0 +1,26 @@
+info:
+  name: Invoice Send To Accounting Software
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{url}}/api/invoice-send-to-accounting-software/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_id": 14,
+          "accounting_software_name": ["xero","Afroza Mukta"],
+          "xero_organizations": ["51618716-96eb-4fd0-a6de-9735c5f568d0", "f3afa7ee-4d7e-430d-8a58-12b295b61f7e"]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

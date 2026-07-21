@@ -1,0 +1,78 @@
+info:
+  name: update company
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{url}}/api/companies/11/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Bd_company",
+          "country": "Bangladesh"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update company
+    request:
+      url: "{{url}}/api/companies/3/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "Bd_company",
+              "country": "Bangladesh"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 10 Dec 2024 05:28:01 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "150"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Company successfully updated",
+              "data": {
+                  "result": {
+                      "id": 3,
+                      "name": "Bd_company",
+                      "country": "Bangladesh",
+                      "is_primary": false
+                  }
+              }
+          }

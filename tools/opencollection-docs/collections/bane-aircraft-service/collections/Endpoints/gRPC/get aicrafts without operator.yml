@@ -1,0 +1,15 @@
+info:
+  name: get aicrafts without operator
+  type: grpc
+  seq: 10
+
+grpc:
+  url: "{{gRPC_url}}"
+  method: /bas.BAS/GetAircraftsWithoutOperator
+  methodType: unary
+  protoFilePath: ../../../rpc/bas.proto
+  metadata:
+    - name: "{{auth_param_name}}"
+      value: "{{token}}"
+  message: "{}"
+  auth: inherit

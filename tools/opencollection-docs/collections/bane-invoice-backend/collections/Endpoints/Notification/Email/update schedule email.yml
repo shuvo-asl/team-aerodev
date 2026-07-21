@@ -1,0 +1,32 @@
+info:
+  name: update schedule email
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{url}}/api/email_schedule"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "receiver": [
+              1,2,3
+          ],
+          "schedule_month": "*",
+          "schedule_day": "*",
+          "schedule_hour": "*",
+          "schedule_minute": "*",
+          "mail_subject": "test",
+          "text": "test sms"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

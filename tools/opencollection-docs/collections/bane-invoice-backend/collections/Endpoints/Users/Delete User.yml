@@ -1,0 +1,59 @@
+info:
+  name: Delete User
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{url}}/api/users/197/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Delete User
+    request:
+      url: "{{url}}/api/users/10/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 04:52:46 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "81"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'User' Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }

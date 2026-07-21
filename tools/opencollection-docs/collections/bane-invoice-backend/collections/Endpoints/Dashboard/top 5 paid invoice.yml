@@ -1,0 +1,121 @@
+info:
+  name: top 5 paid invoice
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{url}}/api/dashboard/top-five-invoices/?based_on=paid"
+  params:
+    - name: based_on
+      value: paid
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: top 5 paid invoice
+    request:
+      url: "{{url}}/api/dashboard/top-five-invoices/?based_on=paid"
+      method: GET
+      params:
+        - name: based_on
+          value: paid
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 07 Dec 2025 05:49:12 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "492"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: X-XSS-Protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Top Five Invoicessuccessfully fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "paid": 20,
+                          "percentage": 100,
+                          "client": {
+                              "id": 3,
+                              "name": "MD KAMRUL HASAN!!"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "paid": 0,
+                          "percentage": 0,
+                          "client": {
+                              "id": 12,
+                              "name": "test0"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "paid": 0,
+                          "percentage": 0,
+                          "client": {
+                              "id": 3,
+                              "name": "MD KAMRUL HASAN!!"
+                          }
+                      },
+                      {
+                          "id": 7,
+                          "paid": 0,
+                          "percentage": 0,
+                          "client": {
+                              "id": 3,
+                              "name": "MD KAMRUL HASAN!!"
+                          }
+                      },
+                      {
+                          "id": 8,
+                          "paid": 0,
+                          "percentage": 0,
+                          "client": {
+                              "id": 3,
+                              "name": "MD KAMRUL HASAN!!"
+                          }
+                      }
+                  ]
+              }
+          }

@@ -1,0 +1,14 @@
+opencollection: 1.0.0
+info:
+  name: "bane-invoice-backend"
+  type: workspace
+
+collections:
+  - name: "Authentication"
+    path: "collections/Authentication"
+  - name: "Endpoints"
+    path: "collections/Endpoints"
+
+specs:
+
+docs: ''

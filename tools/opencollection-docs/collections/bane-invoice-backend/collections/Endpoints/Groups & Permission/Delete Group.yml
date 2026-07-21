@@ -1,0 +1,65 @@
+info:
+  name: Delete Group
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{url}}/api/groups/34/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Delete Group
+    request:
+      url: "{{url}}/api/groups/34/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: ""
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:24:57 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "84"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User Role Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }

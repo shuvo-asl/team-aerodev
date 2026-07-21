@@ -1,0 +1,25 @@
+info:
+  name: create aircraft type
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/bas/aircraft-type/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "type2",
+          "mtow": 20,
+          "mtow_unit": "ton"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

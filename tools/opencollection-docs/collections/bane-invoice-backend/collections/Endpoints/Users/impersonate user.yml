@@ -1,0 +1,68 @@
+info:
+  name: impersonate user
+  type: http
+  seq: 15
+
+http:
+  method: GET
+  url: "{{url}}/api/impersonate/24/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: impersonate user
+    request:
+      url: "{{url}}/api/impersonate/24/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 18 Sep 2024 05:00:07 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "527"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Successfully impersonated",
+              "data": {
+                  "result": {
+                      "id": 24,
+                      "first_name": "",
+                      "last_name": "",
+                      "username": "ismail",
+                      "email": "ismail21123@asl.aero",
+                      "phone": "+8801668970410",
+                      "profile_image": "/media/10UtsEg9u8pWHrNQw4_KWANjzD8ytnrGC",
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2NjM1NzI3LCJpYXQiOjE3MjY2MzU2MDcsImp0aSI6IjE5M2ZiYWQ3YTFiZDQ0M2RiZGY0ODI3YjM4NjFiY2JmIiwidXNlcl9pZCI6MjQsImltcGVyc29uYXRlZF9ieSI6ImFkbWluIn0.RPe2noQedLnrroISekEWsv7evOMacM1X1nx3Cya_C2A"
+                  }
+              }
+          }

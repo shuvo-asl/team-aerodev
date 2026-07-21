@@ -1,0 +1,24 @@
+info:
+  name: Verify Invoice Order id
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/initiate-payment-process/"
+  body:
+    type: json
+    data: |-
+      {
+          "gateway_name": "ebl",
+          "invoice_id": 1,
+          "company_id": 1,
+          "token": "fa770c3a-ae1a-4dbc-941a-6ec15f36b936"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,127 @@
+info:
+  name: create notification subscribe
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/notification_subscribe/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create notification subscribe
+    request:
+      url: "{{url}}/api/notification_subscribe/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "receiver": [
+                  1,2,3
+              ],
+              "name": "app"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "213"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "id": 2,
+                  "name": "app",
+                  "send_to_all": false,
+                  "created_at": "2023-03-27T10:52:19.502570+06:00",
+                  "updated_at": "2023-03-27T10:52:19.502582+06:00",
+                  "created_by": 1,
+                  "updated_by": null,
+                  "receiver": [
+                      1,
+                      2,
+                      3
+                  ]
+              }
+          }
+  - name: create notification subscribe failed
+    request:
+      url: "{{url}}/api/notification_subscribe/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: ""
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "110"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "data": [
+                  {
+                      "msg": "name: This field is required."
+                  },
+                  {
+                      "msg": "receiver: This field is required."
+                  }
+              ]
+          }

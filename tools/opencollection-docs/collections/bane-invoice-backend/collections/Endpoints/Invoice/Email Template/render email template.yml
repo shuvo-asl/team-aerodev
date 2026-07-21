@@ -1,0 +1,157 @@
+info:
+  name: render email template
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/render-email-template/1/"
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_no": "inv001",
+          "operator_name": "name op",
+          "due_date": "2025-06-12",
+          "paid_amount": 0,
+          "due_amount": 20,
+          "issue_date": "2025-05-27",
+          "currency": 1
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: render email template
+    request:
+      url: "{{url}}/api/render-email-template/14/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "invoice_no": "inv 001",
+              "operator_name": "name op",
+              "due_date": "2025-06-12",
+              "paid_amount": 0,
+              "due_amount": 20,
+              "issue_date": "2025-05-27"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 27 May 2025 05:39:17 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "218"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Email Template Rendered Successfully",
+              "data": {
+                  "result": {
+                      "email_body": "May\nApril\ninv 001\nname op\nJune 12, 2025\n0.00\n20.00\nMay 27, 2025",
+                      "email_subject": "MayInvoice Ready inv 001"
+                  }
+              }
+          }
+  - name: render email template
+    request:
+      url: "{{url}}/api/render-email-template/14/"
+      method: POST
+      body:
+        type: json
+        data: ""
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 27 May 2025 05:49:05 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "323"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed to render Email Template",
+              "error": null,
+              "errors": {
+                  "invoice_no": "This field is required.",
+                  "operator_name": "This field is required.",
+                  "due_date": "This field is required.",
+                  "paid_amount": "This field is required.",
+                  "due_amount": "This field is required.",
+                  "issue_date": "This field is required."
+              }
+          }
+
+docs: |-
+  **Description:**
+
+  Renders an email template with dynamic data such as invoice details, dates, and operator name.
+
+  ---
+
+  ### **Request Parameters**
+
+  **Path Parameter:**
+
+  - `template_id` (integer): ID of the email template to render.
+      
+
+  **Request Body (JSON):**
+
+  ``` json
+  {
+      "invoice_no": "inv 001",
+      "operator_name": "name op",
+      "due_date": "2025-06-12",
+      "paid_amount": 0,
+      "due_amount": 20,
+      "issue_date": "2025-05-27"
+  }
+   ```

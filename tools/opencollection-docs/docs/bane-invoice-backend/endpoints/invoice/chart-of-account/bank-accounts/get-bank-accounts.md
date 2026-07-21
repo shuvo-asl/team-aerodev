@@ -1,0 +1,322 @@
+# get bank accounts
+
+**GET** `{{url}}/api/account/?account_type=BANK&object_name=bank`
+
+## Auth
+
+Type: `bearer`
+
+## Query Params
+
+| Name | Value | Type |
+|---|---|---|
+| `account_type` | `BANK` | query |
+| `object_name` | `bank` | query |
+
+## Examples
+
+### get bank accounts
+
+**Request:** `GET` `{{url}}/api/account/?account_type=BANK&object_name=bank`
+
+**Response:** `200 OK`
+
+```json
+{
+    "status": "success",
+    "message": "Bank Account Successfully Fetched",
+    "data": {
+        "result": [
+            {
+                "id": 93,
+                "account_name": "yhrty",
+                "code": null,
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:49:21.679003+06:00",
+                "updated_at": "2024-11-11T11:21:32.683550+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "1212121212121",
+                "currency_code": "USD",
+                "bank_account_type": "other",
+                "bank_name": "yhrty",
+                "is_active": true
+            },
+            {
+                "id": 113,
+                "account_name": "nggh",
+                "code": null,
+                "deleted_at": null,
+                "created_at": "2024-11-07T10:30:28.013866+06:00",
+                "updated_at": "2024-11-07T10:39:44.455817+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "",
+                "currency_code": "BDT",
+                "bank_account_type": "other",
+                "bank_name": "city bank",
+                "is_active": true
+            },
+            {
+                "id": 117,
+                "account_name": "dvdxvx",
+                "code": "01",
+                "deleted_at": null,
+                "created_at": "2024-11-11T11:21:58.710793+06:00",
+                "updated_at": "2024-11-11T11:22:13.057732+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "expense",
+                "source": null,
+                "account_number": "22334456789",
+                "currency_code": "INR",
+                "bank_account_type": "other",
+                "bank_name": "city bank",
+                "is_active": true
+            },
+            {
+                "id": 105,
+                "account_name": "Afroza",
+                "code": "0122",
+                "deleted_at": null,
+                "created_at": "2024-11-06T11:57:56.625173+06:00",
+                "updated_at": null,
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "2233",
+                "currency_code": "BDT",
+                "bank_account_type": "credit_card",
+                "bank_name": "city bank",
+                "is_active": true
+            },
+            {
+                "id": 95,
+                "account_name": "aaaaa",
+                "code": "121",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:53:17.183736+06:00",
+                "updated_at": "2024-11-07T09:34:30.281132+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "1212121212121",
+                "currency_code": "BDT",
+                "bank_account_type": "other",
+                "bank_name": "aaaaa",
+                "is_active": true
+            },
+            {
+                "id": 97,
+                "account_name": "fgfgftr",
+                "code": "122",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:55:06.400618+06:00",
+                "updated_at": "2024-11-07T09:34:30.325396+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "121212121212",
+                "currency_code": "USD",
+                "bank_account_type": "other",
+                "bank_name": "fgfgftr",
+                "is_active": true
+            },
+            {
+                "id": 98,
+                "account_name": "bbbb",
+                "code": "123",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:55:06.421219+06:00",
+                "updated_at": "2024-11-07T09:34:30.365413+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "1234",
+                "currency_code": "BDT",
+                "bank_account_type": "credit_card",
+                "bank_name": "bbbb",
+                "is_active": true
+            },
+            {
+                "id": 99,
+                "account_name": "bank account",
+                "code": "8798890",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:55:06.446055+06:00",
+                "updated_at": "2024-11-07T09:34:30.398918+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "455657677689",
+                "currency_code": "BDT",
+                "bank_account_type": "other",
+                "bank_name": "bank account",
+                "is_active": true
+            },
+            {
+                "id": 106,
+                "account_name": "test b2",
+                "code": "ban0079",
+                "deleted_at": null,
+                "created_at": "2024-11-06T13:57:17.959055+06:00",
+                "updated_at": null,
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "6785",
+                "currency_code": "BDT",
+                "bank_account_type": "credit_card",
+                "bank_name": "sonali bank",
+                "is_active": true
+            },
+            {
+                "id": 104,
+                "account_name": "test bank account301",
+                "code": "bank-121",
+                "deleted_at": null,
+                "created_at": "2024-11-05T15:43:54.730306+06:00",
+                "updated_at": null,
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "6785",
+                "currency_code": "BDT",
+                "bank_account_type": "credit_card",
+                "bank_name": "sonali bank",
+                "is_active": true
+            },
+            {
+                "id": 118,
+                "account_name": "test bank account3012",
+                "code": "bank-1212",
+                "deleted_at": null,
+                "created_at": "2024-11-12T11:44:21.208265+06:00",
+                "updated_at": null,
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "4204",
+                "currency_code": "USD",
+                "bank_account_type": "credit_card",
+                "bank_name": "sonali bank",
+                "is_active": true
+            },
+            {
+                "id": 100,
+                "account_name": "Rupali Bank",
+                "code": "BANK001",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:55:06.480962+06:00",
+                "updated_at": "2024-11-07T09:34:30.441907+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "78389879",
+                "currency_code": "USD",
+                "bank_account_type": "other",
+                "bank_name": "Rupali Bank",
+                "is_active": true
+            },
+            {
+                "id": 85,
+                "account_name": "test bank account",
+                "code": "bank0079",
+                "deleted_at": null,
+                "created_at": "2024-11-05T11:00:36.401380+06:00",
+                "updated_at": null,
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "6785",
+                "currency_code": "BDT",
+                "bank_account_type": "credit_card",
+                "bank_name": "",
+                "is_active": true
+            },
+            {
+                "id": 88,
+                "account_name": "test bank account3",
+                "code": "bank0090",
+                "deleted_at": null,
+                "created_at": "2024-11-05T11:26:07.752597+06:00",
+                "updated_at": null,
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": null,
+                "account_number": "6785",
+                "currency_code": "BDT",
+                "bank_account_type": "credit_card",
+                "bank_name": "sonali bank",
+                "is_active": true
+            },
+            {
+                "id": 101,
+                "account_name": "Sonali BANK",
+                "code": "BANK123",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:55:06.508156+06:00",
+                "updated_at": "2024-11-07T09:34:30.469417+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "12986387838",
+                "currency_code": "USD",
+                "bank_account_type": "other",
+                "bank_name": "Sonali BANK",
+                "is_active": true
+            },
+            {
+                "id": 102,
+                "account_name": "Sonali BANK2",
+                "code": "BANK1234",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:55:06.533656+06:00",
+                "updated_at": "2024-11-07T09:34:30.500834+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "7838",
+                "currency_code": "USD",
+                "bank_account_type": "credit_card",
+                "bank_name": "Sonali BANK2",
+                "is_active": true
+            },
+            {
+                "id": 92,
+                "account_name": "test bank",
+                "code": "bank54",
+                "deleted_at": null,
+                "created_at": "2024-11-05T13:49:21.654708+06:00",
+                "updated_at": "2024-11-12T11:45:12.093293+06:00",
+                "account_type": "BANK",
+                "details": null,
+                "transaction_type": "non_expense",
+                "source": "xero",
+                "account_number": "632897998",
+                "currency_code": "USD",
+                "bank_account_type": "other",
+                "bank_name": "sonali bank",
+                "is_active": true
+            }
+        ]
+    }
+}
+```

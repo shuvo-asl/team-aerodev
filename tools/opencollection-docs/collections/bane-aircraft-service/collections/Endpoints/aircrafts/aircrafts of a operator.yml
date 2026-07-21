@@ -1,0 +1,124 @@
+info:
+  name: aircrafts of a operator
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: "{{url}}/aircraft/operator?all=true&short_code=ETH"
+  params:
+    - name: operator_id
+      value: "14709"
+      type: query
+      disabled: true
+    - name: all
+      value: "true"
+      type: query
+    - name: short_code
+      value: ETH
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: aircrafts of a operator
+    request:
+      url: "{{url}}/aircraft/operator?all=true&short_code=USF1"
+      method: GET
+      params:
+        - name: operator_id
+          value: "14709"
+          type: query
+          disabled: true
+        - name: all
+          value: "true"
+          type: query
+        - name: short_code
+          value: USF1
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Mon, 09 Feb 2026 08:13:20 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "358"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "count": 1,
+              "data": [
+                  {
+                      "aircraft_type": "B2 Spirit",
+                      "mtow": null,
+                      "mtow_unit": "kg",
+                      "operator_shortcode": "USF1",
+                      "purpose_type": null,
+                      "registration_number": "B7CFD591",
+                      "wing_type": "Fixed Wing"
+                  }
+              ],
+              "error": null,
+              "errors": null,
+              "message": "successful",
+              "operator_shortcode": "USF1"
+          }
+  - name: aircrafts of a operator no aircraft found
+    request:
+      url: "{{url}}/aircraft/operator?all=true&short_code=USF12"
+      method: GET
+      params:
+        - name: operator_id
+          value: "14709"
+          type: query
+          disabled: true
+        - name: all
+          value: "true"
+          type: query
+        - name: short_code
+          value: USF12
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Mon, 09 Feb 2026 08:00:16 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "126"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "count": 0,
+              "data": [],
+              "error": null,
+              "errors": null,
+              "message": "successful",
+              "operator_shortcode": "USF12"
+          }

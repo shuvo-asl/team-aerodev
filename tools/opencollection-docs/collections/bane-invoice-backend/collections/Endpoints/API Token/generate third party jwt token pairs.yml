@@ -1,0 +1,225 @@
+info:
+  name: generate third party jwt token pairs
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/third-party/token/"
+  body:
+    type: json
+    data: |-
+      {
+          "token": "123"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: success
+    request:
+      url: "{{url}}/api/third-party/token/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "token": "123"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 03:55:39 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "567"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Tokens Generated Successfully",
+              "data": {
+                  "result": {
+                      "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMjcxNzM5LCJpYXQiOjE3NTMyNDI5MzksImp0aSI6IjY2ZjZhNjMwZGIxZDQxMGZiZmY1NjkyMmRiYTJhMTc0IiwidG9rZW5faWQiOjF9.IunRwm9UP6YeOmUThb9JFPeVZ_3NaZNCANvvzOSDGZc",
+                      "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MzI3MTczOSwiaWF0IjoxNzUzMjQyOTM5LCJqdGkiOiJkNzczZGVkZjYzMGU0Nzg4OTc3OWVmZjQ4YzczNWFkZiIsInRva2VuX2lkIjoxfQ.fxUl4KwmDHttG6p0LLXQGFeKSiZQsTdwI8MGHRazC4c"
+                  }
+              }
+          }
+  - name: if token is expired
+    request:
+      url: "{{url}}/api/third-party/token/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "token": "123"
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:02:30 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "83"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Token Expired",
+              "error": "Token Expired",
+              "errors": null
+          }
+  - name: if request made from ip that is not in token
+    request:
+      url: "{{url}}/api/third-party/token/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "token": "123"
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:03:45 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "79"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "IP Mismatch",
+              "error": "IP Mismatch",
+              "errors": null
+          }
+  - name: if token  is deactivated
+    request:
+      url: "{{url}}/api/third-party/token/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "token": "123"
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:04:41 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "83"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Invalid Token",
+              "error": "Invalid Token",
+              "errors": null
+          }
+
+docs: |-
+  # 🔐 Third-Party Token Exchange API
+
+  **POST**
+
+  /api/third-party/token/
+
+  This endpoint allows a third-party system to exchange a valid external token for access and refresh tokens used in your system. The third-party token must be pre-issued.
+
+  | Field | Type | Required | Description |
+  | --- | --- | --- | --- |
+  | token | string | ✅ Yes | The third-party token issued earlier |
+
+  #### Example
+
+  ``` bash
+  {
+    "token": "example-third-party-token"
+  }
+
+   ```
+
+  ## 🔒 Authentication
+
+  This endpoint does **not** require authentication.

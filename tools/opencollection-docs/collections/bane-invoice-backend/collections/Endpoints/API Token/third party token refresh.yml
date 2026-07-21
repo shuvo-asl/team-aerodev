@@ -1,0 +1,64 @@
+info:
+  name: third party token refresh
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{url}}/api/third-party/token/refresh/"
+  body:
+    type: json
+    data: |-
+      {
+          "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MzI3MTczOSwiaWF0IjoxNzUzMjQyOTM5LCJqdGkiOiJkNzczZGVkZjYzMGU0Nzg4OTc3OWVmZjQ4YzczNWFkZiIsInRva2VuX2lkIjoxfQ.fxUl4KwmDHttG6p0LLXQGFeKSiZQsTdwI8MGHRazC4c"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: third party token refresh
+    request:
+      url: "{{url}}/api/third-party/token/refresh/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MzI3MTczOSwiaWF0IjoxNzUzMjQyOTM5LCJqdGkiOiJkNzczZGVkZjYzMGU0Nzg4OTc3OWVmZjQ4YzczNWFkZiIsInRva2VuX2lkIjoxfQ.fxUl4KwmDHttG6p0LLXQGFeKSiZQsTdwI8MGHRazC4c"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:19:56 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "486"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMjczMTk2LCJpYXQiOjE3NTMyNDQzOTYsImp0aSI6ImZlYzliOTFlZDE0MTRlNjY5Yzk1MzcyM2E4ZTBmOWZkIiwidG9rZW5faWQiOjF9.q1dl_WiGN5V2Kk_A8WOEhsWl7oJaJjHvSasYDBwLALs",
+              "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MzI3MTczOSwiaWF0IjoxNzUzMjQyOTM5LCJqdGkiOiJkNzczZGVkZjYzMGU0Nzg4OTc3OWVmZjQ4YzczNWFkZiIsInRva2VuX2lkIjoxfQ.fxUl4KwmDHttG6p0LLXQGFeKSiZQsTdwI8MGHRazC4c"
+          }

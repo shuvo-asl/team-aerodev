@@ -1,0 +1,162 @@
+info:
+  name: get logos
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/system-settings/?type=logo"
+  params:
+    - name: type
+      value: logo
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get logos
+    request:
+      url: "{{url}}/api/system-settings/?type=logo"
+      method: GET
+      params:
+        - name: type
+          value: logo
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 06:57:45 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "2434"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "System Settings Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 49,
+                          "deleted_at": null,
+                          "created_at": "2024-11-12T12:52:34.177770+06:00",
+                          "updated_at": null,
+                          "title": "logo for testing",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/12/bdflag.jpg",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 32,
+                          "deleted_at": null,
+                          "created_at": "2024-11-04T11:08:32.703479+06:00",
+                          "updated_at": null,
+                          "title": "sgdfs",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_rTlMj01.png",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 31,
+                          "deleted_at": null,
+                          "created_at": "2024-11-04T11:07:04.363042+06:00",
+                          "updated_at": null,
+                          "title": "hello",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/AFRMS_logo_final_zMXBj2U.png",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 30,
+                          "deleted_at": null,
+                          "created_at": "2024-11-04T11:05:25.994377+06:00",
+                          "updated_at": null,
+                          "title": "ewrtw",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/AFRMS_logo_final_IWNEXUo.png",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 29,
+                          "deleted_at": null,
+                          "created_at": "2024-11-03T16:17:25.656287+06:00",
+                          "updated_at": "2024-11-04T12:44:50.176589+06:00",
+                          "title": "abc",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_gKIGNHz.png",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 26,
+                          "deleted_at": null,
+                          "created_at": "2024-11-03T15:20:15+06:00",
+                          "updated_at": "2024-11-05T10:42:31.067932+06:00",
+                          "title": "no file",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": true,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/05/image.png",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 24,
+                          "deleted_at": null,
+                          "created_at": "2024-11-03T12:14:57+06:00",
+                          "updated_at": "2024-11-04T10:39:56.464761+06:00",
+                          "title": "test logo",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": true,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                          "bank_details": ""
+                      }
+                  ]
+              }
+          }

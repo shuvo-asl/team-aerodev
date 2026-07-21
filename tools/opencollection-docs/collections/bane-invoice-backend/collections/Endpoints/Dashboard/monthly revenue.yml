@@ -1,0 +1,32 @@
+info:
+  name: monthly revenue
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{url}}/api/dashboard/revenue-data/?type=monthly"
+  params:
+    - name: type
+      value: monthly
+      type: query
+  body:
+    type: text
+    data: "{\r
+
+      \    \"email\": \"admin@gmail.com\",\r
+
+      \    \"password\": \"admin@123\",\r
+
+      \    \"user_type\": \"asl\"\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

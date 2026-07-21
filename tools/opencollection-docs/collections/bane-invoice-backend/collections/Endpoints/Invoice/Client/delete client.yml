@@ -1,0 +1,21 @@
+info:
+  name: delete client
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{url}}/api/client/1/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

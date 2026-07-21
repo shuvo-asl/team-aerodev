@@ -1,0 +1,17 @@
+info:
+  name: Delete A Tax Rate
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{url}}/api/tax-rates/8/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,146 @@
+info:
+  name: yearly revenue
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: "{{url}}/api/dashboard/revenue-data/?type=yearly"
+  params:
+    - name: type
+      value: yearly
+      type: query
+  body:
+    type: text
+    data: "{\r
+
+      \    \"email\": \"admin@gmail.com\",\r
+
+      \    \"password\": \"admin@123\",\r
+
+      \    \"user_type\": \"asl\"\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: yearly revenue
+    request:
+      url: "{{url}}/api/dashboard/revenue-data/?type=yearly"
+      method: GET
+      params:
+        - name: type
+          value: yearly
+          type: query
+      body:
+        type: text
+        data: "{\r
+
+          \    \"email\": \"admin@gmail.com\",\r
+
+          \    \"password\": \"admin@123\",\r
+
+          \    \"user_type\": \"asl\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 09 Dec 2025 09:49:03 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "445"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: X-XSS-Protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Yearly Revenue successfully fetched",
+              "data": {
+                  "result": {
+                      "January": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "February": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "March": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "April": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "May": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "June": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "July": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "August": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "September": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "October": {
+                          "paid": 0,
+                          "sent": 0
+                      },
+                      "November": {
+                          "paid": 20,
+                          "sent": 560
+                      },
+                      "December": {
+                          "paid": 0,
+                          "sent": 0
+                      }
+                  }
+              }
+          }

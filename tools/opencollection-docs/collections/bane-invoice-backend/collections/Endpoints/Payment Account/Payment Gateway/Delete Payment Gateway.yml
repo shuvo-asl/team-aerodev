@@ -1,0 +1,107 @@
+info:
+  name: Delete Payment Gateway
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url}}/api/payment-gateway/2/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: text
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Delete Currency
+    request:
+      url: "{{url}}/api/currency/2/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: text
+        data: ""
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 17:06:29 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "83"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Currency Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }
+  - name: Delete Payment Gateway
+    request:
+      url: "{{url}}/api/payment-gateway/2/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: text
+        data: ""
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Date
+          value: Mon, 02 Sep 2024 11:34:52 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "90"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Payment Gateway Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }

@@ -1,0 +1,93 @@
+info:
+  name: Create Aircraft
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/bas/aircraft/"
+  body:
+    type: json
+    data: |-
+      {
+          "icao24": "773907",
+          "registration_number": "SH-ABC ",
+          "operator_id": 2934,
+          "aircraft_type_id": 10
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Aircraft - Success
+    request:
+      url: "{{url}}/api/bas/aircraft/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "icao24": "773907",
+              "registration_number": "SH-ABC ",
+              "operator_id": 2934,
+              "aircraft_type_id": 10
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 09 Apr 2026 05:23:08 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "247"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Aircraft created successfully",
+              "data": {
+                  "result": {
+                      "id": 4820,
+                      "icao24": "773907",
+                      "registration_number": "SH-ABC",
+                      "operator_id": 2934,
+                      "operator_name": "Air Antilles",
+                      "aircraft_type_id": 10,
+                      "aircraft_type_name": "BD700-1A10"
+                  }
+              }
+          }

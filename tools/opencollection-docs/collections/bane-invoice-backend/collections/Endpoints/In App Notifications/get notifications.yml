@@ -1,0 +1,223 @@
+info:
+  name: get notifications
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/in-app-notifications?is_read=false"
+  params:
+    - name: is_read
+      value: "false"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get read notifications
+    request:
+      url: "{{url}}/api/in-app-notifications?is_read=true"
+      method: GET
+      params:
+        - name: is_read
+          value: "true"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 13 May 2025 07:58:11 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "222"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "In App Notification Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 8,
+                          "notification_type": "new_comment",
+                          "message": "A new comment was added in Ticket TCK-00025",
+                          "object_id": 25,
+                          "is_read": true
+                      }
+                  ]
+              }
+          }
+  - name: get unread notifications
+    request:
+      url: "{{url}}/api/in-app-notifications?is_read=false"
+      method: GET
+      params:
+        - name: is_read
+          value: "false"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 13 May 2025 07:59:43 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "223"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "In App Notification Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 7,
+                          "notification_type": "new_comment",
+                          "message": "A new comment was added in Ticket TCK-00025",
+                          "object_id": 14,
+                          "is_read": false
+                      }
+                  ]
+              }
+          }
+  - name: get all notifications
+    request:
+      url: "{{url}}/api/in-app-notifications"
+      method: GET
+      params:
+        - name: is_read
+          value: "false"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 13 May 2025 07:59:55 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "352"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "In App Notification Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 8,
+                          "notification_type": "new_comment",
+                          "message": "A new comment was added in Ticket TCK-00025",
+                          "object_id": 25,
+                          "is_read": true
+                      },
+                      {
+                          "id": 7,
+                          "notification_type": "new_comment",
+                          "message": "A new comment was added in Ticket TCK-00025",
+                          "object_id": 14,
+                          "is_read": false
+                      }
+                  ]
+              }
+          }
+
+docs: |-
+  Retrieve a list of in-app notifications for the authenticated user.
+
+  ---
+
+  #### 🔹 Query Parameters
+
+  | Parameter | Type | Description | Required | Example |
+  | --- | --- | --- | --- | --- |
+  | `is_read` | boolean | Filter notifications by read status. | No | `true` or `false` |
+
+  #### 📥 Example Requests
+
+  - **Get all notifications:  
+      **`GET {{url}}/api/in-app-notifications`
+      
+  - Get only read notifications:  
+      `GET {{url}}/api/in-app-notifications?is_read=true`
+      
+  - **Get only unread notifications:  
+      **`GET {{url}}/api/in-app-notifications?is_read=false`
+      
+
+  ``` json
+  ✅ Successful Response
+  {
+    "status": "success",
+    "message": "In App Notification Successfully Fetched",
+    "data": {
+      "result": [
+        {
+          "id": 8,
+          "notification_type": "new_comment",
+          "message": "A new comment was added in Ticket TCK-00025",
+          "object_id": 25,
+          "is_read": true
+        }
+      ]
+    }
+  }
+   ```

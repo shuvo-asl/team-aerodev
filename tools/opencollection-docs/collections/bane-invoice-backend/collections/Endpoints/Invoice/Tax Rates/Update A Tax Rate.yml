@@ -1,0 +1,105 @@
+info:
+  name: Update A Tax Rate
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{url}}/api/tax-rates/11/"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"name\": \"Sales Exempt 3\",\r
+
+      \    \"rate\": 0,\r
+
+      \    \"source\": \"Custom\",\r
+
+      \    \"is_active\": true,\r
+
+      \    \"default\": false,\r
+
+      \    \"mapped_xero_tax_rate\": 13\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update A Tax Rate
+    request:
+      url: "{{url}}/api/tax-rates/7/"
+      method: PATCH
+      body:
+        type: json
+        data: "{\r
+
+          \    \"company\": 1,\r
+
+          \    \"name\": \"Sales Exempt mapped\",\r
+
+          \    \"rate\": 0,\r
+
+          \    \"source\": \"Bane\",\r
+
+          \    \"is_active\": true,\r
+
+          \    \"others\": {},\r
+
+          \    \"default\": false,\r
+
+          \    \"mapped_xero_tax_rate\": 2\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 17 Jun 2025 10:04:01 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "227"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Tax Rate successfully updated",
+              "data": {
+                  "result": {
+                      "id": 7,
+                      "company": 1,
+                      "name": "Sales Exempt mapped",
+                      "rate": 0,
+                      "source": "Bane",
+                      "is_active": true,
+                      "others": {},
+                      "default": false,
+                      "mapped_xero_tax_rate": 2
+                  }
+              }
+          }

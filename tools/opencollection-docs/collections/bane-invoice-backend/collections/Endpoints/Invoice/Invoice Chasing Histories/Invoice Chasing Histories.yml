@@ -1,0 +1,99 @@
+info:
+  name: Invoice Chasing Histories
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/invoice-chasing-history?invoice_id=33"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: limit
+      value: "2"
+      type: query
+      disabled: true
+    - name: invoice_id
+      value: "33"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Single Chasing Rule with Items
+    request:
+      url: "{{url}}/api/chasing_rule_details/1/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "517"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "id": 1,
+                  "name": "rule 1",
+                  "reminder_time": "12:00:00",
+                  "interest_calculate_time": "06:00:00",
+                  "calculate_interest_daily": false,
+                  "daily_interest_rate": 0,
+                  "default": true,
+                  "items": [
+                      {
+                          "id": 1,
+                          "day": 2,
+                          "interest_rate": 10,
+                          "schedule_type": "before_due",
+                          "chasing_rule_id": 1,
+                          "choose_template": 1
+                      },
+                      {
+                          "id": 2,
+                          "day": 2,
+                          "interest_rate": 10,
+                          "schedule_type": "before_due",
+                          "chasing_rule_id": 1,
+                          "choose_template": 1
+                      },
+                      {
+                          "id": 3,
+                          "day": 2,
+                          "interest_rate": 10,
+                          "schedule_type": "before_due",
+                          "chasing_rule_id": 1,
+                          "choose_template": 1
+                      }
+                  ]
+              }
+          }

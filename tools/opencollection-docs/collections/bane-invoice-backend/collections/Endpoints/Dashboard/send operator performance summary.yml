@@ -1,0 +1,31 @@
+info:
+  name: send operator performance summary
+  type: http
+  seq: 15
+
+http:
+  method: POST
+  url: "{{url}}/api/dashboard/operator-performance-summary/email/"
+  body:
+    type: json
+    data: |-
+      {
+          "email_subject": "test operator performance2",
+          "email_body": "sample body",
+          "include_invoice_attachments": false,
+          "include_auto_generated_invoice": false,
+          "include_payment_url": false,
+          "send_myself_a_copy": false,
+          "to": ["kamrul@asl.aero"],
+          "start_date": "2026-05-01",
+          "end_date": "2026-05-30"
+        }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

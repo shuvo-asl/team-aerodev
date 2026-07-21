@@ -1,0 +1,75 @@
+info:
+  name: get all schedule email
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/email_schedule"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get all schedule email
+    request:
+      url: "{{url}}/api/email_schedule"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "209"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": [
+                  {
+                      "id": 1,
+                      "schedule_month": "*",
+                      "schedule_day": "*",
+                      "schedule_hour": "*",
+                      "schedule_minute": "*",
+                      "mail_subject": "test",
+                      "text": "test sms",
+                      "send_to_all": false,
+                      "active": true,
+                      "receiver": [
+                          1,
+                          2,
+                          3
+                      ]
+                  }
+              ]
+          }

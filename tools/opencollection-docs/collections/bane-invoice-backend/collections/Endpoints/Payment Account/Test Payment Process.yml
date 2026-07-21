@@ -1,0 +1,26 @@
+info:
+  name: Test Payment Process
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/api/payment-process/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "gateway_name" : "ebl",
+          "amount": 1000,
+          "currency": "BDT"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

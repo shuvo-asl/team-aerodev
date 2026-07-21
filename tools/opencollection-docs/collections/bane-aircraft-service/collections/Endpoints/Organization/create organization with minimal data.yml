@@ -1,0 +1,336 @@
+info:
+  name: create organization with minimal data
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/organization/quick-create"
+  body:
+    type: json
+    data: |-
+      {
+          "short_code": "AWA",
+          "email": "eservation@airastra.com",
+          "name": "Air Astra"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: email field is required otherwise 400
+    request:
+      url: "{{url}}/organization/quick-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "name": "test op"
+          }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Wed, 18 Feb 2026 04:34:34 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "120"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": null,
+              "errors": {
+                  "email": "Missing data for required field."
+              },
+              "message": "Validation Error"
+          }
+  - name: create organization with email only
+    request:
+      url: "{{url}}/organization/quick-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "email": "email1@gmail.com"
+          }
+    response:
+      status: 201
+      statusText: CREATED
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Wed, 18 Feb 2026 04:35:51 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "812"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "address_line_1": null,
+                  "address_line_2": null,
+                  "air_crafts": [],
+                  "alternate_aircraft_registrations": null,
+                  "base_currency_id": null,
+                  "business_phone": null,
+                  "business_phone_extension": null,
+                  "city_id": null,
+                  "comment": "",
+                  "created_by": {
+                      "user_name": "admin"
+                  },
+                  "created_by_id": 1,
+                  "email": "email1@gmail.com",
+                  "fax_number": null,
+                  "iata": null,
+                  "icao": null,
+                  "id": 14716,
+                  "is_blacklisted": false,
+                  "is_deleted": false,
+                  "logo": null,
+                  "name": null,
+                  "ospl_no": null,
+                  "postal_code": null,
+                  "short_code": null,
+                  "type": "Operator",
+                  "updated_by": {
+                      "user_name": "admin"
+                  },
+                  "updated_by_id": 1,
+                  "website": null
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }
+  - name: create organization with minimal data
+    request:
+      url: "{{url}}/organization/quick-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+                  "address_line_1": "address_line_1",
+                  "address_line_2": "address_line_2",
+                  "alternate_aircraft_registrations": "uegyfigf",
+                  "business_phone": "+8801558250668",
+                  "business_phone_extension": "+8801",
+                  "comment": "sample ",
+                  "email": "email3@gmail.com",
+                  "fax_number": "09388884",
+                  "iata": "ion",
+                  "icao": "ipejfr",
+                  "name": "op name",
+                  "ospl_no": "9833",
+                  "postal_code": "9993",
+                  "short_code": "jko",
+                  "website": "https://twitter.com"
+              }
+    response:
+      status: 201
+      statusText: CREATED
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Wed, 18 Feb 2026 04:41:05 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "902"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "address_line_1": "address_line_1",
+                  "address_line_2": "address_line_2",
+                  "air_crafts": [],
+                  "alternate_aircraft_registrations": "uegyfigf",
+                  "base_currency_id": null,
+                  "business_phone": "+8801558250668",
+                  "business_phone_extension": "+8801",
+                  "city_id": null,
+                  "comment": "sample ",
+                  "created_by": {
+                      "user_name": "admin"
+                  },
+                  "created_by_id": 1,
+                  "email": "email3@gmail.com",
+                  "fax_number": "09388884",
+                  "iata": "ion",
+                  "icao": "ipejfr",
+                  "id": 14717,
+                  "is_blacklisted": false,
+                  "is_deleted": false,
+                  "logo": null,
+                  "name": "op name",
+                  "ospl_no": "9833",
+                  "postal_code": "9993",
+                  "short_code": "jko",
+                  "type": "Operator",
+                  "updated_by": {
+                      "user_name": "admin"
+                  },
+                  "updated_by_id": 1,
+                  "website": "https://twitter.com"
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }
+  - name: short code must be unique
+    request:
+      url: "{{url}}/organization/quick-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "short_code": "SAA",
+              "email": "email10@gmail.com"
+          }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Wed, 18 Feb 2026 04:42:37 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "138"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": null,
+              "errors": {
+                  "short_code": "Operator with given short code already exists"
+              },
+              "message": "Validation Error"
+          }
+  - name: email must be unique
+    request:
+      url: "{{url}}/organization/quick-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "short_code": "SAA1",
+              "email": "email@gmail.com"
+          }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Wed, 18 Feb 2026 04:43:14 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "108"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": null,
+              "errors": {
+                  "email": "Email must be unique"
+              },
+              "message": "Validation Error"
+          }
+  - name: type must be valid if provided
+    request:
+      url: "{{url}}/organization/quick-create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+                  "address_line_1": "address_line_1",
+                  "address_line_2": "address_line_2",
+                  "alternate_aircraft_registrations": "uegyfigf",
+                  "business_phone": "+8801558250668",
+                  "business_phone_extension": "+8801",
+                  "comment": "sample ",
+                  "email": "email9@gmail.com",
+                  "fax_number": "09388884",
+                  "iata": "ion",
+                  "icao": "ipejfr",
+                  "name": "op name",
+                  "ospl_no": "9833",
+                  "postal_code": "9993",
+                  "short_code": "jko1",
+                  "website": "https://twitter.com",
+                  "type": "Operator5"
+              }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.19
+        - name: Date
+          value: Wed, 18 Feb 2026 04:52:39 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "193"
+        - name: Access-Control-Allow-Origin
+          value: "*"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": null,
+              "errors": {
+                  "type": "Must be one of: Operator, Principle, OSP Agent, Agent, Security Agency, Aviation Authority, Miscellaneous."
+              },
+              "message": "Validation Error"
+          }

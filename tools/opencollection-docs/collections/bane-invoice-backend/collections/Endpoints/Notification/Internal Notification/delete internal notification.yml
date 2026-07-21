@@ -1,0 +1,32 @@
+info:
+  name: delete internal notification
+  type: http
+  seq: 12
+
+http:
+  method: DELETE
+  url: "{{url}}/api/notifications/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+    data:
+      - name: message
+        type: text
+        value: test notification
+      - name: action_model
+        type: text
+        value: test
+        disabled: true
+      - name: action_object
+        type: text
+        value: "1"
+        disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

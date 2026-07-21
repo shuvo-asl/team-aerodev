@@ -1,0 +1,146 @@
+info:
+  name: Create registration exception group
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/api/aircraft-registration-exception/"
+  body:
+    type: json
+    data: |-
+      {
+          "note": "These aircrafts are VIP",
+          "registrations": ["TEST01", "TEST02"]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create registration exception group
+    request:
+      url: "{{url}}/api/aircraft-registration-exception/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "note": "These aircrafts are VIP",
+              "registrations": ["TEST03", "TEST04"]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 08 Mar 2026 06:27:38 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "239"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Registration Exception Group successfully created",
+              "data": {
+                  "result": {
+                      "id": 2,
+                      "note": "These aircrafts are VIP",
+                      "created_at": "2026-03-08T06:27:38.501367Z",
+                      "updated_at": null,
+                      "registrations": [
+                          "TEST04",
+                          "TEST03"
+                      ]
+                  }
+              }
+          }
+  - name: Create registration exception group registration list can not be empty
+    request:
+      url: "{{url}}/api/aircraft-registration-exception/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "note": "These aircrafts are VIP",
+              "registrations": []
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 08 Mar 2026 07:01:14 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "147"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Registration Exception Group Failed To Create",
+              "error": null,
+              "errors": {
+                  "registrations": "This list may not be empty."
+              }
+          }

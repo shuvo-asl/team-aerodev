@@ -1,0 +1,76 @@
+info:
+  name: add additional email for a client
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/clients-additional-email/"
+  body:
+    type: json
+    data: |-
+      {
+          "client": 40, 
+          "emails": ["client7@gmail.com"]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: add additional email for a client
+    request:
+      url: "{{url}}/api/clients-additional-email/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "client": 40, 
+              "emails": ["client7@gmail.com"]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 21 May 2025 05:22:04 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "137"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Client's Additional Email successfully created",
+              "data": {
+                  "result": [
+                      {
+                          "id": 10,
+                          "email": "client7@gmail.com"
+                      }
+                  ]
+              }
+          }

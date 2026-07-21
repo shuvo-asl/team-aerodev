@@ -1,0 +1,210 @@
+info:
+  name: create tax rate mapping
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/tax-rate-mapping/2/"
+  body:
+    type: json
+    data: |-
+      [
+          {
+              "from_tax_rate": 1,
+              "to_tax_rate": 21
+          },
+          {
+              "from_tax_rate": 2,
+              "to_tax_rate": 223
+          }
+      ]
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/tax-rate-mapping/2/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          [
+              {
+                  "from_tax_rate": 1,
+                  "to_tax_rate": 21
+              },
+              {
+                  "from_tax_rate": 2,
+                  "to_tax_rate": 22
+              }
+          ]
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 02 Sep 2025 09:48:16 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "242"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Tax rate mapping successfully created",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "from_company": 1,
+                          "to_company": 2,
+                          "from_tax_rate": 1,
+                          "to_tax_rate": 21
+                      },
+                      {
+                          "id": 2,
+                          "from_company": 1,
+                          "to_company": 2,
+                          "from_tax_rate": 2,
+                          "to_tax_rate": 22
+                      }
+                  ]
+              }
+          }
+  - name: if same tax rate is tried to map to multiple tax rates
+    request:
+      url: "{{url}}/api/tax-rate-mapping/2/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          [
+              {
+                  "from_tax_rate": 1,
+                  "to_tax_rate": 21
+              },
+              {
+                  "from_tax_rate": 1,
+                  "to_tax_rate": 22
+              }
+          ]
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 03 Sep 2025 04:08:59 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "221"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed to create Tax rate mapping",
+              "error": null,
+              "errors": [
+                  {
+                      "from_tax_rate": "A tax rate can be mapped to only one tax rate"
+                  },
+                  {
+                      "from_tax_rate": "A tax rate can be mapped to only one tax rate"
+                  }
+              ]
+          }
+  - name: if invalid pk is provided
+    request:
+      url: "{{url}}/api/tax-rate-mapping/2/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          [
+              {
+                  "from_tax_rate": 1,
+                  "to_tax_rate": 21
+              },
+              {
+                  "from_tax_rate": 2,
+                  "to_tax_rate": 223
+              }
+          ]
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 03 Sep 2025 04:09:45 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "154"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed to create Tax rate mapping",
+              "error": null,
+              "errors": [
+                  {},
+                  {
+                      "to_tax_rate": "Invalid pk \"223\" - object does not exist."
+                  }
+              ]
+          }

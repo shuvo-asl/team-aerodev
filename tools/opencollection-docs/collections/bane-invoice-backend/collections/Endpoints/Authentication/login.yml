@@ -1,0 +1,98 @@
+info:
+  name: login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/auth/"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"email\": \"devs@aerogon.aero\",\r
+
+      \    \"password\": \"devs@2026\",\r
+
+      \    \"user_type\": \"asl\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: login
+    request:
+      url: "{{url}}/api/auth/"
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \    \"email\": \"admin@gmail.com\",\r
+
+          \    \"password\": \"admin\",\r
+
+          \    \"user_type\": \"asl\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Mon, 18 Nov 2024 04:42:28 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1008"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Login Successful",
+              "data": {
+                  "result": {
+                      "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMTkzMzc0OCwiaWF0IjoxNzMxOTA0OTQ4LCJqdGkiOiJkNDdhYWRjMGViODE0ZWFmYTQyMDRiYzdkMzkxMDgyNSIsInVzZXJfaWQiOjN9.A7T7gtw_F54qVJldzwO8ertFEEFmsHH5dbUjln1xehk",
+                      "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxOTMzNzQ4LCJpYXQiOjE3MzE5MDQ5NDgsImp0aSI6IjU2MGE1NDNiZWQwNjRjMjRhYzM2MzRlNDI0YzI2ZTJhIiwidXNlcl9pZCI6M30.lI17kvTBfCKZ4RCUtAokbcMLAHdcxcRKqTv7A8mFmZg",
+                      "id": 3,
+                      "username": "admin",
+                      "first_name": "Admin",
+                      "last_name": "admin",
+                      "email": "admin@gmail.com",
+                      "phone": "+8801684806728",
+                      "user_type": "asl",
+                      "profile_image": "http://localhost:5011/api/media/images/profile_images/2024/09/britian.png",
+                      "default_currency": {
+                          "id": 1,
+                          "prefix": "$",
+                          "short_key": "BDT",
+                          "current_rate": 1,
+                          "default": true,
+                          "name": "TAKA",
+                          "flag": "http://localhost:5011/api/media/bdflag.jpg",
+                          "is_active": true
+                      },
+                      "app_version": "15",
+                      "app_name": "Aeronautical Billing"
+                  }
+              }
+          }

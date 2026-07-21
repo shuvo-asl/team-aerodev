@@ -1,0 +1,1085 @@
+info:
+  name: Get All chart of accounts except bank
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{url}}/api/account/?exclude_banks=true"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+    - name: ""
+      value: ""
+      disabled: true
+  params:
+    - name: code
+      value: abc
+      type: query
+      disabled: true
+    - name: is_active
+      value: "true"
+      type: query
+      disabled: true
+    - name: limit
+      value: "10"
+      type: query
+      disabled: true
+    - name: account_type
+      value: bank
+      type: query
+      disabled: true
+    - name: object_name
+      value: bank
+      type: query
+      disabled: true
+    - name: exclude_banks
+      value: "true"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get All chart of accounts except bank
+    request:
+      url: "{{url}}/api/account/?exclude_banks=true"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+        - name: ""
+          value: ""
+          disabled: true
+      params:
+        - name: code
+          value: abc
+          type: query
+          disabled: true
+        - name: is_active
+          value: "true"
+          type: query
+          disabled: true
+        - name: limit
+          value: "10"
+          type: query
+          disabled: true
+        - name: account_type
+          value: bank
+          type: query
+          disabled: true
+        - name: object_name
+          value: bank
+          type: query
+          disabled: true
+        - name: exclude_banks
+          value: "true"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 17 Nov 2024 07:47:46 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "24162"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chart Of Account Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 107,
+                          "account_name": "Sales",
+                          "code": "200",
+                          "deleted_at": null,
+                          "created_at": "2024-11-06T14:03:59.883687+06:00",
+                          "updated_at": "2024-11-11T09:59:11.985658+06:00",
+                          "account_type": "REVENUE",
+                          "details": "Income from any normal business activity",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 6,
+                          "account_name": "Other Revenue",
+                          "code": "260",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.002687+06:00",
+                          "updated_at": "2024-11-11T09:59:12.034376+06:00",
+                          "account_type": "REVENUE",
+                          "details": "Any other income that does not relate to normal business activities and is not recurring",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 7,
+                          "account_name": "Interest Income",
+                          "code": "270",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.029635+06:00",
+                          "updated_at": "2024-11-11T09:59:12.072945+06:00",
+                          "account_type": "REVENUE",
+                          "details": "Interest income",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 67,
+                          "account_name": "Purchases",
+                          "code": "300",
+                          "deleted_at": null,
+                          "created_at": "2024-10-08T15:51:19.407318+06:00",
+                          "updated_at": "2024-10-15T11:14:33.353455+06:00",
+                          "account_type": "DIRECTCOSTS",
+                          "details": "Goods purchased with the intention of selling these to customers",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 8,
+                          "account_name": "Cost of Goods Sold",
+                          "code": "310",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.042824+06:00",
+                          "updated_at": "2024-11-11T09:59:12.092743+06:00",
+                          "account_type": "DIRECTCOSTS",
+                          "details": "Cost of goods sold by the business",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 9,
+                          "account_name": "Advertising",
+                          "code": "400",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.057334+06:00",
+                          "updated_at": "2024-11-11T09:59:12.113476+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred for advertising while trying to increase sales",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 10,
+                          "account_name": "Bank Fees",
+                          "code": "404",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.073269+06:00",
+                          "updated_at": "2024-11-11T09:59:12.134018+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Fees charged by your bank for transactions regarding your bank account(s).",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 11,
+                          "account_name": "Cleaning",
+                          "code": "408",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.090378+06:00",
+                          "updated_at": "2024-11-11T09:59:12.155047+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred for cleaning  business property.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 12,
+                          "account_name": "Consulting & Accounting",
+                          "code": "412",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.107872+06:00",
+                          "updated_at": "2024-11-11T09:59:12.179278+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses related to paying consultants",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 13,
+                          "account_name": "Depreciation",
+                          "code": "416",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.125865+06:00",
+                          "updated_at": "2024-11-11T09:59:12.199673+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "The amount of the asset's cost (based on the useful life) that was consumed during the period",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 14,
+                          "account_name": "Entertainment",
+                          "code": "420",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.142701+06:00",
+                          "updated_at": "2024-11-11T09:59:12.221423+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses paid by company for the business but are not deductable for income tax purposes.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 15,
+                          "account_name": "Freight & Courier",
+                          "code": "425",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.159471+06:00",
+                          "updated_at": "2024-11-11T09:59:12.239383+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred on courier & freight costs",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 16,
+                          "account_name": "General Expenses",
+                          "code": "429",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.177188+06:00",
+                          "updated_at": "2024-11-11T09:59:12.256203+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "General expenses related to the running of the business.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 17,
+                          "account_name": "Insurance",
+                          "code": "433",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.193691+06:00",
+                          "updated_at": "2024-11-11T09:59:12.272842+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred for insuring the business' assets",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 18,
+                          "account_name": "Interest Expense",
+                          "code": "437",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.210305+06:00",
+                          "updated_at": "2024-11-11T09:59:12.288456+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Any interest expenses paid to your tax authority, business bank accounts or credit card accounts.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 19,
+                          "account_name": "Legal expenses",
+                          "code": "441",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.227877+06:00",
+                          "updated_at": "2024-11-11T09:59:12.306539+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred on any legal matters",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 20,
+                          "account_name": "Light, Power, Heating",
+                          "code": "445",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.243421+06:00",
+                          "updated_at": "2024-11-11T09:59:12.323365+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred for lighting, powering or heating the premises",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 21,
+                          "account_name": "Motor Vehicle Expenses",
+                          "code": "449",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.261092+06:00",
+                          "updated_at": "2024-11-11T09:59:12.341340+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred on the running of company motor vehicles",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 22,
+                          "account_name": "Office Expenses",
+                          "code": "453",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.278810+06:00",
+                          "updated_at": "2024-11-11T09:59:12.359670+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "General expenses related to the running of the business office.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 23,
+                          "account_name": "Printing & Stationery",
+                          "code": "461",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.298773+06:00",
+                          "updated_at": "2024-11-11T09:59:12.382969+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred by the entity as a result of printing and stationery",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 24,
+                          "account_name": "Rent",
+                          "code": "469",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.316057+06:00",
+                          "updated_at": "2024-11-11T09:59:12.403045+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "The payment to lease a building or area.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 25,
+                          "account_name": "Repairs and Maintenance",
+                          "code": "473",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.330418+06:00",
+                          "updated_at": "2024-11-11T09:59:12.423157+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred on a damaged or run down asset that will bring the asset back to its original condition.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 26,
+                          "account_name": "Wages and Salaries",
+                          "code": "477",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.346857+06:00",
+                          "updated_at": "2024-11-11T09:59:12.440272+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Payment to employees in exchange for their resources",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 27,
+                          "account_name": "Superannuation",
+                          "code": "478",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.362910+06:00",
+                          "updated_at": "2024-11-11T09:59:12.457989+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Superannuation contributions",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 28,
+                          "account_name": "Subscriptions",
+                          "code": "485",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.378879+06:00",
+                          "updated_at": "2024-11-11T09:59:12.473506+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "E.g. Magazines, professional bodies",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 29,
+                          "account_name": "Telephone & Internet",
+                          "code": "489",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.396115+06:00",
+                          "updated_at": "2024-11-11T09:59:12.491291+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenditure incurred from any business-related phone calls, phone lines, or internet connections",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 30,
+                          "account_name": "Travel - National",
+                          "code": "493",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.412730+06:00",
+                          "updated_at": "2024-11-11T09:59:12.506409+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred from domestic travel which has a business purpose",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 31,
+                          "account_name": "Travel - International",
+                          "code": "494",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.429855+06:00",
+                          "updated_at": "2024-11-11T09:59:12.521990+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Expenses incurred from international travel which has a business purpose",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 32,
+                          "account_name": "Bank Revaluations",
+                          "code": "497",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.448832+06:00",
+                          "updated_at": "2024-11-11T09:59:12.537184+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Bank account revaluations due for foreign exchange rate changes",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 33,
+                          "account_name": "Unrealised Currency Gains",
+                          "code": "498",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.467393+06:00",
+                          "updated_at": "2024-11-11T09:59:12.552037+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Unrealised currency gains on outstanding items",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 34,
+                          "account_name": "Realised Currency Gains",
+                          "code": "499",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.486507+06:00",
+                          "updated_at": "2024-11-11T09:59:12.567179+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "Gains or losses made due to currency exchange rate changes",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 35,
+                          "account_name": "Income Tax Expense",
+                          "code": "505",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.505011+06:00",
+                          "updated_at": "2024-11-11T09:59:12.582536+06:00",
+                          "account_type": "EXPENSE",
+                          "details": "A percentage of total earnings paid to the government.",
+                          "transaction_type": "expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 36,
+                          "account_name": "Accounts Receivable",
+                          "code": "610",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.525048+06:00",
+                          "updated_at": "2024-11-11T09:59:12.598239+06:00",
+                          "account_type": "CURRENT",
+                          "details": "Outstanding invoices the company has issued out to the client but has not yet received in cash at balance date.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 37,
+                          "account_name": "Prepayments",
+                          "code": "620",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.545193+06:00",
+                          "updated_at": "2024-11-11T09:59:12.616534+06:00",
+                          "account_type": "CURRENT",
+                          "details": "An expenditure that has been paid for in advance.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 38,
+                          "account_name": "Inventory",
+                          "code": "630",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.560086+06:00",
+                          "updated_at": "2024-11-11T09:59:12.633611+06:00",
+                          "account_type": "INVENTORY",
+                          "details": "Value of tracked items for resale.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 39,
+                          "account_name": "Office Equipment",
+                          "code": "710",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.576824+06:00",
+                          "updated_at": "2024-11-11T09:59:12.650433+06:00",
+                          "account_type": "FIXED",
+                          "details": "Office equipment that is owned and controlled by the business",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 40,
+                          "account_name": "Less Accumulated Depreciation on Office Equipment",
+                          "code": "711",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.592233+06:00",
+                          "updated_at": "2024-11-11T09:59:12.667989+06:00",
+                          "account_type": "FIXED",
+                          "details": "The total amount of office equipment cost that has been consumed by the entity (based on the useful life)",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 41,
+                          "account_name": "Computer Equipment",
+                          "code": "720",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.609276+06:00",
+                          "updated_at": "2024-11-11T09:59:12.687966+06:00",
+                          "account_type": "FIXED",
+                          "details": "Computer equipment that is owned and controlled by the business",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 42,
+                          "account_name": "Less Accumulated Depreciation on Computer Equipment",
+                          "code": "721",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.626253+06:00",
+                          "updated_at": "2024-11-11T09:59:12.706236+06:00",
+                          "account_type": "FIXED",
+                          "details": "The total amount of computer equipment cost that has been consumed by the business (based on the useful life)",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 43,
+                          "account_name": "Accounts Payable",
+                          "code": "800",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.643043+06:00",
+                          "updated_at": "2024-11-11T09:59:12.724682+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "Outstanding invoices the company has received from suppliers but has not yet paid at balance date",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 44,
+                          "account_name": "Unpaid Expense Claims",
+                          "code": "801",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.660440+06:00",
+                          "updated_at": "2024-11-11T09:59:12.740431+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "Expense claims typically made by employees/shareholder employees still outstanding.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 45,
+                          "account_name": "Wages Payable",
+                          "code": "803",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.677692+06:00",
+                          "updated_at": "2024-11-11T09:59:12.757940+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "Xero automatically updates this account for payroll entries created using Payroll and will store the payroll amount to be paid to the employee for the pay run. This account enables you to maintain separate accounts for employee Wages Payable amounts and Accounts Payable amounts",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 108,
+                          "account_name": "Sales Tax",
+                          "code": "820",
+                          "deleted_at": null,
+                          "created_at": "2024-11-06T14:04:00.808056+06:00",
+                          "updated_at": "2024-11-11T09:59:12.774286+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "The balance in this account represents Sales Tax owing to or from your tax authority. At the end of the tax period, it is this account that should be used to code against either the 'refunds from' or 'payments to' your tax authority that will appear on the bank statement. Xero has been designed to use only one sales tax account to track sales taxes on income and expenses, so there is no need to add any new sales tax accounts to Xero.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 47,
+                          "account_name": "Employee Tax Payable",
+                          "code": "825",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.715111+06:00",
+                          "updated_at": "2024-11-11T09:59:12.790271+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "The amount of tax that has been deducted from wages or salaries paid to employes and is due to be paid",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 48,
+                          "account_name": "Superannuation Payable",
+                          "code": "826",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.732168+06:00",
+                          "updated_at": "2024-11-11T09:59:12.804959+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "The amount of superannuation that is due to be paid",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 49,
+                          "account_name": "Income Tax Payable",
+                          "code": "830",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.750187+06:00",
+                          "updated_at": "2024-11-11T09:59:12.820967+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "The amount of income tax that is due to be paid, also resident withholding tax paid on interest received.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 68,
+                          "account_name": "Revenue Received in Advance",
+                          "code": "835",
+                          "deleted_at": null,
+                          "created_at": "2024-10-08T15:51:20.392425+06:00",
+                          "updated_at": "2024-10-15T11:14:34.372950+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "When customers pay in advance of work/services.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 50,
+                          "account_name": "Historical Adjustment",
+                          "code": "840",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.769249+06:00",
+                          "updated_at": "2024-11-11T09:59:12.838854+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "For accountant adjustments",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 51,
+                          "account_name": "Suspense",
+                          "code": "850",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.791310+06:00",
+                          "updated_at": "2024-11-11T09:59:12.856249+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "An entry that allows an unknown transaction to be entered, so the accounts can still be worked on in balance and the entry can be dealt with later.",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 69,
+                          "account_name": "Clearing Account",
+                          "code": "855",
+                          "deleted_at": null,
+                          "created_at": "2024-10-08T15:51:20.476840+06:00",
+                          "updated_at": "2024-10-15T11:14:34.444734+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 52,
+                          "account_name": "Rounding",
+                          "code": "860",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.807837+06:00",
+                          "updated_at": "2024-11-11T09:59:12.873330+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "An adjustment entry to allow for rounding",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 53,
+                          "account_name": "Tracking Transfers",
+                          "code": "877",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.824658+06:00",
+                          "updated_at": "2024-11-11T09:59:12.889462+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "Transfers between tracking categories",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 54,
+                          "account_name": "Owner A Drawings",
+                          "code": "880",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.840735+06:00",
+                          "updated_at": "2024-11-11T09:59:12.905867+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "Withdrawals by the owners",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 55,
+                          "account_name": "Owner A Funds Introduced",
+                          "code": "881",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.858433+06:00",
+                          "updated_at": "2024-11-11T09:59:12.923032+06:00",
+                          "account_type": "CURRLIAB",
+                          "details": "Funds contributed by the owner",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 56,
+                          "account_name": "Loan",
+                          "code": "900",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.875656+06:00",
+                          "updated_at": "2024-11-11T09:59:12.942722+06:00",
+                          "account_type": "TERMLIAB",
+                          "details": "Money that has been borrowed from a creditor",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 57,
+                          "account_name": "Retained Earnings",
+                          "code": "960",
+                          "deleted_at": null,
+                          "created_at": "2024-09-11T11:34:44.892075+06:00",
+                          "updated_at": "2024-11-11T09:59:12.959429+06:00",
+                          "account_type": "EQUITY",
+                          "details": "Do not Use",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      },
+                      {
+                          "id": 109,
+                          "account_name": "Owner A Share Capital",
+                          "code": "970",
+                          "deleted_at": null,
+                          "created_at": "2024-11-06T14:04:01.094566+06:00",
+                          "updated_at": "2024-11-11T09:59:12.976343+06:00",
+                          "account_type": "EQUITY",
+                          "details": "The value of shares purchased by the shareholders",
+                          "transaction_type": "non_expense",
+                          "source": "xero",
+                          "account_number": "",
+                          "currency_code": "",
+                          "bank_account_type": "",
+                          "bank_name": "",
+                          "is_active": true
+                      }
+                  ]
+              }
+          }

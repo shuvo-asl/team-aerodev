@@ -1,0 +1,71 @@
+info:
+  name: Retrieve User
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/api/users/249/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Retrieve User
+    request:
+      url: "{{url}}/api/users/10/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 04:57:13 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "410"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "id": 10,
+              "groups": [],
+              "last_login": null,
+              "is_superuser": false,
+              "first_name": "ismail",
+              "last_name": "titas",
+              "is_staff": false,
+              "is_active": false,
+              "date_joined": "2024-03-24T11:31:27+06:00",
+              "username": "trinity",
+              "user_type": "asl",
+              "email": "trinity@gmail.com",
+              "profile_image": null,
+              "phone": "+8801558970484",
+              "created_at": "2024-03-24T11:31:44.234352+06:00",
+              "updated_at": "2024-09-01T10:52:46.095007+06:00",
+              "user_permissions": []
+          }

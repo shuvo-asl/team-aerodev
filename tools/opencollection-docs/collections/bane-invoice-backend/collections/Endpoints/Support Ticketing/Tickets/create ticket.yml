@@ -1,0 +1,232 @@
+info:
+  name: create ticket
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/api/tickets/"
+  body:
+    type: multipart-form
+    data:
+      - name: issue_type
+        type: text
+        value: "1"
+      - name: subject
+        type: text
+        value: example subject
+      - name: description
+        type: text
+        value: example description
+      - name: attachments[0]
+        type: file
+        value:
+          - postman-cloud:///1ef7eff2-7e20-49a0-aa44-c41b878eb3de
+      - name: attachments[1]
+        type: file
+        value:
+          - /home/asl/Pictures/logo.jpeg
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create ticket
+    request:
+      url: "{{url}}/api/tickets/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: issue_type
+            type: text
+            value: "1"
+          - name: subject
+            type: text
+            value: example subject
+          - name: description
+            type: text
+            value: example description
+          - name: attachments[0]
+            type: file
+            value:
+              - postman-cloud:///1ef7eff2-7e20-49a0-aa44-c41b878eb3de
+          - name: attachments[1]
+            type: file
+            value:
+              - /home/asl/Pictures/logo.jpeg
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 15 May 2025 03:53:01 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "349"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Ticket successfully created",
+              "data": {
+                  "result": {
+                      "id": 30,
+                      "reference_id": "TCK-00030",
+                      "issue_type": 1,
+                      "subject": "example subject",
+                      "status": "pending",
+                      "priority": "medium",
+                      "client": 19,
+                      "assigned_to": null,
+                      "created_at": "2025-05-15T09:53:01.467603+06:00",
+                      "issue_type_name": "Payment",
+                      "client_name": "AIR OP",
+                      "assigned_to_name": ""
+                  }
+              }
+          }
+  - name: create ticket
+    request:
+      url: "{{url}}/api/tickets/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: issue_type
+            type: text
+            value: "1"
+          - name: subject
+            type: text
+            value: example subject
+          - name: description
+            type: text
+            value: example description
+          - name: attachments[0]
+            type: file
+            value:
+              - postman-cloud:///1ef7eff2-7e20-49a0-aa44-c41b878eb3de
+          - name: attachments[1]
+            type: file
+            value:
+              - /home/asl/Pictures/annie-spratt-BAEyXAaBm_Q-unsplash.jpg
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 15 May 2025 03:58:37 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "140"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Ticket Failed To Create",
+              "error": null,
+              "errors": {
+                  "attachments": {
+                      "attachments": "File size exceeds 2 MB limit"
+                  }
+              }
+          }
+  - name: create ticket
+    request:
+      url: "{{url}}/api/tickets/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: issue_type
+            type: text
+            value: "1"
+          - name: subject
+            type: text
+            value: example subject
+          - name: description
+            type: text
+            value: example description
+          - name: attachments[0]
+            type: file
+            value:
+              - postman-cloud:///1ef7eff2-7e20-49a0-aa44-c41b878eb3de
+          - name: attachments[1]
+            type: file
+            value:
+              - /home/asl/Documents/projects/bane-invoice-backend/main/settings.py
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 15 May 2025 04:01:44 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "172"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Ticket Failed To Create",
+              "error": null,
+              "errors": {
+                  "attachments": {
+                      "attachments": "Unsupported file type. Supported types: pdf, jpeg, jpg, png."
+                  }
+              }
+          }

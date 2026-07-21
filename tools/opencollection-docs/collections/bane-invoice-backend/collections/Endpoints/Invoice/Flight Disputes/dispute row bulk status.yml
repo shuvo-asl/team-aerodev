@@ -1,0 +1,25 @@
+info:
+  name: dispute row bulk status
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{url}}/api/dispute-flights/bulk-status/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    json: |-
+      {
+        "row_ids": [1, 2],
+        "review_status": "on_review"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

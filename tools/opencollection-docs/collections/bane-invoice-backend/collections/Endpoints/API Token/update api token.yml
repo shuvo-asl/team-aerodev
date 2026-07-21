@@ -1,0 +1,73 @@
+info:
+  name: update api token
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api/api-token/1/"
+  body:
+    type: json
+    data: |-
+      {
+          "is_active": false
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/api-token/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "is_active": false
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Thu, 30 Jan 2025 05:30:48 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "205"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "API Token successfully updated",
+              "data": {
+                  "result": {
+                      "ip": "192.168.90.234",
+                      "token": "7bPu586pU01xQrsL",
+                      "is_active": false,
+                      "expires_at": "2025-02-22T11:27:02.303619+06:00",
+                      "id": 1
+                  }
+              }
+          }

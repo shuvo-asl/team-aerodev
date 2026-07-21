@@ -1,0 +1,201 @@
+info:
+  name: void a flight
+  type: http
+  seq: 16
+
+http:
+  method: PATCH
+  url: "{{url}}/api/flight/void/"
+  body:
+    type: json
+    data: |-
+      {
+        "flight_ids": [8,80,14],
+        "notes": "Reason for voiding this/these flight(s)"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Validation with No Flight
+    request:
+      url: "{{url}}/api/flight/void/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "flight_ids": [],
+            "notes": "Reason for voiding this/these flight(s)"
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sat, 07 Mar 2026 05:21:46 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "142"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: PATCH, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Flight status failed to void",
+              "error": null,
+              "errors": {
+                  "flight_ids": [
+                      "At least one flight ID must be provided."
+                  ]
+              }
+          }
+  - name: Validation with flight already billing
+    request:
+      url: "{{url}}/api/flight/void/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "flight_ids": [1,15,80],
+            "notes": "Reason for voiding this/these flight(s)"
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sat, 07 Mar 2026 05:23:09 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "180"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: PATCH, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Flight status failed to void",
+              "error": "[ErrorDetail(string='Flights [1, 15] cannot be voided due to status: billing', code='invalid')]",
+              "errors": null
+          }
+  - name: Successfully voided incomplete and ready to bill flights
+    request:
+      url: "{{url}}/api/flight/void/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "flight_ids": [8,80,14],
+            "notes": "Reason for voiding this/these flight(s)"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sat, 07 Mar 2026 05:25:01 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "173"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: PATCH, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Flight(s) voided successfully",
+              "data": {
+                  "result": {
+                      "updated_count": 3,
+                      "flight_ids": [
+                          80,
+                          14,
+                          8
+                      ],
+                      "notes": "Reason for voiding this/these flight(s)"
+                  }
+              }
+          }

@@ -1,0 +1,63 @@
+info:
+  name: Xero Check Connection
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/api/xero/check-connection/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Xero Check Connection
+    request:
+      url: "{{url}}/api/xero/check-connection/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: multipart-form
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 07:11:44 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: OPTIONS, GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "80"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'Xero' Is Not Connected",
+              "data": {
+                  "result": false
+              }
+          }

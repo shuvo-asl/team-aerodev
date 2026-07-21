@@ -1,0 +1,84 @@
+info:
+  name: create bank details
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/system-settings/"
+  body:
+    type: json
+    data: |-
+      {
+          "bank_details": "example Bank deatils",
+          "type": "bank_details",
+          "title": "imp bank info"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/system-settings/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "bank_details": "example Bank deatils",
+              "type": "bank_details",
+              "title": "imp bank info"
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 06:49:10 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "346"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "System Settings successfully created",
+              "data": {
+                  "result": {
+                      "id": 48,
+                      "deleted_at": null,
+                      "created_at": "2024-11-12T12:49:10.618132+06:00",
+                      "updated_at": null,
+                      "title": "imp bank info",
+                      "value_text": null,
+                      "value_file": null,
+                      "value_type": "",
+                      "type": "bank_details",
+                      "is_active": true,
+                      "logo": null,
+                      "bank_details": "example Bank deatils"
+                  }
+              }
+          }

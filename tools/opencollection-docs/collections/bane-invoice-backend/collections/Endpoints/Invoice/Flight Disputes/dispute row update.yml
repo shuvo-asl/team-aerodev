@@ -1,0 +1,29 @@
+info:
+  name: dispute row update
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{url}}/api/dispute-flights/{{dispute_row_id}}/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "note": "Client acknowledged--"
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: dispute_row_id
+      value: "15"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

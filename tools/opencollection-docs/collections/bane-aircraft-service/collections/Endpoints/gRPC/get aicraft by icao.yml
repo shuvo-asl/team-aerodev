@@ -1,0 +1,18 @@
+info:
+  name: get aicraft by icao
+  type: grpc
+  seq: 7
+
+grpc:
+  url: "{{gRPC_url}}"
+  method: /bas.BAS/GetAircraftBYICAO24
+  methodType: unary
+  protoFilePath: ../../../rpc/bas.proto
+  metadata:
+    - name: "{{auth_param_name}}"
+      value: "{{token}}"
+  message: |-
+    {
+        "icao24": "04012B"
+    }
+  auth: inherit

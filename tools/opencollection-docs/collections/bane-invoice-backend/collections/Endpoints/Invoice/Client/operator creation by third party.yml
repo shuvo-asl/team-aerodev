@@ -1,0 +1,199 @@
+info:
+  name: operator creation by third party
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/third-party/create-operator/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "postman_op",
+          "short_code": "PMO2",
+          "email": "postman_op2@gmail.com",
+          "phone": "+8801558250667",
+          "billing_address": "Dhaka",
+          "days_to_due_date": 20
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: operator creation without days to due date
+    request:
+      url: "{{url}}/api/third-party/create-operator/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "name": "postman_op",
+              "short_code": "PMO1",
+              "email": "postman_op1@gmail.com",
+              "phone": "+8801558250667",
+              "billing_address": "Dhaka"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:50:28 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "343"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Operators created successfully",
+              "data": {
+                  "result": {
+                      "id": 100,
+                      "name": "postman_op",
+                      "short_code": "PMO1",
+                      "email": "postman_op1@gmail.com",
+                      "phone": "+8801558250667",
+                      "billing_address": "Dhaka",
+                      "days_to_due_date": 15,
+                      "client_type": "operator",
+                      "preferred_currency": null,
+                      "status": "active",
+                      "chasing_rule": [],
+                      "interest_rule": []
+                  }
+              }
+          }
+  - name: operator creation
+    request:
+      url: "{{url}}/api/third-party/create-operator/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "name": "postman_op",
+              "short_code": "PMO2",
+              "email": "postman_op2@gmail.com",
+              "phone": "+8801558250667",
+              "billing_address": "Dhaka",
+              "days_to_due_date": 20
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:51:37 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "343"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Operators created successfully",
+              "data": {
+                  "result": {
+                      "id": 101,
+                      "name": "postman_op",
+                      "short_code": "PMO2",
+                      "email": "postman_op2@gmail.com",
+                      "phone": "+8801558250667",
+                      "billing_address": "Dhaka",
+                      "days_to_due_date": 20,
+                      "client_type": "operator",
+                      "preferred_currency": null,
+                      "status": "active",
+                      "chasing_rule": [],
+                      "interest_rule": []
+                  }
+              }
+          }
+  - name: failed validation for required fields
+    request:
+      url: "{{url}}/api/third-party/create-operator/"
+      method: POST
+      body:
+        type: json
+        data: ""
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 23 Jul 2025 04:56:00 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "265"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed to create operator",
+              "error": null,
+              "errors": {
+                  "name": "This field is required.",
+                  "short_code": "This field is required.",
+                  "email": "This field is required.",
+                  "phone": "This field is required.",
+                  "billing_address": "This field is required."
+              }
+          }

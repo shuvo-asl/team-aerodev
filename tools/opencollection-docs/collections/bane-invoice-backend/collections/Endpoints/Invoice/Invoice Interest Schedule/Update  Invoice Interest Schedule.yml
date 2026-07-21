@@ -1,0 +1,98 @@
+info:
+  name: Update  Invoice Interest Schedule
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{url}}/api/invoice-interest-schedule/2/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice": 178,
+          "name": "abcd",
+          "is_cumulative": true,
+          "max_repetition": 6,
+          "interest_type": "fixed",
+          "interest_rate": 3.0,
+          "interest_base": "invoice_amount_after_interest",
+          "interest_rule": 1,
+          "interest_day": 13
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update  Invoice Interest Schedule
+    request:
+      url: "{{url}}/api/invoice-interest-schedule/2/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "invoice": 178,
+              "name": "abcd",
+              "is_cumulative": true,
+              "max_repetition": 6,
+              "interest_type": "fixed",
+              "interest_rate": 3.0,
+              "interest_base": "invoice_amount_after_interest",
+              "interest_rule": 1,
+              "interest_day": 13
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 05 Mar 2025 11:09:02 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "302"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice Interest Schedule successfully updated",
+              "data": {
+                  "result": {
+                      "id": 2,
+                      "invoice": 178,
+                      "name": "abcd",
+                      "is_cumulative": true,
+                      "max_repetition": 6,
+                      "interest_type": "fixed",
+                      "interest_rate": 3,
+                      "interest_base": "invoice_amount_after_interest",
+                      "interest_rule": 1,
+                      "interest_day": 13
+                  }
+              }
+          }

@@ -1,0 +1,24 @@
+info:
+  name: Get Organizations Paginated
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/organizations?page=2&item_count=10"
+  params:
+    - name: page
+      value: "2"
+      type: query
+    - name: item_count
+      value: "10"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

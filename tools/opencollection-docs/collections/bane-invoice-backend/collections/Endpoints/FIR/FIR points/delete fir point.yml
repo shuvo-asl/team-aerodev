@@ -1,0 +1,79 @@
+info:
+  name: delete fir point
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url}}/api/fir-point/1/"
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update fir point
+    request:
+      url: "{{url}}/api/fir-point/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "name": "first point updated",
+            "latitude": 2.857,
+            "longitude": -3.456,
+            "is_active": true
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 06:30:59 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "170"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "FIR Point successfully updated",
+            "data": {
+              "result": {
+                "id": 1,
+                "name": "firstpointupdated",
+                "latitude": 2.857,
+                "longitude": -3.456,
+                "is_active": true
+              }
+            }
+          }

@@ -1,0 +1,81 @@
+info:
+  name: Get Invoice Interest Schedule by invoice id
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/invoice-interest-schedule?invoice_id=178"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: invoice_id
+      value: "178"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get Invoice Interest Schedule by invoice id
+    request:
+      url: "{{url}}/api/invoice-interest-schedule?invoice_id=178"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: invoice_id
+          value: "178"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 05 Mar 2025 10:35:03 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "324"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice Interest Schedule Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "invoice": 178,
+                          "name": "abc",
+                          "is_cumulative": true,
+                          "max_repetition": 5,
+                          "interest_type": "fixed",
+                          "interest_rate": 10,
+                          "interest_base": "invoice_amount_after_interest",
+                          "interest_rule": null,
+                          "updated_at": null,
+                          "interest_day": 5
+                      }
+                  ]
+              }
+          }

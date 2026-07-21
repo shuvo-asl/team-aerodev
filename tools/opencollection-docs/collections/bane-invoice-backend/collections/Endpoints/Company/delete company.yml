@@ -1,0 +1,117 @@
+info:
+  name: delete company
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{url}}/api/companies/3/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Bd_company",
+          "country": "Bangladesh"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: delete company (failed)
+    request:
+      url: "{{url}}/api/companies/3/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "Bd_company",
+              "country": "Bangladesh"
+          }
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Date
+          value: Tue, 10 Dec 2024 05:31:36 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "98"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Company Failed To Delete",
+              "error": "Company Not Found",
+              "errors": null
+          }
+  - name: Delete company (owner check)
+    request:
+      url: "{{url}}/api/companies/3/"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "Bd_company",
+              "country": "Bangladesh"
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: Date
+          value: Tue, 10 Dec 2024 05:47:40 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "107"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Access Denied",
+              "error": "Only the owner can delete this company.",
+              "errors": []
+          }

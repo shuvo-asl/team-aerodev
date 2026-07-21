@@ -1,0 +1,118 @@
+info:
+  name: Update User
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api/users/17/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: "{\r
+
+      \    \"username\": \"ziliun\",\r
+
+      \    \"first_name\": \"Ziliun\",\r
+
+      \    \"last_name\": \"Sikder\",\r
+
+      \    \"is_active\": true,\r
+
+      \    \"user_type\": \"asl\",\r
+
+      \    \"email\": \"ziliun@asl.aero\",\r
+
+      \    \"phone\": \"+8801713429926\",\r
+
+      \    \"groups\": 11,\r
+
+      \    \"active_company\": 2,\r
+
+      \    \"companies\": [\r
+
+      \        3\r
+
+      \    ]\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update User
+    request:
+      url: "{{url}}/api/users/40/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: "{\r
+
+          \    \"first_name\": \"ismail\",\r
+
+          \    \"last_name\": \"titas\",\r
+
+          \    \"phone\": \"+8801558970484\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:27:10 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "319"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User successfully updated",
+              "data": {
+                  "result": {
+                      "id": 40,
+                      "username": "user7",
+                      "first_name": "ismail",
+                      "last_name": "titas",
+                      "is_active": false,
+                      "user_type": "operator",
+                      "email": "user769@gmail.com",
+                      "profile_image": null,
+                      "phone": "+8801558970484",
+                      "groups": [
+                          {
+                              "id": 2,
+                              "name": "Operator",
+                              "permissions": [
+                                  66
+                              ]
+                          }
+                      ]
+                  }
+              }
+          }

@@ -1,0 +1,23 @@
+info:
+  name: choose fr24 flight for update
+  type: http
+  seq: 22
+
+http:
+  method: PATCH
+  url: "{{url}}/api/flight/19190/fr24-apply/"
+  body:
+    type: json
+    data: |-
+      {
+        "candidate_id": "61e824ca-9fcf-47c5-b87d-d8d933380824"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

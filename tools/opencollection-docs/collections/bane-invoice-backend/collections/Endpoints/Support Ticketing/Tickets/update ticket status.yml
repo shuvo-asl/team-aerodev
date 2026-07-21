@@ -1,0 +1,71 @@
+info:
+  name: update ticket status
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{url}}/api/update-ticket-status/TCK-00014/"
+  body:
+    type: json
+    data: |-
+      {
+          "status": "in_progress"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update ticket status
+    request:
+      url: "{{url}}/api/update-ticket-status/TCK-00014/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "status": "in_progress"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 15 May 2025 05:38:16 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "112"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: PATCH, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Ticket's Status successfully updated",
+              "data": {
+                  "result": {
+                      "status": "in_progress"
+                  }
+              }
+          }

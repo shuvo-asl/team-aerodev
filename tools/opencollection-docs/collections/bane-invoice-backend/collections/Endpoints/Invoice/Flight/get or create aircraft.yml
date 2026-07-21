@@ -1,0 +1,141 @@
+info:
+  name: get or create aircraft
+  type: http
+  seq: 19
+
+http:
+  method: POST
+  url: "{{url}}/api/get-or-create-aircraft/"
+  body:
+    type: json
+    data: |-
+      {
+      "registration_number": "TESTTEST9",
+                  "aircraft_type": {
+                      "name": "KJI1",
+                      "mtow": 8,
+                      "mtow_unit": "ton",
+                      "wing_type": "Fixed Wing",
+                      "is_registration_fulfilled": false
+                  },
+                  "operator": {
+                      "short_code": "A7CF90",
+                      "name": "",
+                      "address_line_1": "",
+                      "address_line_2": "",
+                      "email": "rakib2@aerogon.aero",
+                      "iata": "",
+                      "icao": "",
+                      "business_phone": "",
+                      "business_phone_extension": "",
+                      "fax_number": "",
+                      "website": "",
+                      "postal_code": "",
+                      "ospl_no": "",
+                      "comment": "",
+                      "is_blacklisted": false,
+                      "alternate_aircraft_registrations": ""
+                  },
+                  "purpose_type": "Civil"
+
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get or create aircraft
+    request:
+      url: "{{url}}/api/get-or-create-aircraft/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "registration_number": "TESTTEST5",
+              "operator": {
+                  "short_code": "A7CFD"
+              },
+              "aircraft_type": {
+                  "name": "KJI"
+              }
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 01 Mar 2026 06:45:56 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "548"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Aircraft created successfully",
+              "data": {
+                  "result": {
+                      "id": 4751,
+                      "registration_number": "TESTTEST5",
+                      "aircraft_type": {
+                          "name": "KJI",
+                          "mtow": 0,
+                          "mtow_unit": "",
+                          "wing_type": "",
+                          "is_registration_fulfilled": false
+                      },
+                      "operator": {
+                          "short_code": "A7CFD",
+                          "name": "",
+                          "address_line_1": "",
+                          "address_line_2": "",
+                          "email": "",
+                          "iata": "",
+                          "icao": "",
+                          "business_phone": "",
+                          "business_phone_extension": "",
+                          "fax_number": "",
+                          "website": "",
+                          "postal_code": "",
+                          "ospl_no": "",
+                          "comment": "",
+                          "is_blacklisted": false,
+                          "alternate_aircraft_registrations": ""
+                      },
+                      "purpose_type": ""
+                  }
+              }
+          }

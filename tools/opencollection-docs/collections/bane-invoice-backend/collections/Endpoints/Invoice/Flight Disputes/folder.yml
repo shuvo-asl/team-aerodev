@@ -1,0 +1,7 @@
+info:
+  name: Flight Disputes
+  type: folder
+  seq: 20
+
+request:
+  auth: inherit

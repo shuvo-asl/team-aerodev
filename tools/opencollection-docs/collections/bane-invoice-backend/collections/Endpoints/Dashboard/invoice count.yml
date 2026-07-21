@@ -1,0 +1,80 @@
+info:
+  name: invoice count
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{url}}/api/dashboard/invoice-count/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: invoice count
+    request:
+      url: "{{url}}/api/dashboard/invoice-count/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 07 Dec 2025 05:46:57 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "192"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: X-XSS-Protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice count fetched successfully",
+              "data": {
+                  "result": {
+                      "paid": {
+                          "amount": 20,
+                          "count": 3
+                      },
+                      "sent": {
+                          "amount": 560,
+                          "count": 4
+                      },
+                      "overdue": {
+                          "amount": 1029.6,
+                          "count": 4
+                      }
+                  }
+              }
+          }

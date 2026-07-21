@@ -1,0 +1,142 @@
+info:
+  name: delete a issue type
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{url}}/api/issue-types/3/"
+  body:
+    type: text
+    data: |-
+      {
+          "name": "server error"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/issue-types/1/"
+      method: DELETE
+      body:
+        type: text
+        data: |-
+          {
+              "name": "server error"
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 07 May 2025 09:20:23 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "127"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Issue Type Failed To Delete",
+              "error": "This issue type is already used in a ticket",
+              "errors": null
+          }
+  - name: delete a issue type
+    request:
+      url: "{{url}}/api/issue-types/2/"
+      method: DELETE
+      body:
+        type: text
+        data: |-
+          {
+              "name": "server error"
+          }
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 07 May 2025 09:27:09 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "85"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: ""
+
+docs: |-
+  **Description:**  
+    
+  Deletes the specified issue type **only if it is not already used in any ticket**.
+
+  **Behavior:**
+
+  - If the issue type is linked to one or more tickets, deletion is blocked with a validation error.
+      
+  - On successful deletion, the response has HTTP status code `204 No Content` with a success message.
+      
+
+  **Success Response:**
+
+  - **Status Code:** `204 No Content`
+      
+  - **Body:**
+      
+
+  {}
+
+  **Failure Response (In Use):**
+
+  - **Status Code:** `400 Bad Request`
+      
+  - **Body:**
+      
+
+  ``` json
+  {
+    "status": "failed",
+    "message": "Issue Type Failed To Delete",
+    "error": "This issue type is already used in a ticket",
+    "errors": null
+  }
+   ```

@@ -1,0 +1,250 @@
+info:
+  name: Get All Chasing Rule Items
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/chasing_rule_items"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: limit
+      value: "10"
+      type: query
+      disabled: true
+    - name: page
+      value: "1"
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get All Chasing Rule Items
+    request:
+      url: "{{url}}/api/chasing_rule_items"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: limit
+          value: "10"
+          type: query
+          disabled: true
+        - name: page
+          value: "1"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 05:28:53 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1125"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chasing Rule Items Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 2,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 3,
+                          "interest_type": "fixed",
+                          "interest_rate": 21,
+                          "is_cumulative": false,
+                          "chasing_rule": 2,
+                          "email_template": 1
+                      },
+                      {
+                          "id": 3,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 15,
+                          "interest_type": "fixed",
+                          "interest_rate": 23,
+                          "is_cumulative": true,
+                          "chasing_rule": 2,
+                          "email_template": 1
+                      },
+                      {
+                          "id": 4,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 5,
+                          "interest_type": "percentage",
+                          "interest_rate": 2,
+                          "is_cumulative": false,
+                          "chasing_rule": 3,
+                          "email_template": 2
+                      },
+                      {
+                          "id": 5,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 10,
+                          "interest_type": "percentage",
+                          "interest_rate": 5,
+                          "is_cumulative": false,
+                          "chasing_rule": 3,
+                          "email_template": 3
+                      },
+                      {
+                          "id": 6,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 30,
+                          "interest_type": "percentage",
+                          "interest_rate": 5,
+                          "is_cumulative": true,
+                          "chasing_rule": 3,
+                          "email_template": 2
+                      }
+                  ]
+              }
+          }
+  - name: Get All Chasing Rule Items with pagination
+    request:
+      url: "{{url}}/api/chasing_rule_items?limit=10&page=1"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: limit
+          value: "10"
+          type: query
+        - name: page
+          value: "1"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 05:28:44 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1202"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chasing Rule Items Successfully Fetched",
+              "data": {
+                  "next": null,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 5,
+                  "total_page": 1,
+                  "result": [
+                      {
+                          "id": 2,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 3,
+                          "interest_type": "fixed",
+                          "interest_rate": 21,
+                          "is_cumulative": false,
+                          "chasing_rule": 2,
+                          "email_template": 1
+                      },
+                      {
+                          "id": 3,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 15,
+                          "interest_type": "fixed",
+                          "interest_rate": 23,
+                          "is_cumulative": true,
+                          "chasing_rule": 2,
+                          "email_template": 1
+                      },
+                      {
+                          "id": 4,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 5,
+                          "interest_type": "percentage",
+                          "interest_rate": 2,
+                          "is_cumulative": false,
+                          "chasing_rule": 3,
+                          "email_template": 2
+                      },
+                      {
+                          "id": 5,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 10,
+                          "interest_type": "percentage",
+                          "interest_rate": 5,
+                          "is_cumulative": false,
+                          "chasing_rule": 3,
+                          "email_template": 3
+                      },
+                      {
+                          "id": 6,
+                          "deleted_at": null,
+                          "created_at": "2024-08-20T10:38:23.838066+06:00",
+                          "updated_at": null,
+                          "day": 30,
+                          "interest_type": "percentage",
+                          "interest_rate": 5,
+                          "is_cumulative": true,
+                          "chasing_rule": 3,
+                          "email_template": 2
+                      }
+                  ]
+              }
+          }

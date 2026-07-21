@@ -1,0 +1,93 @@
+info:
+  name: Current User Profile Update
+  type: http
+  seq: 9
+
+http:
+  method: PATCH
+  url: "{{url}}/api/update_profile/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+    data:
+      - name: profile_image
+        type: file
+        value:
+          - /home/devs/images.jpeg
+      - name: first_name
+        type: text
+        value: Admin
+      - name: phone
+        type: text
+        value: "+8801684806728"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Current User Profile Update
+    request:
+      url: "{{url}}/api/update_profile/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: multipart-form
+        data:
+          - name: profile_image
+            type: file
+            value:
+              - /home/devs/images.jpeg
+          - name: first_name
+            type: text
+            value: Admin
+          - name: phone
+            type: text
+            value: "+8801684806728"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:29:51 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: OPTIONS, PATCH
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "272"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'Profile' Successfully Updated",
+              "data": {
+                  "result": {
+                      "id": 3,
+                      "first_name": "Admin",
+                      "last_name": "admin",
+                      "username": "admin",
+                      "email": "admin@gmail.com",
+                      "phone": "+8801684806728",
+                      "profile_image": "/api/media/images/profile_images/2024/09/britian.png"
+                  }
+              }
+          }

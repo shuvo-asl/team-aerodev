@@ -1,0 +1,81 @@
+info:
+  name: Create Invoice
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/operator/invoice/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "operator": 1,
+          "billing_flight": 2, 
+          "currency": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Operator Invoice
+    request:
+      url: "{{url}}/api/chasing_rule/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "rule 1",
+              "reminder_time": "12:00:00",
+              "interest_calculate_time": "06:00:00",
+              "default": true
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "186"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "id": 1,
+                  "name": "rule 1",
+                  "reminder_time": "12:00:00",
+                  "interest_calculate_time": "06:00:00",
+                  "calculate_interest_daily": false,
+                  "daily_interest_rate": 0,
+                  "default": true
+              }
+          }

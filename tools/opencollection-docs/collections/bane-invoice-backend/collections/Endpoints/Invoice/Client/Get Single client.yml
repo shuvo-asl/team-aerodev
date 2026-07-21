@@ -1,0 +1,75 @@
+info:
+  name: Get Single client
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/api/client/2/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get Single client
+    request:
+      url: "{{url}}/api/client/4/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Thu, 29 Aug 2024 09:38:30 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "344"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Client Fetched Successfully",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "name": "ron",
+                      "short_code": "fdgouitjg",
+                      "email": "dfiuhei@gmail.com",
+                      "phone": "73486573847",
+                      "billing_address": "hvjdfg",
+                      "days_to_due_date": 14,
+                      "client_type": "operator",
+                      "preferred_currency": {
+                          "id": 4,
+                          "prefix": "$",
+                          "short_key": "BDD",
+                          "current_rate": 0,
+                          "default": null
+                      }
+                  }
+              }
+          }

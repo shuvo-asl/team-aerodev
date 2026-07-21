@@ -1,0 +1,99 @@
+info:
+  name: Company Users
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: "{{url}}/api/company-users/?limit=4&page=1"
+  params:
+    - name: limit
+      value: "4"
+      type: query
+    - name: page
+      value: "1"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Company Users
+    request:
+      url: "{{url}}/api/company-users/?limit=4&page=1"
+      method: GET
+      params:
+        - name: limit
+          value: "4"
+          type: query
+        - name: page
+          value: "1"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Mon, 30 Dec 2024 06:59:14 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "527"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Company Users Successfully Fetched",
+              "data": {
+                  "next": 2,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 22,
+                  "total_page": 6,
+                  "result": [
+                      {
+                          "email": "admin@gmail.com",
+                          "first_name": "Admin",
+                          "last_name": "admin",
+                          "profile_image": ""
+                      },
+                      {
+                          "email": "u16@gmail.com",
+                          "first_name": "first_name",
+                          "last_name": "last_name",
+                          "profile_image": ""
+                      },
+                      {
+                          "email": "u18@gmail.com",
+                          "first_name": "first_name",
+                          "last_name": "last_name",
+                          "profile_image": ""
+                      },
+                      {
+                          "email": "hgsgdf@gmail.com",
+                          "first_name": "Test",
+                          "last_name": "some",
+                          "profile_image": ""
+                      }
+                  ]
+              }
+          }

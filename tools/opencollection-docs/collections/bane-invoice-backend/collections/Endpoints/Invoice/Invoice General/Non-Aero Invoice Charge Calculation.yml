@@ -1,0 +1,128 @@
+info:
+  name: Non-Aero Invoice Charge Calculation
+  type: http
+  seq: 15
+
+http:
+  method: POST
+  url: "{{url}}/api/invoice-charge/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_item_type": "non_aeronautical",
+          "items":[
+              {
+                  "id": 453,
+                  "description": "dsafsdf",
+                  "units": "15",
+                  "per_unit_cost": "10"
+              }
+          ],
+          "new_items": [
+              {
+                  "description": "dsafsdf",
+                  "units": "5",
+                  "per_unit_cost": "2"
+              }
+          ],
+          "deleted_items": [454]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Non-Aero Invoice Charge Calculation
+    request:
+      url: "{{url}}/api/invoice-charge/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "invoice_item_type": "non_aeronautical",
+              "items":[
+                  {
+                      "id": 453,
+                      "coa": 1,
+                      "description": "dsafsdf",
+                      "units": "15",
+                      "per_unit_cost": "10"
+                  }
+              ],
+              "new_items": [
+                  {
+                      "coa": 1,
+                      "description": "dsafsdf",
+                      "units": "5",
+                      "per_unit_cost": "2"
+                  }
+              ],
+              "deleted_items": [454]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "367"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'Invoice' Charge Calculation Updated",
+              "data": {
+                  "result": {
+                      "total_amount": 160,
+                      "invoice_item_type": "non_aeronautical",
+                      "items": [
+                          {
+                              "id": 453,
+                              "coa": 1,
+                              "description": "dsafsdf",
+                              "units": "15",
+                              "per_unit_cost": "10",
+                              "amount": 150
+                          }
+                      ],
+                      "new_items": [
+                          {
+                              "coa": 1,
+                              "description": "dsafsdf",
+                              "units": "5",
+                              "per_unit_cost": "2",
+                              "amount": 10
+                          }
+                      ],
+                      "deleted_items": [
+                          454
+                      ]
+                  }
+              }
+          }

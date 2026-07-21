@@ -1,0 +1,97 @@
+info:
+  name: get all groups
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/groups?limit=5"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: limit
+      value: "5"
+      type: query
+  body:
+    type: multipart-form
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get all groups
+    request:
+      url: "{{url}}/api/groups?limit=5"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: limit
+          value: "5"
+          type: query
+      body:
+        type: multipart-form
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:20:35 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "295"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User Role Successfully Fetched",
+              "data": {
+                  "next": 2,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 8,
+                  "total_page": 2,
+                  "result": [
+                      {
+                          "id": 33,
+                          "name": "Super Admin jhgeg"
+                      },
+                      {
+                          "id": 31,
+                          "name": "ghfh"
+                      },
+                      {
+                          "id": 12,
+                          "name": "abcd"
+                      },
+                      {
+                          "id": 11,
+                          "name": "abc"
+                      },
+                      {
+                          "id": 10,
+                          "name": "test_admin"
+                      }
+                  ]
+              }
+          }

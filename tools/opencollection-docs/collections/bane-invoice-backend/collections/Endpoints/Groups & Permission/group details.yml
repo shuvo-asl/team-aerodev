@@ -1,0 +1,74 @@
+info:
+  name: group details
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/groups/33"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: group details
+    request:
+      url: "{{url}}/api/groups/33"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: multipart-form
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:20:46 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "206"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User Role Fetched Successfully",
+              "data": {
+                  "result": {
+                      "id": 33,
+                      "name": "Super Admin jhgeg",
+                      "permissions": [
+                          {
+                              "id": 9,
+                              "name": "Can add group",
+                              "codename": "add_group",
+                              "content_type": 3
+                          }
+                      ]
+                  }
+              }
+          }

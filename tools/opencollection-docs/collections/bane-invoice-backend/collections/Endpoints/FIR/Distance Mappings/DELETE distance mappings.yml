@@ -1,0 +1,60 @@
+info:
+  name: DELETE distance mappings
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{url}}/api/fir-distance-mappings/24/"
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: delete distance mapping
+    request:
+      url: "{{url}}/api/fir-distance-mappings/24/"
+      method: DELETE
+      body:
+        type: json
+        data: ""
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 05:21:16 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "95"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: ""

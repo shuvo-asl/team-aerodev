@@ -1,0 +1,79 @@
+info:
+  name: Update A Chart of Account
+  type: http
+  seq: 9
+
+http:
+  method: PATCH
+  url: "{{url}}/api/account/2/"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"account_type\": \"savings\"\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update A Chart of Account
+    request:
+      url: "{{url}}/api/account/2/"
+      method: PATCH
+      body:
+        type: json
+        data: "{\r
+
+          \    \"account_type\": \"savings\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 16:44:00 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "318"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chart Of Account successfully updated",
+              "data": {
+                  "result": {
+                      "id": 2,
+                      "deleted_at": null,
+                      "created_at": "2024-09-01T22:43:44.613725+06:00",
+                      "updated_at": "2024-09-01T22:44:00.873647+06:00",
+                      "account_name": "Regan",
+                      "code": "regan",
+                      "account_type": "savings",
+                      "details": "na",
+                      "transaction_type": "expense"
+                  }
+              }
+          }

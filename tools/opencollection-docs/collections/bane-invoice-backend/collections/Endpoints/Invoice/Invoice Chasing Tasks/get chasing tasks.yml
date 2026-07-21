@@ -1,0 +1,379 @@
+info:
+  name: get chasing tasks
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/chasing-tasks/?invoice_id=37"
+  params:
+    - name: invoice_id
+      value: "37"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/chasing-tasks/?invoice_id=37"
+      method: GET
+      params:
+        - name: invoice_id
+          value: "37"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 28 Jan 2025 05:07:08 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "3873"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chasing Tasks Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "enabled": true,
+                          "id": 44,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 8,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 68,
+                          "chased": true,
+                          "chasing_date": "2025-01-27",
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": "2025-01-27"
+                      },
+                      {
+                          "enabled": true,
+                          "id": 56,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 11,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 38,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 14,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 32,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 20,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 62,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 26,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 9,
+                          "is_cumulative": true,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 54,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 42,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 36,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 30,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 60,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 24,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": true,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 18,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 13,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 66,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 10,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 7,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 5,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 4,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 3,
+                          "is_cumulative": true,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 64,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 58,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 76,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 52,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 40,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 34,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 28,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 22,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": true,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 16,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 12,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 9,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      },
+                      {
+                          "enabled": true,
+                          "id": 6,
+                          "chased": false,
+                          "chasing_date": null,
+                          "day": 1,
+                          "is_cumulative": false,
+                          "start_time": null
+                      }
+                  ]
+              }
+          }

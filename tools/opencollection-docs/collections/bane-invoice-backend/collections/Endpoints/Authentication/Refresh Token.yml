@@ -1,0 +1,63 @@
+info:
+  name: Refresh Token
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/token/refresh/"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMTQzNTkyOSwiaWF0IjoxNzMxNDA3MTI5LCJqdGkiOiJjZDYzMTQwYjgyNTU0MDIyOWZiMjgzMmFjOTc3YzVhNSIsInVzZXJfaWQiOjN9.2E6odFuKi9nFhMWI2uy9WDa5ZXmAwh59AyJLmMpCgyw\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Refresh Token
+    request:
+      url: "{{url}}/api/token/refresh/"
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMTQzNTkyOSwiaWF0IjoxNzMxNDA3MTI5LCJqdGkiOiJjZDYzMTQwYjgyNTU0MDIyOWZiMjgzMmFjOTc3YzVhNSIsInVzZXJfaWQiOjN9.2E6odFuKi9nFhMWI2uy9WDa5ZXmAwh59AyJLmMpCgyw\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:25:47 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "241"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxNDM1OTQ3LCJpYXQiOjE3MzE0MDcxMjksImp0aSI6IjBkMDgyZmYwMGQ2NzRjZDBiNjNjODU0ZDNkOGEwMDYxIiwidXNlcl9pZCI6M30.QiY61DjJgjtPgU0CGgSTjqRcxG5hYgGt9T2v-V652Nc"
+          }

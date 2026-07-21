@@ -1,0 +1,99 @@
+info:
+  name: Create Email Template
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/api/email_template/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "test",
+          "subject": "demo",
+          "body": "Hi Mr. {{B_operator_name}},\r\n\r\nWe are glad to inform you that your refund request is accepted. This is your invoice no: {{B_invoice_no}}.\r\n\r\nThanks for connecting with us.",
+          "has_bank_details": false,
+          "has_payment_link": true,
+          "include_auto_generated_invoice": true,
+          "include_invoice_attachments": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Email Template
+    request:
+      url: "{{url}}/api/email_template/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "test",
+              "subject": "demo",
+              "body": "Hi Mr. {{B_operator_name}},\r\n\r\nWe are glad to inform you that your refund request is accepted. This is your invoice no: {{B_invoice_no}}.\r\n\r\nThanks for connecting with us.",
+              "has_bank_details": false,
+              "has_payment_link": true,
+              "include_auto_generated_invoice": true,
+              "include_invoice_attachments": true
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 29 May 2025 06:03:07 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "553"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Email Template successfully created",
+              "data": {
+                  "result": {
+                      "id": 131,
+                      "deleted_at": null,
+                      "created_at": "2025-05-29T12:03:07.374914+06:00",
+                      "updated_at": null,
+                      "name": "test",
+                      "subject": "demo",
+                      "body": "Hi Mr. {{B_operator_name}},\r\n\r\nWe are glad to inform you that your refund request is accepted. This is your invoice no: {{B_invoice_no}}.\r\n\r\nThanks for connecting with us.",
+                      "is_active": true,
+                      "has_bank_details": false,
+                      "has_payment_link": true,
+                      "include_auto_generated_invoice": true,
+                      "include_invoice_attachments": true,
+                      "company": 11
+                  }
+              }
+          }

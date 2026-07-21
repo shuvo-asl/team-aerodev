@@ -1,0 +1,144 @@
+info:
+  name: Create User
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/users/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+    data:
+      - name: username
+        type: text
+        value: new_user
+      - name: first_name
+        type: text
+        value: first_name
+      - name: last_name
+        type: text
+        value: last_name
+      - name: user_type
+        type: text
+        value: caab
+      - name: email
+        type: text
+        value: u667688@gmail.com
+      - name: profile_image
+        type: file
+        value:
+          - /home/devs/Music/images.png
+      - name: password
+        type: text
+        value: testpassword
+      - name: companies
+        type: text
+        value: "1"
+      - name: companies
+        type: text
+        value: "2"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create User
+    request:
+      url: "{{url}}/api/users/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: multipart-form
+        data:
+          - name: username
+            type: text
+            value: new_user
+          - name: first_name
+            type: text
+            value: first_name
+          - name: last_name
+            type: text
+            value: last_name
+          - name: user_type
+            type: text
+            value: operator
+          - name: email
+            type: text
+            value: u5@gmail.com
+          - name: profile_image
+            type: file
+            value:
+              - /home/devs/Music/images.png
+          - name: password
+            type: text
+            value: testpassword
+          - name: companies
+            type: text
+            value: "1"
+          - name: companies
+            type: text
+            value: "2"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Wed, 11 Dec 2024 03:39:00 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "325"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "User successfully created",
+              "data": {
+                  "result": {
+                      "id": 35,
+                      "username": "new_user",
+                      "first_name": "first_name",
+                      "last_name": "last_name",
+                      "is_active": false,
+                      "user_type": "operator",
+                      "email": "u5@gmail.com",
+                      "profile_image": null,
+                      "phone": null,
+                      "groups": [
+                          {
+                              "id": 2,
+                              "name": "Operator",
+                              "permissions": [
+                                  68,
+                                  70,
+                                  71,
+                                  72,
+                                  73
+                              ]
+                          }
+                      ]
+                  }
+              }
+          }

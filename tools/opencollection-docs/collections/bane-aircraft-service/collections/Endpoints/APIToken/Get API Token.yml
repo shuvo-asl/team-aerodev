@@ -1,0 +1,61 @@
+info:
+  name: Get API Token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api-token"
+  body:
+    type: json
+    data: |-
+      {
+          "host": "172.16.0.2"
+      }
+  auth:
+    type: bearer
+    token: "{{access_token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get API Token
+    request:
+      url: "{{url}}/api-token"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "host": "172.29.0.1",
+              "days": 2
+          }
+    response:
+      status: 201
+      statusText: CREATED
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.14
+        - name: Date
+          value: Tue, 02 Jul 2024 05:29:29 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "114"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "token": "f904b1079bba69bc"
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }

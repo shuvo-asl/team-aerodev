@@ -1,0 +1,15 @@
+info:
+  name: aircraft list
+  type: grpc
+  seq: 2
+
+grpc:
+  url: "{{gRPC_url}}"
+  method: /bas.BAS/GetAircrafts
+  methodType: unary
+  protoFilePath: ../../../rpc/bas.proto
+  metadata:
+    - name: "{{auth_param_name}}"
+      value: "{{token}}"
+  message: "{}"
+  auth: inherit

@@ -1,0 +1,17 @@
+info:
+  name: delete aircraft
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{url}}/api/bas/aircraft/1/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

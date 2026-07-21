@@ -1,0 +1,62 @@
+info:
+  name: Xero Connect
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/xero/connect?accounting_software=5"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: accounting_software
+      value: "5"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Xero Connect
+    request:
+      url: "{{url}}/api/xero/connect"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sat, 07 Sep 2024 09:58:48 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin, Cookie
+        - name: Allow
+          value: OPTIONS, GET
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "674"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Set-Cookie
+          value: sessionid=jgy1r9ebf8ffokjvg69g5suqzn4pgd83; expires=Sat, 21 Sep 2024 09:58:48 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "authorization_url": "https://login.xero.com/identity/connect/authorize?response_type=code&client_id=65C6B0BBEE03432EB52AAA51C6F78342&redirect_uri=http%3A%2F%2Flocalhost%3A5011%2Fapi%2Fxero%2Fcallback&scope=offline_access+openid+profile+email+accounting.transactions+accounting.transactions.read+accounting.reports.read+accounting.journals.read+accounting.settings+accounting.settings.read+accounting.contacts+accounting.contacts.read+accounting.attachments+accounting.attachments.read+assets+projects+files+payroll.employees+payroll.payruns+payroll.payslip+payroll.timesheets+payroll.settings&state=l8DhExraQvfI5IIZoVor5mtLccvofM&nonce=pVcNp2BUKVEPFlNfjrKv"
+          }

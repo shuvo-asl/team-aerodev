@@ -1,0 +1,142 @@
+info:
+  name: CREATE fir points
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/fir-point/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": " point3one2",
+        "latitude": 2.856,
+        "longitude": -3.45,
+        "is_active": false
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create fir point
+    request:
+      url: "{{url}}/api/fir-point/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": "first point",
+            "latitude": 2.856,
+            "longitude": -3.45,
+            "is_active": false
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 06:25:20 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "163"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "FIR Point successfully created",
+            "data": {
+              "result": {
+                "id": 1,
+                "name": "firstpoint",
+                "latitude": 2.856,
+                "longitude": -3.45,
+                "is_active": false
+              }
+            }
+          }
+  - name: only alphabets are allowed for fir point name
+    request:
+      url: "{{url}}/api/fir-point/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": " point3one2",
+            "latitude": 2.856,
+            "longitude": -3.45,
+            "is_active": false
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 06:45:59 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "161"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "FIR Point successfully created",
+            "data": {
+              "result": {
+                "id": 2,
+                "name": "pointone",
+                "latitude": 2.856,
+                "longitude": -3.45,
+                "is_active": false
+              }
+            }
+          }

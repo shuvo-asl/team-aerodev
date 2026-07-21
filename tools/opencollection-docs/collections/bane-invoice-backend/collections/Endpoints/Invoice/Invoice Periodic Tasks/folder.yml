@@ -1,0 +1,7 @@
+info:
+  name: Invoice Periodic Tasks
+  type: folder
+  seq: 15
+
+request:
+  auth: inherit

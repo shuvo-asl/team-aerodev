@@ -1,0 +1,84 @@
+info:
+  name: update system settings
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{url}}/api/system-settings/4/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |2-
+        {
+          "key": "days_to_due_date",
+          "value_text": "20",
+          "type": "text"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update system settings
+    request:
+      url: "{{url}}/api/system-settings/4/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |2-
+            {
+              "key": "days_to_due_date",
+              "value_text": "20",
+              "type": "text"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 17:01:59 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "288"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'System Settings' Updated Successfully.",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "deleted_at": null,
+                      "key": "days_to_due_date",
+                      "value_text": "20",
+                      "value_file": null,
+                      "type": "text",
+                      "created_at": "2024-03-20T09:53:41.315766+06:00",
+                      "updated_at": "2024-09-01T23:01:59.621409+06:00"
+                  }
+              }
+          }

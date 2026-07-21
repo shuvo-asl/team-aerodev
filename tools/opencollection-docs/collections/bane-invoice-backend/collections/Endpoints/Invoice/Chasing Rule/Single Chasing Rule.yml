@@ -1,0 +1,73 @@
+info:
+  name: Single Chasing Rule
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{url}}/api/chasing_rule/3"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Single Chasing Rule
+    request:
+      url: "{{url}}/api/chasing_rule/3"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 04 Feb 2025 06:48:16 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "288"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chasing Rule Fetched Successfully",
+              "data": {
+                  "result": {
+                      "id": 3,
+                      "name": "rule1",
+                      "is_default": false,
+                      "chase_on": "after due date",
+                      "is_cumulative": false,
+                      "max_repetition": null,
+                      "email_template": 1,
+                      "email_template_name": "example email template",
+                      "chasing_days": [
+                          9,
+                          5,
+                          3
+                      ]
+                  }
+              }
+          }

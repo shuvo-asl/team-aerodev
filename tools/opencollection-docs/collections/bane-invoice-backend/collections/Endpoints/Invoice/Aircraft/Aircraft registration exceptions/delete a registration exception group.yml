@@ -1,0 +1,20 @@
+info:
+  name: delete a registration exception group
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url}}/api/aircraft-registration-exception/1/"
+  body:
+    type: text
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

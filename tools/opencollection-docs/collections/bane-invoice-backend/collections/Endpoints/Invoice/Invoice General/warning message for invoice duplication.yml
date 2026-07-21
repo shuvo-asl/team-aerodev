@@ -1,0 +1,135 @@
+info:
+  name: warning message for invoice duplication
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{url}}/api/warning-message-for-duplication/"
+  body:
+    type: json
+    data: |-
+      {
+          "invoice": 726,
+          "companies": [5]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/warning-message-for-duplication/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "invoice": 722,
+              "companies": [2, 5]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 16 Sep 2025 09:30:20 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "976"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Warning messages for duplication",
+              "data": {
+                  "result": {
+                      "2": [
+                          {
+                              "tax_rate": {
+                                  "message": "Following Tax Rates are not mapped and will be kept empty if copied anyway",
+                                  "tax_rates": [
+                                      {
+                                          "id": 18,
+                                          "name": "yhrty"
+                                      }
+                                  ]
+                              }
+                          },
+                          {
+                              "coa": {
+                                  "message": "Following Chart of Accounts are not mapped and will be kept empty if copied anyway",
+                                  "coas": [
+                                      {
+                                          "id": 18,
+                                          "account_name": "Office Expenses"
+                                      }
+                                  ]
+                              }
+                          },
+                          {
+                              "pdf_template": {
+                                  "message": "PDF Template dup5 not found and will be created automatically"
+                              }
+                          }
+                      ],
+                      "5": [
+                          {
+                              "tax_rate": {
+                                  "message": "Following Tax Rates are not mapped and will be kept empty if copied anyway",
+                                  "tax_rates": [
+                                      {
+                                          "id": 18,
+                                          "name": "yhrty"
+                                      }
+                                  ]
+                              }
+                          },
+                          {
+                              "coa": {
+                                  "message": "Following Chart of Accounts are not mapped and will be kept empty if copied anyway",
+                                  "coas": [
+                                      {
+                                          "id": 18,
+                                          "account_name": "Office Expenses"
+                                      }
+                                  ]
+                              }
+                          },
+                          {
+                              "pdf_template": {
+                                  "message": "PDF Template dup5 not found and will be created automatically"
+                              }
+                          },
+                          {
+                              "currency": {
+                                  "message": "Currency Bangladeshi Taka not found and will be created automatically"
+                              }
+                          }
+                      ]
+                  }
+              }
+          }

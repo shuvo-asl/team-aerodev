@@ -1,0 +1,21 @@
+info:
+  name: Manually trigger invoice schedule task
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{url}}/api/trigger-invoice-task/18/21/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

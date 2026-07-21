@@ -1,0 +1,21 @@
+info:
+  name: create aircraft
+  type: grpc
+  seq: 4
+
+grpc:
+  url: "{{gRPC_url}}"
+  method: /bas.BAS/CreateAircraft
+  methodType: unary
+  protoFilePath: ../../../rpc/bas.proto
+  metadata:
+    - name: "{{auth_param_name}}"
+      value: "{{token}}"
+  message: |-
+    {
+        "icao24": "6560",
+        "registration_number": "reg9",
+        "aircraft_type_id": 3,
+        "operator_id": 4
+    }
+  auth: inherit

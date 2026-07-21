@@ -1,0 +1,80 @@
+info:
+  name: Send invoice to client
+  type: http
+  seq: 10
+
+http:
+  method: PATCH
+  url: "{{url}}/api/send-invoice-to-client/142/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "should_send_to_client": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Send invoice to client
+    request:
+      url: "{{url}}/api/send-invoice-to-client/380/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "should_send_to_client": false,
+              "email_subject": "email from invoice status change",
+              "email_body": "email body sample",
+              "include_attachments": true,
+              "include_payment_url": true,
+              "send_myself_a_copy": true,
+              "cc": ["kkamrulhasan2020@gmail.com"],
+              "bcc": []
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Mon, 26 May 2025 04:26:42 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "89"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: PATCH, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice sent to client successfully",
+              "data": {
+                  "result": {}
+              }
+          }

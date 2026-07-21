@@ -1,0 +1,73 @@
+info:
+  name: Enable Or Disable Invoice Chasing
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{url}}/api/enable-or-disable-invoice-chasing/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_id": 49,
+          "is_enable": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Enable Or Disable Invoice Chasing
+    request:
+      url: "{{url}}/api/enable-or-disable-invoice-chasing/"
+      method: PATCH
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "invoice_id": 49,
+              "is_enable": false
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 10:15:29 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: PATCH, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "93"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "'Invoice Chasing' Successfully Disabled",
+              "data": {
+                  "result": {}
+              }
+          }

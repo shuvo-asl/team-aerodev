@@ -1,0 +1,400 @@
+info:
+  name: ticket events
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{url}}/api/ticket-event-stream/TCK-00001?last_event_id=1"
+  params:
+    - name: last_event_id
+      value: "1"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: ticket events without pagination
+    request:
+      url: "{{url}}/api/ticket-event-stream/TCK-00001?last_event_id=1"
+      method: GET
+      params:
+        - name: last_event_id
+          value: "1"
+          type: query
+        - name: limit
+          value: "2"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 07 Jan 2026 07:12:14 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept-Encoding
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+        - name: Content-Encoding
+          value: gzip
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Ticket Event Stream Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 6,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 7,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_DgwRRhn.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:08:10.818985+06:00"
+                      },
+                      {
+                          "id": 5,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 6,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_VnJEINj.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:07:20.356919+06:00"
+                      },
+                      {
+                          "id": 4,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 5,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_oFl3Ujv.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:07:02.190854+06:00"
+                      },
+                      {
+                          "id": 3,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 4,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_4C2RFn8.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:06:25.884009+06:00"
+                      },
+                      {
+                          "id": 2,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 3,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_jQvHPDK.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:05:25.087679+06:00"
+                      }
+                  ]
+              }
+          }
+  - name: ticket events pagination
+    request:
+      url: "{{url}}/api/ticket-event-stream/TCK-00001?last_event_id=1&limit=2"
+      method: GET
+      params:
+        - name: last_event_id
+          value: "1"
+          type: query
+        - name: limit
+          value: "2"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 07 Jan 2026 07:13:02 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "643"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Ticket Event Stream Successfully Fetched",
+              "data": {
+                  "next": 2,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 5,
+                  "total_page": 3,
+                  "result": [
+                      {
+                          "id": 6,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 7,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_DgwRRhn.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:08:10.818985+06:00"
+                      },
+                      {
+                          "id": 5,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 6,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_VnJEINj.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:07:20.356919+06:00"
+                      }
+                  ]
+              }
+          }
+  - name: all ticket events
+    request:
+      url: "{{url}}/api/ticket-event-stream/TCK-00001"
+      method: GET
+      params:
+        - name: last_event_id
+          value: "1"
+          type: query
+          disabled: true
+        - name: limit
+          value: "2"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 07 Jan 2026 07:13:40 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept-Encoding
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+        - name: Content-Encoding
+          value: gzip
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Ticket Event Stream Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 6,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 7,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_DgwRRhn.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:08:10.818985+06:00"
+                      },
+                      {
+                          "id": 5,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 6,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_VnJEINj.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:07:20.356919+06:00"
+                      },
+                      {
+                          "id": 4,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 5,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_oFl3Ujv.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:07:02.190854+06:00"
+                      },
+                      {
+                          "id": 3,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 4,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_4C2RFn8.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:06:25.884009+06:00"
+                      },
+                      {
+                          "id": 2,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 3,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_jQvHPDK.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:05:25.087679+06:00"
+                      },
+                      {
+                          "id": 1,
+                          "event_type": "comment_created",
+                          "payload": {
+                              "text": "example text",
+                              "user_id": 1,
+                              "attachments": [
+                                  {
+                                      "id": 2,
+                                      "url": "http://localhost:5011/api/media/comment_attachments/bdflag_7zOYFOb.jpg"
+                                  }
+                              ]
+                          },
+                          "created_at": "2026-01-07T13:04:31.492629+06:00"
+                      }
+                  ]
+              }
+          }

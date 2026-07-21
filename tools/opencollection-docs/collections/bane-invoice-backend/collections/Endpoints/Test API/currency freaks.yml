@@ -1,0 +1,19 @@
+info:
+  name: currency freaks
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: https://api.currencyfreaks.com/v2.0/rates/latest?apikey=907a22a57772452d852f1412521122cc
+  params:
+    - name: apikey
+      value: 907a22a57772452d852f1412521122cc
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

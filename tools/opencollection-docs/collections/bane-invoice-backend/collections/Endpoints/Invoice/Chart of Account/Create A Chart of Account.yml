@@ -1,0 +1,95 @@
+info:
+  name: Create A Chart of Account
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/account/"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"account_name\": \"Regan\",\r
+
+      \    \"code\": \"regan\",\r
+
+      \    \"account_type\": \"current\",\r
+
+      \    \"details\": \"na\",\r
+
+      \    \"transaction_type\": \"expense\"\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create A Chart of Account
+    request:
+      url: "{{url}}/api/account/"
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \    \"account_name\": \"Regan\",\r
+
+          \    \"code\": \"regan\",\r
+
+          \    \"account_type\": \"current\",\r
+
+          \    \"details\": \"na\",\r
+
+          \    \"transaction_type\": \"expense\"\r
+
+          }"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Sun, 01 Sep 2024 16:43:44 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "288"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chart Of Account successfully created",
+              "data": {
+                  "result": {
+                      "id": 2,
+                      "deleted_at": null,
+                      "created_at": "2024-09-01T22:43:44.613725+06:00",
+                      "updated_at": null,
+                      "account_name": "Regan",
+                      "code": "regan",
+                      "account_type": "current",
+                      "details": "na",
+                      "transaction_type": "expense"
+                  }
+              }
+          }

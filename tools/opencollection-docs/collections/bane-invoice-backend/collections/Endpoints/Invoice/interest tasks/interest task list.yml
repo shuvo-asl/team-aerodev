@@ -1,0 +1,92 @@
+info:
+  name: interest task list
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/interest-tasks/?invoice_id=172"
+  params:
+    - name: invoice_id
+      value: "172"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/interest-tasks/?invoice_id=172"
+      method: GET
+      params:
+        - name: invoice_id
+          value: "172"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 09 Mar 2025 07:24:49 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "559"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Interest Tasks Successfully Fetched",
+              "data": {
+                  "result": {
+                      "invoice_no": "INV-000166",
+                      "id": 172,
+                      "issue_date": "2025-03-09",
+                      "due_date": "2025-03-11",
+                      "sent_date": "2025-03-09",
+                      "payment_status": "due",
+                      "status": "sent",
+                      "currency": "Afs",
+                      "interest_tasks": [
+                          {
+                              "is_enabled": true,
+                              "id": 16,
+                              "is_calculated": false,
+                              "interest_date": "2025-03-13",
+                              "day": 2,
+                              "is_cumulative": true,
+                              "start_time": "2025-03-13T02:01:00"
+                          },
+                          {
+                              "is_enabled": true,
+                              "id": 17,
+                              "is_calculated": false,
+                              "interest_date": "2025-03-15",
+                              "day": 2,
+                              "is_cumulative": true,
+                              "start_time": "2025-03-15T02:01:00"
+                          }
+                      ]
+                  }
+              }
+          }

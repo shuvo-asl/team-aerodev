@@ -1,0 +1,72 @@
+info:
+  name: sse notification
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/sse/notifications-stream/"
+  body:
+    type: text
+    data: "{\r
+
+      \    \"email\": \"admin@gmail.com\",\r
+
+      \    \"password\": \"admin@123\",\r
+
+      \    \"user_type\": \"asl\"\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: sse notification
+    request:
+      url: "{{url}}/api/sse/notifications-stream/"
+      method: GET
+      body:
+        type: text
+        data: "{\r
+
+          \    \"email\": \"admin@gmail.com\",\r
+
+          \    \"password\": \"admin@123\",\r
+
+          \    \"user_type\": \"asl\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Sun, 11 Jan 2026 08:01:22 GMT
+        - name: Content-Type
+          value: text/event-stream
+        - name: Transfer-Encoding
+          value: chunked
+        - name: Connection
+          value: keep-alive
+        - name: cache-control
+          value: no-cache
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: text
+        data: ""

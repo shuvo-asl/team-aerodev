@@ -1,0 +1,127 @@
+info:
+  name: Create A Bank account
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/account/?object_name=bank"
+  headers:
+    - name: object_name
+      value: bank
+  params:
+    - name: object_name
+      value: bank
+      type: query
+  body:
+    type: json
+    data: "{\r
+
+      \    \"account_type\": \"BANK\",\r
+
+      \    \"account_name\": \"test bank account3012\",\r
+
+      \    \"transaction_type\": \"non_expense\",\r
+
+      \    \"account_number\": \"4204\",\r
+
+      \    \"bank_account_type\": \"credit_card\",\r
+
+      \    \"currency_code\": \"USD\",\r
+
+      \    \"bank_name\": \"sonali bank\",\r
+
+      \    \"code\": \"bank-1212\"\r
+
+      }\r\n"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create A Bank account
+    request:
+      url: "{{url}}/api/account/?object_name=bank"
+      method: POST
+      headers:
+        - name: object_name
+          value: bank
+      params:
+        - name: object_name
+          value: bank
+          type: query
+      body:
+        type: json
+        data: "{\r
+
+          \    \"account_type\": \"BANK\",\r
+
+          \    \"account_name\": \"test bank account3012\",\r
+
+          \    \"transaction_type\": \"non_expense\",\r
+
+          \    \"account_number\": \"4204\",\r
+
+          \    \"bank_account_type\": \"credit_card\",\r
+
+          \    \"currency_code\": \"USD\",\r
+
+          \    \"bank_name\": \"sonali bank\",\r
+
+          \    \"code\": \"bank-1212\"\r
+
+          }\r\n"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 05:44:21 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "444"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Bank Account successfully created",
+              "data": {
+                  "result": {
+                      "id": 118,
+                      "account_name": "test bank account3012",
+                      "code": "bank-1212",
+                      "deleted_at": null,
+                      "created_at": "2024-11-12T11:44:21.208265+06:00",
+                      "updated_at": null,
+                      "account_type": "BANK",
+                      "details": null,
+                      "transaction_type": "non_expense",
+                      "source": null,
+                      "account_number": "4204",
+                      "currency_code": "USD",
+                      "bank_account_type": "credit_card",
+                      "bank_name": "sonali bank",
+                      "is_active": true
+                  }
+              }
+          }

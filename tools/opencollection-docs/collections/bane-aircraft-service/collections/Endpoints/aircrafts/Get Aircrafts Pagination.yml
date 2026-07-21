@@ -1,0 +1,24 @@
+info:
+  name: Get Aircrafts Pagination
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{url}}/aircrafts?page=5&item_count=10"
+  params:
+    - name: page
+      value: "5"
+      type: query
+    - name: item_count
+      value: "10"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

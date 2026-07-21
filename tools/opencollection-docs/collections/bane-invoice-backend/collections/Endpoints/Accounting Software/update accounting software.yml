@@ -1,0 +1,85 @@
+info:
+  name: update accounting software
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{url}}/api/accounting-software/3/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "xero",
+          "credentials": 
+          {
+              "scope": "offline_access openid profile email accounting.transactions accounting.transactions.read accounting.reports.read accounting.journals.read accounting.settings accounting.settings.read accounting.contacts accounting.contacts.read accounting.attachments accounting.attachments.read assets projects files payroll.employees payroll.payruns payroll.payslip payroll.timesheets payroll.settings",
+                      "version": "2",
+                      "client_id": "978ABF64FCA2427D99EA034215AEFF3A",
+                      "endpoint_url": "https://api.xero.com/",
+                      "redirect_uri": "http://localhost:5011/api/xero/callback",
+                      "authorize_url": "https://login.xero.com/identity/connect/authorize",
+                      "client_secret": "GKVvQrGOXbEyucT5uzMhCFF4OZgTY9r_4-DyuFimbA72TrOe",
+                      "access_token_url": "https://identity.xero.com/connect/token",
+                      "refresh_token_url": "https://identity.xero.com/connect/token",
+                      "redirect_frontend_failed_url": "http://localhost:5173/app/accounting_software",
+                      "redirect_frontend_success_url": "http://localhost:5173/app/accounting_software"
+              }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get accounting soft
+    request:
+      url: "{{url}}/api/accounting-software/4"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 03 Sep 2024 05:01:27 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "245"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Accounting Software Fetched Successfully",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "name": "xero",
+                      "credentials": {
+                          "client_id": "gAAAAABm1W2684UEdMOJRZPRELUaLVu97vAhQZmlW_Lo7CIAhKMOk0E1kq4xMlE15a5RNnW-xwsRoCEr2KBoFYWnsN96wHqVIQ=="
+                      }
+                  }
+              }
+          }

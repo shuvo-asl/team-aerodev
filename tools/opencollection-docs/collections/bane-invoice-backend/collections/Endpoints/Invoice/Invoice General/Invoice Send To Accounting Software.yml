@@ -1,0 +1,73 @@
+info:
+  name: Invoice Send To Accounting Software
+  type: http
+  seq: 13
+
+http:
+  method: POST
+  url: "{{url}}/api/invoice-send-to-accounting-software/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_id": 68,
+          "accounting_software_ids": [1]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Invoice Send To Accounting Software
+    request:
+      url: "{{url}}/api/invoice-send-to-accounting-software/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "invoice_id": 68,
+              "accounting_software_ids": [1]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 26 Feb 2025 05:43:58 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "102"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice sent to Accounting Software successfully",
+              "data": {
+                  "result": {}
+              }
+          }

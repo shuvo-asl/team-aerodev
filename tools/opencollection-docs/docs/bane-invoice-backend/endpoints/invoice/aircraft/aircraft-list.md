@@ -1,0 +1,2877 @@
+# Aircraft List
+
+**GET** `{{url}}/api/bas/aircraft/?limit=10&page=1`
+
+## Auth
+
+Type: `bearer`
+
+## Query Params
+
+| Name | Value | Type |
+|---|---|---|
+| `limit` | `10` | query |
+| `short_code` | `ETH` | query |
+| `page` | `1` | query |
+
+## Body
+
+Type: `text`
+
+## Examples
+
+### Get All Aircraft List
+
+**Request:** `GET` `{{url}}/api/bas/aircraft/`
+
+**Response:** `200 OK`
+
+```json
+{
+    "status": "success",
+    "message": "Aircraft successfully fetched",
+    "data": {
+        "result": [
+            {
+                "id": 4818,
+                "icao24": "04016A",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4817,
+                "icao24": "04012B",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4816,
+                "icao24": "06E02C",
+                "registration_number": "9XR-WT",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4814,
+                "icao24": "8966EA",
+                "registration_number": "A6-SHB",
+                "operator_id": 2910,
+                "operator_name": "SolitAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4811,
+                "icao24": "5084DD",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4812,
+                "icao24": "50820C",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4810,
+                "icao24": "04C31B",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4809,
+                "icao24": "0428DA",
+                "registration_number": "3C-MAF",
+                "operator_id": 14777,
+                "operator_name": "Equatorial Guinea Government",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4808,
+                "icao24": "0100E0",
+                "registration_number": "SU-GCS",
+                "operator_id": 14761,
+                "operator_name": "EGYPT AIR",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4807,
+                "icao24": "A35AFF",
+                "registration_number": "N315SL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4806,
+                "icao24": "710061",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4805,
+                "icao24": "040111",
+                "registration_number": "QWERT",
+                "operator_id": 2,
+                "operator_name": "Flyadeal",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4804,
+                "icao24": "068095",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4803,
+                "icao24": "04C2BF",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4802,
+                "icao24": "040261",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4801,
+                "icao24": "044230",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4800,
+                "icao24": "5084E4",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4799,
+                "icao24": "07C06B",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4798,
+                "icao24": "040184",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4797,
+                "icao24": "07C08F",
+                "registration_number": "ST-BDG",
+                "operator_id": 2470,
+                "operator_name": "Badr Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4796,
+                "icao24": "4B1F2B",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4795,
+                "icao24": "04C31C",
+                "registration_number": "5Y-CUU",
+                "operator_id": 14718,
+                "operator_name": "Mombasa Air Safari",
+                "aircraft_type_id": 637,
+                "aircraft_type_name": "C208"
+            },
+            {
+                "id": 4794,
+                "icao24": "152A52",
+                "registration_number": "RA-76370",
+                "operator_id": 14818,
+                "operator_name": "Abakan Air",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4793,
+                "icao24": "7c7744",
+                "registration_number": "7Q-SKL",
+                "operator_id": 14786,
+                "operator_name": "Skippers Aviation",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4792,
+                "icao24": "04C242",
+                "registration_number": "5Y-LIA",
+                "operator_id": 14742,
+                "operator_name": "ROYALSKY AVIATION LMTD",
+                "aircraft_type_id": 319,
+                "aircraft_type_name": "C208B"
+            },
+            {
+                "id": 4791,
+                "icao24": "AA7981",
+                "registration_number": "N774SP",
+                "operator_id": 2481,
+                "operator_name": "Samaritan's Purse",
+                "aircraft_type_id": 319,
+                "aircraft_type_name": "C208B"
+            },
+            {
+                "id": 4790,
+                "icao24": "04C27E",
+                "registration_number": "5Y-SNL",
+                "operator_id": 14788,
+                "operator_name": "ACP",
+                "aircraft_type_id": 257,
+                "aircraft_type_name": "B762"
+            },
+            {
+                "id": 4789,
+                "icao24": "50844C",
+                "registration_number": "UR-UZG",
+                "operator_id": 2424,
+                "operator_name": "Constanta Airline",
+                "aircraft_type_id": 1112,
+                "aircraft_type_name": "AN26"
+            },
+            {
+                "id": 4788,
+                "icao24": "04C1CC",
+                "registration_number": "5Y-FDF",
+                "operator_id": 14807,
+                "operator_name": "AMREF",
+                "aircraft_type_id": 54,
+                "aircraft_type_name": "PC12"
+            },
+            {
+                "id": 4787,
+                "icao24": "04C293",
+                "registration_number": "5Y-FDW",
+                "operator_id": 14807,
+                "operator_name": "AMREF",
+                "aircraft_type_id": 557,
+                "aircraft_type_name": "C680"
+            },
+            {
+                "id": 4786,
+                "icao24": "04C1CD",
+                "registration_number": "5Y-FDP",
+                "operator_id": 14807,
+                "operator_name": "AMREF",
+                "aircraft_type_id": 54,
+                "aircraft_type_name": "PC12"
+            },
+            {
+                "id": 4785,
+                "icao24": "742ac2",
+                "registration_number": "JY-JVB",
+                "operator_id": 14817,
+                "operator_name": "Jordan Aviation",
+                "aircraft_type_id": 102,
+                "aircraft_type_name": "A332"
+            },
+            {
+                "id": 4784,
+                "icao24": "235AFF",
+                "registration_number": "ET-AYP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4783,
+                "icao24": "AB4B2E",
+                "registration_number": "N827DG",
+                "operator_id": 14723,
+                "operator_name": "AIM Air",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4782,
+                "icao24": "A3C521",
+                "registration_number": "N342EA",
+                "operator_id": 14723,
+                "operator_name": "AIM Air",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4781,
+                "icao24": "A916BC",
+                "registration_number": "5Y-PYR",
+                "operator_id": 14723,
+                "operator_name": "AIM Air",
+                "aircraft_type_id": 637,
+                "aircraft_type_name": "C208"
+            },
+            {
+                "id": 4780,
+                "icao24": "84C320",
+                "registration_number": "5Y-DRM",
+                "operator_id": 14741,
+                "operator_name": "ALLIED SERVICES",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4779,
+                "icao24": "0680B8",
+                "registration_number": "5X-GLG",
+                "operator_id": 14741,
+                "operator_name": "ALLIED SERVICES",
+                "aircraft_type_id": 194,
+                "aircraft_type_name": "L410"
+            },
+            {
+                "id": 4778,
+                "icao24": "A7E7BE",
+                "registration_number": "N6083F",
+                "operator_id": 14802,
+                "operator_name": "AFRICAN PARK",
+                "aircraft_type_id": 1036,
+                "aircraft_type_name": "C182"
+            },
+            {
+                "id": 4777,
+                "icao24": "04C35B",
+                "registration_number": "5Y-RNW",
+                "operator_id": 14721,
+                "operator_name": "Renegade Air",
+                "aircraft_type_id": 150,
+                "aircraft_type_name": "ATR42"
+            },
+            {
+                "id": 4776,
+                "icao24": "04C35C",
+                "registration_number": "5Y-RNT",
+                "operator_id": 14721,
+                "operator_name": "Renegade Air",
+                "aircraft_type_id": 150,
+                "aircraft_type_name": "ATR42"
+            },
+            {
+                "id": 4775,
+                "icao24": "4A8135",
+                "registration_number": "5Y-RNG",
+                "operator_id": 14734,
+                "operator_name": "AEROJET AVIATION",
+                "aircraft_type_id": 1174,
+                "aircraft_type_name": "FK50"
+            },
+            {
+                "id": 4774,
+                "icao24": "04C29B",
+                "registration_number": "5Y-JJJ",
+                "operator_id": 14757,
+                "operator_name": "ORENFLY AVIATION",
+                "aircraft_type_id": 425,
+                "aircraft_type_name": "Fokker 50"
+            },
+            {
+                "id": 4773,
+                "icao24": "0400F5",
+                "registration_number": "ET-AYQ",
+                "operator_id": 14751,
+                "operator_name": "Icon Aviation Ltd",
+                "aircraft_type_id": 1174,
+                "aircraft_type_name": "FK50"
+            },
+            {
+                "id": 4772,
+                "icao24": "040104",
+                "registration_number": "ET-AZQ",
+                "operator_id": 14751,
+                "operator_name": "Icon Aviation Ltd",
+                "aircraft_type_id": 1174,
+                "aircraft_type_name": "FK50"
+            },
+            {
+                "id": 4771,
+                "icao24": "05000C",
+                "registration_number": "D6-MAM",
+                "operator_id": 14731,
+                "operator_name": "KUSH AIR",
+                "aircraft_type_id": 194,
+                "aircraft_type_name": "L410"
+            },
+            {
+                "id": 4770,
+                "icao24": "090035",
+                "registration_number": "D6-KUS",
+                "operator_id": 14731,
+                "operator_name": "KUSH AIR",
+                "aircraft_type_id": 194,
+                "aircraft_type_name": "L410"
+            },
+            {
+                "id": 4769,
+                "icao24": "06E012",
+                "registration_number": "9XR-WR",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": 1120,
+                "aircraft_type_name": "Boeing 737-8SH"
+            },
+            {
+                "id": 4768,
+                "icao24": "06809D",
+                "registration_number": "5X-AAF",
+                "operator_id": 14726,
+                "operator_name": "Kush Air",
+                "aircraft_type_id": 194,
+                "aircraft_type_name": "L410"
+            },
+            {
+                "id": 4767,
+                "icao24": "710059",
+                "registration_number": "HZ-AK17",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4766,
+                "icao24": "ET3920",
+                "registration_number": "ET-AVX",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1,
+                "aircraft_type_name": "B-738"
+            },
+            {
+                "id": 4765,
+                "icao24": "0680C3",
+                "registration_number": "5X-AXD",
+                "operator_id": 14726,
+                "operator_name": "Kush Air",
+                "aircraft_type_id": 679,
+                "aircraft_type_name": "DH8D"
+            },
+            {
+                "id": 4764,
+                "icao24": "040105",
+                "registration_number": "ET-ASK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 334,
+                "aircraft_type_name": "BOEING 777-300ER"
+            },
+            {
+                "id": 4763,
+                "icao24": "5084EA",
+                "registration_number": "URHZV",
+                "operator_id": 14779,
+                "operator_name": "H3 Operations",
+                "aircraft_type_id": 806,
+                "aircraft_type_name": "MI8"
+            },
+            {
+                "id": 4762,
+                "icao24": "5084E0",
+                "registration_number": "URHZO",
+                "operator_id": 14779,
+                "operator_name": "H3 Operations",
+                "aircraft_type_id": 806,
+                "aircraft_type_name": "MI8"
+            },
+            {
+                "id": 4761,
+                "icao24": "5004A5",
+                "registration_number": "T7-SPEC1",
+                "operator_id": 14816,
+                "operator_name": "Spec Engineering",
+                "aircraft_type_id": 199,
+                "aircraft_type_name": "DASSAULT FALCON 7X"
+            },
+            {
+                "id": 4759,
+                "icao24": "235A",
+                "registration_number": "ET-A",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4758,
+                "icao24": "04C05F",
+                "registration_number": "5Y-WHB",
+                "operator_id": 14814,
+                "operator_name": "Phoenix Aviation",
+                "aircraft_type_id": 327,
+                "aircraft_type_name": "C56X"
+            },
+            {
+                "id": 4757,
+                "icao24": "0101DA",
+                "registration_number": "SU-KHP",
+                "operator_id": 2,
+                "operator_name": "Flyadeal",
+                "aircraft_type_id": 476,
+                "aircraft_type_name": "B773"
+            },
+            {
+                "id": 4756,
+                "icao24": "4BAB28",
+                "registration_number": "TC-JYH",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 245,
+                "aircraft_type_name": "B739"
+            },
+            {
+                "id": 4755,
+                "icao24": "710056",
+                "registration_number": "HZ-AK14",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1114,
+                "aircraft_type_name": "Boeing 777-368(ER)"
+            },
+            {
+                "id": 4754,
+                "icao24": "0100DC",
+                "registration_number": "SU-GCN",
+                "operator_id": 14761,
+                "operator_name": "EGYPT AIR",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4753,
+                "icao24": "040079",
+                "registration_number": "ET-AQP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1135,
+                "aircraft_type_name": "Boeing 737-860"
+            },
+            {
+                "id": 4752,
+                "icao24": "07C068",
+                "registration_number": "ST-TAA",
+                "operator_id": 14739,
+                "operator_name": "TARCO AVIATION",
+                "aircraft_type_id": 1172,
+                "aircraft_type_name": "Boeing 737-846"
+            },
+            {
+                "id": 4751,
+                "icao24": "4BB068",
+                "registration_number": "TC-LCH",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4750,
+                "icao24": "09C02E",
+                "registration_number": "XT-EBO",
+                "operator_id": 14810,
+                "operator_name": "Liz Aviation",
+                "aircraft_type_id": 1169,
+                "aircraft_type_name": "Ilyushin Il-76TD"
+            },
+            {
+                "id": 4749,
+                "icao24": "4950E4",
+                "registration_number": "CS-TGD",
+                "operator_id": 14808,
+                "operator_name": "EuroAtlantic Airways",
+                "aircraft_type_id": 102,
+                "aircraft_type_name": "A332"
+            },
+            {
+                "id": 4748,
+                "icao24": "4A1A62",
+                "registration_number": "YR-FSB",
+                "operator_id": 14809,
+                "operator_name": "ROMCargo Airlines",
+                "aircraft_type_id": 15,
+                "aircraft_type_name": "B744"
+            },
+            {
+                "id": 4747,
+                "icao24": "040198",
+                "registration_number": "ET-AYA",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1171,
+                "aircraft_type_name": "A350-941"
+            },
+            {
+                "id": 4746,
+                "icao24": "04024A",
+                "registration_number": "ET-BBG",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1170,
+                "aircraft_type_name": "Boeing 777-300(ER)"
+            },
+            {
+                "id": 4745,
+                "icao24": "71005A",
+                "registration_number": "HZ-AK18",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1114,
+                "aircraft_type_name": "Boeing 777-368(ER)"
+            },
+            {
+                "id": 4744,
+                "icao24": "06A390",
+                "registration_number": "A7-BTA",
+                "operator_id": 14794,
+                "operator_name": "Qatar Airways",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4743,
+                "icao24": "040246",
+                "registration_number": "ET-BBC",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4742,
+                "icao24": "7100C3",
+                "registration_number": "HZ-AK35",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4741,
+                "icao24": "4BBB30",
+                "registration_number": "TC-NYP",
+                "operator_id": 2,
+                "operator_name": "Flyadeal",
+                "aircraft_type_id": 692,
+                "aircraft_type_name": "Airbus A330-243"
+            },
+            {
+                "id": 4740,
+                "registration_number": "4L-LLL",
+                "operator_id": 875,
+                "operator_name": "Geosky",
+                "aircraft_type_id": 1169,
+                "aircraft_type_name": "Ilyushin Il-76TD",
+                "icao24": ""
+            },
+            {
+                "id": 4739,
+                "icao24": "48449E",
+                "registration_number": "P4-HSJ",
+                "operator_id": 14791,
+                "operator_name": "Global Jet Aruba",
+                "aircraft_type_id": 1168,
+                "aircraft_type_name": "Airbus ACJ320-232"
+            },
+            {
+                "id": 4738,
+                "icao24": "04C147",
+                "registration_number": "5Y-CYA",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": 1167,
+                "aircraft_type_name": "Boeing 737-8HX"
+            },
+            {
+                "id": 4737,
+                "icao24": "4BB06E",
+                "registration_number": "TC-LCN",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4736,
+                "icao24": "A91D67",
+                "registration_number": "N685KS",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1166,
+                "aircraft_type_name": "Cessna 208 Grand Caravan"
+            },
+            {
+                "id": 4735,
+                "icao24": "AB72B2",
+                "registration_number": "N837DM",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 200,
+                "aircraft_type_name": "Boeing 737-800"
+            },
+            {
+                "id": 4734,
+                "icao24": "04008C",
+                "registration_number": "ET-ARJ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4733,
+                "icao24": "A5B53A",
+                "registration_number": "N467SP",
+                "operator_id": 2481,
+                "operator_name": "Samaritan's Purse",
+                "aircraft_type_id": 319,
+                "aircraft_type_name": "C208B"
+            },
+            {
+                "id": 4732,
+                "icao24": "040239",
+                "registration_number": "ET-BAP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4731,
+                "icao24": "0100DB",
+                "registration_number": "SU-GCM",
+                "operator_id": 14761,
+                "operator_name": "EGYPT AIR",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4730,
+                "icao24": "04C159",
+                "registration_number": "5Y-KZG",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": 1134,
+                "aircraft_type_name": "Boeing 787-8 Dreamliner"
+            },
+            {
+                "id": 4729,
+                "registration_number": "UR-HZV",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1164,
+                "aircraft_type_name": "Mil Mi-8MTV-1 Hip",
+                "icao24": ""
+            },
+            {
+                "id": 4728,
+                "icao24": "4CA785",
+                "registration_number": "EI-LSY",
+                "operator_id": 14783,
+                "operator_name": "GainJet Ireland",
+                "aircraft_type_id": 3,
+                "aircraft_type_name": "G550"
+            },
+            {
+                "id": 4727,
+                "icao24": "71005F",
+                "registration_number": "HZ-AK20",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1114,
+                "aircraft_type_name": "Boeing 777-368(ER)"
+            },
+            {
+                "id": 4726,
+                "icao24": "3DD205",
+                "registration_number": "D0680",
+                "operator_id": 2,
+                "operator_name": "Flyadeal",
+                "aircraft_type_id": 52,
+                "aircraft_type_name": "B737"
+            },
+            {
+                "id": 4725,
+                "registration_number": "5X-EQQ",
+                "operator_id": 3255,
+                "operator_name": "Uganda Airlines",
+                "aircraft_type_id": 1147,
+                "aircraft_type_name": "Mitsubishi CRJ-900",
+                "icao24": ""
+            },
+            {
+                "id": 4724,
+                "icao24": "010146",
+                "registration_number": "SU-GDZ",
+                "operator_id": 14761,
+                "operator_name": "EGYPT AIR",
+                "aircraft_type_id": 1138,
+                "aircraft_type_name": "Boeing 737-866"
+            },
+            {
+                "id": 4723,
+                "registration_number": " ET-AWJ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1121,
+                "aircraft_type_name": "Boeing 737 MAX 8",
+                "icao24": ""
+            },
+            {
+                "id": 4722,
+                "icao24": "4BB064",
+                "registration_number": "TC-LCD",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4721,
+                "icao24": "50018A",
+                "registration_number": "T7-ELL",
+                "operator_id": 14790,
+                "operator_name": "Falcon Luxe",
+                "aircraft_type_id": 1163,
+                "aircraft_type_name": "Bombardier Global Express"
+            },
+            {
+                "id": 4720,
+                "icao24": "50838B",
+                "registration_number": "UR-CEP",
+                "operator_id": 2424,
+                "operator_name": "Constanta Airline",
+                "aircraft_type_id": 1162,
+                "aircraft_type_name": "Antonov An-26"
+            },
+            {
+                "id": 4719,
+                "icao24": "04C1AC",
+                "registration_number": "5Y-EST",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4716,
+                "icao24": "04C0D5",
+                "registration_number": "5Y-MMB",
+                "operator_id": 14789,
+                "operator_name": "Salaam Air Express",
+                "aircraft_type_id": 1157,
+                "aircraft_type_name": "Fokker F70"
+            },
+            {
+                "id": 4714,
+                "icao24": "04C2A6",
+                "registration_number": "5Y-KCA",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4708,
+                "icao24": "4BB070",
+                "registration_number": "TC-LCP",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1121,
+                "aircraft_type_name": "Boeing 737 MAX 8"
+            },
+            {
+                "id": 4706,
+                "icao24": "04C312",
+                "registration_number": "5Y-JSK",
+                "operator_id": 14788,
+                "operator_name": "ACP",
+                "aircraft_type_id": 88,
+                "aircraft_type_name": "B734"
+            },
+            {
+                "id": 4705,
+                "icao24": "04C115",
+                "registration_number": "5Y-FFK",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": 51,
+                "aircraft_type_name": "E190 "
+            },
+            {
+                "id": 4704,
+                "icao24": "04022B",
+                "registration_number": "ET-BAB",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1069,
+                "aircraft_type_name": "Boeing 777-F"
+            },
+            {
+                "id": 4697,
+                "icao24": "040240",
+                "registration_number": "ET-BAW",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1081,
+                "aircraft_type_name": "A35K"
+            },
+            {
+                "id": 4693,
+                "icao24": "710104",
+                "registration_number": "HZ-AK26",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1114,
+                "aircraft_type_name": "Boeing 777-368(ER)"
+            },
+            {
+                "id": 4691,
+                "icao24": "A34626",
+                "registration_number": "N3-15SL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1159,
+                "aircraft_type_name": "Boeing 737-86N"
+            },
+            {
+                "id": 4690,
+                "icao24": "04C209",
+                "registration_number": "5Y-PCS",
+                "operator_id": 14723,
+                "operator_name": "AIM Air",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4689,
+                "icao24": "068099",
+                "registration_number": "5X-KDP",
+                "operator_id": 3255,
+                "operator_name": "Uganda Airlines",
+                "aircraft_type_id": 1147,
+                "aircraft_type_name": "Mitsubishi CRJ-900"
+            },
+            {
+                "id": 4688,
+                "icao24": "06806A",
+                "registration_number": "5X-ASB",
+                "operator_id": 14716,
+                "operator_name": "AirServe Uganda",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4685,
+                "registration_number": "HZ-AK22",
+                "aircraft_type_id": 1114,
+                "aircraft_type_name": "Boeing 777-368(ER)",
+                "icao24": "",
+                "operator_id": null,
+                "operator_name": ""
+            },
+            {
+                "id": 4682,
+                "icao24": "510146",
+                "registration_number": "EW-505TR",
+                "operator_id": 14787,
+                "operator_name": "RADA Airlines",
+                "aircraft_type_id": 1156,
+                "aircraft_type_name": "IL62"
+            },
+            {
+                "id": 4672,
+                "icao24": "04C0E1",
+                "registration_number": "5Y-FFE",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": 51,
+                "aircraft_type_name": "E190 "
+            },
+            {
+                "id": 4665,
+                "icao24": "040260",
+                "registration_number": "ET-BCC",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1134,
+                "aircraft_type_name": "Boeing 787-8 Dreamliner"
+            },
+            {
+                "id": 4664,
+                "icao24": "06A020",
+                "registration_number": "ST-",
+                "operator_id": 2470,
+                "operator_name": "Badr Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4661,
+                "icao24": "4D2078",
+                "registration_number": "9H-AKK",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1154,
+                "aircraft_type_name": "Boeing 747-467F"
+            },
+            {
+                "id": 4658,
+                "icao24": "040131",
+                "registration_number": "ET-ATY",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4657,
+                "icao24": "710108",
+                "registration_number": "HZ-AK30",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4655,
+                "icao24": "040156",
+                "registration_number": "ET-AVN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4654,
+                "icao24": "040126",
+                "registration_number": "ET-ATJ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1152,
+                "aircraft_type_name": "Boeing 787-9 Dreamliner"
+            },
+            {
+                "id": 4653,
+                "icao24": "4BA912",
+                "registration_number": "TC-JHR",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4652,
+                "icao24": "010188",
+                "registration_number": "SUGHP",
+                "operator_id": 2,
+                "operator_name": "Flyadeal",
+                "aircraft_type_id": 1151,
+                "aircraft_type_name": "Boeing 777-31H"
+            },
+            {
+                "id": 4650,
+                "icao24": "5003A4",
+                "registration_number": "T7-ADX",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1150,
+                "aircraft_type_name": "Bombardier Global 7500"
+            },
+            {
+                "id": 4649,
+                "icao24": "7C7744",
+                "registration_number": "VH-XUE",
+                "operator_id": 14786,
+                "operator_name": "Skippers Aviation",
+                "aircraft_type_id": 1149,
+                "aircraft_type_name": "Embraer EMB-120ER Brasilia"
+            },
+            {
+                "id": 4647,
+                "icao24": "01010D",
+                "registration_number": "SU-GDE",
+                "operator_id": 176,
+                "operator_name": "EGYPT AIR CARGO",
+                "aircraft_type_id": 1138,
+                "aircraft_type_name": "Boeing 737-866"
+            },
+            {
+                "id": 4644,
+                "registration_number": "UR-HLG",
+                "operator_id": 14719,
+                "operator_name": "United Nations",
+                "aircraft_type_id": 1148,
+                "aircraft_type_name": "Mil Mi-8MT Hip",
+                "icao24": ""
+            },
+            {
+                "id": 4641,
+                "icao24": "06E",
+                "registration_number": "9XR-",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": 1146,
+                "aircraft_type_name": "Boeing 737-8H6"
+            },
+            {
+                "id": 4640,
+                "icao24": "04C2D8",
+                "registration_number": "5Y-FQA",
+                "operator_id": 14785,
+                "operator_name": "Fanjet Express",
+                "aircraft_type_id": 88,
+                "aircraft_type_name": "B734"
+            },
+            {
+                "id": 4639,
+                "icao24": "7100B3",
+                "registration_number": "HZ-AK25",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4638,
+                "registration_number": "ET-ASJ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "icao24": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4637,
+                "icao24": "040168",
+                "registration_number": "ET-AWE",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4636,
+                "icao24": "04004A",
+                "registration_number": "ET-AOT",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1144,
+                "aircraft_type_name": "Boeing 787-8 "
+            },
+            {
+                "id": 4635,
+                "icao24": "04C2D1",
+                "registration_number": "5Y-SKE",
+                "operator_id": 3339,
+                "operator_name": "Skyward Airlines",
+                "aircraft_type_id": 1130,
+                "aircraft_type_name": "Fokker 100"
+            },
+            {
+                "id": 4634,
+                "icao24": "801418",
+                "registration_number": "VT-GSS",
+                "operator_id": 2926,
+                "operator_name": "STAR AIR",
+                "aircraft_type_id": 1145,
+                "aircraft_type_name": "ERJ-145LR"
+            },
+            {
+                "id": 4633,
+                "icao24": "AA64F0",
+                "registration_number": "N7-69WE",
+                "operator_id": 3976,
+                "operator_name": "BELAGRASCO AVIATION II LLC",
+                "aircraft_type_id": 3,
+                "aircraft_type_name": "G550"
+            },
+            {
+                "id": 4632,
+                "icao24": "040154",
+                "registration_number": "ET-AVL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1121,
+                "aircraft_type_name": "Boeing 737 MAX 8"
+            },
+            {
+                "id": 4631,
+                "icao24": "040241",
+                "registration_number": "ET-BAX",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1093,
+                "aircraft_type_name": "Airbus A350"
+            },
+            {
+                "id": 4630,
+                "icao24": "04004C",
+                "registration_number": "ET-AOV",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1144,
+                "aircraft_type_name": "Boeing 787-8 "
+            },
+            {
+                "id": 4629,
+                "icao24": "040197",
+                "registration_number": "ET-AYB",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1143,
+                "aircraft_type_name": "Airbus A350-941 "
+            },
+            {
+                "id": 4628,
+                "icao24": "71005E",
+                "registration_number": "HZ-AK19",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1142,
+                "aircraft_type_name": "Boeing 777-368 ER"
+            },
+            {
+                "id": 4626,
+                "icao24": "5002CB",
+                "registration_number": "T7-RDC",
+                "operator_id": 4014,
+                "operator_name": "Air Congo",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4625,
+                "icao24": "040045",
+                "registration_number": "ET-AOO",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4624,
+                "icao24": "4BB323",
+                "registration_number": "TC-LYC",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1141,
+                "aircraft_type_name": "Boeing 737 MAX 9"
+            },
+            {
+                "id": 4623,
+                "icao24": "C2B225",
+                "registration_number": "130605",
+                "operator_id": 14724,
+                "operator_name": "Canada - Royal Canadian Air Force",
+                "aircraft_type_id": 1140,
+                "aircraft_type_name": "Lockheed CC130J Hercules"
+            },
+            {
+                "id": 4622,
+                "icao24": "8966E0",
+                "registration_number": "A6-SHO",
+                "operator_id": 2910,
+                "operator_name": "SolitAir",
+                "aircraft_type_id": 1139,
+                "aircraft_type_name": "Boeing 737-8BK(BCF)"
+            },
+            {
+                "id": 4621,
+                "icao24": "010147",
+                "registration_number": "SU-GEA",
+                "operator_id": 14761,
+                "operator_name": "EGYPT AIR",
+                "aircraft_type_id": 1138,
+                "aircraft_type_name": "Boeing 737-866"
+            },
+            {
+                "id": 4620,
+                "icao24": "710105",
+                "registration_number": "HZ-AK27",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4619,
+                "icao24": "04C2F6",
+                "registration_number": "5Y-KCB",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4618,
+                "icao24": "469D42",
+                "registration_number": "SX-GJB",
+                "operator_id": 6,
+                "operator_name": "Gainjet Aviation",
+                "aircraft_type_id": 953,
+                "aircraft_type_name": "Gulfstream G700"
+            },
+            {
+                "id": 4617,
+                "icao24": "4D2184",
+                "registration_number": "9H-ICE",
+                "operator_id": 4224,
+                "operator_name": "DC Aviation Malta",
+                "aircraft_type_id": 1137,
+                "aircraft_type_name": "Airbus A318-112(CJ) Elite"
+            },
+            {
+                "id": 4613,
+                "icao24": "040243",
+                "registration_number": "ET-BAZ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1081,
+                "aircraft_type_name": "A35K"
+            },
+            {
+                "id": 4610,
+                "icao24": "040188",
+                "registration_number": "ET-AXL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4608,
+                "icao24": "06A36E",
+                "registration_number": "A7-CHG",
+                "operator_id": 14819,
+                "operator_name": "Qatar Executive",
+                "aircraft_type_id": 1076,
+                "aircraft_type_name": "GA7C"
+            },
+            {
+                "id": 4607,
+                "icao24": "06E005",
+                "registration_number": "9XR-WF",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": 1133,
+                "aircraft_type_name": "Boeing 737-84Y"
+            },
+            {
+                "id": 4606,
+                "icao24": "040172",
+                "registration_number": "ET-AWO",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4604,
+                "icao24": "040031",
+                "registration_number": "ET-ANP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4603,
+                "registration_number": "JA-429E",
+                "operator_id": 14781,
+                "operator_name": "Advantage Air",
+                "aircraft_type_id": 1131,
+                "aircraft_type_name": " CRJ-200PF",
+                "icao24": ""
+            },
+            {
+                "id": 4602,
+                "icao24": "A9AB94",
+                "registration_number": "N7-74SP",
+                "operator_id": 2481,
+                "operator_name": "Samaritan's Purse",
+                "aircraft_type_id": 1117,
+                "aircraft_type_name": "Cessna Grand Caravan EX"
+            },
+            {
+                "id": 4601,
+                "icao24": "04C0DA",
+                "registration_number": "5Y-FFB",
+                "operator_id": 4,
+                "operator_name": "Kenya Airways",
+                "aircraft_type_id": 51,
+                "aircraft_type_name": "E190 "
+            },
+            {
+                "id": 4600,
+                "icao24": "04C2F7",
+                "registration_number": "5Y-SKB",
+                "operator_id": 3339,
+                "operator_name": "Skyward Airlines",
+                "aircraft_type_id": 1130,
+                "aircraft_type_name": "Fokker 100"
+            },
+            {
+                "id": 4599,
+                "icao24": "89670D",
+                "registration_number": "A6-SHC",
+                "operator_id": 2910,
+                "operator_name": "SolitAir",
+                "aircraft_type_id": 1129,
+                "aircraft_type_name": "Boeing 737-8AS(BCF)"
+            },
+            {
+                "id": 4598,
+                "icao24": "040171",
+                "registration_number": "ET-AWN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4597,
+                "icao24": "040143",
+                "registration_number": "ET-AUR",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4596,
+                "icao24": "710054",
+                "registration_number": "HZ-AK12",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4595,
+                "icao24": "4BB062",
+                "registration_number": "TC-LCB",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1121,
+                "aircraft_type_name": "Boeing 737 MAX 8"
+            },
+            {
+                "id": 4594,
+                "icao24": "04200A",
+                "registration_number": "3C-EGE",
+                "operator_id": 14778,
+                "operator_name": "Republic of Equatorial Guinea",
+                "aircraft_type_id": 1128,
+                "aircraft_type_name": "BOEING 737-7BBJ"
+            },
+            {
+                "id": 4593,
+                "icao24": "040255",
+                "registration_number": "ET-BBR",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1127,
+                "aircraft_type_name": "Boeing 737-8JM(BBJ2)"
+            },
+            {
+                "id": 4592,
+                "icao24": "48448C",
+                "registration_number": "P4-SKN",
+                "operator_id": 14777,
+                "operator_name": "Equatorial Guinea Government",
+                "aircraft_type_id": 1070,
+                "aircraft_type_name": "BOEING 777-200F"
+            },
+            {
+                "id": 4591,
+                "icao24": "04C06C",
+                "registration_number": "5Y-FMB",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4590,
+                "icao24": "0703FA",
+                "registration_number": "6V-SEN",
+                "operator_id": 14776,
+                "operator_name": "Senegal - Government",
+                "aircraft_type_id": 1126,
+                "aircraft_type_name": "Airbus A320-251N(ACJ)"
+            },
+            {
+                "id": 4589,
+                "icao24": "ET909",
+                "registration_number": "ET-BCD",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4588,
+                "icao24": "040242",
+                "registration_number": "ET-BAY",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1081,
+                "aircraft_type_name": "A35K"
+            },
+            {
+                "id": 4587,
+                "icao24": "040103",
+                "registration_number": "ET-ASI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4586,
+                "icao24": "06E028",
+                "registration_number": "9XR-WX",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": 692,
+                "aircraft_type_name": "Airbus A330-243"
+            },
+            {
+                "id": 4585,
+                "icao24": "AC35BD",
+                "registration_number": "N886SP",
+                "operator_id": 2481,
+                "operator_name": "Samaritan's Purse",
+                "aircraft_type_id": 851,
+                "aircraft_type_name": "DC3T"
+            },
+            {
+                "id": 4584,
+                "icao24": "04C320",
+                "registration_number": "5Y-CLO",
+                "operator_id": 14775,
+                "operator_name": "Tropic Air",
+                "aircraft_type_id": 1125,
+                "aircraft_type_name": "Airbus Helicopters H125"
+            },
+            {
+                "id": 4583,
+                "icao24": "E4A117",
+                "registration_number": "PP-OIG",
+                "operator_id": 14774,
+                "operator_name": "One Internet",
+                "aircraft_type_id": 723,
+                "aircraft_type_name": "GLF6 "
+            },
+            {
+                "id": 4582,
+                "icao24": "A7BB53",
+                "registration_number": "N598CB",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1124,
+                "aircraft_type_name": "Boeing 737-86J(SF)"
+            },
+            {
+                "id": 4581,
+                "icao24": "504E48",
+                "registration_number": "ER-BAT",
+                "operator_id": 14773,
+                "operator_name": "\tFly Pro",
+                "aircraft_type_id": 551,
+                "aircraft_type_name": "B742"
+            },
+            {
+                "id": 4580,
+                "icao24": "040062",
+                "registration_number": "ET-APU",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4579,
+                "icao24": "07C0A7",
+                "registration_number": "ST-BAT",
+                "operator_id": 2470,
+                "operator_name": "Badr Airlines",
+                "aircraft_type_id": 1122,
+                "aircraft_type_name": "Mitsubishi CRJ-200LR"
+            },
+            {
+                "id": 4578,
+                "icao24": "040102",
+                "registration_number": "ET-ASH",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4577,
+                "icao24": "040060",
+                "registration_number": "ET-APS",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1123,
+                "aircraft_type_name": "Boeing 777-F6N"
+            },
+            {
+                "id": 4576,
+                "icao24": "04C370",
+                "registration_number": "5Y-DRI",
+                "operator_id": 14722,
+                "operator_name": "Dragonfly Aviation",
+                "aircraft_type_id": 1122,
+                "aircraft_type_name": "Mitsubishi CRJ-200LR"
+            },
+            {
+                "id": 4575,
+                "icao24": "040048",
+                "registration_number": "ET-AOR",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4574,
+                "icao24": "040032",
+                "registration_number": "ET-ANQ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4573,
+                "icao24": "040046",
+                "registration_number": "ET-AOP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4572,
+                "icao24": "04016B",
+                "registration_number": "ET-AWH",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4571,
+                "icao24": "040141",
+                "registration_number": "ET-AUP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4570,
+                "icao24": "04022C",
+                "registration_number": "ET-BAC",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4569,
+                "icao24": "710060",
+                "registration_number": "HZ-AK21",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 409,
+                "aircraft_type_name": "B77W"
+            },
+            {
+                "id": 4568,
+                "icao24": "04012A",
+                "registration_number": "ET-ATQ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4567,
+                "registration_number": "ST-BDS",
+                "operator_id": 2470,
+                "operator_name": "Badr Airlines",
+                "icao24": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4566,
+                "icao24": "040101",
+                "registration_number": "ET-ASG",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4565,
+                "icao24": "04C330",
+                "registration_number": "5Y-RNK",
+                "operator_id": 14721,
+                "operator_name": "Renegade Air",
+                "aircraft_type_id": 508,
+                "aircraft_type_name": "CRJ-200"
+            },
+            {
+                "id": 4564,
+                "icao24": "038615",
+                "registration_number": "TU-VAE",
+                "operator_id": 14771,
+                "operator_name": "Ivory Coast - Air Force",
+                "aircraft_type_id": 50,
+                "aircraft_type_name": "GLF5 "
+            },
+            {
+                "id": 4563,
+                "icao24": "500421",
+                "registration_number": "T7-AAY",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 765,
+                "aircraft_type_name": "BOMBARDIER Global 7500"
+            },
+            {
+                "id": 4562,
+                "icao24": "040237",
+                "registration_number": "ET-BAN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4561,
+                "icao24": "040211",
+                "registration_number": "ET-AZA",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4560,
+                "icao24": "04018F",
+                "registration_number": "ET-AXS",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4559,
+                "icao24": "040151",
+                "registration_number": "ET-AVI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4557,
+                "icao24": "040124",
+                "registration_number": "ET-ATH",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4556,
+                "icao24": "040125",
+                "registration_number": "ET-ATI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4555,
+                "icao24": "06E006",
+                "registration_number": "9XR-WG",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4554,
+                "icao24": "04002F",
+                "registration_number": "ET-ANN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4553,
+                "icao24": "04C23A",
+                "registration_number": "5Y-ZBN",
+                "operator_id": 14720,
+                "operator_name": "Boskovic Air Charters",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4552,
+                "icao24": "04021E",
+                "registration_number": "ET-AZO",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1121,
+                "aircraft_type_name": "Boeing 737 MAX 8"
+            },
+            {
+                "id": 4551,
+                "registration_number": "5Y-CCU",
+                "operator_id": 14718,
+                "operator_name": "Mombasa Air Safari",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan",
+                "icao24": ""
+            },
+            {
+                "id": 4549,
+                "registration_number": "UR-HZO",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1119,
+                "aircraft_type_name": "Mil Mi 8",
+                "icao24": ""
+            },
+            {
+                "id": 4548,
+                "icao24": "50849E",
+                "registration_number": "UR-HZD",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1119,
+                "aircraft_type_name": "Mil Mi 8"
+            },
+            {
+                "id": 4547,
+                "icao24": "50839C",
+                "registration_number": "UR-HZA",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1119,
+                "aircraft_type_name": "Mil Mi 8"
+            },
+            {
+                "id": 4546,
+                "icao24": "040249",
+                "registration_number": "ET-BBF",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1118,
+                "aircraft_type_name": "Boeing 767-300F"
+            },
+            {
+                "id": 4545,
+                "icao24": "04C17F",
+                "registration_number": "5Y-BRE",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1117,
+                "aircraft_type_name": "Cessna Grand Caravan EX"
+            },
+            {
+                "id": 4544,
+                "icao24": "040014",
+                "registration_number": "ET-ALN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 52,
+                "aircraft_type_name": "B737"
+            },
+            {
+                "id": 4543,
+                "icao24": "4BB322",
+                "registration_number": "TC-LYB",
+                "operator_id": 14727,
+                "operator_name": "Turkish Airlines",
+                "aircraft_type_id": 1116,
+                "aircraft_type_name": "B39M"
+            },
+            {
+                "id": 4542,
+                "registration_number": "UR-UHR",
+                "operator_id": 14717,
+                "operator_name": "Ukrainian Helicopters",
+                "aircraft_type_id": 1115,
+                "aircraft_type_name": "Mil 17-1V",
+                "icao24": ""
+            },
+            {
+                "id": 4541,
+                "icao24": "040047",
+                "registration_number": "ET-AOQ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4540,
+                "icao24": "04015C",
+                "registration_number": "ET-AVT",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4539,
+                "icao24": "040202",
+                "registration_number": "ET-AYL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4538,
+                "icao24": "44009A",
+                "registration_number": "OE-LIA",
+                "operator_id": 14770,
+                "operator_name": "Amelia Executive",
+                "aircraft_type_id": 85,
+                "aircraft_type_name": "A319"
+            },
+            {
+                "id": 4537,
+                "icao24": "040077",
+                "registration_number": "ET-AQN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4536,
+                "icao24": "040235",
+                "registration_number": "ET-BAL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4535,
+                "registration_number": "ET-AWG",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M",
+                "icao24": ""
+            },
+            {
+                "id": 4534,
+                "icao24": "040169",
+                "registration_number": "ET-AWF",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4533,
+                "icao24": "04016D",
+                "registration_number": "ET-AWJ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4532,
+                "icao24": "040173",
+                "registration_number": "ET-AWP",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4531,
+                "icao24": "040133",
+                "registration_number": "ET-AUB",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4530,
+                "icao24": "040127",
+                "registration_number": "ET-ATK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4529,
+                "icao24": "040203",
+                "registration_number": "ET-AYM",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4528,
+                "icao24": "710055",
+                "registration_number": "HZ-AK13",
+                "operator_id": 14772,
+                "operator_name": "Saudi Arabian Airlines",
+                "aircraft_type_id": 1114,
+                "aircraft_type_name": "Boeing 777-368(ER)"
+            },
+            {
+                "id": 4527,
+                "icao24": "04004B",
+                "registration_number": "ET-AOU",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4526,
+                "icao24": "040087",
+                "registration_number": "ET-ARE",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4525,
+                "icao24": "06E02D",
+                "registration_number": "9XR-WU",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4524,
+                "icao24": "04008B",
+                "registration_number": "ET-ARI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4523,
+                "icao24": "040248",
+                "registration_number": "ET-BBE",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1113,
+                "aircraft_type_name": "B763"
+            },
+            {
+                "id": 4522,
+                "icao24": "040204",
+                "registration_number": "ET-AYN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4521,
+                "icao24": "06A024",
+                "registration_number": "ST-BDK",
+                "operator_id": 2470,
+                "operator_name": "Badr Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4520,
+                "icao24": "04007A",
+                "registration_number": "ET-AQQ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4519,
+                "icao24": "5081EA",
+                "registration_number": "UR-UZA",
+                "operator_id": 2424,
+                "operator_name": "Constanta Airline",
+                "aircraft_type_id": 1112,
+                "aircraft_type_name": "AN26"
+            },
+            {
+                "id": 4518,
+                "icao24": "068094",
+                "registration_number": "5X-KOB",
+                "operator_id": 3255,
+                "operator_name": "Uganda Airlines",
+                "aircraft_type_id": 177,
+                "aircraft_type_name": "CRJ9"
+            },
+            {
+                "id": 4517,
+                "icao24": "04C2D7",
+                "registration_number": "5Y-MMK",
+                "operator_id": 14732,
+                "operator_name": "TRANSAFRICA",
+                "aircraft_type_id": 319,
+                "aircraft_type_name": "C208B"
+            },
+            {
+                "id": 4516,
+                "icao24": "06E029",
+                "registration_number": "9XR-WY",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4515,
+                "icao24": "06E00F",
+                "registration_number": "9XR-WN",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": 102,
+                "aircraft_type_name": "A332"
+            },
+            {
+                "id": 4514,
+                "icao24": "04022A",
+                "registration_number": "ET-BAA",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4513,
+                "icao24": "040075",
+                "registration_number": "ET-AQL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4512,
+                "icao24": "0680C6",
+                "registration_number": "5X-ABB",
+                "operator_id": 14726,
+                "operator_name": "Kush Air",
+                "aircraft_type_id": 679,
+                "aircraft_type_name": "DH8D"
+            },
+            {
+                "id": 4510,
+                "icao24": "0093E2",
+                "registration_number": "ZS-HND",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1111,
+                "aircraft_type_name": "B412"
+            },
+            {
+                "id": 4509,
+                "icao24": "50038F",
+                "registration_number": "T7-SEI",
+                "operator_id": 14729,
+                "operator_name": "Empire Aviation San Marino",
+                "aircraft_type_id": 65,
+                "aircraft_type_name": "CL60 "
+            },
+            {
+                "id": 4508,
+                "icao24": "0680BE",
+                "registration_number": "5X-AYC",
+                "operator_id": 14726,
+                "operator_name": "Kush Air",
+                "aircraft_type_id": 679,
+                "aircraft_type_name": "DH8D"
+            },
+            {
+                "id": 4507,
+                "icao24": "04C2E4",
+                "registration_number": "5Y-SKX",
+                "operator_id": 3339,
+                "operator_name": "Skyward Airlines",
+                "aircraft_type_id": 487,
+                "aircraft_type_name": "FOKKER 70"
+            },
+            {
+                "id": 4506,
+                "icao24": "04C23B",
+                "registration_number": "5Y-ZBG",
+                "operator_id": 14720,
+                "operator_name": "Boskovic Air Charters",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4505,
+                "icao24": "04C10D",
+                "registration_number": "5Y-NLD",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4504,
+                "icao24": "040155",
+                "registration_number": "ET-AVM",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4503,
+                "icao24": "0093E1",
+                "registration_number": "ZS-HNC",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1110,
+                "aircraft_type_name": "Bell 412EP"
+            },
+            {
+                "id": 4502,
+                "icao24": "040078",
+                "registration_number": "ET-AQO",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4501,
+                "icao24": "04016C",
+                "registration_number": "ET-AWI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4500,
+                "icao24": "0401D3",
+                "registration_number": "ET-AXG",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4499,
+                "icao24": "04C105",
+                "registration_number": "5Y-ESU",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4498,
+                "icao24": "040088",
+                "registration_number": "ET-ARF",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4497,
+                "icao24": "04C08B",
+                "registration_number": "5Y-LEX",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4496,
+                "icao24": "04C174",
+                "registration_number": "5Y-MAG",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4495,
+                "icao24": "04C182",
+                "registration_number": "5Y-BNG",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4494,
+                "icao24": "058044",
+                "registration_number": "7Q-SKA",
+                "operator_id": 14734,
+                "operator_name": "AEROJET AVIATION",
+                "aircraft_type_id": 194,
+                "aircraft_type_name": "L410"
+            },
+            {
+                "id": 4493,
+                "icao24": "010145",
+                "registration_number": "SU-GDY",
+                "operator_id": 14728,
+                "operator_name": "Egypt Air",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4492,
+                "icao24": "040200",
+                "registration_number": "ET-AYD",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4491,
+                "icao24": "04C314",
+                "registration_number": "5Y-CAJ",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4490,
+                "icao24": "040033",
+                "registration_number": "ET-ANR",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4489,
+                "icao24": "0401E0",
+                "registration_number": "ET-AXT",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4488,
+                "icao24": "04C1A4",
+                "registration_number": "5Y-JXB",
+                "operator_id": 2449,
+                "operator_name": "Jambojet",
+                "aircraft_type_id": 679,
+                "aircraft_type_name": "DH8D"
+            },
+            {
+                "id": 4487,
+                "icao24": "040142",
+                "registration_number": "ET-AUQ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4486,
+                "icao24": "0680A6",
+                "registration_number": "5X-EQU",
+                "operator_id": 3255,
+                "operator_name": "Uganda Airlines",
+                "aircraft_type_id": 177,
+                "aircraft_type_name": "CRJ9"
+            },
+            {
+                "id": 4485,
+                "icao24": "040170",
+                "registration_number": "ET-AWM",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4484,
+                "icao24": "04014D",
+                "registration_number": "ET-AVD",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4483,
+                "icao24": "040153",
+                "registration_number": "ET-AVK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4482,
+                "icao24": "040233",
+                "registration_number": "ET-BAI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4481,
+                "icao24": "040219",
+                "registration_number": "ET-AZI",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4480,
+                "icao24": "04014C",
+                "registration_number": "ET-AVC",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4479,
+                "icao24": "040134",
+                "registration_number": "ET-AUC",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4478,
+                "icao24": "04011E",
+                "registration_number": "ET-ATR",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4477,
+                "icao24": "04008D",
+                "registration_number": "ET-ARK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1109,
+                "aircraft_type_name": "Boeing 777-F60"
+            },
+            {
+                "id": 4476,
+                "icao24": "040159",
+                "registration_number": "ET-AVQ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4475,
+                "icao24": "040049",
+                "registration_number": "ET-AOS",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4474,
+                "icao24": "06E010",
+                "registration_number": "9XR-WP",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": 400,
+                "aircraft_type_name": "A333"
+            },
+            {
+                "id": 4473,
+                "icao24": "4B1EDB",
+                "registration_number": "HB-LUX",
+                "operator_id": 2934,
+                "operator_name": "Air Antilles",
+                "aircraft_type_id": 1108,
+                "aircraft_type_name": "Viking DHC-6-400 Twin Otter"
+            },
+            {
+                "id": 4472,
+                "icao24": "040232",
+                "registration_number": "ET-BAJ",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4471,
+                "icao24": "040236",
+                "registration_number": "ET-BAM",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4470,
+                "icao24": "04C22F",
+                "registration_number": "5Y-ISA",
+                "operator_id": 2872,
+                "operator_name": "Mission Aviation Fellowship",
+                "aircraft_type_id": 1107,
+                "aircraft_type_name": "Cessna Grand Caravan"
+            },
+            {
+                "id": 4469,
+                "icao24": "040030",
+                "registration_number": "ET-ANO",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 911,
+                "aircraft_type_name": "B77L"
+            },
+            {
+                "id": 4466,
+                "icao24": "06E024",
+                "registration_number": "9XR-WW",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4465,
+                "icao24": "040199",
+                "registration_number": "ET-AYC",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4464,
+                "icao24": "040123",
+                "registration_number": "ET-ATG",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 106,
+                "aircraft_type_name": "B788"
+            },
+            {
+                "id": 4463,
+                "icao24": "04014E",
+                "registration_number": "ET-AVE",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4462,
+                "registration_number": "HB-LR0",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1104,
+                "aircraft_type_name": "De Havilland Canada DHC-6-300 Twin Otte",
+                "icao24": ""
+            },
+            {
+                "id": 4461,
+                "icao24": "04016E",
+                "registration_number": "ET-AWK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4460,
+                "icao24": "4B1ED4",
+                "registration_number": "HB-LRO",
+                "operator_id": 9044,
+                "operator_name": "Private Owner South Sudan",
+                "aircraft_type_id": 1104,
+                "aircraft_type_name": "De Havilland Canada DHC-6-300 Twin Otte"
+            },
+            {
+                "id": 4459,
+                "icao24": "040238",
+                "registration_number": "ET-BAO",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 1103,
+                "aircraft_type_name": "B38M"
+            },
+            {
+                "id": 4458,
+                "icao24": "040234",
+                "registration_number": "ET-BAK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 52,
+                "aircraft_type_name": "B737"
+            },
+            {
+                "id": 4457,
+                "icao24": "040132",
+                "registration_number": "ET-AUA",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4456,
+                "icao24": "040262",
+                "registration_number": "ET-BCE",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4455,
+                "icao24": "04021D",
+                "registration_number": "ET-AZN",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4454,
+                "icao24": "0401D7",
+                "registration_number": "ET-AXK",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 463,
+                "aircraft_type_name": "B789"
+            },
+            {
+                "id": 4452,
+                "icao24": "04014B",
+                "registration_number": "ET-AVB",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 633,
+                "aircraft_type_name": "A359"
+            },
+            {
+                "id": 4451,
+                "icao24": "040013",
+                "registration_number": "ET-ALM",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": 52,
+                "aircraft_type_name": "B737"
+            },
+            {
+                "id": 4450,
+                "icao24": "04C301",
+                "registration_number": "5Y-RNJ",
+                "operator_id": 14721,
+                "operator_name": "Renegade Air",
+                "aircraft_type_id": 232,
+                "aircraft_type_name": "CRJ2"
+            }
+        ]
+    }
+}
+```
+
+### Paginated Aircraft List
+
+**Request:** `GET` `{{url}}/api/bas/aircraft/?limit=10&page=1`
+
+**Response:** `200 OK`
+
+```json
+{
+    "status": "success",
+    "message": "Aircraft successfully fetched",
+    "data": {
+        "next": 2,
+        "previous": null,
+        "current_page": 1,
+        "total_object": 303,
+        "total_page": 31,
+        "result": [
+            {
+                "id": 4818,
+                "icao24": "04016A",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4817,
+                "icao24": "04012B",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4816,
+                "icao24": "06E02C",
+                "registration_number": "9XR-WT",
+                "operator_id": 5,
+                "operator_name": "RwandAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4814,
+                "icao24": "8966EA",
+                "registration_number": "A6-SHB",
+                "operator_id": 2910,
+                "operator_name": "SolitAir",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4811,
+                "icao24": "5084DD",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4812,
+                "icao24": "50820C",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4810,
+                "icao24": "04C31B",
+                "registration_number": "",
+                "operator_id": null,
+                "operator_name": "",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4809,
+                "icao24": "0428DA",
+                "registration_number": "3C-MAF",
+                "operator_id": 14777,
+                "operator_name": "Equatorial Guinea Government",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4808,
+                "icao24": "0100E0",
+                "registration_number": "SU-GCS",
+                "operator_id": 14761,
+                "operator_name": "EGYPT AIR",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            },
+            {
+                "id": 4807,
+                "icao24": "A35AFF",
+                "registration_number": "N315SL",
+                "operator_id": 3,
+                "operator_name": "Ethiopian Airlines",
+                "aircraft_type_id": null,
+                "aircraft_type_name": ""
+            }
+        ]
+    }
+}
+```

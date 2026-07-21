@@ -1,0 +1,71 @@
+info:
+  name: send reminder of unpaid invoices
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/send-reminder-of-unpaid-invoices/"
+  body:
+    type: json
+    data: |-
+      {
+          "client": 30,
+          "invoices": [249, 250]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/send-reminder-of-unpaid-invoices/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "client": 30,
+              "invoices": [249, 250]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.4
+        - name: Date
+          value: Tue, 08 Apr 2025 10:10:26 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "90"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Reminder sent to client successfully",
+              "data": {
+                  "result": {}
+              }
+          }

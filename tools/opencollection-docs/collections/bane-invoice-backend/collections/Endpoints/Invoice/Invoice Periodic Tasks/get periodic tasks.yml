@@ -1,0 +1,99 @@
+info:
+  name: get periodic tasks
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/periodic-tasks/?invoice_id=18"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: invoice_id
+      value: "18"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: get periodic tasks
+    request:
+      url: "{{url}}/api/periodic-tasks/?invoice_id=158"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: invoice_id
+          value: "158"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 09 Oct 2024 07:01:30 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PATCH, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "597"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Periodic Task Successfully Fetched",
+              "data": {
+                  "result": {
+                      "invoice_no": "INV-000132",
+                      "id": 158,
+                      "issue_date": "2024-10-07",
+                      "due_date": "2024-10-22",
+                      "sent_date": "2024-10-09",
+                      "payment_status": "due",
+                      "status": "sent",
+                      "periodic_tasks": [
+                          {
+                              "enabled": true,
+                              "id": 17,
+                              "start_time": "2024-10-30T00:01:00+06:00",
+                              "day": 7,
+                              "interest_type": "fixed",
+                              "interest_rate": 5,
+                              "is_cumulative": true,
+                              "chased": false,
+                              "chasing_date": "2024-10-30"
+                          },
+                          {
+                              "enabled": true,
+                              "id": 16,
+                              "start_time": null,
+                              "day": 7,
+                              "interest_type": "fixed",
+                              "interest_rate": 5,
+                              "is_cumulative": false,
+                              "chased": false,
+                              "chasing_date": "2024-10-23"
+                          }
+                      ]
+                  }
+              }
+          }

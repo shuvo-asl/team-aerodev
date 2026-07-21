@@ -1,0 +1,73 @@
+info:
+  name: delete  Invoice Interest Schedule
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url}}/api/invoice-interest-schedule/2/?invoice_id=178"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: invoice_id
+      value: "178"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: delete  Invoice Interest Schedule
+    request:
+      url: "{{url}}/api/invoice-interest-schedule/2/?invoice_id=178"
+      method: DELETE
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: invoice_id
+          value: "178"
+          type: query
+      body:
+        type: json
+        data: ""
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: Date
+          value: Wed, 05 Mar 2025 11:13:23 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "100"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Invoice Interest Schedule Successfully Deleted",
+              "data": {
+                  "result": []
+              }
+          }

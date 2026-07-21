@@ -1,0 +1,88 @@
+info:
+  name: UPDATE distance mappings entry
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{url}}/api/fir-distance-mappings/24/"
+  body:
+    type: json
+    data: |-
+      {
+              "to_point": "ALMAM",
+              "from_point": "HJJJ",
+              "distance_nm": 540.56,
+              "is_active": false,
+              "notes": "sample note"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update fir distance mapping
+    request:
+      url: "{{url}}/api/fir-distance-mappings/24/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+                  "to_point": "ALMAM",
+                  "from_point": "HJJJ",
+                  "distance_nm": 540.56,
+                  "is_active": false,
+                  "notes": "sample note"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 07 Jun 2026 05:18:07 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "202"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "FIR Distance Mapping successfully updated",
+            "data": {
+              "result": {
+                "id": 24,
+                "from_point": "HJJJ",
+                "to_point": "ALMAM",
+                "distance_nm": 540.56,
+                "is_active": false,
+                "notes": "sample note"
+              }
+            }
+          }

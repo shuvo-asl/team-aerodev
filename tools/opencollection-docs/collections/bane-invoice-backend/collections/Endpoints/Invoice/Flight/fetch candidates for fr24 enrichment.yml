@@ -1,0 +1,102 @@
+info:
+  name: fetch candidates for fr24 enrichment
+  type: http
+  seq: 21
+
+http:
+  method: GET
+  url: "{{url}}/api/flight/32729/fr24-candidates/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: example
+    request:
+      url: "{{url}}/api/flight/32729/fr24-candidates/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 18 Jun 2026 09:00:12 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "891"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "FR24 candidates fetched successfully",
+            "data": {
+              "result": [
+                {
+                  "fr24_id": "4039adb8",
+                  "flight": null,
+                  "callsign": "5YBRE",
+                  "operating_as": null,
+                  "painted_as": null,
+                  "type": "C208",
+                  "reg": "5Y-BRE",
+                  "orig_icao": "HJJJ",
+                  "datetime_takeoff": "2026-06-17T06:01:46Z",
+                  "dest_icao": null,
+                  "dest_icao_actual": null,
+                  "datetime_landed": "2026-06-17T07:40:56Z",
+                  "hex": "04C17F",
+                  "first_seen": "2026-06-17T05:05:19Z",
+                  "last_seen": "2026-06-17T07:30:52Z",
+                  "flight_ended": true,
+                  "_score": 25,
+                  "_match_type": "callsign"
+                },
+                {
+                  "fr24_id": "403a0f81",
+                  "flight": null,
+                  "callsign": "5YBRE",
+                  "operating_as": null,
+                  "painted_as": null,
+                  "type": "C208",
+                  "reg": "5Y-BRE",
+                  "orig_icao": null,
+                  "datetime_takeoff": null,
+                  "dest_icao": "HJJJ",
+                  "dest_icao_actual": "HJJJ",
+                  "datetime_landed": "2026-06-17T09:17:35Z",
+                  "hex": "04C17F",
+                  "first_seen": "2026-06-17T07:53:33Z",
+                  "last_seen": "2026-06-17T09:17:35Z",
+                  "flight_ended": true,
+                  "_score": 15,
+                  "_match_type": "callsign"
+                }
+              ]
+            }
+          }

@@ -1,0 +1,67 @@
+info:
+  name: change default status
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{url}}/api/interest-rule/10/set_default/"
+  body:
+    type: json
+    data: |-
+      {
+          "is_default": true
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/interest-rule/10/set_default/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "is_default": true
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Thu, 06 Mar 2025 09:07:29 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: PATCH, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "114"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Interest Rule's default status has been changed successfully",
+              "data": {
+                  "result": {}
+              }
+          }

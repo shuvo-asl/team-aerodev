@@ -1,0 +1,95 @@
+info:
+  name: Create Chasing Rule
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/api/chasing_rule/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "rule1",
+          "chase_on": "after due date",
+          "is_cumulative": false,
+          "chasing_days": [3, 5, 9],
+          "email_template": 1
+
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Chasing Rule
+    request:
+      url: "{{url}}/api/chasing_rule/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "rule1",
+              "chase_on": "after due date",
+              "is_cumulative": false,
+              "chasing_days": [3, 5, 9],
+              "email_template": 1
+
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 04 Feb 2025 06:46:08 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "288"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chasing Rule successfully created",
+              "data": {
+                  "result": {
+                      "id": 3,
+                      "name": "rule1",
+                      "is_default": false,
+                      "chase_on": "after due date",
+                      "is_cumulative": false,
+                      "max_repetition": null,
+                      "email_template": 1,
+                      "email_template_name": "example email template",
+                      "chasing_days": [
+                          9,
+                          5,
+                          3
+                      ]
+                  }
+              }
+          }

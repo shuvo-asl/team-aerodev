@@ -1,0 +1,15 @@
+info:
+  name: ebl successful payment indicator
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{url}}/api/ebl-successful-payment/cf2f69bbedfa4f8b/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,74 @@
+info:
+  name: get aircraft type
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/bas/aircraft-type/1184/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/bas/aircraft-type/1/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 10 Mar 2026 14:22:15 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "190"
+        - name: Connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: X-Frame-Options
+          value: SAMEORIGIN
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: X-XSS-Protection
+          value: 1; mode=block
+        - name: Referrer-Policy
+          value: no-referrer-when-downgrade
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Aircraft type fetched successfully",
+              "data": {
+                  "result": {
+                      "name": "B-738",
+                      "mtow": 79000,
+                      "mtow_unit": "kg",
+                      "id": 1,
+                      "wing_type": "",
+                      "is_registration_fulfilled": false
+                  }
+              }
+          }

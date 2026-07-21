@@ -1,0 +1,86 @@
+info:
+  name: company list
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/api/companies/"
+  params:
+    - name: page
+      value: "2"
+      type: query
+      disabled: true
+    - name: limit
+      value: "1"
+      type: query
+      disabled: true
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: company list
+    request:
+      url: "{{url}}/api/company-list/"
+      method: GET
+      params:
+        - name: page
+          value: "2"
+          type: query
+          disabled: true
+        - name: limit
+          value: "1"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 03 Dec 2024 09:16:07 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "210"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Company Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "name": "Boring Company",
+                          "is_active": true,
+                          "is_primary": false
+                      },
+                      {
+                          "id": 2,
+                          "name": "kamrul",
+                          "is_active": true,
+                          "is_primary": true
+                      }
+                  ]
+              }
+          }

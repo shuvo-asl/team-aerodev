@@ -1,0 +1,97 @@
+info:
+  name: create internal notification
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{url}}/api/notifications/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "subscription": 1,
+          "notification_type": "demo",
+          "message": "test",
+          "broadcast_month": "*",
+          "broadcast_day": "*",
+          "broadcast_hour": "*",
+          "broadcast_minute": "*"
+          
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create internal notification
+    request:
+      url: "{{url}}/api/notifications/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "subscription": "2",
+              "notification_type": "create",
+              "message": "test created",
+              "broadcast_month": "*",
+              "broadcast_day": "*",
+              "broadcast_hour": "*",
+              "broadcast_minute": "*"
+              
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "352"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "id": 15,
+                  "notification_type": "create",
+                  "message": "test created",
+                  "broadcast_month": "*",
+                  "broadcast_day": "*",
+                  "broadcast_hour": "*",
+                  "broadcast_minute": "*",
+                  "is_onetime": false,
+                  "active": true,
+                  "created_at": "2023-03-27T11:00:54.250701+06:00",
+                  "updated_at": "2023-03-27T11:00:54.250711+06:00",
+                  "subscription": 2,
+                  "created_by": 1,
+                  "updated_by": null
+              }
+          }

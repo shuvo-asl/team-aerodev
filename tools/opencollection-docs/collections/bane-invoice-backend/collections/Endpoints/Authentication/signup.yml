@@ -1,0 +1,159 @@
+info:
+  name: signup
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/api/signup/"
+  body:
+    type: json
+    data: "{\r
+
+      \  \"first_name\": \"Jane\",\r
+
+      \  \"last_name\": \"Doe\",\r
+
+      \  \"email\": \"kamrul@asl.aero\",\r
+
+      \  \"phone\": \"+8801684806728\",\r
+
+      \  \"password\": \"kamrul123\",\r
+
+      \  \"confirm_password\": \"kamrul123\",\r
+
+      \  \"company_name\": \"kamrul\",\r
+
+      \  \"company_country\": \"Bangladesh\",\r
+
+      \  \"company_currency_id\": 1\r
+
+      }\r\n"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: signup
+    request:
+      url: "{{url}}/api/signup/"
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \  \"first_name\": \"Jane\",\r
+
+          \  \"last_name\": \"Doe\",\r
+
+          \  \"email\": \"kamrul2@asl.aero\",\r
+
+          \  \"phone\": \"+8801684806728\",\r
+
+          \  \"password\": \"kamrul123\",\r
+
+          \  \"confirm_password\": \"kamrul123\",\r
+
+          \  \"company_name\": \"kamrul\",\r
+
+          \  \"company_country\": \"Bangladesh\",\r
+
+          \  \"company_currency_id\": 1\r
+
+          }\r\n"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Mon, 02 Dec 2024 03:55:24 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "71"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Signup Successful",
+              "data": {
+                  "result": {}
+              }
+          }
+  - name: signup , email taken error
+    request:
+      url: "{{url}}/api/signup/"
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \  \"first_name\": \"Jane\",\r
+
+          \  \"last_name\": \"Doe\",\r
+
+          \  \"email\": \"kamrul2@asl.aero\",\r
+
+          \  \"phone\": \"+8801684806728\",\r
+
+          \  \"password\": \"kamrul123\",\r
+
+          \  \"confirm_password\": \"kamrul123\",\r
+
+          \  \"company_name\": \"kamrul\",\r
+
+          \  \"company_country\": \"Bangladesh\",\r
+
+          \  \"company_currency_id\": 1\r
+
+          }\r\n"
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Date
+          value: Mon, 02 Dec 2024 03:55:43 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "119"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Sign Up Failed To Create",
+              "error": null,
+              "errors": {
+                  "email": "This email is already taken."
+              }
+          }

@@ -1,0 +1,66 @@
+info:
+  name: pdf designs
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{url}}/api/pdf-design/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: pdf designs
+    request:
+      url: "{{url}}/api/pdf-design/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 05:26:56 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "254"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "PDF Design Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "template_name": "general inovoice template 1",
+                          "template_file_name": "general.html"
+                      },
+                      {
+                          "id": 2,
+                          "template_name": "Finance",
+                          "template_file_name": "finance_invoice.html"
+                      }
+                  ]
+              }
+          }

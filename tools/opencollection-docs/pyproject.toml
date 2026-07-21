@@ -1,0 +1,27 @@
+[project]
+name = "occdocs"
+version = "0.1.0"
+description = "Generates documentation sites from OpenCollection API collections"
+requires-python = ">=3.10"
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+site = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+occ-docs = "occdocs.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

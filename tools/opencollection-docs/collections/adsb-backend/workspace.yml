@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "adsb2.x"
+  type: workspace
+
+collections:
+  - name: "Endpoints"
+    path: "collections/Endpoints"
+
+specs:
+
+docs: ''

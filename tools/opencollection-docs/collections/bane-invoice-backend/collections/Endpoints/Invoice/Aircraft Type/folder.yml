@@ -1,0 +1,7 @@
+info:
+  name: Aircraft Type
+  type: folder
+  seq: 23
+
+request:
+  auth: inherit

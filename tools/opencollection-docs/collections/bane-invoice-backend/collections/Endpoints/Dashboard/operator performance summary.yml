@@ -1,0 +1,24 @@
+info:
+  name: operator performance summary
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: "{{url}}/api/dashboard/operator-performance-summary/?start_date=2026-05-01&end_date=2026-05-30"
+  params:
+    - name: start_date
+      value: 2026-05-01
+      type: query
+    - name: end_date
+      value: 2026-05-30
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

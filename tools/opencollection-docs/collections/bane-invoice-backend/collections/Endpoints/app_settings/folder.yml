@@ -1,0 +1,7 @@
+info:
+  name: app_settings
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit

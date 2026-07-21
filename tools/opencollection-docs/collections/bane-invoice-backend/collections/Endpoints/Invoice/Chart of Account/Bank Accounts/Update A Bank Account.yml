@@ -1,0 +1,97 @@
+info:
+  name: Update A Bank Account
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{url}}/api/account/92/?object_name=bank"
+  params:
+    - name: object_name
+      value: bank
+      type: query
+  body:
+    type: json
+    data: "{\r
+
+      \    \"currency_code\": \"USD\",\r
+
+      \    \"account_number\": \"632897998\"\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update A Bank Account
+    request:
+      url: "{{url}}/api/account/92/?object_name=bank"
+      method: PATCH
+      params:
+        - name: object_name
+          value: bank
+          type: query
+      body:
+        type: json
+        data: "{\r
+
+          \    \"currency_code\": \"USD\",\r
+
+          \    \"account_number\": \"632897998\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 05:45:12 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "459"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Bank Account successfully updated",
+              "data": {
+                  "result": {
+                      "id": 92,
+                      "account_name": "test bank",
+                      "code": "bank54",
+                      "deleted_at": null,
+                      "created_at": "2024-11-05T13:49:21.654708+06:00",
+                      "updated_at": "2024-11-12T11:45:12.093293+06:00",
+                      "account_type": "BANK",
+                      "details": null,
+                      "transaction_type": "non_expense",
+                      "source": "xero",
+                      "account_number": "632897998",
+                      "currency_code": "USD",
+                      "bank_account_type": "other",
+                      "bank_name": "sonali bank",
+                      "is_active": true
+                  }
+              }
+          }

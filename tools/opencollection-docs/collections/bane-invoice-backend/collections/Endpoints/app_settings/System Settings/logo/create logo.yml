@@ -1,0 +1,94 @@
+info:
+  name: create logo
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/system-settings/"
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: logo for testing
+      - name: type
+        type: text
+        value: logo
+      - name: logo
+        type: file
+        value:
+          - postman-cloud:///1ef7eff2-7e20-49a0-aa44-c41b878eb3de
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/system-settings/"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: title
+            type: text
+            value: logo for testing
+          - name: type
+            type: text
+            value: logo
+          - name: logo
+            type: file
+            value:
+              - postman-cloud:///1ef7eff2-7e20-49a0-aa44-c41b878eb3de
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 06:52:34 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "401"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "System Settings successfully created",
+              "data": {
+                  "result": {
+                      "id": 49,
+                      "deleted_at": null,
+                      "created_at": "2024-11-12T12:52:34.177770+06:00",
+                      "updated_at": null,
+                      "title": "logo for testing",
+                      "value_text": null,
+                      "value_file": null,
+                      "value_type": "",
+                      "type": "logo",
+                      "is_active": false,
+                      "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/12/bdflag.jpg",
+                      "bank_details": ""
+                  }
+              }
+          }

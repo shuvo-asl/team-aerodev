@@ -1,0 +1,242 @@
+info:
+  name: create chart of account mapping
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{url}}/api/coa-mapping/2/"
+  body:
+    type: json
+    data: "[\r
+
+      \    {\r
+
+      \        \"from_account\": 1,\r
+
+      \        \"to_account\": 1653\r
+
+      \    },\r
+
+      \    {\r
+
+      \        \"from_account\": 1,\r
+
+      \        \"to_account\": 16544\r
+
+      \    }\r
+
+      ]"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: create chart of account mapping
+    request:
+      url: "{{url}}/api/coa-mapping/2/"
+      method: POST
+      body:
+        type: json
+        data: "[\r
+
+          \    {\r
+
+          \        \"from_account\": 1,\r
+
+          \        \"to_account\": 1653\r
+
+          \    },\r
+
+          \    {\r
+
+          \        \"from_account\": 2,\r
+
+          \        \"to_account\": 1654\r
+
+          \    }\r
+
+          ]"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Tue, 02 Sep 2025 05:33:53 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "250"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Chart of account mapping created successfully",
+              "data": {
+                  "result": [
+                      {
+                          "id": 1,
+                          "from_company": 1,
+                          "to_company": 2,
+                          "from_account": 1,
+                          "to_account": 1653
+                      },
+                      {
+                          "id": 2,
+                          "from_company": 1,
+                          "to_company": 2,
+                          "from_account": 2,
+                          "to_account": 1654
+                      }
+                  ]
+              }
+          }
+  - name: if one coa is eing mapped to multiple coa
+    request:
+      url: "{{url}}/api/coa-mapping/2/"
+      method: POST
+      body:
+        type: json
+        data: "[\r
+
+          \    {\r
+
+          \        \"from_account\": 1,\r
+
+          \        \"to_account\": 1653\r
+
+          \    },\r
+
+          \    {\r
+
+          \        \"from_account\": 1,\r
+
+          \        \"to_account\": 1654\r
+
+          \    }\r
+
+          ]"
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 03 Sep 2025 04:14:22 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "259"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed to create Chart of account mapping",
+              "error": null,
+              "errors": [
+                  {
+                      "from_account": "A Chart Of account can be mapped to only one Chart Of account"
+                  },
+                  {
+                      "from_account": "A Chart Of account can be mapped to only one Chart Of account"
+                  }
+              ]
+          }
+  - name: if invalid coa is provided
+    request:
+      url: "{{url}}/api/coa-mapping/2/"
+      method: POST
+      body:
+        type: json
+        data: "[\r
+
+          \    {\r
+
+          \        \"from_account\": 1,\r
+
+          \        \"to_account\": 1653\r
+
+          \    },\r
+
+          \    {\r
+
+          \        \"from_account\": 1,\r
+
+          \        \"to_account\": 16544\r
+
+          \    }\r
+
+          ]"
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 03 Sep 2025 04:14:56 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "163"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "failed",
+              "message": "Failed to create Chart of account mapping",
+              "error": null,
+              "errors": [
+                  {},
+                  {
+                      "to_account": "Invalid pk \"16544\" - object does not exist."
+                  }
+              ]
+          }

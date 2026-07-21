@@ -1,0 +1,133 @@
+info:
+  name: Create Client
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/client/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "name": "US Bangla5",
+          "short_code": "us5",
+          "email": "usbangla415@asl.aero",
+          "phone": "+8801558250667",
+          "billing_address": "Dhaka, Bangladesh",
+          "days_to_due_date": 23,
+          "chasing_rule":[1, 2],
+          "interest_rule": [8]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Client
+    request:
+      url: "{{url}}/api/client/"
+      method: POST
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      body:
+        type: json
+        data: |-
+          {
+              "name": "US Bangla5",
+              "short_code": "us5",
+              "email": "usbangla415@asl.aero",
+              "phone": "+8801558250667",
+              "billing_address": "Dhaka, Bangladesh",
+              "days_to_due_date": 23,
+              "chasing_rule":[1, 2],
+              "interest_rule": [8]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Wed, 05 Mar 2025 09:08:39 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "912"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Client successfully created",
+              "data": {
+                  "result": {
+                      "id": 27,
+                      "name": "US Bangla5",
+                      "short_code": "us5",
+                      "email": "usbangla415@asl.aero",
+                      "phone": "+8801558250667",
+                      "billing_address": "Dhaka, Bangladesh",
+                      "days_to_due_date": 23,
+                      "client_type": "agent",
+                      "preferred_currency": null,
+                      "status": "active",
+                      "chasing_rule": [
+                          {
+                              "id": 2,
+                              "name": "default",
+                              "is_default": true,
+                              "chase_on": "after due date",
+                              "is_cumulative": true,
+                              "max_repetition": 4,
+                              "email_template": 1,
+                              "email_template_name": "default",
+                              "chasing_days": []
+                          },
+                          {
+                              "id": 1,
+                              "name": "fixed interest",
+                              "is_default": false,
+                              "chase_on": "after due date",
+                              "is_cumulative": true,
+                              "max_repetition": null,
+                              "email_template": 2,
+                              "email_template_name": "payment notification",
+                              "chasing_days": []
+                          }
+                      ],
+                      "interest_rule": [
+                          {
+                              "id": 8,
+                              "name": "Ridoy",
+                              "is_default": true,
+                              "is_cumulative": false,
+                              "day": 3,
+                              "max_repetition": null,
+                              "interest_type": "percentage",
+                              "interest_rate": 12,
+                              "interest_base": "invoice_base_amount"
+                          }
+                      ]
+                  }
+              }
+          }

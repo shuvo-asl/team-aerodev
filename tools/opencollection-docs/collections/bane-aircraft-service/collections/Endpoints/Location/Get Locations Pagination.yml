@@ -1,0 +1,34 @@
+info:
+  name: Get Locations Pagination
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/locations?page=5&item_count=10"
+  params:
+    - name: page
+      value: "5"
+      type: query
+    - name: item_count
+      value: "10"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get Locations eg
+    request:
+      url: "{{url}}/locations"
+      method: GET
+    response:
+      body:
+        type: text
+        data: ""

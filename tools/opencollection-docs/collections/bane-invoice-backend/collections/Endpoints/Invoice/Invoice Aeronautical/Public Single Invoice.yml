@@ -1,0 +1,241 @@
+info:
+  name: Public Single Invoice
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{url}}/api/public-invoice/INV-000012"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Single Invoice
+    request:
+      url: "{{url}}/api/invoice/50/"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "3568"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+        - name: Cross-Origin-Opener-Policy
+          value: same-origin
+        - name: Server
+          value: daphne
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "data": {
+                  "id": 50,
+                  "invoice_no": "INV-000010",
+                  "invoice_type": "auto_generate",
+                  "due_date": "2023-11-19T17:28:13.305748+06:00",
+                  "amount": 8553.77,
+                  "payable_amount": 8553.77,
+                  "paid": 0,
+                  "due": 0,
+                  "status": "draft",
+                  "payment_status": "due",
+                  "created_at": "2023-11-09T17:28:13.346847+06:00",
+                  "updated_at": "2023-11-09T17:28:13.346861+06:00",
+                  "operator": 1,
+                  "billing_flight": {
+                      "id": 59,
+                      "aircraft_id": "ABC1234",
+                      "call_sign": "FLIGHT12434",
+                      "flight_no": "F1234",
+                      "flight_type": "landing",
+                      "src": "AirportA",
+                      "dest": "AirportB",
+                      "mtow": 5000.5,
+                      "reference": 12454545,
+                      "requests": {
+                          "request1": "data1",
+                          "request2": "data2"
+                      },
+                      "arrival_time": "2023-11-06T18:30:00+06:00",
+                      "departure_time": "2023-11-06T16:00:00+06:00",
+                      "status": "pending"
+                  },
+                  "currency": {
+                      "id": 1,
+                      "prefix": "$",
+                      "short_key": "USD",
+                      "rate": 1,
+                      "default": true,
+                      "is_active": false
+                  },
+                  "updated_by": null,
+                  "log": {
+                      "action_type": "",
+                      "action_model": "",
+                      "action_object": null,
+                      "action_user": "",
+                      "action_IP": "",
+                      "action_agent_info": "",
+                      "action_status": null
+                  },
+                  "final_charge": 8553.775,
+                  "charges": {
+                      "boarding_bridge_charge": {
+                          "total_charge": 7952,
+                          "sub_charges": [
+                              {
+                                  "id": 97,
+                                  "head_code": "discount_charge_frequent_boarding_bridge",
+                                  "units": null,
+                                  "per_unit_cost": null,
+                                  "amount": 408,
+                                  "created_at": "2023-11-09T18:06:49.164283+06:00",
+                                  "updated_at": "2023-11-09T18:06:49.164310+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 13
+                              },
+                              {
+                                  "id": 96,
+                                  "head_code": "boarding_bridge_above_2hour_charge",
+                                  "units": 136,
+                                  "per_unit_cost": 60,
+                                  "amount": 8160,
+                                  "created_at": "2023-11-09T18:06:49.140404+06:00",
+                                  "updated_at": "2023-11-09T18:06:49.140429+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 12
+                              },
+                              {
+                                  "id": 95,
+                                  "head_code": "boarding_bridge_charge",
+                                  "units": 70,
+                                  "per_unit_cost": 100,
+                                  "amount": 200,
+                                  "created_at": "2023-11-09T18:06:49.122543+06:00",
+                                  "updated_at": "2023-11-09T18:06:49.122577+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 11
+                              }
+                          ]
+                      },
+                      "landing": {
+                          "total_charge": 601.775,
+                          "sub_charges": [
+                              {
+                                  "id": 94,
+                                  "head_code": "hanger_charge",
+                                  "units": 2,
+                                  "per_unit_cost": 7.875,
+                                  "amount": 15.75,
+                                  "created_at": "2023-11-09T17:29:19.281735+06:00",
+                                  "updated_at": "2023-11-09T17:29:19.281767+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 9
+                              },
+                              {
+                                  "id": 93,
+                                  "head_code": "security_others_local",
+                                  "units": 1,
+                                  "per_unit_cost": 375,
+                                  "amount": 375,
+                                  "created_at": "2023-11-09T17:28:13.477918+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.477944+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 15
+                              },
+                              {
+                                  "id": 92,
+                                  "head_code": "security_others_international",
+                                  "units": 1,
+                                  "per_unit_cost": 200,
+                                  "amount": 200,
+                                  "created_at": "2023-11-09T17:28:13.453958+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.453988+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 14
+                              },
+                              {
+                                  "id": 91,
+                                  "head_code": "parking_charge",
+                                  "units": 2,
+                                  "per_unit_cost": 7.875,
+                                  "amount": 15.75,
+                                  "created_at": "2023-11-09T17:28:13.438271+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.438299+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 8
+                              },
+                              {
+                                  "id": 90,
+                                  "head_code": "test_flight_discount",
+                                  "units": 1,
+                                  "per_unit_cost": 23.625,
+                                  "amount": 23.625,
+                                  "created_at": "2023-11-09T17:28:13.418825+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.418849+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 5
+                              },
+                              {
+                                  "id": 89,
+                                  "head_code": "training_purpose_discount",
+                                  "units": 1,
+                                  "per_unit_cost": 15.75,
+                                  "amount": 15.75,
+                                  "created_at": "2023-11-09T17:28:13.399781+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.399814+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 4
+                              },
+                              {
+                                  "id": 88,
+                                  "head_code": "off_time_landing_takeoff",
+                                  "units": 1,
+                                  "per_unit_cost": 3.15,
+                                  "amount": 3.15,
+                                  "created_at": "2023-11-09T17:28:13.382870+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.382895+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 3
+                              },
+                              {
+                                  "id": 87,
+                                  "head_code": "landing",
+                                  "units": 6,
+                                  "per_unit_cost": 5.25,
+                                  "amount": 31.5,
+                                  "created_at": "2023-11-09T17:28:13.367986+06:00",
+                                  "updated_at": "2023-11-09T17:28:13.368011+06:00",
+                                  "invoice": 50,
+                                  "charging_head": 2
+                              }
+                          ]
+                      }
+                  }
+              }
+          }

@@ -1,0 +1,62 @@
+info:
+  name: adsb connection check success
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/adsb-connection/"
+  body:
+    type: json
+    data: '{"status": "success", "data": "data"}'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/adsb-connection/"
+      method: POST
+      body:
+        type: json
+        data: '{"status": "success", "data": "data"}'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Sun, 09 Mar 2025 06:34:24 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: POST, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "112"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "ADSB connection successful",
+              "data": {
+                  "result": {
+                      "status": "success",
+                      "data": "data"
+                  }
+              }
+          }

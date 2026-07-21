@@ -1,0 +1,11 @@
+info:
+  name: Invoice
+  type: folder
+  seq: 14
+
+request:
+  auth: inherit
+
+docs:
+  content: This folder consists all of the API details which is related to the invoice.
+  type: text/markdown

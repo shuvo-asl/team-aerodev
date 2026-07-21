@@ -1,0 +1,90 @@
+info:
+  name: charges based on rules
+  type: http
+  seq: 14
+
+http:
+  method: GET
+  url: "{{url}}/api/charges-based-on-rules/11/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: charges based on rules
+    request:
+      url: "{{url}}/api/charges-based-on-rules/11/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.29.1
+        - name: Date
+          value: Mon, 29 Sep 2025 03:38:19 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "632"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Charges based o rules fetched successfully",
+              "data": {
+                  "result": [
+                      {
+                          "max_value": "2 Hour",
+                          "min": "0.0 Hour",
+                          "max": "99999.0 Hour",
+                          "local_cost": "",
+                          "international_cost": "100.0$ / 1 Hour",
+                          "static_cost": ""
+                      },
+                      {
+                          "max_value": "2 Hour",
+                          "min": "100000.0 Hour",
+                          "max": "199999.0 Hour",
+                          "local_cost": "",
+                          "international_cost": "150.0$ / 1 Hour",
+                          "static_cost": ""
+                      },
+                      {
+                          "max_value": "2 Hour",
+                          "min": "200000.0 Hour",
+                          "max": "299999.0 Hour",
+                          "local_cost": "",
+                          "international_cost": "200.0$ / 1 Hour",
+                          "static_cost": ""
+                      },
+                      {
+                          "max_value": "2 Hour",
+                          "min": "300000.0 Hour",
+                          "max": "",
+                          "local_cost": "",
+                          "international_cost": "250.0$ / 1 Hour",
+                          "static_cost": ""
+                      }
+                  ]
+              }
+          }

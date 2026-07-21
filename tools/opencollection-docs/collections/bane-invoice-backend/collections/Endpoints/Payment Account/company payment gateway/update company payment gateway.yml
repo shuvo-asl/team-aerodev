@@ -1,0 +1,75 @@
+info:
+  name: update company payment gateway
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{url}}/api/company-payment-gateway/1/"
+  body:
+    type: json
+    data: |-
+      {
+          "is_active": true
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update company payment gateway
+    request:
+      url: "{{url}}/api/company-payment-gateway/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "is_active": true
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 25 Feb 2025 10:46:29 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.8.20
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "208"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Payment Gateway successfully updated",
+              "data": {
+                  "result": {
+                      "is_active": true,
+                      "name": "EBL",
+                      "id": 1,
+                      "payment_gateway_model": 1,
+                      "test_mode": true,
+                      "gateway_type": "ebl",
+                      "bank": "CITY USD"
+                  }
+              }
+          }

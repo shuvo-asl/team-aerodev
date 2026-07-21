@@ -1,0 +1,82 @@
+info:
+  name: update template
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{url}}/api/pdf-template/2/"
+  body:
+    type: json
+    data: |-
+      {
+          "is_default":true
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: update template
+    request:
+      url: "{{url}}/api/pdf-template/29/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "logo_id": 24,
+              "has_chasing_details": false
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 05:28:57 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "522"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "PDF Template successfully updated",
+              "data": {
+                  "result": {
+                      "id": 29,
+                      "title": "example title267",
+                      "design_id": 1,
+                      "logo_id": 24,
+                      "has_bank_details": true,
+                      "bank_details_id": 25,
+                      "has_chasing_details": false,
+                      "logo_title": "test logo",
+                      "logo_file": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/ASL_logo_Update_2024_by_ZM_FINAL.png",
+                      "bank_details_title": "test",
+                      "bank_details": "example bank",
+                      "design_template_name": "general inovoice template 1",
+                      "design_template_file_name": "general.html"
+                  }
+              }
+          }

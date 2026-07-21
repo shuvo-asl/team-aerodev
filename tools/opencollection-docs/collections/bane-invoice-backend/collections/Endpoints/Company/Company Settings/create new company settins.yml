@@ -1,0 +1,85 @@
+info:
+  name: create new company settins
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/api/company-settings/"
+  body:
+    type: json
+    data: |-
+      {
+          "type": "bank_details",
+          "title": "comapany_bank",
+          "bank_details": "quifheru"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: bank details create
+    request:
+      url: "{{url}}/api/company-settings/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "type": "bank_details",
+              "title": "comapany_bank",
+              "bank_details": "quifheru"
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Date
+          value: Wed, 04 Dec 2024 11:24:27 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "346"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Company Settings successfully created",
+              "data": {
+                  "result": {
+                      "id": 1,
+                      "title": "comapany_bank",
+                      "bank_details": "quifheru",
+                      "deleted_at": null,
+                      "created_at": "2024-12-04T17:24:27.854570+06:00",
+                      "updated_at": null,
+                      "value_text": null,
+                      "value_file": null,
+                      "value_type": "",
+                      "type": "bank_details",
+                      "is_active": true,
+                      "logo": null,
+                      "company": 2
+                  }
+              }
+          }

@@ -1,0 +1,25 @@
+info:
+  name: Enable Or Disable Invoice Chasing
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{url}}/api/enable-or-disable-invoice-chasing/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: json
+    data: |-
+      {
+          "invoice_id": 2,
+          "is_enable": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

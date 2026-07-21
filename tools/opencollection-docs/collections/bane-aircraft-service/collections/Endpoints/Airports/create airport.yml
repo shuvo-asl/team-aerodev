@@ -1,0 +1,142 @@
+info:
+  name: create airport
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/airports"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Tabarka–Aïn Draham International Airport",
+          "city_id": "6249",
+          "iata": "TBJ",
+          "icao": "DTKA2",
+          "latitude": "36.98",
+          "longitude": "8.876944",
+          "altitude": "0",
+          "timezone": "1",
+          "dst": "E",
+          "tzdbtz": "Africa\/Tunis",
+          "color": "#11f22f",
+          "is_visible": "1",
+          "is_deleted": "0",
+          "comment": "example comment"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/airports"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "city_id": 1,
+              "icao": "VGHS",
+              "name": "test"
+          }
+    response:
+      status: 400
+      statusText: BAD REQUEST
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.18
+        - name: Date
+          value: Sun, 24 Aug 2025 07:41:30 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "96"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "error": "Airport Already Exists",
+              "errors": null,
+              "message": "Input data is invalid"
+          }
+  - name: create airport
+    request:
+      url: "{{url}}/airports"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "name": "Tabarka–Aïn Draham International Airport",
+              "city_id": "6249",
+              "iata": "TBJ",
+              "icao": "DTKA2",
+              "latitude": "36.98",
+              "longitude": "8.876944",
+              "altitude": "0",
+              "timezone": "1",
+              "dst": "E",
+              "tzdbtz": "Africa\/Tunis",
+              "color": "#11f22f",
+              "is_visible": "1",
+              "is_deleted": "0",
+              "comment": "example comment"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: Werkzeug/3.0.3 Python/3.10.18
+        - name: Date
+          value: Sun, 24 Aug 2025 07:51:39 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "629"
+        - name: Connection
+          value: close
+      body:
+        type: json
+        data: |-
+          {
+              "data": {
+                  "altitude": "0",
+                  "city_id": 6249,
+                  "color": "#11f22f",
+                  "comment": "example comment",
+                  "created_by": {
+                      "user_name": "admin"
+                  },
+                  "created_by_id": 1,
+                  "dst": "E",
+                  "iata": "TBJ",
+                  "icao": "DTKA2",
+                  "id": 6826,
+                  "is_deleted": false,
+                  "is_visible": true,
+                  "latitude": "36.98",
+                  "longitude": "8.876944",
+                  "name": "Tabarka–Aïn Draham International Airport",
+                  "timezone": "1",
+                  "tzdbtz": "Africa/Tunis",
+                  "updated_by": {
+                      "user_name": "admin"
+                  },
+                  "updated_by_id": 1
+              },
+              "error": null,
+              "errors": null,
+              "message": "successful"
+          }

@@ -1,0 +1,35 @@
+info:
+  name: generate pdf for invoice
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/generate-pdf-for-invoice/45"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  params:
+    - name: limit
+      value: "10"
+      type: query
+      disabled: true
+    - name: page
+      value: "1"
+      type: query
+      disabled: true
+    - name: status
+      value: draft
+      type: query
+      disabled: true
+    - name: search_key
+      value: ""
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

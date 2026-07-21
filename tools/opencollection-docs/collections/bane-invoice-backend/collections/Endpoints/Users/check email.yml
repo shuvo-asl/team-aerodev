@@ -1,0 +1,67 @@
+info:
+  name: check email
+  type: http
+  seq: 16
+
+http:
+  method: GET
+  url: "{{url}}/api/check-email/admin@gmail.com/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: check email
+    request:
+      url: "{{url}}/api/check-email/admin@gmail.com/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Wed, 11 Dec 2024 09:01:50 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "281"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Email checked successfully",
+              "data": {
+                  "result": {
+                      "email_exists": true,
+                      "within_same_tenant": true,
+                      "profile_data": {
+                          "id": 3,
+                          "first_name": "Admin",
+                          "last_name": "admin",
+                          "username": "admin",
+                          "email": "admin@gmail.com",
+                          "phone": "+8801684806728",
+                          "profile_image": null
+                      }
+                  }
+              }
+          }

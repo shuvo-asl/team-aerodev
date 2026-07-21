@@ -1,0 +1,59 @@
+info:
+  name: delete company data mappings
+  type: http
+  seq: 9
+
+http:
+  method: DELETE
+  url: "{{url}}/api/company-data-mapping-pairs/tax-rate/from/1/to/4/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/company-data-mapping-pairs/tax-rate/from/1/to/4/"
+      method: DELETE
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Mon, 08 Sep 2025 05:12:51 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "111"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Company mapping pair Deleted Successfully",
+              "data": {
+                  "result": {
+                      "delete_count": 1
+                  }
+              }
+          }

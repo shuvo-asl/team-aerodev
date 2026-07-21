@@ -1,0 +1,127 @@
+info:
+  name: edit a issue type
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{url}}/api/issue-types/4/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "server error2",
+          "handlers": [1]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: New Request
+    request:
+      url: "{{url}}/api/issue-types/4/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "name": "server error2"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Wed, 07 May 2025 09:12:42 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "114"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Issue Type successfully updated",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "name": "server error2"
+                  }
+              }
+          }
+  - name: edit a issue type
+    request:
+      url: "{{url}}/api/issue-types/4/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+              "name": "server error2",
+              "handlers": [1]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Server
+          value: nginx/1.27.5
+        - name: Date
+          value: Thu, 08 May 2025 06:21:39 GMT
+        - name: Content-Type
+          value: application/json
+        - name: Content-Length
+          value: "157"
+        - name: Connection
+          value: keep-alive
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Issue Type successfully updated",
+              "data": {
+                  "result": {
+                      "id": 4,
+                      "name": "server error2",
+                      "handlers": [
+                          {
+                              "id": 1,
+                              "name": "Admin Admin"
+                          }
+                      ]
+                  }
+              }
+          }

@@ -1,0 +1,103 @@
+info:
+  name: currency list
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url}}/api/currency-list/"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: currency list
+    request:
+      url: "{{url}}/api/currency-list/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Mon, 02 Dec 2024 05:42:29 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "960"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "Currency Successfully Fetched",
+              "data": {
+                  "result": [
+                      {
+                          "id": 5,
+                          "prefix": "€",
+                          "short_key": "EUR",
+                          "current_rate": 0.9472,
+                          "default": null,
+                          "name": "Euro",
+                          "flag": "http://localhost:5011/api/media/Flag_of_Europe.svg.png",
+                          "is_active": false
+                      },
+                      {
+                          "id": 4,
+                          "prefix": "£",
+                          "short_key": "GBP",
+                          "current_rate": 0.7873,
+                          "default": null,
+                          "name": "Pound Sterling",
+                          "flag": "http://localhost:5011/api/media/Flag_of_the_United_Kingdom_1-2.svg.png",
+                          "is_active": false
+                      },
+                      {
+                          "id": 3,
+                          "prefix": "₹",
+                          "short_key": "INR",
+                          "current_rate": 84.6255,
+                          "default": null,
+                          "name": "Rupee",
+                          "flag": "http://localhost:5011/api/media/Flag_of_India.svg.png",
+                          "is_active": true
+                      },
+                      {
+                          "id": 2,
+                          "prefix": "৳",
+                          "short_key": "BDT",
+                          "current_rate": 119.4888,
+                          "default": null,
+                          "name": "Taka",
+                          "flag": "http://localhost:5011/api/media/download.jpeg",
+                          "is_active": true
+                      },
+                      {
+                          "id": 1,
+                          "prefix": "$",
+                          "short_key": "USD",
+                          "current_rate": 1,
+                          "default": true,
+                          "name": "Dollar",
+                          "flag": "http://localhost:5011/api/media/download.png",
+                          "is_active": true
+                      }
+                  ]
+              }
+          }

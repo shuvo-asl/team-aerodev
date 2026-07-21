@@ -1,0 +1,7 @@
+info:
+  name: Company Settings
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

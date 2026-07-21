@@ -1,0 +1,123 @@
+info:
+  name: logos with pagination
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{url}}/api/system-settings/?type=logo&page=1&limit=3"
+  params:
+    - name: type
+      value: logo
+      type: query
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "3"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: logos with pagination
+    request:
+      url: "{{url}}/api/system-settings/?type=logo&page=1&limit=3"
+      method: GET
+      params:
+        - name: type
+          value: logo
+          type: query
+        - name: page
+          value: "1"
+          type: query
+        - name: limit
+          value: "3"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Date
+          value: Tue, 12 Nov 2024 06:59:07 GMT
+        - name: Server
+          value: WSGIServer/0.2 CPython/3.7.17
+        - name: Content-Type
+          value: application/json
+        - name: Vary
+          value: Accept, Origin
+        - name: Allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: X-Frame-Options
+          value: DENY
+        - name: Content-Length
+          value: "1138"
+        - name: X-Content-Type-Options
+          value: nosniff
+        - name: Referrer-Policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+              "status": "success",
+              "message": "System Settings Successfully Fetched",
+              "data": {
+                  "next": 2,
+                  "previous": null,
+                  "current_page": 1,
+                  "total_object": 7,
+                  "total_page": 3,
+                  "result": [
+                      {
+                          "id": 49,
+                          "deleted_at": null,
+                          "created_at": "2024-11-12T12:52:34.177770+06:00",
+                          "updated_at": null,
+                          "title": "logo for testing",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/12/bdflag.jpg",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 32,
+                          "deleted_at": null,
+                          "created_at": "2024-11-04T11:08:32.703479+06:00",
+                          "updated_at": null,
+                          "title": "sgdfs",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/Screenshot_from_2024-09-23_17-52-36_rTlMj01.png",
+                          "bank_details": ""
+                      },
+                      {
+                          "id": 31,
+                          "deleted_at": null,
+                          "created_at": "2024-11-04T11:07:04.363042+06:00",
+                          "updated_at": null,
+                          "title": "hello",
+                          "value_text": null,
+                          "value_file": null,
+                          "value_type": "",
+                          "type": "logo",
+                          "is_active": false,
+                          "logo": "http://localhost:5011/api/media/images/system_settings/logo/2024/11/04/AFRMS_logo_final_zMXBj2U.png",
+                          "bank_details": ""
+                      }
+                  ]
+              }
+          }
