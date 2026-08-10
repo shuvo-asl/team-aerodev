@@ -1,4 +1,4 @@
-# Contribution Guidelines for `apis`
+# Contribution Guidelines for Team Aerodev
 
 ## What This Repo Is
 
