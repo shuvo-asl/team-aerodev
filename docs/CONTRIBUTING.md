@@ -1,8 +1,27 @@
 # Contribution Guidelines for `apis`
 
-This repository holds our API collections, environments, and the workflow that auto-generates API documentation on every push. It is a shared, multi-purpose repo, so please follow this guide when contributing.
+## What This Repo Is
 
-We use **Git & GitHub** for version control and **Azure DevOps Boards (Scrum)** for work/task management. Every change must trace back to a work item — no work item, no branch, no PR.
+This is the **central API testing & documentation repo** for the team. It is not tied to a single project — every developer, across every project, uses it whenever they add or change an API.
+
+- API collections are maintained here using **[Bruno](https://www.usebruno.com/)**.
+- Documentation for every collection is generated automatically on push (see `.github/workflows/docs.yml`).
+- Each project's actual source code lives in its own repo on **Azure DevOps**. This repo is separate from those — you will typically have two repos checked out for one piece of work: your project's code repo, and this one.
+
+Work/task management for all projects happens on **Azure DevOps Boards (Scrum)**, regardless of where the code itself is hosted. Every change — in your project repo or in this repo — must trace back to the same **Work Item**.
+
+---
+
+## When You Must Update This Repo
+
+If your task **adds, changes, or removes an API endpoint**, you must update this repo in addition to your project's code repo:
+
+1. Clone this repo (if you haven't already) and open it in **Bruno**.
+2. Add/update the request(s) in the relevant collection under `collections/`, and update `environments/` if variables changed.
+3. Verify the request works against the API in Bruno.
+4. Commit and push your changes here — following the same branch/commit/PR rules below, using the **same Work Item ID** as your code change in the project repo.
+
+Treat the code change and the collection change as one task with two repos, not two separate tasks.
 
 ---
 
@@ -10,7 +29,7 @@ We use **Git & GitHub** for version control and **Azure DevOps Boards (Scrum)** 
 
 - All work is tracked as a **Work Item** on the Azure DevOps Scrum board (Task, User Story, or Bug — whichever fits).
 - Move your work item from **New/To Do** → **In Progress** when you start working on it.
-- Every branch, commit, and PR must reference the **Work Item ID**.
+- Every branch, commit, and PR — in both the project repo and this repo — must reference the same **Work Item ID**.
 - Create a branch using the following convention:
   - `feature/{WORK_ITEM_ID}-short-title`
   - `bugfix/{WORK_ITEM_ID}-short-title`
@@ -41,6 +60,7 @@ We use **Git & GitHub** for version control and **Azure DevOps Boards (Scrum)** 
   - The linked **Work Item ID** (`#1234`) so it auto-links on the Azure Boards work item.
   - Reviewers assigned.
   - Labels assigned.
+- If this PR pairs with a code change in a project repo, link that PR too in the description for traceability.
 
 ---
 
@@ -56,6 +76,7 @@ Mentioning `#{WORK_ITEM_ID}` in a commit message or PR title/description automat
 ## Adding or Updating API Collections
 
 - New or changed collections go under `collections/`, environments under `environments/`.
+- Make changes in Bruno, not by hand-editing the collection files, so the format stays consistent.
 - Documentation is generated automatically by the `docs` workflow on push — you do not need to regenerate docs manually. Just make sure your collection is valid before pushing.
 - Follow the same branch/commit/PR rules above for collection and environment changes — they are tracked like any other task.
 
@@ -63,6 +84,7 @@ Mentioning `#{WORK_ITEM_ID}` in a commit message or PR title/description automat
 
 ## Useful Links
 
+- [Bruno](https://www.usebruno.com/)
 - [Commitlint](https://commitlint.js.org/)
 - Azure DevOps Boards — team Scrum board (see your project's board URL)
 
