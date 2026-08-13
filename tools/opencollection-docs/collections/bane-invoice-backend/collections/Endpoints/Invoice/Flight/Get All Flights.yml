@@ -5,13 +5,16 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/api/flight/?limit=5&status=ready_to_bill"
+  url: "{{url}}/api/flight/?limit=200&status=incomplete&operator=3"
   headers:
     - name: Authorization
       value: Bearer {{token}}
   params:
     - name: limit
-      value: "5"
+      value: "200"
+      type: query
+    - name: status
+      value: incomplete
       type: query
     - name: search
       value: FL0212
@@ -34,9 +37,8 @@ http:
       type: query
       disabled: true
     - name: operator
-      value: "109"
+      value: "3"
       type: query
-      disabled: true
     - name: call_sign
       value: ABC123
       type: query
@@ -50,7 +52,7 @@ http:
       type: query
       disabled: true
     - name: fir_in
-      value: 2024-12-02, 2024-12-03
+      value: 2026-4-02, 2024-12-03
       type: query
       disabled: true
     - name: fir_out
@@ -58,14 +60,15 @@ http:
       type: query
       disabled: true
     - name: date_of_operation
-      value: 2024-09-16
+      value: 2026-04-11,2026-04-14
       type: query
       disabled: true
     - name: status
       value: ready_to_bill
       type: query
-    - name: status
-      value: billing
+      disabled: true
+    - name: invoice_id
+      value: "72"
       type: query
       disabled: true
   auth: inherit

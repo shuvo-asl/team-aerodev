@@ -5,17 +5,22 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/api/bas/aircraft/?limit=10&page=1"
+  url: "{{url}}/api/bas/aircraft/?operator_id=2872"
   params:
     - name: limit
       value: "10"
       type: query
+      disabled: true
     - name: short_code
-      value: ETH
+      value: RWD
       type: query
       disabled: true
     - name: page
       value: "1"
+      type: query
+      disabled: true
+    - name: operator_id
+      value: "2872"
       type: query
   body:
     type: text

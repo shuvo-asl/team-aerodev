@@ -10,7 +10,7 @@ http:
     type: json
     data: |-
       {
-          "token": "123"
+          "token": "qHuqnKpJUSfsHctZ"
       }
   auth: inherit
 

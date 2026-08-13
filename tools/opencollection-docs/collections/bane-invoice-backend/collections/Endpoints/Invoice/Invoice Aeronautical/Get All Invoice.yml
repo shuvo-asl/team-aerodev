@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/api/invoice?invoice_type=aeronautical&billing_period=2026-04-01,2026-05-10"
+  url: "{{url}}/api/invoice?invoice_type=aeronautical&client_id=2872"
   headers:
     - name: Authorization
       value: Bearer {{token}}
@@ -16,10 +16,14 @@ http:
     - name: billing_period
       value: 2026-04-01,2026-05-10
       type: query
+      disabled: true
     - name: billing_period_end
       value: 2026-05-10
       type: query
       disabled: true
+    - name: client_id
+      value: "2872"
+      type: query
   auth: inherit
 
 settings:

@@ -8,7 +8,8 @@ http:
   url: "{{url}}/api/third-party-flight-dump/"
   headers:
     - name: Authorization
-      value: Bearer {{token}}
+      value: " Bearer  {{token}}"
+      disabled: true
   body:
     type: json
     data: |+
