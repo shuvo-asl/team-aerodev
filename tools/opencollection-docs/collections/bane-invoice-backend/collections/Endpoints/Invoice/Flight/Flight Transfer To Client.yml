@@ -13,10 +13,11 @@ http:
     type: json
     data: |-
       {
-        "flights":[19197,18870],
+        "flights":[18881],
         "flight_status":"incomplete",
         "source_client_id":3,
-        "destination_client_id":2872
+        "destination_client_id":2872,
+        "registrations":["N315SL"]
       }
   auth: inherit
 
