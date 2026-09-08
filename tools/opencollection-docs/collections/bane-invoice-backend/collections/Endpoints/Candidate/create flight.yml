@@ -1,0 +1,80 @@
+info:
+  name: create flight
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url}}/api/candidates/create-flight/"
+  body:
+    type: json
+    data: |-
+      {
+        "candidate_ids": [3]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: create flights from candidates
+    request:
+      url: "{{url}}/api/candidates/create-flight/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": [3]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 08 Sep 2026 04:16:23 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "139"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "1 flight(s) created, 0 linked.",
+            "data": {
+              "result": {
+                "created_count": 1,
+                "linked_count": 0,
+                "flight_ids": [
+                  48421
+                ]
+              }
+            }
+          }

@@ -1,0 +1,130 @@
+info:
+  name: link flight
+  type: http
+  seq: 21
+
+http:
+  method: POST
+  url: "{{url}}/api/candidates/link/"
+  body:
+    type: json
+    data: |-
+      {
+        "candidate_id": 12,
+        "flight_id": 48418,
+        "mode": "override_data"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: error message if candidate is already linked
+    request:
+      url: "{{url}}/api/candidates/link/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_id": 4,
+            "flight_id": 48418,
+            "mode": "override_data"
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 08 Sep 2026 04:28:45 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "109"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Candidate failed to link.",
+            "error": "candidate is already linked",
+            "errors": null
+          }
+  - name: linked successfully
+    request:
+      url: "{{url}}/api/candidates/link/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_id": 12,
+            "flight_id": 48418,
+            "mode": "override_data"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 08 Sep 2026 05:38:01 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "129"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Candidate linked to flight successfully.",
+            "data": {
+              "result": {
+                "candidate_id": 12,
+                "flight_id": 48418
+              }
+            }
+          }

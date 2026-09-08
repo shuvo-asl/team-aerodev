@@ -1,0 +1,195 @@
+info:
+  name: Get Candidates
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/api/candidates?source=fic&status=linked"
+  params:
+    - name: search
+      value: "0093E1"
+      type: query
+      disabled: true
+    - name: source
+      value: fic
+      type: query
+    - name: status
+      value: linked
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: Filter candidate by status `all`
+    request:
+      url: "{{url}}/api/candidates?source=fic&status=all"
+      method: GET
+      params:
+        - name: search
+          value: "0093E1"
+          type: query
+          disabled: true
+        - name: source
+          value: fic
+          type: query
+        - name: status
+          value: all
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 08 Sep 2026 03:59:49 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "547"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flight Candidate Successfully Fetched",
+            "data": {
+              "result": [
+                {
+                  "id": 2,
+                  "source": "fic",
+                  "status": "linked",
+                  "call_sign": "CEM002",
+                  "aircraft_registration_no": "ZS-HNC",
+                  "icao": "0093E2",
+                  "date_of_operation": "2026-09-05",
+                  "resolved_flight_id": 48398,
+                  "resolution_note": "test"
+                },
+                {
+                  "id": 1,
+                  "source": "fic",
+                  "status": "linked",
+                  "call_sign": "CEM001",
+                  "aircraft_registration_no": "ZS-HNC",
+                  "icao": "0093E1",
+                  "date_of_operation": "2026-09-05",
+                  "resolved_flight_id": 48418,
+                  "resolution_note": null
+                }
+              ],
+              "tab_count_data": {
+                "pending": 0,
+                "void": 0,
+                "linked": 2,
+                "all": 2
+              }
+            }
+          }
+  - name: filter candidates of specific source and status
+    request:
+      url: "{{url}}/api/candidates?source=fic&status=linked"
+      method: GET
+      params:
+        - name: search
+          value: "0093E1"
+          type: query
+          disabled: true
+        - name: source
+          value: fic
+          type: query
+        - name: status
+          value: linked
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 08 Sep 2026 04:02:36 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "547"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flight Candidate Successfully Fetched",
+            "data": {
+              "result": [
+                {
+                  "id": 2,
+                  "source": "fic",
+                  "status": "linked",
+                  "call_sign": "CEM002",
+                  "aircraft_registration_no": "ZS-HNC",
+                  "icao": "0093E2",
+                  "date_of_operation": "2026-09-05",
+                  "resolved_flight_id": 48398,
+                  "resolution_note": "test"
+                },
+                {
+                  "id": 1,
+                  "source": "fic",
+                  "status": "linked",
+                  "call_sign": "CEM001",
+                  "aircraft_registration_no": "ZS-HNC",
+                  "icao": "0093E1",
+                  "date_of_operation": "2026-09-05",
+                  "resolved_flight_id": 48418,
+                  "resolution_note": null
+                }
+              ],
+              "tab_count_data": {
+                "pending": 0,
+                "void": 0,
+                "linked": 2,
+                "all": 2
+              }
+            }
+          }

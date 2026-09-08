@@ -1,0 +1,78 @@
+info:
+  name: unlink flight
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/candidates/unlink/"
+  body:
+    type: json
+    data: |-
+      {
+        "candidate_ids": [1, 2],
+        "mode": "unlink_only"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: candidates unlinked
+    request:
+      url: "{{url}}/api/candidates/unlink/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": [1, 2],
+            "mode": "unlink_only"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 08 Sep 2026 05:44:50 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "105"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Candidates unlinked successfully.",
+            "data": {
+              "result": {
+                "unlinked_count": 2
+              }
+            }
+          }
