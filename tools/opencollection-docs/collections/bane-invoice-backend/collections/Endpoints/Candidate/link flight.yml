@@ -1,7 +1,7 @@
 info:
   name: link flight
   type: http
-  seq: 21
+  seq: 6
 
 http:
   method: POST
@@ -10,9 +10,10 @@ http:
     type: json
     data: |-
       {
-        "candidate_id": 12,
-        "flight_id": 48418,
-        "mode": "override_data"
+        "candidate_id": 404,
+        "flight_id": 48467,
+        "mode": "override_data",
+        "resolution_note": "no better mtch found"
       }
   auth:
     type: bearer
@@ -75,7 +76,7 @@ examples:
             "error": "candidate is already linked",
             "errors": null
           }
-  - name: linked successfully
+  - name: link candidate with a flight
     request:
       url: "{{url}}/api/candidates/link/"
       method: POST
@@ -83,9 +84,10 @@ examples:
         type: json
         data: |-
           {
-            "candidate_id": 12,
-            "flight_id": 48418,
-            "mode": "override_data"
+            "candidate_id": 404,
+            "flight_id": 48467,
+            "mode": "override_data",
+            "resolution_note": "no better mtch found"
           }
     response:
       status: 200
@@ -94,11 +96,11 @@ examples:
         - name: server
           value: nginx/1.27.5
         - name: date
-          value: Tue, 08 Sep 2026 05:38:01 GMT
+          value: Tue, 15 Sep 2026 06:31:33 GMT
         - name: content-type
           value: application/json
         - name: content-length
-          value: "129"
+          value: "130"
         - name: connection
           value: keep-alive
         - name: vary
@@ -123,8 +125,8 @@ examples:
             "message": "Candidate linked to flight successfully.",
             "data": {
               "result": {
-                "candidate_id": 12,
-                "flight_id": 48418
+                "candidate_id": 404,
+                "flight_id": 48467
               }
             }
           }

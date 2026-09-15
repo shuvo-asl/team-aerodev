@@ -1,0 +1,201 @@
+info:
+  name: rematch candidates
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/api/candidates/rematch/"
+  body:
+    type: json
+    data: |-
+      {
+        "candidate_ids": [363, 362]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: invalid ids raises exception for whole operation
+    request:
+      url: "{{url}}/api/candidates/rematch/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": [363, 36200]
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 13 Sep 2026 06:00:05 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "101"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Some candidates were not found.",
+            "error": null,
+            "errors": {
+              "ids": [
+                36200
+              ]
+            }
+          }
+  - name: no match found for any given candidate
+    request:
+      url: "{{url}}/api/candidates/rematch/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": [363, 362]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 13 Sep 2026 06:00:59 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "218"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Rematch completed.",
+            "data": {
+              "result": {
+                "linked_count": 0,
+                "results": [
+                  {
+                    "candidate_id": 362,
+                    "outcome": "no_match",
+                    "flight_id": null
+                  },
+                  {
+                    "candidate_id": 363,
+                    "outcome": "no_match",
+                    "flight_id": null
+                  }
+                ]
+              }
+            }
+          }
+  - name: one match found and linked during rematch
+    request:
+      url: "{{url}}/api/candidates/rematch/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": [363, 362]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 13 Sep 2026 06:32:50 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "217"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Rematch completed.",
+            "data": {
+              "result": {
+                "linked_count": 1,
+                "results": [
+                  {
+                    "candidate_id": 363,
+                    "outcome": "linked",
+                    "flight_id": 48465
+                  },
+                  {
+                    "candidate_id": 362,
+                    "outcome": "no_match",
+                    "flight_id": null
+                  }
+                ]
+              }
+            }
+          }

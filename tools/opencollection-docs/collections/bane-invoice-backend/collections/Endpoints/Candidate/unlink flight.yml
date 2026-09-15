@@ -1,7 +1,7 @@
 info:
   name: unlink flight
   type: http
-  seq: 5
+  seq: 3
 
 http:
   method: POST
@@ -10,8 +10,9 @@ http:
     type: json
     data: |-
       {
-        "candidate_ids": [1, 2],
-        "mode": "unlink_only"
+        "candidate_ids": [396],
+        "mode": "unlink_only",
+        "resolution_note": "unlinked cause -_-"
       }
   auth:
     type: bearer
@@ -25,7 +26,7 @@ settings:
   forwardAuthorizationHeader: false
 
 examples:
-  - name: candidates unlinked
+  - name: unlink candidates
     request:
       url: "{{url}}/api/candidates/unlink/"
       method: POST
@@ -33,8 +34,9 @@ examples:
         type: json
         data: |-
           {
-            "candidate_ids": [1, 2],
-            "mode": "unlink_only"
+            "candidate_ids": [396],
+            "mode": "unlink_only",
+            "resolution_note": "unlinked cause -_-"
           }
     response:
       status: 200
@@ -43,7 +45,7 @@ examples:
         - name: server
           value: nginx/1.27.5
         - name: date
-          value: Tue, 08 Sep 2026 05:44:50 GMT
+          value: Tue, 15 Sep 2026 06:28:27 GMT
         - name: content-type
           value: application/json
         - name: content-length
@@ -72,7 +74,7 @@ examples:
             "message": "Candidates unlinked successfully.",
             "data": {
               "result": {
-                "unlinked_count": 2
+                "unlinked_count": 1
               }
             }
           }
