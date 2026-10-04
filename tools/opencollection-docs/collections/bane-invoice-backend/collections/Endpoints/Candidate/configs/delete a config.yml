@@ -1,0 +1,55 @@
+info:
+  name: delete a config
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{url}}/api/candidate-engine-configs/1/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: delete a config
+    request:
+      url: "{{url}}/api/candidate-engine-configs/1/"
+      method: DELETE
+    response:
+      status: 204
+      statusText: No Content
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 04 Oct 2026 09:18:11 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "98"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: ""

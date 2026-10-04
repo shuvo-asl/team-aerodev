@@ -1,0 +1,148 @@
+info:
+  name: update candidate engine config
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{url}}/api/candidate-engine-configs/1/"
+  body:
+    type: json
+    data: |-
+      {
+        "is_active": false
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: update example
+    request:
+      url: "{{url}}/api/candidate-engine-configs/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "mode": "auto_create",
+            "run_staleness_pass_after_run": true,
+            "staleness_sweep_sources": ["tfm", "fr24"]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 04 Oct 2026 09:01:14 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "320"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Candidate Engine Config successfully updated",
+            "data": {
+              "result": {
+                "id": 1,
+                "source": "fpl",
+                "is_active": true,
+                "mode": "auto_create",
+                "run_staleness_pass_after_run": true,
+                "staleness_sweep_sources": [
+                  "tfm",
+                  "fr24"
+                ],
+                "created_at": "2026-10-04T08:46:21.390277Z",
+                "updated_at": "2026-10-04T09:01:14.080052Z"
+              }
+            }
+          }
+  - name: update config(inactive only)
+    request:
+      url: "{{url}}/api/candidate-engine-configs/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "is_active": false
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 04 Oct 2026 09:16:01 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "321"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Candidate Engine Config successfully updated",
+            "data": {
+              "result": {
+                "id": 1,
+                "source": "fpl",
+                "is_active": false,
+                "mode": "auto_create",
+                "run_staleness_pass_after_run": true,
+                "staleness_sweep_sources": [
+                  "tfm",
+                  "fr24"
+                ],
+                "created_at": "2026-10-04T08:46:21.390277Z",
+                "updated_at": "2026-10-04T09:16:00.905301Z"
+              }
+            }
+          }
