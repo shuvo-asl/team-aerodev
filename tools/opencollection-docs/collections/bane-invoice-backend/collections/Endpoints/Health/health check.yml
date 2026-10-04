@@ -1,0 +1,80 @@
+info:
+  name: health check
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/health"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: healthy
+    description: Service is up and the database answers.
+    request:
+      url: "{{url}}/health"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "status": "ok",
+            "service": "bane-invoice-backend",
+            "timestamp": "2026-10-04T08:35:45Z"
+          }
+  - name: database unreachable
+    description: Service is up but cannot reach MySQL.
+    request:
+      url: "{{url}}/health"
+      method: GET
+    response:
+      status: 503
+      statusText: Service Unavailable
+      headers:
+        - name: content-type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "status": "error",
+            "service": "bane-invoice-backend",
+            "timestamp": "2026-10-04T08:50:12Z",
+            "database": "unreachable"
+          }
+
+docs: |-
+  Public health check for **bane-invoice-backend**. No authentication required.
+
+  Runs a lightweight `SELECT 1` against MySQL and reports whether the service can reach its database.
+
+  ---
+
+  #### 🔹 Responses
+
+  | Status | Meaning |
+  | --- | --- |
+  | `200 OK` | Service is up and the database answers. |
+  | `503 Service Unavailable` | Service is up but the database is unreachable. |
+
+  No response at all (timeout / connection refused) means the service itself is down.
+
+  #### 🔹 Response Fields
+
+  | Field | Type | Description |
+  | --- | --- | --- |
+  | `status` | string | `ok` or `error` |
+  | `service` | string | Always `bane-invoice-backend` |
+  | `timestamp` | string | Server time in UTC, ISO 8601 (`YYYY-MM-DDTHH:MM:SSZ`) |
+  | `database` | string | Only on error: `unreachable` |
