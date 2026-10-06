@@ -1,0 +1,102 @@
+info:
+  name: create matching engine config
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/api/matching-engine-configs/"
+  body:
+    type: json
+    data: |-
+      {
+        "source": "tfm",
+        "keys": [
+          {"key_field": "icao24", "eligible": true, "vetoes": true},
+          {"key_field": "registration", "eligible": true, "vetoes": false}
+        ],
+        "is_active": true
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: create matching engine config
+    request:
+      url: "{{url}}/api/matching-engine-configs/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "source": "tfm",
+            "keys": [
+              {"key_field": "icao24", "eligible": true, "vetoes": true},
+              {"key_field": "registration", "eligible": true, "vetoes": false}
+            ],
+            "is_active": true
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 06 Oct 2026 09:09:50 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "318"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Matching Engine Config successfully created",
+            "data": {
+              "result": {
+                "id": 4,
+                "source": "tfm",
+                "is_active": true,
+                "keys": [
+                  {
+                    "key_field": "icao24",
+                    "eligible": true,
+                    "vetoes": true
+                  },
+                  {
+                    "key_field": "registration",
+                    "eligible": true,
+                    "vetoes": false
+                  }
+                ],
+                "created_at": "2026-10-06T09:09:50.401271Z",
+                "updated_at": null
+              }
+            }
+          }

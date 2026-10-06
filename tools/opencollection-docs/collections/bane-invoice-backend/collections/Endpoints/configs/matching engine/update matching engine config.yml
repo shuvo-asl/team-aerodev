@@ -1,0 +1,103 @@
+info:
+  name: update matching engine config
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{url}}/api/matching-engine-configs/1/"
+  body:
+    type: json
+    data: |-
+      {
+        "is_active": true,
+        "keys": [
+          {
+            "key_field": "registration",
+            "eligible": true,
+            "vetoes": false,
+            "extra": "oifj"
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: update a config
+    request:
+      url: "{{url}}/api/matching-engine-configs/1/"
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "is_active": true,
+            "keys": [
+              {
+                "key_field": "registration",
+                "eligible": true,
+                "vetoes": false,
+                "extra": "oifj"
+              }
+            ]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Tue, 06 Oct 2026 09:03:13 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "290"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Matching Engine Config successfully updated",
+            "data": {
+              "result": {
+                "id": 1,
+                "source": "fpl",
+                "is_active": true,
+                "keys": [
+                  {
+                    "key_field": "registration",
+                    "eligible": true,
+                    "vetoes": false
+                  }
+                ],
+                "created_at": "2026-10-06T08:55:03.668664Z",
+                "updated_at": "2026-10-06T09:03:13.486814Z"
+              }
+            }
+          }

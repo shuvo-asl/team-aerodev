@@ -1,7 +1,7 @@
 info:
   name: update candidate engine config
   type: http
-  seq: 3
+  seq: 2
 
 http:
   method: PATCH
