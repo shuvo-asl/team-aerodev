@@ -5,17 +5,19 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/api/flight/?limit=200&status=incomplete&operator=3"
+  url: "{{url}}/api/flight/?flight_source=tfm,fr24&date_of_operation=2026-11-6,2026-11-6"
   headers:
     - name: Authorization
       value: Bearer {{token}}
   params:
     - name: limit
-      value: "200"
+      value: "10"
       type: query
+      disabled: true
     - name: status
-      value: incomplete
+      value: incom
       type: query
+      disabled: true
     - name: search
       value: FL0212
       type: query
@@ -33,12 +35,12 @@ http:
       type: query
       disabled: true
     - name: flight_source
-      value: adsb
+      value: tfm,fr24
       type: query
-      disabled: true
     - name: operator
       value: "3"
       type: query
+      disabled: true
     - name: call_sign
       value: ABC123
       type: query
@@ -60,9 +62,8 @@ http:
       type: query
       disabled: true
     - name: date_of_operation
-      value: 2026-04-11,2026-04-14
+      value: 2026-11-6,2026-11-6
       type: query
-      disabled: true
     - name: status
       value: ready_to_bill
       type: query
@@ -78,6 +79,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 examples:
   - name: Get All Flights
@@ -843,4 +845,3649 @@ examples:
                       }
                   ]
               }
+          }
+  - name: flight filter by source work using multiple sources
+    request:
+      url: "{{url}}/api/flight/?flight_source=tfm,fr24&date_of_operation=2026-11-6,2026-11-6"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{token}}
+      params:
+        - name: limit
+          value: "10"
+          type: query
+          disabled: true
+        - name: status
+          value: incom
+          type: query
+          disabled: true
+        - name: search
+          value: FL0212
+          type: query
+          disabled: true
+        - name: flight_type
+          value: landing
+          type: query
+          disabled: true
+        - name: flight_origin_type
+          value: international
+          type: query
+          disabled: true
+        - name: mtow
+          value: "5000"
+          type: query
+          disabled: true
+        - name: flight_source
+          value: tfm,fr24
+          type: query
+        - name: operator
+          value: "3"
+          type: query
+          disabled: true
+        - name: call_sign
+          value: ABC123
+          type: query
+          disabled: true
+        - name: fir_in_route
+          value: Route A
+          type: query
+          disabled: true
+        - name: fir_out_route
+          value: Route B
+          type: query
+          disabled: true
+        - name: fir_in
+          value: 2026-4-02, 2024-12-03
+          type: query
+          disabled: true
+        - name: fir_out
+          value: 2024-12-03, 2024-12-03
+          type: query
+          disabled: true
+        - name: date_of_operation
+          value: 2026-11-6,2026-11-6
+          type: query
+        - name: status
+          value: ready_to_bill
+          type: query
+          disabled: true
+        - name: invoice_id
+          value: "72"
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 08 Nov 2026 08:58:41 GMT
+        - name: content-type
+          value: application/json
+        - name: transfer-encoding
+          value: chunked
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept-Encoding, Accept, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flight Successfully Fetched",
+            "data": {
+              "result": [
+                {
+                  "id": 58549,
+                  "icao": "04C31A",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4mlhft02js01pjmgc2x252",
+                  "call_sign": "5YVAN",
+                  "flight_no": "5YVAN",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-VAN",
+                  "flight_origin_type": "domestic",
+                  "mtow": 40.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJTR",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:29.185402+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.351965+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4mlhft02js01pjmgc2x252",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ HJTR HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-VAN",
+                        "type": "C208",
+                        "icao24": "04C31A"
+                      },
+                      "callsign": "5YVAN",
+                      "operator": {
+                        "name": "Aerosafe limited",
+                        "alias": "Aerosafe limited",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "SKYROVER",
+                        "iataCode": null,
+                        "icaoCode": "RRV"
+                      },
+                      "totalEet": "0030",
+                      "createdAt": "2026-11-06T07:01:03.497Z",
+                      "endurance": "0400",
+                      "equipment": "S",
+                      "otherInfo": "DOF/261106 REG/5Y-VAN CODE/04C31A OPR/AEROSAFE LIMITED",
+                      "updatedAt": "2026-11-06T09:36:11.979Z",
+                      "flightType": "G",
+                      "flightRules": "V",
+                      "surveillance": "C",
+                      "cruisingLevel": "F075",
+                      "cruisingSpeed": "N0140",
+                      "departureTime": "0730",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "MAYAR BONA ",
+                      "wakeTurbulence": "L",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4MLHE9-4KVI3QA2",
+                      "alternateAirport": {
+                        "name": "KAJO KEJI AIRPORT",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJKJ",
+                        "isActive": true,
+                        "latitude": "0351N",
+                        "location": "Kajo Keji",
+                        "longitude": "03140E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "TORIT AIRPORT",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJTR",
+                        "isActive": true,
+                        "latitude": "042501N",
+                        "location": "TORIT",
+                        "longitude": "0323432E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      }
+                    },
+                    "fr24_response_data": {
+                      "hex": "04C31A",
+                      "reg": "5Y-VAN",
+                      "type": "C208",
+                      "flight": null,
+                      "fr24_id": "42746d07",
+                      "callsign": "5YVAN",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T08:15:46Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T07:47:43Z",
+                      "painted_as": null,
+                      "flight_ended": true,
+                      "operating_as": null,
+                      "datetime_landed": "2026-11-06T08:32:42Z",
+                      "datetime_takeoff": "2026-11-06T07:48:43Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Mombasa Air Safari",
+                  "operator_id": 14718,
+                  "charges_amount": 63.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "C208",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58601,
+                  "icao": "04C2EA",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3litl8026901pjpucoi1xx",
+                  "call_sign": "UNO516P",
+                  "flight_no": "UNO516P",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-RNX",
+                  "flight_origin_type": "domestic",
+                  "mtow": 19.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJMK",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:45.179260+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3litl8026901pjpucoi1xx",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ-HJMK",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-RNX",
+                        "type": "DHC8",
+                        "icao24": "04C2EA"
+                      },
+                      "callsign": "UNO516P",
+                      "operator": {
+                        "name": "RENEGADE AIR",
+                        "alias": "SSD",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "UN0516P",
+                        "iataCode": null,
+                        "icaoCode": "RNG"
+                      },
+                      "totalEet": "0120",
+                      "createdAt": "2026-11-05T13:43:13.484Z",
+                      "endurance": "0430",
+                      "equipment": "SDGHW",
+                      "otherInfo": "STS/NONRVSM NAV/GPS COM/VHF DOF/261106 REG/5Y-RNX CODE/04C2EA OPR/UNMISS RMK/TCAS EQUIPPED",
+                      "updatedAt": "2026-11-06T10:58:49.616Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F200",
+                      "cruisingSpeed": "N0240",
+                      "departureTime": "1200",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "NIMIT PATEL",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3LITKF-BIRF9MBJ",
+                      "alternateAirport": {
+                        "name": "RUBKONA",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJRK",
+                        "isActive": true,
+                        "latitude": "0918N",
+                        "location": "Rubkona, Unity State",
+                        "longitude": "02947E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Malakal International Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSM",
+                        "iataCode": "MAK",
+                        "icaoCode": "HJMK",
+                        "isActive": true,
+                        "latitude": "0934N",
+                        "location": "Malakal",
+                        "longitude": "03139E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "United Nations",
+                  "operator_id": 14719,
+                  "charges_amount": 40.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8C",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58599,
+                  "icao": "04C329",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3lsv3m026d01pjf4lbm380",
+                  "call_sign": "UNO506P",
+                  "flight_no": "UNO506P",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-RNH",
+                  "flight_origin_type": "domestic",
+                  "mtow": 16.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJMK",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:44.500074+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:37.304201+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3lsv3m026d01pjf4lbm380",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ-HJMK-HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-RNH",
+                        "type": "DH8A",
+                        "icao24": "04C329"
+                      },
+                      "callsign": "UNO506P",
+                      "operator": {
+                        "name": "RENEGADE AIR",
+                        "alias": "SSD",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "UN0516P",
+                        "iataCode": null,
+                        "icaoCode": "RNG"
+                      },
+                      "totalEet": "0120",
+                      "createdAt": "2026-11-05T13:51:02.002Z",
+                      "endurance": "0430",
+                      "equipment": "SDGHW",
+                      "otherInfo": "STS/NONRVSM NAV/GPS COM/VHF DOF/261106 REG/5Y-RNH CODE/04C329 OPR/UNMISS RMK/TCAS EQUIPPED",
+                      "updatedAt": "2026-11-06T10:58:38.636Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F200",
+                      "cruisingSpeed": "N0240",
+                      "departureTime": "1025",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "ANTHONY THUMBI",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3LSV2R-X71JTTK8",
+                      "alternateAirport": {
+                        "name": "RUBKONA",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJRK",
+                        "isActive": true,
+                        "latitude": "0918N",
+                        "location": "Rubkona, Unity State",
+                        "longitude": "02947E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Malakal International Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSM",
+                        "iataCode": "MAK",
+                        "icaoCode": "HJMK",
+                        "isActive": true,
+                        "latitude": "0934N",
+                        "location": "Malakal",
+                        "longitude": "03139E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    },
+                    "fr24_response_data": {
+                      "hex": "04C329",
+                      "reg": "5Y-RNH",
+                      "type": "DH8A",
+                      "flight": null,
+                      "fr24_id": "42742457",
+                      "callsign": "UNO506P",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T08:28:05Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T05:17:36Z",
+                      "painted_as": "UNO",
+                      "flight_ended": true,
+                      "operating_as": "RNG",
+                      "datetime_landed": null,
+                      "datetime_takeoff": "2026-11-06T07:43:31Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Renegade Air",
+                  "operator_id": 14721,
+                  "charges_amount": 40.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8A",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58595,
+                  "icao": "04C23B",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3ol492026r01pjyz69sfe8",
+                  "call_sign": "5YZBG",
+                  "flight_no": "5YZBG",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-ZBG",
+                  "flight_origin_type": "domestic",
+                  "mtow": 40.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJAK",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:43.357333+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:37.410232+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3ol492026r01pjyz69sfe8",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "JUBA AKOBO PAGUIR MALAKAL PAGUIR JUBA",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-ZBG",
+                        "type": "C208",
+                        "icao24": null
+                      },
+                      "callsign": "5YZBG",
+                      "operator": {
+                        "name": "Boskovic Air Charters Limited",
+                        "alias": "Z",
+                        "country": {
+                          "iso2": "KE",
+                          "iso3": "KEN",
+                          "name": "Kenya"
+                        },
+                        "callsign": "BOSKY",
+                        "iataCode": null,
+                        "icaoCode": "ZBA"
+                      },
+                      "totalEet": "0120",
+                      "createdAt": "2026-11-05T15:08:59.462Z",
+                      "endurance": "0500",
+                      "equipment": "SFH",
+                      "otherInfo": "STS/HUM NAV/GPS COM/UHF DOF/261106 REG/5Y-ZBG OPR/MSF FRANCE",
+                      "updatedAt": "2026-11-06T10:58:08.305Z",
+                      "flightType": "N",
+                      "flightRules": "V",
+                      "surveillance": "C",
+                      "cruisingLevel": "F095",
+                      "cruisingSpeed": "N0150",
+                      "departureTime": "0530",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "MBUGUA M.",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3OL47S-HIKRZN4B",
+                      "alternateAirport": {
+                        "name": "PIBOR AIRPORT",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJPI",
+                        "isActive": true,
+                        "latitude": "0648N",
+                        "location": "Pibor",
+                        "longitude": "03308E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "AKOBO AIRPORT",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJAK",
+                        "isActive": true,
+                        "latitude": "0747N",
+                        "location": "Akobo",
+                        "longitude": "03300E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    },
+                    "fr24_response_data": {
+                      "hex": "04C23B",
+                      "reg": "5Y-ZBG",
+                      "type": "C208",
+                      "flight": null,
+                      "fr24_id": "4274380a",
+                      "callsign": "5YZBG",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T07:08:04Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T05:58:11Z",
+                      "painted_as": "ZBA",
+                      "flight_ended": true,
+                      "operating_as": "ZBA",
+                      "datetime_landed": "2026-11-06T07:49:50Z",
+                      "datetime_takeoff": "2026-11-06T06:14:40Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "MSF France",
+                  "operator_id": 14822,
+                  "charges_amount": 63.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "C208",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58589,
+                  "icao": "060050",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3qwlw7027601pjrger4ikz",
+                  "call_sign": "UNO523P",
+                  "flight_no": "UNO523P",
+                  "flight_type": null,
+                  "aircraft_registration_no": "3B-NCS",
+                  "flight_origin_type": "domestic",
+                  "mtow": 5.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJBT",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:41.398144+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:37.554373+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3qwlw7027601pjrger4ikz",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ HJBT HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "3B-NCS",
+                        "type": "L410",
+                        "icao24": null
+                      },
+                      "callsign": "UNO523P",
+                      "operator": {
+                        "name": "UNMISS",
+                        "alias": "U",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "UNO523P",
+                        "iataCode": null,
+                        "icaoCode": "UNO"
+                      },
+                      "totalEet": "0145",
+                      "createdAt": "2026-11-05T16:13:54.775Z",
+                      "endurance": "0330",
+                      "equipment": "SFDHZ",
+                      "otherInfo": "NAV/GPS DOF/261106 REG/3B-NCS OPR/UNMISS RMK/SAR NML",
+                      "updatedAt": "2026-11-06T10:57:47.855Z",
+                      "flightType": "N",
+                      "flightRules": "I",
+                      "surveillance": "S",
+                      "cruisingLevel": "F100",
+                      "cruisingSpeed": "N0180",
+                      "departureTime": "0520",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "R KOIRALA",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3QWLUZ-Z3LAXKI3",
+                      "alternateAirport": {
+                        "name": "Malakal International Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSM",
+                        "iataCode": "MAK",
+                        "icaoCode": "HJMK",
+                        "isActive": true,
+                        "latitude": "0934N",
+                        "location": "Malakal",
+                        "longitude": "03139E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Bentiu Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJBT",
+                        "isActive": true,
+                        "latitude": "0918N",
+                        "location": "Bentiu, Rubkona",
+                        "longitude": "02947E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Rumbek Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSMK",
+                        "iataCode": "RBX",
+                        "icaoCode": "HJRB",
+                        "isActive": true,
+                        "latitude": "0650N",
+                        "location": "Rumbek",
+                        "longitude": "02940E",
+                        "locationName": null
+                      }
+                    },
+                    "fr24_response_data": {
+                      "hex": "060050",
+                      "reg": "3B-NCS",
+                      "type": "L410",
+                      "flight": null,
+                      "fr24_id": "4274a6e5",
+                      "callsign": "UNO523P",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T10:15:57Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T09:36:21Z",
+                      "painted_as": "UNO",
+                      "flight_ended": true,
+                      "operating_as": "UNO",
+                      "datetime_landed": "2026-11-06T11:43:37Z",
+                      "datetime_takeoff": "2026-11-06T09:37:40Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "UNHAS",
+                  "operator_id": 14756,
+                  "charges_amount": 18.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "L410",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58588,
+                  "icao": "060050",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3qyqca027801pj7alx9efk",
+                  "call_sign": "UNO523P",
+                  "flight_no": "UNO523P",
+                  "flight_type": null,
+                  "aircraft_registration_no": "3B-NCS",
+                  "flight_origin_type": "domestic",
+                  "mtow": 5.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJBT",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:41.076631+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:37.157745+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3qyqca027801pj7alx9efk",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ HJBT HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "3B-NCS",
+                        "type": "L410",
+                        "icao24": null
+                      },
+                      "callsign": "UNO523P",
+                      "operator": {
+                        "name": "UNMISS",
+                        "alias": "U",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "UNO523P",
+                        "iataCode": null,
+                        "icaoCode": "UNO"
+                      },
+                      "totalEet": "0145",
+                      "createdAt": "2026-11-05T16:15:33.850Z",
+                      "endurance": "0330",
+                      "equipment": "SFDHZ",
+                      "otherInfo": "NAV/GPS DOF/261106 REG/3B-NCS OPR/UNMISS RMK/SAR NML",
+                      "updatedAt": "2026-11-06T10:57:36.553Z",
+                      "flightType": "N",
+                      "flightRules": "I",
+                      "surveillance": "S",
+                      "cruisingLevel": "F100",
+                      "cruisingSpeed": "N0180",
+                      "departureTime": "1035",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "R KOIRALA",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3QYQBI-5M5POD22",
+                      "alternateAirport": {
+                        "name": "Malakal International Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSM",
+                        "iataCode": "MAK",
+                        "icaoCode": "HJMK",
+                        "isActive": true,
+                        "latitude": "0934N",
+                        "location": "Malakal",
+                        "longitude": "03139E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Bentiu Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJBT",
+                        "isActive": true,
+                        "latitude": "0918N",
+                        "location": "Bentiu, Rubkona",
+                        "longitude": "02947E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Rumbek Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSMK",
+                        "iataCode": "RBX",
+                        "icaoCode": "HJRB",
+                        "isActive": true,
+                        "latitude": "0650N",
+                        "location": "Rumbek",
+                        "longitude": "02940E",
+                        "locationName": null
+                      }
+                    },
+                    "fr24_response_data": {
+                      "hex": "060050",
+                      "reg": "3B-NCS",
+                      "type": "L410",
+                      "flight": null,
+                      "fr24_id": "4274226c",
+                      "callsign": "UNO523P",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T06:00:26Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T05:13:44Z",
+                      "painted_as": "UNO",
+                      "flight_ended": true,
+                      "operating_as": "UNO",
+                      "datetime_landed": null,
+                      "datetime_takeoff": "2026-11-06T05:16:11Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "UNHAS",
+                  "operator_id": 14756,
+                  "charges_amount": 18.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "L410",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58586,
+                  "icao": "0680BE",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3s5onn027g01pjc7zsprl3",
+                  "call_sign": "KUS100",
+                  "flight_no": "KUS100",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5X-AYC",
+                  "flight_origin_type": "domestic",
+                  "mtow": 29.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJWW",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:40.565629+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3s5onn027g01pjc7zsprl3",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT HJWW DCT HJJJ ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5X-AYC",
+                        "type": "DH8D",
+                        "icao24": null
+                      },
+                      "callsign": "KUS100",
+                      "operator": {
+                        "name": "KUSH AIR",
+                        "alias": "k",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "K",
+                        "iataCode": null,
+                        "icaoCode": "KSH"
+                      },
+                      "totalEet": "0100",
+                      "createdAt": "2026-11-05T16:48:57.876Z",
+                      "endurance": "0340",
+                      "equipment": "SDGIR",
+                      "otherInfo": "PBN/B1C1D1D2S2 NAV/RNV COM/HF DAT/S DOF/261106 REG/5X-AYC OPR/KUSH AIR LTD  RMK/FOOD/WATER",
+                      "updatedAt": "2026-11-06T09:22:13.942Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F240",
+                      "cruisingSpeed": "N0300",
+                      "departureTime": "0510",
+                      "personsOnBoard": "TBN ",
+                      "pilotInCommand": "ERICK.M",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3S5OMH-608V8VIV",
+                      "alternateAirport": {
+                        "name": "Rumbek Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSMK",
+                        "iataCode": "RBX",
+                        "icaoCode": "HJRB",
+                        "isActive": true,
+                        "latitude": "0650N",
+                        "location": "Rumbek",
+                        "longitude": "02940E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Wau Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": "WUU",
+                        "icaoCode": "HJWW",
+                        "isActive": true,
+                        "latitude": "0744N",
+                        "location": "Wau",
+                        "longitude": "02759E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      }
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Kush Air",
+                  "operator_id": 14726,
+                  "charges_amount": 55.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8D",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58584,
+                  "icao": "0680C6",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw3sfbdf027l01pjblev0xub",
+                  "call_sign": "KUS800",
+                  "flight_no": "KUS800",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5X-ABB",
+                  "flight_origin_type": "domestic",
+                  "mtow": 29.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJFA",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:40.008493+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3sfbdf027l01pjblev0xub",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT HJFA DCT HJJJ ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5X-ABB",
+                        "type": "DH8D",
+                        "icao24": null
+                      },
+                      "callsign": "KUS800",
+                      "operator": {
+                        "name": "KUSH AIR",
+                        "alias": "k",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "K",
+                        "iataCode": null,
+                        "icaoCode": "KSH"
+                      },
+                      "totalEet": "0120",
+                      "createdAt": "2026-11-05T16:56:27.219Z",
+                      "endurance": "0410",
+                      "equipment": "SDGIR",
+                      "otherInfo": "PBN/B1C1D1D2S2 NAV/RNV COM/HF DAT/S DOF/261106 REG/5X-ABB OPR/KUSH AIR LTD  RMK/FOOD/WATER",
+                      "updatedAt": "2026-11-06T09:27:28.516Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F240",
+                      "cruisingSpeed": "N0300",
+                      "departureTime": "0515",
+                      "personsOnBoard": "TBN ",
+                      "pilotInCommand": "WAHAB.E",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3SFBCK-TQQ4WOVI",
+                      "alternateAirport": {
+                        "name": "Malakal International Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSM",
+                        "iataCode": "MAK",
+                        "icaoCode": "HJMK",
+                        "isActive": true,
+                        "latitude": "0934N",
+                        "location": "Malakal",
+                        "longitude": "03139E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Paloich Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HJFA",
+                        "iataCode": null,
+                        "icaoCode": "HJFA",
+                        "isActive": true,
+                        "latitude": "1032N",
+                        "location": "Upper Nile State",
+                        "longitude": "03230E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      }
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Kush Air",
+                  "operator_id": 14726,
+                  "charges_amount": 55.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8D",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58570,
+                  "icao": "058044",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4g41u902bu01pjdsehthqm",
+                  "call_sign": "7QSKA",
+                  "flight_no": "7QSKA",
+                  "flight_type": null,
+                  "aircraft_registration_no": "7Q-SKA",
+                  "flight_origin_type": "domestic",
+                  "mtow": 5.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJLR",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:35.735487+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:37.051424+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4g41u902bu01pjdsehthqm",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT HJLR DCT HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "7Q-SKA",
+                        "type": "L410",
+                        "icao24": "058044"
+                      },
+                      "callsign": "7QSKA",
+                      "operator": {
+                        "name": "AEROJET AVIATION",
+                        "alias": null,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": null,
+                        "iataCode": null,
+                        "icaoCode": "AJE"
+                      },
+                      "totalEet": "0140",
+                      "createdAt": "2026-11-06T03:59:32.433Z",
+                      "endurance": "0400",
+                      "equipment": "SD",
+                      "otherInfo": "NAV/GPS DOF/261106 REG/7Q-SKA OPR/AEROJET AVIATIONS",
+                      "updatedAt": "2026-11-06T10:54:06.314Z",
+                      "flightType": "N",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F085",
+                      "cruisingSpeed": "N0160",
+                      "departureTime": "0530",
+                      "personsOnBoard": "19",
+                      "pilotInCommand": "SAAD FAROOQ",
+                      "wakeTurbulence": "L",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4G41SK-8Q1MGSKQ",
+                      "alternateAirport": {
+                        "name": "Bor Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJBR",
+                        "isActive": true,
+                        "latitude": "0612N",
+                        "location": "Bor",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Leer Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJLR",
+                        "isActive": true,
+                        "latitude": "0818N",
+                        "location": "LEER",
+                        "longitude": "03007E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    },
+                    "fr24_response_data": {
+                      "hex": "058044",
+                      "reg": "7Q-SKA",
+                      "type": "L410",
+                      "flight": null,
+                      "fr24_id": "4274385a",
+                      "callsign": "7QSKA",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T06:35:42Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T05:58:44Z",
+                      "painted_as": "FLQ",
+                      "flight_ended": true,
+                      "operating_as": "FLQ",
+                      "datetime_landed": null,
+                      "datetime_takeoff": "2026-11-06T05:58:51Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "AEROJET AVIATION",
+                  "operator_id": 14734,
+                  "charges_amount": 18.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "L410",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58567,
+                  "icao": "04C31B",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4g9oue02c001pj6esvm0nd",
+                  "call_sign": "5YLEX",
+                  "flight_no": "5YLEX",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-LEX",
+                  "flight_origin_type": "domestic",
+                  "mtow": 40.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJYE",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:34.643565+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4g9oue02c001pj6esvm0nd",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ HJYE HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-LEX",
+                        "type": "C208",
+                        "icao24": "04C31B"
+                      },
+                      "callsign": "5YLEX",
+                      "operator": {
+                        "name": "Aerosafe limited",
+                        "alias": "Aerosafe limited",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "SKYROVER",
+                        "iataCode": null,
+                        "icaoCode": "RRV"
+                      },
+                      "totalEet": "0030",
+                      "createdAt": "2026-11-06T04:03:55.526Z",
+                      "endurance": "0400",
+                      "equipment": "S",
+                      "otherInfo": "DOF/261106 REG/5Y-LEX CODE/04C31B OPR/AEROSAFE LIMITED",
+                      "updatedAt": "2026-11-06T10:54:27.877Z",
+                      "flightType": "G",
+                      "flightRules": "V",
+                      "surveillance": "C",
+                      "cruisingLevel": "F065",
+                      "cruisingSpeed": "N0140",
+                      "departureTime": "0530",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "REX JACKSON ",
+                      "wakeTurbulence": "L",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4G9OTC-200LF4XD",
+                      "alternateAirport": {
+                        "name": "KAJO KEJI AIRPORT",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJKJ",
+                        "isActive": true,
+                        "latitude": "0351N",
+                        "location": "Kajo Keji",
+                        "longitude": "03140E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Yei Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJYE",
+                        "isActive": true,
+                        "latitude": "0408N",
+                        "location": "Yei",
+                        "longitude": "03043E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      }
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "AEROSAFE AVIATION",
+                  "operator_id": 14799,
+                  "charges_amount": 63.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "C208",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58563,
+                  "icao": "4B1ED4",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4h24c002en01pjyvqb6rcx",
+                  "call_sign": "RED912",
+                  "flight_no": "RED912",
+                  "flight_type": null,
+                  "aircraft_registration_no": "HB-LRO",
+                  "flight_origin_type": "domestic",
+                  "mtow": 60.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJWW",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:33.408783+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.624093+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4h24c002en01pjyvqb6rcx",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "JUBA- WAU- BENTIU- JUBA",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "HB-LRO",
+                        "type": "DHC6",
+                        "icao24": null
+                      },
+                      "callsign": "RED912",
+                      "operator": {
+                        "name": "ZIMEX/ICRC",
+                        "alias": null,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "RED912",
+                        "iataCode": null,
+                        "icaoCode": "LRO"
+                      },
+                      "totalEet": "0200",
+                      "createdAt": "2026-11-06T04:26:01.968Z",
+                      "endurance": "0530",
+                      "equipment": "S",
+                      "otherInfo": "NAV/GPS COM/HF DOF/261106 REG/HB-LRO OPR/ZIMEX ICRC",
+                      "updatedAt": "2026-11-06T10:23:05.492Z",
+                      "flightType": "G",
+                      "flightRules": "V",
+                      "surveillance": "C",
+                      "cruisingLevel": "F085",
+                      "cruisingSpeed": "N0150",
+                      "departureTime": "0600",
+                      "personsOnBoard": "02 TBN",
+                      "pilotInCommand": "SVEN SONNENBERG ",
+                      "wakeTurbulence": "L",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4H2495-L9GA3DMP",
+                      "alternateAirport": {
+                        "name": "Rumbek Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSMK",
+                        "iataCode": "RBX",
+                        "icaoCode": "HJRB",
+                        "isActive": true,
+                        "latitude": "0650N",
+                        "location": "Rumbek",
+                        "longitude": "02940E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Wau Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": "WUU",
+                        "icaoCode": "HJWW",
+                        "isActive": true,
+                        "latitude": "0744N",
+                        "location": "Wau",
+                        "longitude": "02759E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Bentiu Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJBT",
+                        "isActive": true,
+                        "latitude": "0918N",
+                        "location": "Bentiu, Rubkona",
+                        "longitude": "02947E",
+                        "locationName": null
+                      }
+                    },
+                    "fr24_response_data": {
+                      "hex": "4B1ED4",
+                      "reg": "HB-LRO",
+                      "type": "DHC6",
+                      "flight": "RED912",
+                      "fr24_id": "427428db",
+                      "callsign": "RED912",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T06:55:32Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T05:27:00Z",
+                      "painted_as": "RED",
+                      "flight_ended": true,
+                      "operating_as": "IMX",
+                      "datetime_landed": null,
+                      "datetime_takeoff": "2026-11-06T06:13:23Z",
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Zimex Aviation",
+                  "operator_id": 14813,
+                  "charges_amount": 98.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DHC6",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58560,
+                  "icao": "04C29B",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4hcr3b02fj01pjl5ozbbdp",
+                  "call_sign": "5YJJJ",
+                  "flight_no": "5YJJJ",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-JJJ",
+                  "flight_origin_type": "domestic",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJRK",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:32.494337+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.762481+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4hcr3b02fj01pjl5ozbbdp",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ DCT HJRK HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-JJJ",
+                        "type": "F50",
+                        "icao24": "04C29B"
+                      },
+                      "callsign": "5YJJJ",
+                      "operator": {
+                        "name": "ORENFLY AVIATION",
+                        "alias": null,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": null,
+                        "iataCode": null,
+                        "icaoCode": "ORE"
+                      },
+                      "totalEet": "0120",
+                      "createdAt": "2026-11-06T04:34:18.023Z",
+                      "endurance": "0520",
+                      "equipment": "SD",
+                      "otherInfo": "DOF/261106 REG/5Y-JJJ CODE/04C29B OPR/ORENFLY LIMITED RMK/TCAS",
+                      "updatedAt": "2026-11-06T10:53:16.249Z",
+                      "flightType": "N",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F180",
+                      "cruisingSpeed": "N0250",
+                      "departureTime": "0530",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "Idris ",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4HCR20-GF4EYDHH",
+                      "alternateAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "RUBKONA",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJRK",
+                        "isActive": true,
+                        "latitude": "0918N",
+                        "location": "Rubkona, Unity State",
+                        "longitude": "02947E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    },
+                    "fr24_response_data": {
+                      "hex": "04C29B",
+                      "reg": "5Y-JJJ",
+                      "type": "F50",
+                      "flight": null,
+                      "fr24_id": "4274584b",
+                      "callsign": "5YJJJ",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T11:36:04Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T07:03:56Z",
+                      "painted_as": null,
+                      "flight_ended": true,
+                      "operating_as": null,
+                      "datetime_landed": null,
+                      "datetime_takeoff": null,
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "ORENFLY AVIATION",
+                  "operator_id": 14757,
+                  "charges_amount": 47.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "F50",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58558,
+                  "icao": "068069",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4hvuc402h501pjfbk00055",
+                  "call_sign": "UNO093H",
+                  "flight_no": "UNO093H",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "5X-ACE",
+                  "flight_origin_type": "international",
+                  "mtow": 40.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HUEN",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:31.908326+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.943529+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4hvuc402h501pjfbk00055",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "JUBA- ENTEBBE- JUBA.",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5X-ACE",
+                        "type": "C208",
+                        "icao24": null
+                      },
+                      "callsign": "UNO093H",
+                      "operator": {
+                        "name": "AIRSERV/WFP/UNHAS",
+                        "alias": "WFP",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "UNO091H",
+                        "iataCode": null,
+                        "icaoCode": null
+                      },
+                      "totalEet": "0200",
+                      "createdAt": "2026-11-06T04:49:08.692Z",
+                      "endurance": "0430",
+                      "equipment": "S",
+                      "otherInfo": "NAV/GPS COM/HF DOF/261106 REG/5X-ACE OPR/AIRSERV WFP RMK/SSCAA/EP-QNHV4.",
+                      "updatedAt": "2026-11-06T09:52:33.071Z",
+                      "flightType": "G",
+                      "flightRules": "V",
+                      "surveillance": "C",
+                      "cruisingLevel": "F095",
+                      "cruisingSpeed": "N0140",
+                      "departureTime": "0745",
+                      "personsOnBoard": "02 TBN",
+                      "pilotInCommand": "KIFONJI STEPHEN ",
+                      "wakeTurbulence": "L",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4HVUAL-HRZOBFXB",
+                      "alternateAirport": {
+                        "name": "Kajjansi Airfield",
+                        "type": "Airstrip",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "UG",
+                          "iso3": "UGA",
+                          "name": "Uganda"
+                        },
+                        "faaCode": null,
+                        "iataCode": "KJJ",
+                        "icaoCode": "HUKJ",
+                        "isActive": true,
+                        "latitude": "0012N",
+                        "location": "Kampala",
+                        "longitude": "03233E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Entebbe International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "UG",
+                          "iso3": "UGA",
+                          "name": "Uganda"
+                        },
+                        "faaCode": null,
+                        "iataCode": "EBB",
+                        "icaoCode": "HUEN",
+                        "isActive": true,
+                        "latitude": "0003N",
+                        "location": "Entebbe",
+                        "longitude": "03227E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Arua Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "UG",
+                          "iso3": "UGA",
+                          "name": "Uganda"
+                        },
+                        "faaCode": null,
+                        "iataCode": "RUA",
+                        "icaoCode": "HUAR",
+                        "isActive": true,
+                        "latitude": "0303N",
+                        "location": "Arua",
+                        "longitude": "03055E",
+                        "locationName": null
+                      }
+                    },
+                    "fr24_response_data": {
+                      "hex": "068069",
+                      "reg": "5X-ACE",
+                      "type": "C208",
+                      "flight": null,
+                      "fr24_id": "42749a35",
+                      "callsign": "UNO093H",
+                      "dest_icao": null,
+                      "last_seen": "2026-11-06T09:27:03Z",
+                      "orig_icao": null,
+                      "first_seen": "2026-11-06T09:12:46Z",
+                      "painted_as": null,
+                      "flight_ended": true,
+                      "operating_as": null,
+                      "datetime_landed": null,
+                      "datetime_takeoff": null,
+                      "dest_icao_actual": null
+                    }
+                  },
+                  "status": "incomplete",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "United Nations",
+                  "operator_id": 14719,
+                  "charges_amount": 0.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "C208",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58553,
+                  "icao": "040077",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4jklzk02ib01pj57h81dva",
+                  "call_sign": "ETH353",
+                  "flight_no": "ETH353",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "ET-AQN",
+                  "flight_origin_type": "international",
+                  "mtow": 78.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HAAB",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:30.360872+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.868236+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4jklzk02ib01pj57h81dva",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT JUB B535 DAGAP UB535 IMTOR IMTOR1A ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "ETHAQN",
+                        "type": "B738",
+                        "icao24": "040077"
+                      },
+                      "callsign": "ETH353",
+                      "operator": {
+                        "name": "Ethiopian Airlines",
+                        "alias": "S",
+                        "country": {
+                          "iso2": "ET",
+                          "iso3": "ETH",
+                          "name": "Ethiopia"
+                        },
+                        "callsign": "ETHIOPIAN",
+                        "iataCode": "ET",
+                        "icaoCode": "ETH"
+                      },
+                      "totalEet": "0113",
+                      "createdAt": "2026-11-06T05:36:23.888Z",
+                      "endurance": "0252",
+                      "equipment": "SDE1FGHILORVWXYZ",
+                      "otherInfo": "REG/ETHAQN CODE/040077 RMK/PBN/A1B1C1D1L1O1S1S2 SUR/EPGW S WXRD DOF/261106 REG/ETAQN EET/HAAA0032 SEL/DPBL OPR/ETHIOPIAN AIRLINES PER/D RMK/TCAS FLIGHT)",
+                      "updatedAt": "2026-11-06T09:55:20.393Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "HB1",
+                      "cruisingLevel": "F230",
+                      "cruisingSpeed": "N0391",
+                      "departureTime": "0830",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "FERREIRA GUIMARAES FABRICIO",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4JKLYL-EM6Y7ZBA",
+                      "alternateAirport": {
+                        "name": "Aba Tenna Dejazmach Yilma International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "ET",
+                          "iso3": "ETH",
+                          "name": "Ethiopia"
+                        },
+                        "faaCode": null,
+                        "iataCode": "DIR",
+                        "icaoCode": "HADR",
+                        "isActive": true,
+                        "latitude": "0937N",
+                        "location": "Dire Dawa",
+                        "longitude": "04151E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Addis Ababa Bole International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "ET",
+                          "iso3": "ETH",
+                          "name": "Ethiopia"
+                        },
+                        "faaCode": null,
+                        "iataCode": "ADD",
+                        "icaoCode": "HAAB",
+                        "isActive": true,
+                        "latitude": "0859N",
+                        "location": "Addis Ababa",
+                        "longitude": "03848E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    },
+                    "fr24_response_data": {
+                      "hex": "040077",
+                      "reg": "ET-AQN",
+                      "type": "B738",
+                      "flight": "ET353",
+                      "fr24_id": "42747f40",
+                      "callsign": "ETH353",
+                      "dest_icao": "HAAB",
+                      "last_seen": "2026-11-06T10:00:08Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T08:24:34Z",
+                      "painted_as": "ETH",
+                      "flight_ended": true,
+                      "operating_as": "ETH",
+                      "datetime_landed": null,
+                      "datetime_takeoff": "2026-11-06T08:46:56Z",
+                      "dest_icao_actual": "HAAB"
+                    }
+                  },
+                  "status": "incomplete",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Ethiopian Airlines",
+                  "operator_id": 3,
+                  "charges_amount": 0.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "B738",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58489,
+                  "icao": "04C314",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "45982",
+                  "call_sign": "5YCAJ",
+                  "flight_no": "5YCAJ",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5YCAJ",
+                  "flight_origin_type": "domestic",
+                  "mtow": 40.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJKJ",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Private Owner",
+                  "operator_id": 9044,
+                  "charges_amount": 63.0,
+                  "notes": "AVIONS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "C208",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58545,
+                  "icao": "068094",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4p2cmc02kc01pja6mj9d7y",
+                  "call_sign": "UGD121",
+                  "flight_no": "UGD121",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "5X-KOB",
+                  "flight_origin_type": "international",
+                  "mtow": 38.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HUEN",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:28.012211+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.460414+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4p2cmc02kc01pja6mj9d7y",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT ATUGA UG656",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5X-KOB",
+                        "type": "CRJ9",
+                        "icao24": "068094"
+                      },
+                      "callsign": "UGD121",
+                      "operator": {
+                        "name": "Air Uganda International",
+                        "alias": "U",
+                        "country": {
+                          "iso2": "UG",
+                          "iso3": "UGA",
+                          "name": "Uganda"
+                        },
+                        "callsign": "UG",
+                        "iataCode": "UG",
+                        "icaoCode": "UGA"
+                      },
+                      "totalEet": "0050",
+                      "createdAt": "2026-11-06T08:10:09.636Z",
+                      "endurance": "0230",
+                      "equipment": "SABDHIR",
+                      "otherInfo": "PBN/A1B3L1S1 DOF/261106 REG/5X-KOB CODE/068094 EET/ATUGA0018 OPR/UGANDA AIRLINES RMK/TCAS EQUIPPED",
+                      "updatedAt": "2026-11-06T10:52:31.813Z",
+                      "flightType": "N",
+                      "flightRules": "I",
+                      "surveillance": "E",
+                      "cruisingLevel": "F230",
+                      "cruisingSpeed": "N0346",
+                      "departureTime": "1140",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "OBIRO AARON",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4P2CKJ-B86J6QUD",
+                      "alternateAirport": {
+                        "name": "Jomo Kenyatta International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "KE",
+                          "iso3": "KEN",
+                          "name": "Kenya"
+                        },
+                        "faaCode": null,
+                        "iataCode": "NBO",
+                        "icaoCode": "HKJK",
+                        "isActive": true,
+                        "latitude": "0119S",
+                        "location": "Nairobi",
+                        "longitude": "03656E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Entebbe International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "UG",
+                          "iso3": "UGA",
+                          "name": "Uganda"
+                        },
+                        "faaCode": null,
+                        "iataCode": "EBB",
+                        "icaoCode": "HUEN",
+                        "isActive": true,
+                        "latitude": "0003N",
+                        "location": "Entebbe",
+                        "longitude": "03227E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Kigali International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "RW",
+                          "iso3": "RWA",
+                          "name": "Rwanda"
+                        },
+                        "faaCode": null,
+                        "iataCode": "KGL",
+                        "icaoCode": "HRYR",
+                        "isActive": true,
+                        "latitude": "0158S",
+                        "location": "Kigali",
+                        "longitude": "03008E",
+                        "locationName": null
+                      }
+                    },
+                    "fr24_response_data": {
+                      "hex": "068094",
+                      "reg": "5X-KOB",
+                      "type": "CRJ9",
+                      "flight": "UR121",
+                      "fr24_id": "4274edea",
+                      "callsign": "UGD121",
+                      "dest_icao": "HUEN",
+                      "last_seen": "2026-11-06T12:30:17Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T11:35:58Z",
+                      "painted_as": "UGD",
+                      "flight_ended": true,
+                      "operating_as": "UGD",
+                      "datetime_landed": "2026-11-06T12:29:41Z",
+                      "datetime_takeoff": "2026-11-06T11:39:47Z",
+                      "dest_icao_actual": "HUEN"
+                    }
+                  },
+                  "status": "incomplete",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Uganda Airlines",
+                  "operator_id": 3255,
+                  "charges_amount": 0.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "CRJ9",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58541,
+                  "icao": "04A020",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4svn3u02m801pj0wc84ikp",
+                  "call_sign": "7PMAM",
+                  "flight_no": "7PMAM",
+                  "flight_type": null,
+                  "aircraft_registration_no": "7P-MAM",
+                  "flight_origin_type": "domestic",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJRN",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:26.742471+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4svn3u02m801pj0wc84ikp",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "HJJJ DCT HJRN DCT HJJJ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "7P-MAM",
+                        "type": "F50",
+                        "icao24": "04A020"
+                      },
+                      "callsign": "7PMAM",
+                      "operator": {
+                        "name": "EASY JET AVIATION",
+                        "alias": null,
+                        "country": {
+                          "iso2": "KE",
+                          "iso3": "KEN",
+                          "name": "Kenya"
+                        },
+                        "callsign": "S",
+                        "iataCode": null,
+                        "icaoCode": "EEE"
+                      },
+                      "totalEet": "0150",
+                      "createdAt": "2026-11-06T09:56:55.098Z",
+                      "endurance": "0500",
+                      "equipment": "SFW",
+                      "otherInfo": "NAV/GPS COM/HF DOF/261106 REG/7P-MAM CODE/04A020 OPR/EASYJET RMK/TCAS",
+                      "updatedAt": "2026-11-06T12:29:48.553Z",
+                      "flightType": "N",
+                      "flightRules": "I",
+                      "surveillance": "S",
+                      "cruisingLevel": "F160",
+                      "cruisingSpeed": "N0240",
+                      "departureTime": "1030",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "Mohamed Hashim",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4SVN2B-FG75JG2P",
+                      "alternateAirport": {
+                        "name": "Paloich Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HJFA",
+                        "iataCode": null,
+                        "icaoCode": "HJFA",
+                        "isActive": true,
+                        "latitude": "1032N",
+                        "location": "Upper Nile State",
+                        "longitude": "03230E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Renk ",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": null,
+                        "iataCode": null,
+                        "icaoCode": "HJRN",
+                        "isActive": true,
+                        "latitude": "1139N",
+                        "location": "Renk",
+                        "longitude": "03249E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": {
+                        "name": "Malakal International Airport",
+                        "type": "Airport",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSM",
+                        "iataCode": "MAK",
+                        "icaoCode": "HJMK",
+                        "isActive": true,
+                        "latitude": "0934N",
+                        "location": "Malakal",
+                        "longitude": "03139E",
+                        "locationName": null
+                      }
+                    }
+                  },
+                  "status": "incomplete",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "",
+                  "operator_id": null,
+                  "charges_amount": 47.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "F50",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58539,
+                  "icao": "040077",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4udq2h02mv01pjo6pydy5k",
+                  "call_sign": "ETH355",
+                  "flight_no": "ETH355",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "ET-AQN",
+                  "flight_origin_type": "international",
+                  "mtow": 78.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HAAB",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:26.241614+00:00",
+                    "fr24_enriched_at": "2026-11-07T03:19:36.544944+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4udq2h02mv01pjo6pydy5k",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT JUB B535 DAGAP UB535 EPSIX/N0397F250 UB535 IMTOR     \n IMTOR1A      ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "ETHAQN",
+                        "type": "B738",
+                        "icao24": "040077"
+                      },
+                      "callsign": "ETH355",
+                      "operator": {
+                        "name": "Ethiopian Airlines",
+                        "alias": "S",
+                        "country": {
+                          "iso2": "ET",
+                          "iso3": "ETH",
+                          "name": "Ethiopia"
+                        },
+                        "callsign": "ETHIOPIAN",
+                        "iataCode": "ET",
+                        "icaoCode": "ETH"
+                      },
+                      "totalEet": "0117",
+                      "createdAt": "2026-11-06T10:38:58.361Z",
+                      "endurance": "0346",
+                      "equipment": "SDE1FGHILORVWXYZ",
+                      "otherInfo": "DOF/261106 REG/ETHAQN CODE/040077 OPR/ETHIOPIAN AIRLINES  RMK/PBN/A1B1C1D1L1O1S1S2 DAT/CPDLCX SUR/EGPWS WXRD DOF/261106 REG/ETAQN EET/HAAA0032 SEL/HKBC OPR/ETHIOPIAN AIRLINES PER/D RMK/TCAS)",
+                      "updatedAt": "2026-11-06T14:47:39.656Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "HB1",
+                      "cruisingLevel": "F230",
+                      "cruisingSpeed": "N0390",
+                      "departureTime": "1450",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "THOMAS IBAU\t",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4UDQ0I-LO7SIYCR",
+                      "alternateAirport": {
+                        "name": "Aba Tenna Dejazmach Yilma International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "ET",
+                          "iso3": "ETH",
+                          "name": "Ethiopia"
+                        },
+                        "faaCode": null,
+                        "iataCode": "DIR",
+                        "icaoCode": "HADR",
+                        "isActive": true,
+                        "latitude": "0937N",
+                        "location": "Dire Dawa",
+                        "longitude": "04151E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Addis Ababa Bole International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "ET",
+                          "iso3": "ETH",
+                          "name": "Ethiopia"
+                        },
+                        "faaCode": null,
+                        "iataCode": "ADD",
+                        "icaoCode": "HAAB",
+                        "isActive": true,
+                        "latitude": "0859N",
+                        "location": "Addis Ababa",
+                        "longitude": "03848E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    },
+                    "fr24_response_data": {
+                      "hex": "040077",
+                      "reg": "ET-AQN",
+                      "type": "B738",
+                      "flight": "ET355",
+                      "fr24_id": "427585b8",
+                      "callsign": "ETH355",
+                      "dest_icao": "HAAB",
+                      "last_seen": "2026-11-06T16:06:14Z",
+                      "orig_icao": "HJJJ",
+                      "first_seen": "2026-11-06T14:48:24Z",
+                      "painted_as": "ETH",
+                      "flight_ended": true,
+                      "operating_as": "ETH",
+                      "datetime_landed": null,
+                      "datetime_takeoff": "2026-11-06T14:55:52Z",
+                      "dest_icao_actual": "HAAB"
+                    }
+                  },
+                  "status": "incomplete",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Ethiopian Airlines",
+                  "operator_id": 3,
+                  "charges_amount": 0.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "B738",
+                  "last_sync_at": null,
+                  "fic_match_status": null,
+                  "fic_upload_type": null,
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58537,
+                  "icao": "01010B",
+                  "tracking_start": null,
+                  "flight_source": "fpl",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "cmw4xq3b602pe01pjtj1fe8rd",
+                  "call_sign": "MSR860",
+                  "flight_no": "MSR860",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "SU-GEB",
+                  "flight_origin_type": "international",
+                  "mtow": 78.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HECA",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:25.547702+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw4xq3b602pe01pjtj1fe8rd",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT TAPOS 1D TAPOS B535 DAGAP DCT ANVEX DCT APLIR DCT BDR UT124 ALRAP DCT KSL DCT TOMRU P751 ALEBA P751 LXR Z970 GINDI W8 CVO DCT ",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "SU-GEB",
+                        "type": "B738",
+                        "icao24": null
+                      },
+                      "callsign": "MSR860",
+                      "operator": {
+                        "name": "EGYPT AIR",
+                        "alias": "EGYPT AIR",
+                        "country": {
+                          "iso2": "EG",
+                          "iso3": "EGY",
+                          "name": "Egypt"
+                        },
+                        "callsign": "MS860",
+                        "iataCode": "SU",
+                        "icaoCode": "EGP"
+                      },
+                      "totalEet": "0430",
+                      "createdAt": "2026-11-06T12:12:34.242Z",
+                      "endurance": "0530",
+                      "equipment": "SDE1E3FGHIJ2J3J4RWY",
+                      "otherInfo": "PBN/A1B1C1D1L1O1S2 NAV/GPS  COM/HF DAT/CPDLCX DOF/261106 REG/SU-GEB EET/HAAA0042 SEL/CGFJ",
+                      "updatedAt": "2026-11-06T15:13:53.223Z",
+                      "flightType": "S",
+                      "flightRules": "I",
+                      "surveillance": "LB1D1",
+                      "cruisingLevel": "F230",
+                      "cruisingSpeed": "N0394",
+                      "departureTime": "1330",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "KHALED ABDELMOEZ ",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW4XQ39F-TLYMK5NQ",
+                      "alternateAirport": {
+                        "name": "Alexandria International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "EG",
+                          "iso3": "EGY",
+                          "name": "Egypt"
+                        },
+                        "faaCode": null,
+                        "iataCode": "HBE",
+                        "icaoCode": "HEAX",
+                        "isActive": true,
+                        "latitude": "3056N",
+                        "location": "Alexandria",
+                        "longitude": "02942E",
+                        "locationName": null
+                      },
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Cairo International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "EG",
+                          "iso3": "EGY",
+                          "name": "Egypt"
+                        },
+                        "faaCode": null,
+                        "iataCode": "CAI",
+                        "icaoCode": "HECA",
+                        "isActive": true,
+                        "latitude": "3007N",
+                        "location": "Cairo",
+                        "longitude": "03124E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    }
+                  },
+                  "status": "incomplete",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "EGYPT AIR",
+                  "operator_id": 14761,
+                  "charges_amount": 0.0,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "B738",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58499,
+                  "icao": "04C29B",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46075",
+                  "call_sign": "5YJJJ",
+                  "flight_no": "5YJJJ",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "5Y-JJJ",
+                  "flight_origin_type": "international",
+                  "mtow": 21.0,
+                  "mtow_unit": "kg",
+                  "covered_distance_nm": 223.93,
+                  "src": "HJJJ",
+                  "dest": "VGHS",
+                  "flight_source_data": null,
+                  "status": "ready_to_bill",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": "AMATO",
+                  "flight_purpose": "passenger_flight",
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "ORENFLY AVIATION",
+                  "operator_id": 14757,
+                  "charges_amount": 569.83,
+                  "notes": null,
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "F50",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58497,
+                  "icao": "04803E",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46059",
+                  "call_sign": "UNO098H",
+                  "flight_no": "UNO098H",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-BZI",
+                  "flight_origin_type": "domestic",
+                  "mtow": 16.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJRK",
+                  "dest": "HJJJ",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "UNHAS",
+                  "operator_id": 14756,
+                  "charges_amount": 40.0,
+                  "notes": "UNHAS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8A",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58496,
+                  "icao": "04C1A4",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46055",
+                  "call_sign": "UNO505P",
+                  "flight_no": "UNO505P",
+                  "flight_type": "landing",
+                  "aircraft_registration_no": "5Y-JXB",
+                  "flight_origin_type": "international",
+                  "mtow": 29.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HUEN",
+                  "dest": "HJJJ",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Jambojet",
+                  "operator_id": 2449,
+                  "charges_amount": 0.0,
+                  "notes": "UNMISS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8D",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58495,
+                  "icao": "04C1A4",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46054",
+                  "call_sign": "UNO505P",
+                  "flight_no": "UNO505P",
+                  "flight_type": "takeoff",
+                  "aircraft_registration_no": "5Y-JXB",
+                  "flight_origin_type": "international",
+                  "mtow": 29.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HUEN",
+                  "flight_source_data": {
+                    "fpl_enriched_at": "2026-11-07T03:18:49.662377+00:00",
+                    "fpl_response_data": {
+                      "id": "cmw3m8dgu026h01pjoaqtp8uw",
+                      "dof": "2026-11-06",
+                      "match": {
+                        "url": null,
+                        "note": null,
+                        "matched": false,
+                        "matchedAt": null,
+                        "reference": null
+                      },
+                      "route": "DCT ATUGA UG656 UVBAX",
+                      "status": "APPROVED",
+                      "aircraft": {
+                        "reg": "5Y-JXB",
+                        "type": "Q400",
+                        "icao24": "04C1A4"
+                      },
+                      "callsign": "UNO505P",
+                      "operator": {
+                        "name": "RENEGADE AIR",
+                        "alias": "SSD",
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "callsign": "UN0516P",
+                        "iataCode": null,
+                        "icaoCode": "RNG"
+                      },
+                      "totalEet": "0115",
+                      "createdAt": "2026-11-05T14:03:05.646Z",
+                      "endurance": "0300",
+                      "equipment": "SDFGIRY",
+                      "otherInfo": "STS/NONRVSM PBN/A1B2B3B4B5C1D1L1 NAV/GPS COM/VHF DOF/261106 REG/5Y-JXB CODE/04C1A4 EET/HUEC0020 OPR/UNMISS RMK/TCAS EQUIPPED",
+                      "updatedAt": "2026-11-06T10:58:34.299Z",
+                      "flightType": "G",
+                      "flightRules": "I",
+                      "surveillance": "C",
+                      "cruisingLevel": "F230",
+                      "cruisingSpeed": "N0292",
+                      "departureTime": "1230",
+                      "personsOnBoard": "TBN",
+                      "pilotInCommand": "TIMONA ELIZABETH",
+                      "wakeTurbulence": "M",
+                      "executionStatus": "EXECUTED",
+                      "referenceNumber": "FP-MW3M8DEK-OJ0VGASG",
+                      "alternateAirport": null,
+                      "departureAirport": {
+                        "name": "Juba ",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "SS",
+                          "iso3": "SSD",
+                          "name": "South Sudan"
+                        },
+                        "faaCode": "HSSJ",
+                        "iataCode": "JUB",
+                        "icaoCode": "HJJJ",
+                        "isActive": true,
+                        "latitude": "0452N",
+                        "location": "Juba",
+                        "longitude": "03136E",
+                        "locationName": null
+                      },
+                      "destinationAirport": {
+                        "name": "Entebbe International Airport",
+                        "type": "International",
+                        "isAfil": false,
+                        "country": {
+                          "iso2": "UG",
+                          "iso3": "UGA",
+                          "name": "Uganda"
+                        },
+                        "faaCode": null,
+                        "iataCode": "EBB",
+                        "icaoCode": "HUEN",
+                        "isActive": true,
+                        "latitude": "0003N",
+                        "location": "Entebbe",
+                        "longitude": "03227E",
+                        "locationName": null
+                      },
+                      "secondAlternateAirport": null
+                    }
+                  },
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Jambojet",
+                  "operator_id": 2449,
+                  "charges_amount": 0.0,
+                  "notes": "UNMISS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8D",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58494,
+                  "icao": "04C1A4",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46053",
+                  "call_sign": "UNO505P",
+                  "flight_no": "UNO505P",
+                  "flight_type": "landing",
+                  "aircraft_registration_no": "5Y-JXB",
+                  "flight_origin_type": "international",
+                  "mtow": 29.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HUEN",
+                  "dest": "HJJJ",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Jambojet",
+                  "operator_id": 2449,
+                  "charges_amount": 0.0,
+                  "notes": "UNMISS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8D",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58493,
+                  "icao": null,
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46034",
+                  "call_sign": "UNO090H",
+                  "flight_no": "UNO090H",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-SHQ",
+                  "flight_origin_type": "domestic",
+                  "mtow": 16.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJMK",
+                  "dest": "HJJJ",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "United Nations",
+                  "operator_id": 14719,
+                  "charges_amount": 40.0,
+                  "notes": "UNHAS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DH8A",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58492,
+                  "icao": "0480B2",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46019",
+                  "call_sign": "UNO087H",
+                  "flight_no": "UNO087H",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5Y-JGM",
+                  "flight_origin_type": "domestic",
+                  "mtow": 60.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJLR",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "UNHAS",
+                  "operator_id": 14756,
+                  "charges_amount": 98.0,
+                  "notes": "WFP IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "DHC6",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58491,
+                  "icao": "5084EA",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "46017",
+                  "call_sign": "UNO570P",
+                  "flight_no": "UNO570P",
+                  "flight_type": null,
+                  "aircraft_registration_no": "UR-HZV",
+                  "flight_origin_type": "domestic",
+                  "mtow": 5.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJJJ",
+                  "dest": "HJBR",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "United Nations",
+                  "operator_id": 14719,
+                  "charges_amount": 18.0,
+                  "notes": "UNMISS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "A359",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                },
+                {
+                  "id": 58490,
+                  "icao": "04C314",
+                  "tracking_start": null,
+                  "flight_source": "tfm",
+                  "tracking_end": null,
+                  "company": 1,
+                  "source_reference_id": "45993",
+                  "call_sign": "5YCAJ",
+                  "flight_no": "5YCAJ",
+                  "flight_type": null,
+                  "aircraft_registration_no": "5YCAJ",
+                  "flight_origin_type": "domestic",
+                  "mtow": 40.0,
+                  "mtow_unit": "ton",
+                  "covered_distance_nm": 0.0,
+                  "src": "HJKJ",
+                  "dest": "HJJJ",
+                  "flight_source_data": null,
+                  "status": "void",
+                  "fir_in": null,
+                  "fir_out": null,
+                  "fir_in_route": null,
+                  "fir_out_route": null,
+                  "flight_purpose": null,
+                  "date_of_operation": "2026-11-06",
+                  "operator_name": "Private Owner",
+                  "operator_id": 9044,
+                  "charges_amount": 63.0,
+                  "notes": "AVIONS IS Exempted",
+                  "invoice_id": null,
+                  "invoice_no": null,
+                  "payment_status": null,
+                  "flight_state": null,
+                  "aircraft_type": "C208",
+                  "last_sync_at": null,
+                  "fic_match_status": "matched",
+                  "fic_upload_type": [
+                    "tfm"
+                  ],
+                  "has_operator_match": false
+                }
+              ],
+              "tab_count_data": {
+                "incomplete": 6,
+                "hold": 0,
+                "ready_to_bill": 13,
+                "finalized": 0,
+                "void": 9,
+                "all": 28
+              }
+            }
           }

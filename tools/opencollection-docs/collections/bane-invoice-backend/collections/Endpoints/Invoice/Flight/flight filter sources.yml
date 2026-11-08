@@ -1,0 +1,70 @@
+info:
+  name: flight filter sources
+  type: http
+  seq: 28
+
+http:
+  method: GET
+  url: "{{url}}/api/flight-filter-sources/"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: example
+    request:
+      url: "{{url}}/api/flight-filter-sources/"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 08 Nov 2026 08:52:18 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "147"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flight filter sources fetched successfully",
+            "data": {
+              "result": [
+                "fic",
+                "tfm",
+                "operator",
+                "fr24",
+                "fpl",
+                "adsb",
+                "manual"
+              ]
+            }
+          }
