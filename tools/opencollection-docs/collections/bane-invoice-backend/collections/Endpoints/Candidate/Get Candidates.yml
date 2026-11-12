@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/api/candidates?status=pending&date_of_operation=2026-8-10, 2026-8-11"
+  url: "{{url}}/api/candidates?status=pending&page=1&limit=10"
   params:
     - name: search
       value: "0093E1"
@@ -21,14 +21,13 @@ http:
     - name: date_of_operation
       value: 2026-8-10, 2026-8-11
       type: query
+      disabled: true
     - name: page
       value: "1"
       type: query
-      disabled: true
     - name: limit
-      value: "5"
+      value: "10"
       type: query
-      disabled: true
   auth:
     type: bearer
     token: "{{token}}"
@@ -6071,5 +6070,293 @@ examples:
                 "linked": 1,
                 "all": 106
               }
+            }
+          }
+  - name: grouped candidates list
+    request:
+      url: "{{url}}/api/candidates?status=pending&page=1&limit=10"
+      method: GET
+      params:
+        - name: search
+          value: "0093E1"
+          type: query
+          disabled: true
+        - name: source
+          value: fpl
+          type: query
+          disabled: true
+        - name: status
+          value: pending
+          type: query
+        - name: date_of_operation
+          value: 2026-8-10, 2026-8-11
+          type: query
+          disabled: true
+        - name: page
+          value: "1"
+          type: query
+        - name: limit
+          value: "10"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Thu, 12 Nov 2026 08:31:49 GMT
+        - name: content-type
+          value: application/json
+        - name: transfer-encoding
+          value: chunked
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept-Encoding, Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flight Candidate Successfully Fetched",
+            "data": {
+              "next": 2,
+              "previous": null,
+              "current_page": 1,
+              "total_object": 378,
+              "total_page": 38,
+              "result": [
+                {
+                  "id": 517,
+                  "source": "fic",
+                  "status": "pending",
+                  "call_sign": "5YDRI",
+                  "aircraft_registration_no": "5Y-DRI",
+                  "icao": "04C370",
+                  "src": "HJJJ",
+                  "dest": "HKJK",
+                  "aircraft_type": "CRJ2",
+                  "operator_name": null,
+                  "operator_short_code": "DFA",
+                  "mtow": 24.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-11T06:55:38.188918Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": "",
+                  "group_key": "107a7e464227875b"
+                },
+                {
+                  "id": 429,
+                  "source": "tfm",
+                  "status": "pending",
+                  "call_sign": "5YDRI",
+                  "aircraft_registration_no": "5Y-DRI",
+                  "icao": "04C370",
+                  "src": "HJJJ",
+                  "dest": "HKJK",
+                  "aircraft_type": "CRJ2",
+                  "operator_name": "Dragonfly Aviation",
+                  "operator_short_code": "DFA",
+                  "mtow": 24.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-04T09:00:39.163784Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": null,
+                  "group_key": "107a7e464227875b"
+                },
+                {
+                  "id": 518,
+                  "source": "fpl",
+                  "status": "pending",
+                  "call_sign": "5YDRI",
+                  "aircraft_registration_no": "5Y-DRI",
+                  "icao": "04C370",
+                  "src": "HKJK",
+                  "dest": "HJJJ",
+                  "aircraft_type": "CRJ2",
+                  "operator_name": null,
+                  "operator_short_code": "DFA",
+                  "mtow": 24.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-11T09:03:39.214174Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": "",
+                  "group_key": "fbde1bfd2a3c08a9"
+                },
+                {
+                  "id": 430,
+                  "source": "tfm",
+                  "status": "pending",
+                  "call_sign": "5YDRI",
+                  "aircraft_registration_no": "5Y-DRI",
+                  "icao": "04C370",
+                  "src": "HKJK",
+                  "dest": "HJJJ",
+                  "aircraft_type": "CRJ2",
+                  "operator_name": "Dragonfly Aviation",
+                  "operator_short_code": "DFA",
+                  "mtow": 24.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-04T09:00:39.178100Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": null,
+                  "group_key": "fbde1bfd2a3c08a9"
+                },
+                {
+                  "id": 361,
+                  "source": "tfm",
+                  "status": "pending",
+                  "call_sign": "5YGMI",
+                  "aircraft_registration_no": "5Y-GMI",
+                  "icao": null,
+                  "src": "HJJJ",
+                  "dest": "HJSU",
+                  "aircraft_type": "F50",
+                  "operator_name": "ALPHA CARGO",
+                  "operator_short_code": "ALPHA CARGO",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-04T09:00:38.185497Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": null,
+                  "group_key": null
+                },
+                {
+                  "id": 367,
+                  "source": "tfm",
+                  "status": "pending",
+                  "call_sign": "5YGMI",
+                  "aircraft_registration_no": "5Y-GMI",
+                  "icao": null,
+                  "src": "HJSU",
+                  "dest": "HJJJ",
+                  "aircraft_type": "F50",
+                  "operator_name": "ALPHA CARGO",
+                  "operator_short_code": "ALPHA CARGO",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-04T09:00:38.267187Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": null,
+                  "group_key": null
+                },
+                {
+                  "id": 519,
+                  "source": "operator",
+                  "status": "pending",
+                  "call_sign": "5YJJJ",
+                  "aircraft_registration_no": "5Y-JJJ",
+                  "icao": "04C29B",
+                  "src": "HJJJ",
+                  "dest": null,
+                  "aircraft_type": "F50",
+                  "operator_name": null,
+                  "operator_short_code": "ORE",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-12T04:03:53.620557Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": "",
+                  "group_key": null
+                },
+                {
+                  "id": 349,
+                  "source": "tfm",
+                  "status": "pending",
+                  "call_sign": "5YJJJ",
+                  "aircraft_registration_no": "5Y-JJJ",
+                  "icao": "04C29B",
+                  "src": "HJJJ",
+                  "dest": "HJMK",
+                  "aircraft_type": "F50",
+                  "operator_name": "ORENFLY AVIATION",
+                  "operator_short_code": "ORE",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-04T09:00:38.023147Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": null,
+                  "group_key": null
+                },
+                {
+                  "id": 377,
+                  "source": "tfm",
+                  "status": "pending",
+                  "call_sign": "5YJJJ",
+                  "aircraft_registration_no": "5Y-JJJ",
+                  "icao": "04C29B",
+                  "src": "HJJJ",
+                  "dest": "HJRN",
+                  "aircraft_type": "F50",
+                  "operator_name": "ORENFLY AVIATION",
+                  "operator_short_code": "ORE",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-04T09:00:38.432053Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": null,
+                  "group_key": null
+                },
+                {
+                  "id": 521,
+                  "source": "fpl",
+                  "status": "pending",
+                  "call_sign": "5YJJJ",
+                  "aircraft_registration_no": "5Y-JJJ",
+                  "icao": "04C29B",
+                  "src": "HJMJ",
+                  "dest": "HJJJ",
+                  "aircraft_type": "F50",
+                  "operator_name": null,
+                  "operator_short_code": "ORE",
+                  "mtow": 21.0,
+                  "mtow_unit": "ton",
+                  "date_of_operation": "2026-11-06",
+                  "created_at": "2026-11-12T04:16:08.102882Z",
+                  "resolved_flight_id": null,
+                  "resolved_flight_call_sign": null,
+                  "resolution_note": "",
+                  "group_key": "d85e3d4797b857a5"
+                }
+              ],
+              "tab_count_data": {
+                "pending": 378,
+                "void": 1,
+                "linked": 17,
+                "all": 396
+              },
+              "first_group_continues": false,
+              "last_group_continues": true
             }
           }
