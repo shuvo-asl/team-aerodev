@@ -1,0 +1,138 @@
+info:
+  name: auto create flights from candidates
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{url}}/api/candidates/create-flights/"
+  body:
+    type: json
+    data: |-
+      {
+        "candidate_ids": [436, 520]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: at least one candidate is required
+    request:
+      url: "{{url}}/api/candidates/create-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": []
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 15 Nov 2026 06:11:27 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "164"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "failed",
+            "message": "Candidates failed to create flights.",
+            "error": null,
+            "errors": {
+              "candidate_ids": "Select at least one candidate to create flights from."
+            }
+          }
+  - name: success and failed count is provided and candidate specific details
+    request:
+      url: "{{url}}/api/candidates/create-flights/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "candidate_ids": [436, 520]
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Sun, 15 Nov 2026 06:14:46 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "248"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: POST, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flights created from candidates.",
+            "data": {
+              "result": {
+                "created_count": 1,
+                "failed_count": 1,
+                "results": [
+                  {
+                    "candidate_id": 436,
+                    "outcome": "created",
+                    "flight_id": 58768
+                  },
+                  {
+                    "candidate_id": 520,
+                    "outcome": "failed",
+                    "flight_id": null
+                  }
+                ]
+              }
+            }
+          }
