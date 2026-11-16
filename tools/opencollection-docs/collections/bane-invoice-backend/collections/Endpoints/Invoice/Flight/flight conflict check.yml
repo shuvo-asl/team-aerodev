@@ -1,0 +1,117 @@
+info:
+  name: flight conflict check
+  type: http
+  seq: 29
+
+http:
+  method: GET
+  url: "{{url}}/api/flight-conflict-check/?date_of_operation=2026-11-15&call_sign=KUS400&icao24=0680C6&registration=5X-ABB&src=HJJJ&dest=HJMK"
+  params:
+    - name: date_of_operation
+      value: 2026-11-15
+      type: query
+    - name: call_sign
+      value: KUS400
+      type: query
+    - name: icao24
+      value: 0680C6
+      type: query
+    - name: registration
+      value: 5X-ABB
+      type: query
+    - name: src
+      value: HJJJ
+      type: query
+    - name: dest
+      value: HJMK
+      type: query
+  body:
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: conflicted flight fetching
+    request:
+      url: "{{url}}/api/flight-conflict-check/?date_of_operation=2026-11-15&call_sign=KUS400&icao24=0680C6&registration=5X-ABB&src=HJJJ&dest=HJMK"
+      method: GET
+      params:
+        - name: date_of_operation
+          value: 2026-11-15
+          type: query
+        - name: call_sign
+          value: KUS400
+          type: query
+        - name: icao24
+          value: 0680C6
+          type: query
+        - name: registration
+          value: 5X-ABB
+          type: query
+        - name: src
+          value: HJJJ
+          type: query
+        - name: dest
+          value: HJMK
+          type: query
+      body:
+        type: json
+        data: ""
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: server
+          value: nginx/1.27.5
+        - name: date
+          value: Mon, 16 Nov 2026 04:47:04 GMT
+        - name: content-type
+          value: application/json
+        - name: content-length
+          value: "257"
+        - name: connection
+          value: keep-alive
+        - name: vary
+          value: Accept, origin
+        - name: allow
+          value: GET, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY, SAMEORIGIN
+        - name: x-content-type-options
+          value: nosniff, nosniff
+        - name: referrer-policy
+          value: same-origin, no-referrer-when-downgrade
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: x-xss-protection
+          value: 1; mode=block
+      body:
+        type: json
+        data: |-
+          {
+            "status": "success",
+            "message": "Flight Conflict Successfully Fetched",
+            "data": {
+              "result": [
+                {
+                  "id": 58770,
+                  "flight_source": "tfm",
+                  "date_of_operation": "2026-11-15",
+                  "call_sign": "KUS400",
+                  "icao": "0680C6",
+                  "aircraft_registration_no": "5X-ABB",
+                  "src": "HJJJ",
+                  "dest": "HJMK"
+                }
+              ]
+            }
+          }
